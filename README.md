@@ -1,2 +1,3 @@
-# personal-website
-My personal website
+# My Personal Website
+
+Repository for the UI of my personnal website.
