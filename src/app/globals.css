@@ -1,9 +1,8 @@
 :root {
     --font-mono: "Roboto Mono";
-    
 }
 
-.body {
+body {
     margin: 0px;
     padding: 0px;
 }
