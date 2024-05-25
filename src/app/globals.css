@@ -1,5 +1,9 @@
 :root {
+    /* font */
     --font-mono: "Roboto Mono";
+
+    /* base colors */
+    --color-orange: rgb(255, 68, 0)
 }
 
 body {
