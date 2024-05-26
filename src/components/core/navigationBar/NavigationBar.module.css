@@ -5,12 +5,16 @@
     position: sticky;
     top: -70px;
     z-index: 100;
-    border-bottom: 1px solid rgb(255, 255, 255);
+    border-bottom: 2px solid var(--color-orange);
 }
 
 .hello_message {
     font-size: 2.8em;
     padding-bottom: 15px;
+}
+
+.hello_message_name {
+    color: var(--color-orange);
 }
 
 .links_container {
@@ -20,10 +24,18 @@
     gap: 20px;
 }
 
-.nav_link {
+.nav_link_text {
     font-size: 1.3em;
     text-transform: uppercase;
     cursor: pointer;
+}
+
+.nav_link_selected {
+    color: var(--color-orange);
+    font-weight: bold;
+}
+
+.nav_link {
     display: inline-block;
     padding-bottom: 2px;
     background-image: linear-gradient(#ffffff 0 0);
