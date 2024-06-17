@@ -89,6 +89,9 @@ export default function Home() {
                                 </NewTabLink>
                             </div>
                         </div>
+                        <div className={styles.presentation_data_sentence}>
+                            {"After almost 2 years spent in Denmark working on multiple data-oriented projects as a Tech-Lead on data, software and UI parts, I'm looking for a new position as a Software and/or Data engineer starting from 2024."}
+                        </div>
                     </div>
                 </div>
                 <div className={styles.presentation_buttons_container}>

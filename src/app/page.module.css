@@ -39,7 +39,7 @@
 
 .presentation_data_container {
     padding-left: 15px;
-    height: 180px;
+    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -101,6 +101,11 @@
 
 .tab_link_container:hover {
     scale: 1.1;
+}
+
+.presentation_data_sentence {
+    max-width: 700px;
+    font-style: italic;
 }
 
 .presentation_buttons_container {
