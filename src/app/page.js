@@ -2,7 +2,6 @@
 
 import styles from "./page.module.css";
 
-import FullScreenComponent from "@/components/common/container/FullScreenComponent";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon"
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon"
 import MediumIcon from "@/components/common/icons/apps/MediumIcon"
@@ -13,9 +12,28 @@ import Locationicon from "@/components/common/icons/misc/LocationIcon";
 const NewTabLink = ({children, link, alt}) => {
 
     return (
-        <a href={link} target="_blank" alt={alt}>
+        <a
+            href={link} 
+            target="_blank" 
+            alt={alt}
+            className={styles.tab_link_container}
+        >
             {children}
         </a>
+    )
+}
+
+const MainPageButton = ({ action, text, icon }) => {
+
+    return (
+        <div className={styles.main_button_container}>
+            <div className={styles.main_button_icon_container}>
+                
+            </div>
+            <div className={styles.main_button_text_container}>
+                {text}
+            </div>
+        </div>
     )
 }
 
@@ -30,7 +48,7 @@ export default function Home() {
 
     return (
         <main>
-            <FullScreenComponent className={styles.presentation_full_screen_wrapper}>
+            <div className={styles.presentation_full_screen_wrapper}>
                 <div className={styles.presentation_container}>
                     <div className={styles.presentation_picture_border_container}>
                         <div className={styles.presentation_picture_container}>
@@ -61,19 +79,25 @@ export default function Home() {
                             </div>
                             <div className={styles.presentation_data_links_container}>
                                 <NewTabLink link={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE} alt="LinkedIn profile">
-                                    <LinkedInIcon size={35} />
+                                    <LinkedInIcon size={30} />
                                 </NewTabLink>
                                 <NewTabLink link={process.env.NEXT_PUBLIC_GITHUB_PROFILE} alt="Github profile">
-                                    <GithubIcon size={35}/>
+                                    <GithubIcon size={30}/>
                                 </NewTabLink>
                                 <NewTabLink link={process.env.NEXT_PUBLIC_MEDIUM_PROFILE} alt="Medium profile">
-                                    <MediumIcon size={35}/>
+                                    <MediumIcon size={30}/>
                                 </NewTabLink>
                             </div>
                         </div>
                     </div>
                 </div>
-            </FullScreenComponent>
+                <div className={styles.presentation_buttons_container}>
+                    <MainPageButton text="Resume"/>
+                    <MainPageButton text="Portfolio"/>
+                    <MainPageButton text="Blog"/>
+                    <MainPageButton text="Contact"/>
+                </div>
+            </div>
         </main>
   ) ;
 }

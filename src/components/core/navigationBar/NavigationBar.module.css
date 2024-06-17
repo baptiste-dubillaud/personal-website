@@ -4,6 +4,7 @@
     padding: 15px;
     position: sticky;
     top: -70px;
+    height: 100px;
     z-index: 100;
     border-bottom: 2px solid var(--color-orange);
 }
