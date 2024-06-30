@@ -27,12 +27,7 @@ const MainPageButton = ({ action, text, icon }) => {
 
     return (
         <div className={styles.main_button_container}>
-            <div className={styles.main_button_icon_container}>
-                
-            </div>
-            <div className={styles.main_button_text_container}>
-                {text}
-            </div>
+            {text}
         </div>
     )
 }
@@ -98,7 +93,6 @@ export default function Home() {
                     <MainPageButton text="Resume"/>
                     <MainPageButton text="Portfolio"/>
                     <MainPageButton text="Blog"/>
-                    <MainPageButton text="Contact"/>
                 </div>
             </div>
         </main>
