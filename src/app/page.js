@@ -84,13 +84,13 @@ export default function Home() {
                                 <NewTabLink link={process.env.NEXT_PUBLIC_GITHUB_PROFILE} alt="Github profile">
                                     <GithubIcon size={30}/>
                                 </NewTabLink>
-                                <NewTabLink link={process.env.NEXT_PUBLIC_MEDIUM_PROFILE} alt="Medium profile">
+                                {/* <NewTabLink link={process.env.NEXT_PUBLIC_MEDIUM_PROFILE} alt="Medium profile">
                                     <MediumIcon size={30}/>
-                                </NewTabLink>
+                                </NewTabLink> */}
                             </div>
                         </div>
                         <div className={styles.presentation_data_sentence}>
-                            {"After almost 2 years spent in Denmark working on multiple data-oriented projects as a Tech-Lead on data, software and UI parts, I'm looking for a new position as a Software and/or Data engineer starting from 2024."}
+                            {"After almost 2 years spent in Denmark working on multiple user-oriented projects as a Tech-Lead and Software Engineer on data, software and UI parts, I'm looking for a new position as a Software and/or Data engineer starting from 2024."}
                         </div>
                     </div>
                 </div>

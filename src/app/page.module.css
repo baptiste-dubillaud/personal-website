@@ -118,20 +118,23 @@
     border: 1px solid var(--color-orange-opacity-6);
     background-color: var(--color-orange-opacity-05);
     color: var(--color-orange);
+
+    width: 100px;
     padding-inline: 25px;
     padding-top: 7px;
     padding-bottom: 7px;
     border-radius: 3px;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: scale 0.2s, background-color 0.4s, font-weight 0.4s;
+
     cursor: pointer;
-    width: 100px;
+    
+    transition: background-color 0.4s, font-weight 0.4s;
 }
 
 .main_button_container:hover {
-    scale: 1.02;
     background-color: var(--color-orange-opacity-2);
     font-weight: 600;
 }
