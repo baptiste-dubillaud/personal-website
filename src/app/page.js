@@ -1,6 +1,6 @@
 'use client'
 
-import styles from "./page.module.css";
+import styles from "@/app/page.module.css";
 
 import GithubIcon from "@/components/common/icons/apps/GithubIcon"
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon"
