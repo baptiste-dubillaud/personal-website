@@ -11,16 +11,13 @@ const BlogArticleContainer = ({ title, date, image, link}) => {
     return (
         <div  className={styles.article_container}>
             <div className={styles.article_image_container}>
-                <Image src={image} alt={'Main image of article ' + title} className={styles.background_image} fill={true} />
-                <div className={styles.forground_image}>
-                    <Image src={image} alt={'Main image of article ' + title} fill={true} objectFit='contain' />
-                </div>
+                <Image src={image} alt={'Main image of article ' + title} fill={true} objectFit='cover' />
             </div>
             <div className={styles.article_text_container}>
-                <span className={styles.article_title}>
+                <span className={styles.article_text_title}>
                     {title}
                 </span>
-                <span className={styles.article_datz}>
+                <span className={styles.article_text_date}>
                     {date}
                 </span>
             </div>
@@ -51,7 +48,7 @@ export default function Blog ({ }) {
                 Welcome to my blog!
             </div>
             <div className={styles.blog_subtitle}>
-                Sometimes I write about experiments or implementation of frameworks/libraries/langages 
+                Sometimes I write about experiments or implementations of frameworks/libraries/langages 
                 I discovered on subjects projects in my portfolio or not.
             </div>
             <div className={styles.articles_list}>
@@ -64,102 +61,7 @@ export default function Blog ({ }) {
                             title={item.data.title} 
                             link={'http://localhost:3000/blog/' + item.post} key={index}
                             image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
-                        />
-                    )
-                })
-            }{
-                posts.map((item, index) => {
-                    
-                    console.log(item);
-                    return (
-                        <BlogArticleContainer 
-                            title={item.data.title} 
-                            link={'http://localhost:3000/blog/' + item.post} key={index}
-                            image={item.data.image}
+                            date={item.data.created}
                         />
                     )
                 })

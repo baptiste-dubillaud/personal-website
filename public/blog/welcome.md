@@ -1,8 +1,8 @@
 ---
-title: Welcome
+title: Hello there! 👋
 author: Baptiste Dubillaud
-image: /images/welcome.jpg
-created: 05/30/2024
+image: /images/hellothere.jpg
+created: 6th of June 2024
 ---
 
 Welcome to my blog!

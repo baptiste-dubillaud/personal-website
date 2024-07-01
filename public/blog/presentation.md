@@ -1,8 +1,8 @@
 ---
-title: "Article 1"
+title: "Hello, I'm Baptiste!"
 author: "Baptiste Dubillaud"
 image: /images/welcome.jpg
-created: "06/30/2024"
+created: "6th of June 2024"
 ---
 
 Welcome to my blog!
