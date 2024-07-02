@@ -1,0 +1,39 @@
+.container {
+    min-height: calc(100vh - 243px);
+    background-color: var(--color-background);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow-y: auto;
+
+    padding-inline: 30%;
+    width: 40%;
+}
+
+@media (max-width: 1200px) {
+    .container {
+        padding-inline: 25%;
+        width: 50%;
+    }
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding-inline: 15%;
+        width: 70%;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding-inline: 5%;
+        width: 90%;
+    }
+}
+
+.container h1 {
+    color: beige;
+}
+
+.container h2 {
+    color: aqua;
+}

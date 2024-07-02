@@ -5,7 +5,7 @@ image: /images/welcome.jpg
 created: "6th of June 2024"
 ---
 
-Welcome to my blog!
+Welcome to my blog! 👋
 
 it is brand new and articles will come soon.
 
