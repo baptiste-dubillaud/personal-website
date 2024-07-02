@@ -7,9 +7,8 @@ import Link from 'next/link';
 
 const BlogArticleContainer = ({ title, date, image, link}) => {
 
-    {/* <Link href={link} className={styles.article_container}> */}
     return (
-        <div  className={styles.article_container}>
+        <Link href={link} className={styles.article_container}>
             <div className={styles.article_image_container}>
                 <Image src={image} alt={'Main image of article ' + title} fill={true} objectFit='cover' />
             </div>
@@ -21,18 +20,16 @@ const BlogArticleContainer = ({ title, date, image, link}) => {
                     {date}
                 </span>
             </div>
-
-        </div>
+        </Link>
     )
-    /* </Link> */
 }
 
 export default function Blog ({ }) {
-    const files = fs.readdirSync('public/blog');
+    const files = fs.readdirSync(process.env.BLOG_FOLDER_PATH);
 
     const posts = files.map((fileName) => {
         const post = fileName.replace('.md', '');
-        const readFile = fs.readFileSync(`public/blog/${fileName}`, 'utf-8');
+        const readFile = fs.readFileSync(process.env.BLOG_FOLDER_PATH + fileName, 'utf-8');
   
         const { data } = matter(readFile);
 
@@ -55,7 +52,6 @@ export default function Blog ({ }) {
             {
                 posts.map((item, index) => {
                     
-                    console.log(item);
                     return (
                         <BlogArticleContainer 
                             title={item.data.title} 

@@ -33,17 +33,18 @@
     height: 250px;
     width: 350px;
     border: 1px solid var(--color-orange);
-    background-color: var(--color-orange-opacity-02);
+    background-color: var(--color-orange-opacity-05);
     border-radius: 5px;
     overflow: hidden;
     cursor: pointer;
     font-weight: 400;
-
+    color: black;
+    text-decoration: none;
     transition: background-color 0.2s ease, font-weight 0.2s;
 }
 
 .article_container:hover {
-    background-color: var(--color-orange-opacity-05);
+    background-color: var(--color-orange-opacity-1);
     font-weight: 500;
 }
 
