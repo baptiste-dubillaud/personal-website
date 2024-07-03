@@ -1,9 +1,11 @@
 import styles from '@/app/blog/page.module.css'
 
-import fs from 'fs';
-import matter from 'gray-matter';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import fs from 'fs';
+
+import matter from 'gray-matter';
 
 const BlogArticleContainer = ({ title, date, image, link}) => {
 
