@@ -32,13 +32,15 @@ export default function Page({ params }) {
                     }
                 </div>
             </div>
-            <Image  
-                src={data.image} 
-                alt={'Main image of article ' + data.title} 
-                width={1000}
-                height={1000}
-                className={styles.image} 
-            />
+            <div className={styles.image_container}>
+                <Image  
+                    src={data.image} 
+                    alt={'Main image of article ' + data.title} 
+                    width={1000}
+                    height={1000}
+                    className={styles.image} 
+                />
+            </div>
             <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
         </div>
     )

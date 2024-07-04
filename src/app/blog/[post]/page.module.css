@@ -10,13 +10,6 @@
     text-align: justify;
 }
 
-@media (min-width: 1600px) {
-    .container {
-        padding-inline: calc(50% - 350px);
-        width: 700px;
-    }
-}
-
 @media (max-width: 1200px) {
     .container {
         padding-inline: 25%;
@@ -55,8 +48,15 @@
     margin-bottom: 20px;
 }
 
+.image_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .image {
     width: 100%;
+    max-width: 500px;
     height: auto;
     border-radius: 5px;
 }
@@ -68,8 +68,8 @@
     margin-bottom: 20px;
     border-top: 1px solid rgb(151, 151, 151);
     border-bottom: 1px solid rgb(151, 151, 151);
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     font-size: 12px;
 }
 

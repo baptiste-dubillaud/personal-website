@@ -8,6 +8,7 @@
 
 .blog_title {
     text-align: center;
+    font-weight: 700;
     font-size: 40px;
     margin-top: 20px;
     margin-bottom: 30px;
@@ -16,7 +17,7 @@
 .blog_subtitle {
     text-align: center;
     margin-inline: 50px;
-    color: rgb(71, 71, 71);
+    color: rgb(0, 0, 0);
 }
 
 .articles_list {
