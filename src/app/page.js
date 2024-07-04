@@ -38,7 +38,9 @@ export default function Home() {
         const currDate = new Date()
         const birthdayDate = new Date("12-29-1998")
 
-        return ((currDate - birthdayDate) / (1000 * 60 * 60 * 24 * 365.25)).toFixed(0)
+        const age = ((currDate - birthdayDate) / (1000 * 60 * 60 * 24 * 365.25))
+
+        return Math.floor(age)
     }
 
     return (
