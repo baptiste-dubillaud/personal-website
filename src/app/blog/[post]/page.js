@@ -1,12 +1,13 @@
 import styles from "@/app/blog/[post]/page.module.css"
 
 import Image from 'next/image';
-import Link from 'next/link';
 
 import fs from 'fs'
 
 import matter from 'gray-matter';
 import md from 'markdown-it';
+
+import InternalNavigationButton from "@/components/common/buttons/InternalNavigationButton/InternalNavButton";
 
 export default function Page({ params }) {
 
@@ -15,8 +16,12 @@ export default function Page({ params }) {
 
     return (
         <div className={styles.container}>
+            <InternalNavigationButton  
+                className={styles.back_to_blog_button}
+                text={"< Back to Blog"}
+                path="/blog"
+            />
             <div className={styles.title}>{data.title}</div>
-            
             <div className={styles.writing_data}>
                 <div className={styles.author_container}>
                     By <span className={styles.author_name}>{data.author}</span>

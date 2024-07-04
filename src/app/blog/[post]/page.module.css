@@ -42,6 +42,23 @@
     font-size: 20px;
 }
 
+.back_to_blog_button {
+    width: fit-content;
+    color: gray;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: normal;
+    
+    transition: color 0.2s, font-weight 0.2s;
+
+    margin-bottom: 10px;
+}
+
+.back_to_blog_button:hover {
+    color: black;
+    font-weight: 500;
+}
+
 .title {
     font-size: 44px;
     font-weight: 1000;
