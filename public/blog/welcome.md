@@ -2,28 +2,22 @@
 title: Hello there! 👋
 author: Baptiste Dubillaud
 image: /images/hellothere.jpg
-created: 6th of June 2024
-updated: 6th of July 2024
+created: 15th of June 2024
+updated: 1st of August 2024
 ---
 
-Welcome to my blog! 👋
+**Hey!** I'm **Baptiste Dubillaud**, a young (25 years old) software enginner. **Welcome to my blog 😁!**  
 
-it is brand new and articles will come soon.
+&nbsp;
 
-Contents:
+I built this blog to post about technologies, frameworks, or libraries I experimented with without using them in a proper project.
 
-1. test
-2. test
-3. test
-4. test
-5. test
-6. test
+I also use this blog to explain some things, like the article about implementing the MSAL OAuth2 library from Microsoft to authenticate users of a website using Azure AD on a NextJS app.
 
-## test
+I can use it to synthesize some articles I read on Medium or interesting Stack Overflow posts I found.
 
-* ze
-* yrty
+&nbsp;
 
-## test 2
+**More articles will come soon!**
 
-just a test
+See you there! 👐
