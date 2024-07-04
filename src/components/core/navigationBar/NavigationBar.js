@@ -10,9 +10,11 @@ export default function NavigationBarComponent({}) {
     const pathname = usePathname()
 
     const NavLinkComponent = ({name, path}) => {
+
+        const isHome = path == "/"
     
         return (
-            <div className={pathname != path ? `${styles.nav_link_text} ${styles.nav_link}`: `${styles.nav_link_text} ${styles.nav_link_selected}`} onClick={() => router.push(path)}>
+            <div className={(isHome && pathname == path) || (!isHome && pathname.includes(path)) ? `${styles.nav_link_text} ${styles.nav_link_selected}`: `${styles.nav_link_text} ${styles.nav_link}`} onClick={() => router.push(path)}>
                 {name}
             </div>
         )
