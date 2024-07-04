@@ -7,6 +7,7 @@
 
     padding-inline: 30%;
     width: 40%;
+    text-align: justify;
 }
 
 @media (min-width: 1600px) {
@@ -37,12 +38,15 @@
     }
 }
 
-.container h1 {
-    color: beige;
+.container h2 {
+    font-size: 30px;
+    border-top: 1px solid rgb(151, 151, 151);
+    width: fit-content;
+    padding-top: 10px;
 }
 
-.container h2 {
-    color: aqua;
+.container h3 {
+    font-size: 20px;
 }
 
 .title {
@@ -66,25 +70,26 @@
     border-bottom: 1px solid rgb(151, 151, 151);
     padding-top: 10px;
     padding-bottom: 10px;
+    font-size: 12px;
 }
 
 .author_container {
-    font-size: 15px;
-    color: gray;
+    color: rgb(148, 148, 148);
 }
 
 .author_name {
     font-weight: bold;
+    color: black;
 }
 
 .date_data {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    font-size: 11px;
     color: rgb(148, 148, 148);
 }
 
 .date {
+    color: black;
     font-weight: bold;
 }
