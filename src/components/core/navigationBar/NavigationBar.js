@@ -22,7 +22,7 @@ export default function NavigationBarComponent({}) {
 
     return (
         <div className={styles.nav_bar_container}>
-            <div className={styles.hello_message}>
+            <div className={styles.hello_message} onClick={() => router.push("/")}>
                 Hi, I'm <span className={styles.hello_message_name}>Baptiste</span>!
             </div>
             <div className={styles.links_container}>

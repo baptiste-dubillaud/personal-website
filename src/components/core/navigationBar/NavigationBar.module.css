@@ -12,6 +12,7 @@
 .hello_message {
     font-size: 2.8em;
     padding-bottom: 15px;
+    cursor: pointer;
 }
 
 .hello_message_name {
