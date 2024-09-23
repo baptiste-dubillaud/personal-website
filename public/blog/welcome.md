@@ -6,7 +6,7 @@ created: 15th of June 2024
 updated: 1st of August 2024
 ---
 
-**Hey!** I'm **Baptiste Dubillaud**, a young (25 years old) software enginner. **Welcome to my blog 😁!**  
+**Hey!** I'm **Baptiste Dubillaud**, a young software enginner. **Welcome to my blog 😁!**  
 
 &nbsp;
 
