@@ -12,11 +12,15 @@ export default function Resume() {
         { id: 5, color: "rgba(0, 255, 255, 0.6)", ref: useRef() },
     ];
 
-    const [currentSection, setCurrentSection] = useState(0);
+    const [currentSection, setCurrentSection] = useState(-1);
 
     useEffect(() => {
-        console.log("currentSection", currentSection);
-        sections[currentSection].ref.current.scrollIntoView();
+        if (currentSection > -1 && currentSection < sections.length) {
+            console.log("currentSection", currentSection);
+            sections[currentSection].ref.current.scrollIntoView({
+                behaviour: "smooth",
+            });
+        }
     }, [currentSection]);
 
     useEffect(() => {
