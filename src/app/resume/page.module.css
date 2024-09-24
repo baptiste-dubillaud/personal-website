@@ -1,0 +1,5 @@
+.resume_container {
+    min-height: calc(100vh - 243px);
+    background-color: var(--color-background);
+    overflow-y: auto;
+}
