@@ -3,56 +3,139 @@
 import styles from "@/app/resume/page.module.css";
 import { useEffect, useRef, useState } from "react";
 
+const TWO_COLUMNS_BREAKPOINT = 1200;
+const TWO_COLUMNS_PRESENTATION_WIDTH = "40%";
+const TWO_COLUMNS_CONTENT_WIDTH = "60%";
+
+const PresentationComponent = ({ isTwoColumnSetup }) => {
+    return (
+        <div
+            className={styles.presentation_container}
+            style={{ width: isTwoColumnSetup ? TWO_COLUMNS_PRESENTATION_WIDTH : "100%" }}
+        >
+            <div className={styles.presentation_name}>Baptiste Dubillaud</div>
+            <div className={styles.presentation_job}>Software Engineer</div>
+            <div className={styles.presentation_desc}>
+                I build PoC softwares on various topics for the Oil and Gas industry.
+            </div>
+        </div>
+    );
+};
+
+const PartComponent = ({ isTwoColumnSetup, title, contentComponent }) => {
+    return (
+        <>
+            <div className={styles.part_title}>{title}</div>
+            <div className={styles.part_container}>
+                {!isTwoColumnSetup && <div className={styles.part_title}>{title}</div>}
+                {contentComponent}
+            </div>
+        </>
+    );
+};
+
+const AboutComponent = ({ isTwoColumnSetup }) => {
+    return (
+        <PartComponent
+            isTwoColumnSetup={isTwoColumnSetup}
+            title="About"
+            contentComponent={
+                <p>
+                    I am a software engineer with 5 years of experience in the Oil and Gas industry. I have worked on
+                    various topics such as data visualization, data analysis, and automation. I am passionate about
+                    software development and I am always looking for new challenges. I am a software engineer with 5
+                    years of experience in the Oil and Gas industry. I have worked on various topics such as data
+                    visualization, data analysis, and automation. I am passionate about software development and I am
+                    always looking for new challenges. I am a software engineer with 5 years of experience in the Oil
+                    and Gas industry. I have worked on various topics such as data visualization, data analysis, and
+                    automation. I am passionate about software development and I am always looking for new challenges. I
+                    am a software engineer with 5 years of experience in the Oil and Gas industry. I have worked on
+                    various topics such as data visualization, data analysis, and automation. I am passionate about
+                    software development and I am always looking for new challenges. I am a software engineer with 5
+                    years of experience in the Oil and Gas industry. I have worked on various topics such as data
+                    visualization, data analysis, and automation. I am passionate about software development and I am
+                    always looking for new challenges. I am a software engineer with 5 years of experience in the Oil
+                    and Gas industry. I have worked on various topics such as data visualization, data analysis, and
+                    automation. I am passionate about software development and I am always looking for new challenges. I
+                    am a software engineer with 5 years of experience in the Oil and Gas industry. I have worked on
+                    various topics such as data visualization, data analysis, and automation. I am passionate about
+                    software development and I am always looking for new challenges. I am a software engineer with 5
+                    years of experience in the Oil and Gas industry. I have worked on various topics such as data
+                    visualization, data analysis, and automation. I am passionate about software development and I am
+                    always looking for new challenges. I am a software engineer with 5 years of experience in the Oil
+                    and Gas industry. I have worked on various topics such as data visualization, data analysis, and
+                    automation. I am passionate about software development and I am always looking for new challenges. I
+                    am a software engineer with 5 years of experience in the Oil and Gas industry. I have worked on
+                    various topics such as data visualization, data analysis, and automation. I am passionate about
+                    software development and I am always looking for new challenges. I am a software engineer with 5
+                    years of experience in the Oil and Gas industry. I have worked on various topics such as data
+                    visualization, data analysis, and automation. I am passionate about software development and I am
+                    always looking for new challenges.
+                </p>
+            }
+        />
+    );
+};
+
+const ExperiencesComponent = ({ isTwoColumnSetup }) => {
+    return (
+        <div>
+            {!isTwoColumnSetup && <h2>Experiences</h2>}
+            zefzefzefzefzefzefzefzefzefzefzefzefzefzefzefzefzefzefzefzefzefzef
+        </div>
+    );
+};
+
+const EducationComponent = ({ isTwoColumnSetup }) => {
+    return <div>{!isTwoColumnSetup && <h2>Education</h2>}</div>;
+};
+
+const HobbiesComponent = ({ isTwoColumnSetup }) => {
+    return <div>{!isTwoColumnSetup && <h2>Experiences</h2>}</div>;
+};
+
 export default function Resume() {
-    const sections = [
-        { id: 1, color: "rgba(255, 0, 0, 0.6)", ref: useRef() },
-        { id: 2, color: "rgba(255, 255, 0, 0.6)", ref: useRef() },
-        { id: 3, color: "rgba(255, 0, 255, 0.6)", ref: useRef() },
-        { id: 4, color: "rgba(0, 255, 0, 0.6)", ref: useRef() },
-        { id: 5, color: "rgba(0, 255, 255, 0.6)", ref: useRef() },
-    ];
+    const [isTwoColumnSetup, setIsTwoColumnSetup] = useState(false);
 
-    const [currentSection, setCurrentSection] = useState(-1);
-
-    useEffect(() => {
-        if (currentSection > -1 && currentSection < sections.length) {
-            console.log("currentSection", currentSection);
-            sections[currentSection].ref.current.scrollIntoView({
-                behaviour: "smooth",
-            });
+    function handleWindowSizeChange() {
+        if (window.innerWidth > TWO_COLUMNS_BREAKPOINT) {
+            setIsTwoColumnSetup(true);
+        } else {
+            setIsTwoColumnSetup(false);
         }
-    }, [currentSection]);
+    }
 
     useEffect(() => {
-        window.addEventListener("wheel", handleScroll);
+        handleWindowSizeChange();
+        window.addEventListener("resize", handleWindowSizeChange);
         return () => {
-            window.removeEventListener("wheel", handleScroll);
+            window.removeEventListener("resize", handleWindowSizeChange);
         };
     }, []);
 
-    const handleScroll = (event) => {
-        if (event.deltaY > 0) {
-            setCurrentSection((prevSection) => Math.min(prevSection + 1, sections.length - 1));
-        } else {
-            setCurrentSection((prevSection) => Math.max(prevSection - 1, 0));
-        }
-    };
-
     return (
-        <div>
-            {sections.map((section, index) => (
+        <div className={styles.resume_container}>
+            <div className={styles.content_container}>
+                <PresentationComponent isTwoColumnSetup={isTwoColumnSetup} />
                 <div
-                    ref={section.ref}
-                    key={section.id}
-                    style={{
-                        minHeight: "calc(100vh - 13px)",
-                        backgroundColor: section.color,
-                    }}
+                    className={styles.right_component}
+                    style={{ width: isTwoColumnSetup ? TWO_COLUMNS_CONTENT_WIDTH : "100%" }}
                 >
-                    Section {index}
-                    <div style={{ height: index * 500 }}></div>
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <ExperiencesComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <EducationComponent isTwoColumnSetup={isTwoColumnSetup} />
+                    <HobbiesComponent isTwoColumnSetup={isTwoColumnSetup} />
                 </div>
-            ))}
+            </div>
         </div>
     );
 }
