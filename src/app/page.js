@@ -9,6 +9,8 @@ import ProfileIcon from "@/components/common/icons/misc/ProfileIcon";
 import FlagIcon from "@/components/common/icons/misc/FlagIcon";
 import Locationicon from "@/components/common/icons/misc/LocationIcon";
 
+import { getNbYears } from "@/utils/dateUtils";
+
 const NewTabLink = ({ children, link, alt }) => {
     return (
         <a href={link} target="_blank" alt={alt} className={styles.tab_link_container}>
@@ -22,15 +24,6 @@ const MainPageButton = ({ action, text, icon }) => {
 };
 
 export default function Home() {
-    function getAge() {
-        const currDate = new Date();
-        const birthdayDate = new Date("12-29-1998");
-
-        const age = (currDate - birthdayDate) / (1000 * 60 * 60 * 24 * 365.25);
-
-        return Math.floor(age);
-    }
-
     return (
         <main>
             <div className={styles.presentation_full_screen_wrapper}>
@@ -71,7 +64,9 @@ export default function Home() {
                             <div className={styles.presentation_data_specs_container}>
                                 <div className={styles.presentation_data_spec_container}>
                                     <ProfileIcon size={20} />
-                                    <span className={styles.presentation_data_specs_text}>{getAge()} years old</span>
+                                    <span className={styles.presentation_data_specs_text}>
+                                        {getNbYears("12-29-1998")} years old
+                                    </span>
                                 </div>
                                 <div className={styles.presentation_data_spec_container}>
                                     <FlagIcon size={20} />

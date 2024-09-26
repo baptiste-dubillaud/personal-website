@@ -1,7 +1,6 @@
 .resume_container {
     min-height: calc(100vh - 203px);
     background-color: var(--color-background);
-    overflow-y: auto;
     justify-content: center;
     display: flex;
 }
@@ -13,11 +12,15 @@
     max-width: 1500px;
     width: 100%;
     margin-inline: 30px;
+    margin-top: 20px;
 }
 
 .presentation_container {
     row-gap: 0px;
     margin-top: 20px;
+    padding-inline: 5px;
+    position: sticky;
+    top: 70px;
 }
 
 .presentation_name {
@@ -40,11 +43,40 @@
     max-width: 300px;
 }
 
+.presentation_menu {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.presentation_menu_item {
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 5px;
+    padding-inline: 10px;
+    background-color: var(--color-orange);
+    color: white;
+    border-radius: 5px;
+    width: fit-content;
+}
+
 .part_container {
+    margin-top: 20px;
 }
 
 .part_title {
     position: sticky;
-    top: 0px;
-    margin-top: 150px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    top: 60px;
+    left: 0;
+    padding: 10px;
+    padding-inline: 5px;
+    background-color: var(--color-background-opacity-2);
+    backdrop-filter: blur(3px);
+}
+
+.part_content {
+    padding-inline: 5px;
 }
