@@ -10,7 +10,7 @@ const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
 
-const PresentationComponent = ({ isTwoColumnSetup, parts }) => {
+const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
     return (
         <div className={styles.presentation_container}>
             {/* Presentation data */}
@@ -27,6 +27,14 @@ const PresentationComponent = ({ isTwoColumnSetup, parts }) => {
                         <div
                             key={index}
                             className={styles.presentation_menu_item}
+                            style={
+                                currentPart === part.name
+                                    ? {
+                                          color: "var(--color-orange)",
+                                          fontSize: "1.35em",
+                                      }
+                                    : {}
+                            }
                             onClick={() => part.ref.current.scrollIntoView({ block: "start", behavior: "smooth" })}
                         >
                             {part.name}
@@ -38,7 +46,25 @@ const PresentationComponent = ({ isTwoColumnSetup, parts }) => {
     );
 };
 
-const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent }) => {
+const PartComponent = ({ isTwoColumnSetup, title, reference, setCurrentComponent, contentComponent }) => {
+    function onScroll() {
+        /*  if (reference.current) {
+            const rect = reference.current.getBoundingClientRect();
+            console.log(reference.current.);
+            if (rect.top < window.innerHeight * 0.25) {
+                console.log("In view", title);
+                setCurrentComponent(title);
+            }
+        } */
+    }
+
+    useEffect(() => {
+        window.addEventListener("scroll", onScroll);
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+        };
+    }, []);
+
     return (
         <div ref={reference} className={styles.part_container}>
             {!isTwoColumnSetup && <div className={styles.part_title}>{title}</div>}
@@ -47,12 +73,13 @@ const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent })
     );
 };
 
-const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
+const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             title="About"
             reference={aboutRef}
+            setCurrentComponent={setCurrentComponent}
             contentComponent={
                 <>
                     <p>
@@ -83,11 +110,12 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
     );
 };
 
-const ExperienceComponent = ({ isTwoColumnSetup, experienceRef }) => {
+const ExperienceComponent = ({ isTwoColumnSetup, experienceRef, setCurrentComponent }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={experienceRef}
+            setCurrentComponent={setCurrentComponent}
             title="Experience"
             contentComponent={
                 <>
@@ -119,11 +147,12 @@ const ExperienceComponent = ({ isTwoColumnSetup, experienceRef }) => {
     );
 };
 
-const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
+const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponent }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={educationRef}
+            setCurrentComponent={setCurrentComponent}
             title="Education"
             contentComponent={
                 <>
@@ -155,11 +184,12 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
     );
 };
 
-const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
+const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={hobbiesRef}
+            setCurrentComponent={setCurrentComponent}
             title="Hobbies"
             contentComponent={
                 <>
@@ -194,6 +224,8 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
 export default function Resume() {
     const [isTwoColumnSetup, setIsTwoColumnSetup] = useState(false);
 
+    const [currentPart, setCurrentPart] = useState("About");
+
     const aboutRef = useRef();
     const experienceRef = useRef();
     const educationRef = useRef();
@@ -227,16 +259,33 @@ export default function Resume() {
                             { name: "Education", ref: educationRef },
                             { name: "Hobbies", ref: hobbiesRef },
                         ]}
+                        currentPart={currentPart}
                     />
                 </div>
                 <div
                     className={styles.right_component}
                     style={{ width: isTwoColumnSetup ? TWO_COLUMNS_CONTENT_WIDTH : "100%" }}
                 >
-                    <AboutComponent isTwoColumnSetup={isTwoColumnSetup} aboutRef={aboutRef} />
-                    <ExperienceComponent isTwoColumnSetup={isTwoColumnSetup} experienceRef={experienceRef} />
-                    <EducationComponent isTwoColumnSetup={isTwoColumnSetup} educationRef={educationRef} />
-                    <HobbiesComponent isTwoColumnSetup={isTwoColumnSetup} hobbiesRef={hobbiesRef} />
+                    <AboutComponent
+                        isTwoColumnSetup={isTwoColumnSetup}
+                        aboutRef={aboutRef}
+                        setCurrentComponent={setCurrentPart}
+                    />
+                    <ExperienceComponent
+                        isTwoColumnSetup={isTwoColumnSetup}
+                        experienceRef={experienceRef}
+                        setCurrentComponent={setCurrentPart}
+                    />
+                    <EducationComponent
+                        isTwoColumnSetup={isTwoColumnSetup}
+                        educationRef={educationRef}
+                        setCurrentComponent={setCurrentPart}
+                    />
+                    <HobbiesComponent
+                        isTwoColumnSetup={isTwoColumnSetup}
+                        hobbiesRef={hobbiesRef}
+                        setCurrentComponent={setCurrentPart}
+                    />
                 </div>
             </div>
         </div>
