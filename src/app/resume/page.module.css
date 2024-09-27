@@ -13,6 +13,7 @@
     width: 100%;
     margin-inline: 30px;
     margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 .presentation_container {
@@ -63,6 +64,7 @@
 
 .part_container {
     margin-top: 20px;
+    scroll-margin: 80px;
 }
 
 .part_title {
