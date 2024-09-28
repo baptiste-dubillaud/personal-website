@@ -48,14 +48,13 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
 
 const PartComponent = ({ isTwoColumnSetup, title, reference, setCurrentComponent, contentComponent }) => {
     function onScroll() {
-        /*  if (reference.current) {
+        if (reference.current) {
             const rect = reference.current.getBoundingClientRect();
-            console.log(reference.current.);
-            if (rect.top < window.innerHeight * 0.25) {
+            if (rect.top < window.innerHeight * 0.4) {
                 console.log("In view", title);
                 setCurrentComponent(title);
             }
-        } */
+        }
     }
 
     useEffect(() => {
@@ -110,7 +109,26 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => 
     );
 };
 
-const ExperienceComponent = ({ isTwoColumnSetup, experienceRef, setCurrentComponent }) => {
+const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentComponent }) => {
+    const ExperienceComponnent = ({ title, company, dateFrom, dateTo, DescriptionComponent }) => {
+        return (
+            <div className={styles.experience_container}>
+                <div className={styles.experience_left_dot_decoration} />
+                <div className={styles.experience_right_data_container}>
+                    <div className={styles.experience_dates_container}>
+                        {dateFrom} - {dateTo}
+                    </div>
+                    <div className={styles.experience_title_container}>
+                        <div className={styles.experience_title}>{title}</div>
+                        <div>//</div>
+                        <div className={styles.experience_company}>{company}</div>
+                    </div>
+                    {DescriptionComponent}
+                </div>
+            </div>
+        );
+    };
+
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -118,30 +136,86 @@ const ExperienceComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompon
             setCurrentComponent={setCurrentComponent}
             title="Experience"
             contentComponent={
-                <>
-                    <p>
-                        I&apos;m a {getNbYears("12-29-1998")} years old software engineer with more than{" "}
-                        {getNbYears("09-01-2020")} years of experience in the field. Like many boys in my generation, I
-                        got my first interest in IT thanks to video games and the first forums/IRC channels about
-                        various topics I used to visit. From my first Minecraft server hosted on my parents&apos;
-                        computer to my first script to automate a boring task, I&apos;ve always been passionate about
-                        technology, especially in IT.
-                    </p>
-                    <p>
-                        I started my journey into programming in high school with EasyPIC motherboard and Raspberry PI
-                        Uno. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed
-                        me to enter engineering studies. There I learned the basics of programming with C, C++, Java,
-                        and Web, but most of all software engineering principles and how to work in a team. I finished
-                        my studies with a specialization in High Performance Computing and Data Processing.
-                    </p>
-                    <p>
-                        As I have always been interested in industries, I started my career in both the Oil and Gas
-                        industry and the aerospace industry. I worked on various topics such as parallel computing,
-                        real-time data processing, and data visualization. I&apos;m currently a Tech-Lead and Software
-                        Engineer at TotalEnergies Denmark, where we create PoC software for HSE, Production, CFR (Carbon
-                        Footprint Reduction), and Maintenance departments.
-                    </p>
-                </>
+                <div className={styles.experiences_container}>
+                    <ExperienceComponnent
+                        dateFrom={"MAR. 2023"}
+                        dateTo={"PRESENT"}
+                        title={"Tech Lead & Full-Stack Engineer"}
+                        company={"TotalEnergies Denmark"}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
+                    />
+                    <ExperienceComponnent
+                        dateFrom={"OCT. 2021"}
+                        dateTo={"FEB. 2023"}
+                        title={"Software Engineer"}
+                        company={"Airbus Defense & Space"}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
+                    />
+                    <ExperienceComponnent
+                        dateFrom={"SEPT. 2020"}
+                        dateTo={"SEPT. 2021"}
+                        title={"Software Engineer"}
+                        company={"TotalEnergies"}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
+                    />
+                    <ExperienceComponnent
+                        dateFrom={"MAY 2019"}
+                        dateTo={"AUG. 2019"}
+                        title={"Software Developer internship"}
+                        company={"TotalEnergies"}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
+                    />
+                    <ExperienceComponnent
+                        dateFrom={"MAY 2018"}
+                        dateTo={"AUG. 2018"}
+                        title={"Software Developer internship"}
+                        company={"TotalEnergies"}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
+                    />
+                    <ExperienceComponnent
+                        dateFrom={"JUN. 2018"}
+                        dateTo={"AUG. 2019"}
+                        title={"Salesman - student position"}
+                        company={"Conforama"}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
+                    />
+                </div>
             }
         />
     );
@@ -271,7 +345,7 @@ export default function Resume() {
                         aboutRef={aboutRef}
                         setCurrentComponent={setCurrentPart}
                     />
-                    <ExperienceComponent
+                    <ExperiencesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
                         experienceRef={experienceRef}
                         setCurrentComponent={setCurrentPart}
