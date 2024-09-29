@@ -110,7 +110,7 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => 
 };
 
 const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentComponent }) => {
-    const ExperienceComponnent = ({ title, company, dateFrom, dateTo, DescriptionComponent }) => {
+    const ExperienceComponnent = ({ title, company, location, dateFrom, dateTo, DescriptionComponent, techStack }) => {
         return (
             <div className={styles.experience_container}>
                 <div className={styles.experience_left_dot_decoration} />
@@ -120,10 +120,18 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                     </div>
                     <div className={styles.experience_title_container}>
                         <div className={styles.experience_title}>{title}</div>
-                        <div>//</div>
+                        <div>{"//"}</div>
                         <div className={styles.experience_company}>{company}</div>
                     </div>
-                    {DescriptionComponent}
+                    <div className={styles.experience_description}>{DescriptionComponent}</div>
+                    <div className={styles.experience_tech_stack}>
+                        {techStack &&
+                            techStack.map((item, index) => (
+                                <div key={index} className={styles.experience_tech_item}>
+                                    {item}
+                                </div>
+                            ))}
+                    </div>
                 </div>
             </div>
         );
@@ -149,6 +157,17 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                                 Reduction), and Maintenance departments.
                             </p>
                         }
+                        techStack={[
+                            "React",
+                            "NextJS",
+                            "Python",
+                            "FastAPI",
+                            "Pandas",
+                            "Numpy",
+                            "PostgreSQL",
+                            "Windows Server",
+                            "Azure",
+                        ]}
                     />
                     <ExperienceComponnent
                         dateFrom={"OCT. 2021"}
@@ -222,6 +241,23 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
 };
 
 const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponent }) => {
+    const EducationComponent = ({ title, school, location, dateFrom, dateTo, DescriptionComponent }) => {
+        return (
+            <div className={styles.education_item}>
+                <div className={styles.education_item_dates}>
+                    {dateFrom} - {dateTo}
+                </div>
+                <div className={styles.education_item_title}>{title}</div>
+                <div className={styles.education_item_school_location_container}>
+                    <div className={styles.education_item_school}>{school}</div>
+                    <div>{"//"}</div>
+                    <div className={styles.education_item_location}>{location}</div>
+                </div>
+                <div className={styles.education_item_description}>{DescriptionComponent}</div>
+            </div>
+        );
+    };
+
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -229,30 +265,36 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
             setCurrentComponent={setCurrentComponent}
             title="Education"
             contentComponent={
-                <>
-                    <p>
-                        I&apos;m a {getNbYears("12-29-1998")} years old software engineer with more than{" "}
-                        {getNbYears("09-01-2020")} years of experience in the field. Like many boys in my generation, I
-                        got my first interest in IT thanks to video games and the first forums/IRC channels about
-                        various topics I used to visit. From my first Minecraft server hosted on my parents&apos;
-                        computer to my first script to automate a boring task, I&apos;ve always been passionate about
-                        technology, especially in IT.
-                    </p>
-                    <p>
-                        I started my journey into programming in high school with EasyPIC motherboard and Raspberry PI
-                        Uno. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed
-                        me to enter engineering studies. There I learned the basics of programming with C, C++, Java,
-                        and Web, but most of all software engineering principles and how to work in a team. I finished
-                        my studies with a specialization in High Performance Computing and Data Processing.
-                    </p>
-                    <p>
-                        As I have always been interested in industries, I started my career in both the Oil and Gas
-                        industry and the aerospace industry. I worked on various topics such as parallel computing,
-                        real-time data processing, and data visualization. I&apos;m currently a Tech-Lead and Software
-                        Engineer at TotalEnergies Denmark, where we create PoC software for HSE, Production, CFR (Carbon
-                        Footprint Reduction), and Maintenance departments.
-                    </p>
-                </>
+                <div className={styles.education_container}>
+                    <EducationComponent
+                        title="Master degree in Computer Science"
+                        school="CY-Tech"
+                        location="Pau"
+                        dateFrom="2018"
+                        dateTo="2021"
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
+                    />
+                    <EducationComponent
+                        title="One year course in HPC and Data Processing"
+                        school="Univerty of La Coroña"
+                        location="La Coroña"
+                        dateFrom="2020"
+                        dateTo="2021"
+                    />
+                    <EducationComponent
+                        title="Preparatory class for engineering schools"
+                        school="Saint-Cricq High School"
+                        location="Pau"
+                        dateFrom="2016"
+                        dateTo="2018"
+                    />
+                </div>
             }
         />
     );
