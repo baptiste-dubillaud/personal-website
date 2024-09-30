@@ -90,7 +90,7 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => 
                         technology, especially in IT.
                     </p>
                     <p>
-                        I started my journey into programming in high school with EasyPIC motherboard and Raspberry PI
+                        I started my journey into programming in high entity with EasyPIC motherboard and Raspberry PI
                         Uno. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed
                         me to enter engineering studies. There I learned the basics of programming with C, C++, Java,
                         and Web, but most of all software engineering principles and how to work in a team. I finished
@@ -109,34 +109,64 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => 
     );
 };
 
-const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentComponent }) => {
-    const ExperienceComponnent = ({ title, company, location, dateFrom, dateTo, DescriptionComponent, techStack }) => {
-        return (
-            <div className={styles.experience_container}>
-                <div className={styles.experience_left_dot_decoration} />
-                <div className={styles.experience_right_data_container}>
-                    <div className={styles.experience_dates_container}>
-                        {dateFrom} - {dateTo}
-                    </div>
-                    <div className={styles.experience_title_container}>
-                        <div className={styles.experience_title}>{title}</div>
-                        <div>{"//"}</div>
-                        <div className={styles.experience_company}>{company}</div>
-                    </div>
-                    <div className={styles.experience_description}>{DescriptionComponent}</div>
-                    <div className={styles.experience_tech_stack}>
-                        {techStack &&
-                            techStack.map((item, index) => (
-                                <div key={index} className={styles.experience_tech_item}>
-                                    {item}
-                                </div>
-                            ))}
-                    </div>
+const TimeLineComponent = ({
+    onRight = false,
+    title,
+    entity,
+    location,
+    dateFrom,
+    dateTo,
+    DescriptionComponent,
+    techStack = [],
+}) => {
+    return (
+        <div
+            className={`${styles.timeline_item_container} ${
+                onRight ? styles.timeline_item_container_right : styles.timeline_item_container_left
+            }`}
+        >
+            <div
+                className={`${styles.timeline_item_dot_decoration} ${
+                    onRight ? styles.timeline_item_dot_decoration_right : styles.timeline_item_dot_decoration_left
+                }`}
+            />
+            <div
+                className={
+                    onRight
+                        ? `${styles.timeline_item_data_container} ${styles.timeline_item_data_container_right}`
+                        : styles.timeline_item_data_container
+                }
+            >
+                <div className={styles.timeline_item_dates_container}>
+                    {dateFrom} - {dateTo}
                 </div>
+                <div
+                    className={
+                        onRight
+                            ? `${styles.timeline_item_title_container} ${styles.timeline_item_title_container_right}`
+                            : styles.timeline_item_title_container
+                    }
+                >
+                    <div className={styles.timeline_item_title}>{title}</div>
+                    <div className={styles.timeline_item_entity}>{entity}</div>
+                </div>
+                <div className={styles.timeline_item_location}>{location}</div>
+                <div className={styles.timeline_item_description}>{DescriptionComponent}</div>
+                {techStack.length > 0 && (
+                    <div className={styles.timeline_item_tech_stack}>
+                        {techStack.map((item, index) => (
+                            <div key={index} className={styles.timeline_item_tech_stack_item}>
+                                {item}
+                            </div>
+                        ))}
+                    </div>
+                )}
             </div>
-        );
-    };
+        </div>
+    );
+};
 
+const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentComponent }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -144,12 +174,13 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
             setCurrentComponent={setCurrentComponent}
             title="Experience"
             contentComponent={
-                <div className={styles.experiences_container}>
-                    <ExperienceComponnent
+                <div className={styles.timeline_items_container}>
+                    <TimeLineComponent
                         dateFrom={"MAR. 2023"}
                         dateTo={"PRESENT"}
                         title={"Tech Lead & Full-Stack Engineer"}
-                        company={"TotalEnergies Denmark"}
+                        entity={"TotalEnergies Denmark"}
+                        location={"Esbjerg, Denmark"}
                         DescriptionComponent={
                             <p>
                                 I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
@@ -169,11 +200,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                             "Azure",
                         ]}
                     />
-                    <ExperienceComponnent
+                    <TimeLineComponent
                         dateFrom={"OCT. 2021"}
                         dateTo={"FEB. 2023"}
                         title={"Software Engineer"}
-                        company={"Airbus Defense & Space"}
+                        entity={"Airbus Defense & Space"}
+                        location={"Toulouse, France"}
                         DescriptionComponent={
                             <p>
                                 I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
@@ -182,11 +214,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                             </p>
                         }
                     />
-                    <ExperienceComponnent
+                    <TimeLineComponent
                         dateFrom={"SEPT. 2020"}
                         dateTo={"SEPT. 2021"}
                         title={"Software Engineer"}
-                        company={"TotalEnergies"}
+                        entity={"TotalEnergies"}
+                        location={"Pau, France"}
                         DescriptionComponent={
                             <p>
                                 I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
@@ -195,11 +228,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                             </p>
                         }
                     />
-                    <ExperienceComponnent
+                    <TimeLineComponent
                         dateFrom={"MAY 2019"}
                         dateTo={"AUG. 2019"}
                         title={"Software Developer internship"}
-                        company={"TotalEnergies"}
+                        entity={"TotalEnergies"}
+                        location={"Pau, France"}
                         DescriptionComponent={
                             <p>
                                 I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
@@ -208,11 +242,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                             </p>
                         }
                     />
-                    <ExperienceComponnent
+                    <TimeLineComponent
                         dateFrom={"MAY 2018"}
                         dateTo={"AUG. 2018"}
                         title={"Software Developer internship"}
-                        company={"TotalEnergies"}
+                        entity={"TotalEnergies"}
+                        location={"Pau, France"}
                         DescriptionComponent={
                             <p>
                                 I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
@@ -221,11 +256,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                             </p>
                         }
                     />
-                    <ExperienceComponnent
+                    <TimeLineComponent
                         dateFrom={"JUN. 2018"}
                         dateTo={"AUG. 2019"}
                         title={"Salesman - student position"}
-                        company={"Conforama"}
+                        entity={"Conforama"}
+                        location={"Pau, France"}
                         DescriptionComponent={
                             <p>
                                 I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
@@ -241,23 +277,6 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
 };
 
 const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponent }) => {
-    const EducationComponent = ({ title, school, location, dateFrom, dateTo, DescriptionComponent }) => {
-        return (
-            <div className={styles.education_item}>
-                <div className={styles.education_item_dates}>
-                    {dateFrom} - {dateTo}
-                </div>
-                <div className={styles.education_item_title}>{title}</div>
-                <div className={styles.education_item_school_location_container}>
-                    <div className={styles.education_item_school}>{school}</div>
-                    <div>{"//"}</div>
-                    <div className={styles.education_item_location}>{location}</div>
-                </div>
-                <div className={styles.education_item_description}>{DescriptionComponent}</div>
-            </div>
-        );
-    };
-
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -265,13 +284,14 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
             setCurrentComponent={setCurrentComponent}
             title="Education"
             contentComponent={
-                <div className={styles.education_container}>
-                    <EducationComponent
+                <div className={styles.timeline_items_container}>
+                    <TimeLineComponent
                         title="Master degree in Computer Science"
-                        school="CY-Tech"
+                        entity="CY-Tech"
                         location="Pau"
                         dateFrom="2018"
                         dateTo="2021"
+                        onRight={true}
                         DescriptionComponent={
                             <p>
                                 I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
@@ -280,19 +300,35 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
                             </p>
                         }
                     />
-                    <EducationComponent
+                    <TimeLineComponent
                         title="One year course in HPC and Data Processing"
-                        school="Univerty of La Coroña"
+                        entity="Univerty of La Coroña"
                         location="La Coroña"
                         dateFrom="2020"
                         dateTo="2021"
+                        onRight={true}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
                     />
-                    <EducationComponent
+                    <TimeLineComponent
                         title="Preparatory class for engineering schools"
-                        school="Saint-Cricq High School"
+                        entity="Saint-Cricq High School"
                         location="Pau"
                         dateFrom="2016"
                         dateTo="2018"
+                        onRight={true}
+                        DescriptionComponent={
+                            <p>
+                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
+                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
+                                Reduction), and Maintenance departments.
+                            </p>
+                        }
                     />
                 </div>
             }
@@ -318,7 +354,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
                         technology, especially in IT.
                     </p>
                     <p>
-                        I started my journey into programming in high school with EasyPIC motherboard and Raspberry PI
+                        I started my journey into programming in high entity with EasyPIC motherboard and Raspberry PI
                         Uno. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed
                         me to enter engineering studies. There I learned the basics of programming with C, C++, Java,
                         and Web, but most of all software engineering principles and how to work in a team. I finished
