@@ -343,12 +343,14 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
     const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false }) => {
         return (
             <div className={styles.hobby_container}>
+                {/* Decorations */}
                 <div className={styles.hobby_decoration_top_right} />
                 <div className={styles.hobby_decoration_top_right_1} />
                 <div className={styles.hobby_decoration_top_right_2} />
                 <div className={styles.hobby_decoration_bottom_left} />
                 <div className={styles.hobby_decoration_bottom_left_1} />
                 <div className={styles.hobby_decoration_bottom_left_2} />
+                {/* Title */}
                 <div className={styles.hobby_title_container}>
                     {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
                     <div className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
@@ -356,6 +358,13 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
                     </div>
                     {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
                 </div>
+                <div
+                    className={styles.hobby_title_separator_container}
+                    style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}
+                >
+                    <div className={styles.hobby_title_separator} style={onRight ? { rotate: "180deg" } : {}} />
+                </div>
+                {/* Description */}
                 <div className={styles.hobby_description}>{DescriptionComponent}</div>
             </div>
         );

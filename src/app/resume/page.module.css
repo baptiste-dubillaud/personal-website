@@ -226,7 +226,7 @@
     font-size: 0.9rem;
     font-weight: 700;
     background-color: var(--color-orange-opacity-1);
-    border: 1px solid var(--color-orange-dark-opacity-08);
+    border: 1px solid var(--color-orange-dark-opacity-8);
     color: var(--color-orange-dark);
     padding: 2px 8px;
     border-radius: 5px;
@@ -329,4 +329,16 @@
     width: 0px;
     height: 3px;
     border-left: 2px solid black;
+}
+
+.hobby_title_separator_container {
+    display: flex;
+}
+
+.hobby_title_separator {
+    width: 66%;
+    min-width: 200px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-orange), rgba(255, 255, 255, 0));
+    margin: 5px;
 }
