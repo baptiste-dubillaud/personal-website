@@ -343,6 +343,12 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
     const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false }) => {
         return (
             <div className={styles.hobby_container}>
+                <div className={styles.hobby_decoration_top_right} />
+                <div className={styles.hobby_decoration_top_right_1} />
+                <div className={styles.hobby_decoration_top_right_2} />
+                <div className={styles.hobby_decoration_bottom_left} />
+                <div className={styles.hobby_decoration_bottom_left_1} />
+                <div className={styles.hobby_decoration_bottom_left_2} />
                 <div className={styles.hobby_title_container}>
                     {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
                     <div className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
