@@ -5,6 +5,7 @@ import styles from "@/app/resume/page.module.css";
 import { useEffect, useRef, useState } from "react";
 
 import { getNbYears } from "@/utils/dateUtils";
+import SportIcon from "@/components/common/icons/misc/SportIcon";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
@@ -337,6 +338,21 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
 };
 
 const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent }) => {
+    const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false }) => {
+        return (
+            <div className={styles.hobby_container}>
+                <div className={styles.hobby_title_container}>
+                    {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
+                    <div className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
+                        {title}
+                    </div>
+                    {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
+                </div>
+                <div className={styles.hobby_description}>{DescriptionComponent}</div>
+            </div>
+        );
+    };
+
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -344,30 +360,39 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
             setCurrentComponent={setCurrentComponent}
             title="Hobbies"
             contentComponent={
-                <>
-                    <p>
-                        I&apos;m a {getNbYears("12-29-1998")} years old software engineer with more than{" "}
-                        {getNbYears("09-01-2020")} years of experience in the field. Like many boys in my generation, I
-                        got my first interest in IT thanks to video games and the first forums/IRC channels about
-                        various topics I used to visit. From my first Minecraft server hosted on my parents&apos;
-                        computer to my first script to automate a boring task, I&apos;ve always been passionate about
-                        technology, especially in IT.
-                    </p>
-                    <p>
-                        I started my journey into programming in high entity with EasyPIC motherboard and Raspberry PI
-                        Uno. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed
-                        me to enter engineering studies. There I learned the basics of programming with C, C++, Java,
-                        and Web, but most of all software engineering principles and how to work in a team. I finished
-                        my studies with a specialization in High Performance Computing and Data Processing.
-                    </p>
-                    <p>
-                        As I have always been interested in industries, I started my career in both the Oil and Gas
-                        industry and the aerospace industry. I worked on various topics such as parallel computing,
-                        real-time data processing, and data visualization. I&apos;m currently a Tech-Lead and Software
-                        Engineer at TotalEnergies Denmark, where we create PoC software for HSE, Production, CFR (Carbon
-                        Footprint Reduction), and Maintenance departments.
-                    </p>
-                </>
+                <div className={styles.hobbies_container}>
+                    <HobbyComponent
+                        title={"Sport"}
+                        logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
+                        DescriptionComponent={
+                            <p>
+                                I spend a lot of time doing sports. I&mpos;m currently training to start thriahtlon
+                                after having completed my first marathon in Copenhaguen in May 2024.
+                            </p>
+                        }
+                    />
+                    <HobbyComponent
+                        title={"Reading"}
+                        logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
+                        onRight={true}
+                        DescriptionComponent={
+                            <p>
+                                I love to read books. From &apos;A song of ice and fire&apos; to &apos;The Grand
+                                Chessboard&apos;, I read articles and books on a large variety of topics.
+                            </p>
+                        }
+                    />
+                    <HobbyComponent
+                        title={"Video Games"}
+                        logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
+                        DescriptionComponent={
+                            <p>
+                                I started to be interested in IT thanks to online video games (Counter Strike!). I still
+                                play, less than before, to singleplayer games.
+                            </p>
+                        }
+                    />
+                </div>
             }
         />
     );

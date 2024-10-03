@@ -225,10 +225,48 @@
 .timeline_item_tech_stack_item {
     font-size: 0.9rem;
     font-weight: 700;
-    color: var(--color-orange-dark-opacity-08);
     background-color: var(--color-orange-opacity-1);
     border: 1px solid var(--color-orange-dark-opacity-08);
     padding: 2px 5px;
     border-radius: 5px;
 }
 
+.hobbies_container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.hobby_container {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: var(--color-orange-opacity-1);
+}
+
+.hobby_title_container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.hobby_logo_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    margin: 5px;
+}
+
+.hobby_title {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    font-weight: 700;
+    width: calc(100% - 50px);
+}
+
+.hobby_description {
+    font-size: 1.0rem;
+    margin-inline: 5px;
+}
