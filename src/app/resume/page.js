@@ -6,6 +6,8 @@ import { useEffect, useRef, useState } from "react";
 
 import { getNbYears } from "@/utils/dateUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
+import BookShelfIcon from "@/components/common/icons/misc/BookIcon";
+import VideoGame from "@/components/common/icons/misc/VideoGame";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
@@ -365,15 +367,17 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
                         title={"Sport"}
                         logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
                         DescriptionComponent={
-                            <p>
-                                I spend a lot of time doing sports. I&mpos;m currently training to start thriahtlon
-                                after having completed my first marathon in Copenhaguen in May 2024.
-                            </p>
+                            <div>
+                                <p>
+                                    I spend a lot of time doing sports. I&lsquo;m currently training for thriatlon after
+                                    having completed my first marathon in Copenhaguen in May 2024.
+                                </p>
+                            </div>
                         }
                     />
                     <HobbyComponent
                         title={"Reading"}
-                        logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
+                        logo={<BookShelfIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
                         onRight={true}
                         DescriptionComponent={
                             <p>
@@ -384,7 +388,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
                     />
                     <HobbyComponent
                         title={"Video Games"}
-                        logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
+                        logo={<VideoGame size={40} secondaryColor={"rgb(255, 68, 0)"} />}
                         DescriptionComponent={
                             <p>
                                 I started to be interested in IT thanks to online video games (Counter Strike!). I still

@@ -7,7 +7,7 @@ export default function SportIcon({ size, primaryColor, secondaryColor }) {
         <svg width={sz} height={sz} viewBox="0 0 24 24">
             <g fill="black">
                 <g fill="black">
-                    <circle cx="18.5" cy="4.5" r="2.5" stroke={cl2} fill={cl2} strokeWidth="1.5" />
+                    <circle cx="18.5" cy="5.5" r="2" stroke={cl2} fill={cl2} strokeWidth="1.5" />
                     <path
                         stroke={cl}
                         strokeLinecap="round"
