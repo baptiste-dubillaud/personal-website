@@ -176,7 +176,10 @@ const TimeLineComponent = ({
                 <div className={styles.timeline_item_location}>{location}</div>
                 <div className={styles.timeline_item_description}>{DescriptionComponent}</div>
                 {techStack.length > 0 && (
-                    <div className={styles.timeline_item_tech_stack}>
+                    <div
+                        className={styles.timeline_item_tech_stack}
+                        style={onRight ? { justifyContent: "flex-end" } : {}}
+                    >
                         {techStack.map((item, index) => (
                             <div key={index} className={styles.timeline_item_tech_stack_item}>
                                 {item}
@@ -388,12 +391,28 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
                         dateTo="2021"
                         onRight={true}
                         DescriptionComponent={
-                            <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
-                            </p>
+                            <>
+                                <p>
+                                    I learned the basics of programming with <b>C</b>, <b>C++</b>, <b>Java</b>, and Web,
+                                    but most of all <b>software engineering principles</b>. specialization in{" "}
+                                    <b>Big Data frameworks</b> through Big Data Analytics classes on last year.
+                                </p>
+                            </>
                         }
+                        techStack={[
+                            "Java",
+                            "C",
+                            "C++",
+                            "Python",
+                            "OpenCV",
+                            "Spark",
+                            "Pandas",
+                            "HTML",
+                            "CSS",
+                            "JS",
+                            "React-Native",
+                            "Git",
+                        ]}
                     />
                     <TimeLineComponent
                         title="One year course in HPC and Data Processing"
@@ -403,12 +422,18 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
                         dateTo="2021"
                         onRight={true}
                         DescriptionComponent={
-                            <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
-                            </p>
+                            <>
+                                <p>
+                                    Learned the basics of <b>HPC architectures</b>, <b>CPU/GPU programming</b>, and
+                                    <b>large parallel data processing</b>.
+                                </p>
+                                <p>
+                                    Final Project: Development and <b>optimization</b> of an algorithm to filter data
+                                    cybes from <b>seismic imaging</b> on <b>Pangea II HPC</b> at TotalEnergies.
+                                </p>
+                            </>
                         }
+                        techStack={["C", "C++", "Fortran", "CUDA", "MPI", "OpenMP", "OpenCV"]}
                     />
                     <TimeLineComponent
                         title="Preparatory class for engineering schools"
@@ -419,9 +444,9 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
                         onRight={true}
                         DescriptionComponent={
                             <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
+                                <b>2</b> years of intensive course in <b>mathematics</b>, <b>physics</b>,{" "}
+                                <b>chemistry</b>, and <b>engineering sciences</b> to prepare for the entrance exams of
+                                engineering schools.
                             </p>
                         }
                     />
