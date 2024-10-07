@@ -205,11 +205,28 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                         entity={"TotalEnergies Denmark"}
                         location={"Esbjerg, Denmark"}
                         DescriptionComponent={
-                            <p>
-                                I&apos;m currently working as a <b>Tech-Lead and Software Engineer</b> at TotalEnergies
-                                Denmark, for the <b>Digital Laboratory (DLAB)</b> team. We create <b>PoC softwares</b>{" "}
-                                for the Production, HSE, Logistics, and C&P departments.
-                            </p>
+                            <>
+                                <p>
+                                    I&apos;m currently working as a <b>Tech-Lead</b> and <b>Software Engineer</b> at
+                                    TotalEnergies Denmark, for the <b>Digital Laboratory (DLAB)</b> team. We create{" "}
+                                    <b>PoC softwares</b> for the Production, HSE, Logistics, and C&P departments.{" "}
+                                </p>
+                                <p>
+                                    <b>
+                                        Two Applications in the Top 10 of the TotalEnergies &quot;E&P Best
+                                        Innovators&quot; awards.
+                                    </b>
+                                </p>
+                                <p>
+                                    Structured the development environment to accompany the growth of the team (5
+                                    Data-Scientists, 2 Software Enginers). Managed Azure resources and Windows servers.
+                                </p>
+                                <p>
+                                    Developed applications involving <b>Generative AI</b>, complexe user interactions
+                                    (tchat, searches, animations), <b>data processing</b>,{" "}
+                                    <b>health and usage monitoring</b>, <b>Architecture</b>, and <b>SAP</b> data.
+                                </p>
+                            </>
                         }
                         techStack={[
                             "React",
@@ -221,6 +238,8 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                             "PostgreSQL",
                             "Windows Server",
                             "Azure",
+                            "SAP",
+                            "Git/Github",
                         ]}
                     />
                     <TimeLineComponent
@@ -230,12 +249,35 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                         entity={"Airbus Defense & Space"}
                         location={"Toulouse, France"}
                         DescriptionComponent={
-                            <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
-                            </p>
+                            <>
+                                <p>
+                                    On behalf of <b>Viveris Technologies</b>, I was part of a team of <b>5 engineers</b>{" "}
+                                    in charge of the development of a software managing ground and satellite
+                                    communications, including <b>encryption</b> and <b>decryption</b>.
+                                </p>
+                                <p>
+                                    I developed new features and sub-applications for this project, including a{" "}
+                                    <b>new testing framework</b> for unit and integration testing, adhering to strict
+                                    quality requirements and code coverage standards.
+                                </p>
+                            </>
                         }
+                        techStack={[
+                            "Java",
+                            "Netty",
+                            "Swing",
+                            "Python",
+                            "Squish",
+                            "C++",
+                            "Qt",
+                            "Docker",
+                            "RedHat",
+                            "SNMP",
+                            "Git/Gitlab",
+                            "Redmine",
+                            "Jenkins",
+                            "SonarQube",
+                        ]}
                     />
                     <TimeLineComponent
                         dateFrom={"SEPT. 2020"}
@@ -244,52 +286,82 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                         entity={"TotalEnergies"}
                         location={"Pau, France"}
                         DescriptionComponent={
-                            <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
-                            </p>
+                            <>
+                                <p>
+                                    Member of the AVO <b>geophysicist team</b>, I worked on a new set of{" "}
+                                    <b>computation algorithms</b> and <b>visualization tools</b> for the SISMAGE-CIG
+                                    geophysics platform owned by TotalEnergies.
+                                </p>
+                                <p>
+                                    I also managed <b>3 interns</b> to develop a web application containing small
+                                    geophysics tools.
+                                </p>
+                            </>
                         }
+                        techStack={[
+                            "Java",
+                            "Swing/AWT",
+                            "C++",
+                            "C",
+                            "Fortran",
+                            "Angular",
+                            "NodeJS",
+                            "Git/Github",
+                            "Gerrit",
+                            "Sonar",
+                            "Jenkins",
+                        ]}
                     />
                     <TimeLineComponent
                         dateFrom={"MAY 2019"}
                         dateTo={"AUG. 2019"}
-                        title={"Software Developer internship"}
+                        title={"Software Developer Internship"}
                         entity={"TotalEnergies"}
                         location={"Pau, France"}
                         DescriptionComponent={
-                            <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
-                            </p>
+                            <>
+                                <p>
+                                    <b>Design</b> and <b>development</b> from scratch of a well water injection
+                                    simulation software. This software had to wrap a Fortran simulation engine and
+                                    allows for different kinds of simulations, data visualization, and data export.
+                                </p>
+                                <p>
+                                    The difficulty was to make the architecture open for multiple simulations
+                                    (thousands) for statistical analysis, but still allowing unit conversion of input
+                                    and output data as well as visualization.
+                                </p>
+                                <p>
+                                    More than <b>140 parameters per simulation</b> to handle, so{" "}
+                                    <b>I fell in love with Design Patterns</b>.
+                                </p>
+                            </>
                         }
+                        techStack={["Java", "JavaFX", "ControlFX", "Python", "Fortran", "Bash", "Git/BitBucket"]}
                     />
                     <TimeLineComponent
                         dateFrom={"MAY 2018"}
                         dateTo={"AUG. 2018"}
-                        title={"Software Developer internship"}
+                        title={"Software Developer Internship"}
                         entity={"TotalEnergies"}
                         location={"Pau, France"}
                         DescriptionComponent={
                             <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
+                                Development of <b>vizualisation tools</b> on SISMAGE-CIG, the geophysics platform of
+                                TotalEnergies on behalf of the <b>geophysics AVO</b> team.
                             </p>
                         }
+                        techStack={["Java", "Swing/AWT", "Git", "Gerrit"]}
                     />
                     <TimeLineComponent
                         dateFrom={"JUN. 2018"}
                         dateTo={"AUG. 2019"}
-                        title={"Salesman - student position"}
+                        title={"Salesman - Student Position"}
                         entity={"Conforama"}
                         location={"Pau, France"}
                         DescriptionComponent={
                             <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
+                                Seller of household appliances and furniture during the summer holidays and every
+                                thursday afternoon saturdays during the school year.
                             </p>
                         }
                     />
