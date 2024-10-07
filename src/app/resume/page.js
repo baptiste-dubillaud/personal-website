@@ -3,6 +3,7 @@
 import styles from "@/app/resume/page.module.css";
 
 import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 import { getNbYears } from "@/utils/dateUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
@@ -13,14 +14,28 @@ const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
 
+const PARTS = ["About", "Experience", "Education", "Hobbies"];
+
 const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
+    function scrollToComponent(index, ref) {
+        if (ref.current) {
+            const elementTop = ref.current.getBoundingClientRect().top + window.scrollY;
+            const offsetPosition = elementTop - (index === 0 ? 170 : 80);
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+            });
+        }
+    }
+
     return (
         <div className={styles.presentation_container}>
             {/* Presentation data */}
             <div className={styles.presentation_name}>Baptiste Dubillaud</div>
             <div className={styles.presentation_job}>Software Engineer</div>
             <div className={styles.presentation_desc}>
-                I build PoC softwares on various topics for the Oil and Gas industry.
+                I build reliable data and user-oriented industrial softwares.
             </div>
 
             {/* Menu / Showed only if enough space (isTwoColumnSetup = false) */}
@@ -38,11 +53,15 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
                                       }
                                     : {}
                             }
-                            onClick={() => part.ref.current.scrollIntoView({ block: "start", behavior: "smooth" })}
+                            onClick={() => scrollToComponent(index, part.ref)}
                         >
                             {part.name}
                         </div>
                     ))}
+                    <div
+                        className={styles.presentation_menu_elevator}
+                        style={{ top: PARTS.indexOf(currentPart) * 45 - 5 }}
+                    />
                 </div>
             )}
         </div>
@@ -86,25 +105,26 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => 
                 <>
                     <p>
                         I&apos;m a {getNbYears("12-29-1998")} years old software engineer with more than{" "}
-                        {getNbYears("09-01-2020")} years of experience in the field. Like many boys in my generation, I
-                        got my first interest in IT thanks to video games and the first forums/IRC channels about
-                        various topics I used to visit. From my first Minecraft server hosted on my parents&apos;
-                        computer to my first script to automate a boring task, I&apos;ve always been passionate about
-                        technology, especially in IT.
+                        <b>{getNbYears("09-01-2020")} years of experience</b> in the field. Like many boys in my
+                        generation, I got my first interest in IT thanks to video games and the first forums/IRC
+                        channels about various topics I used to visit. From my first Minecraft server hosted on my
+                        parents&apos; computer to my first script to automate a boring task, I&apos;ve always been
+                        passionate about technology, especially IT.
                     </p>
                     <p>
-                        I started my journey into programming in high entity with EasyPIC motherboard and Raspberry PI
-                        Uno. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed
-                        me to enter engineering studies. There I learned the basics of programming with C, C++, Java,
-                        and Web, but most of all software engineering principles and how to work in a team. I finished
-                        my studies with a specialization in High Performance Computing and Data Processing.
+                        I started my journey into programming in high entity with <b>EasyPIC</b> motherboard and
+                        <b>Raspberry PI Uno</b>. Thanks to my teachers, I discovered the basics of programming and
+                        electronics, which pushed me to enter engineering studies. There I learned the basics of
+                        programming with <b>C</b>, <b>C++</b>, <b>Java</b>, and <b>Web</b>, but most of all{" "}
+                        <b>software engineering principles</b> and how to work in a team. I finished my studies with a
+                        specialization in <b>High Performance Computing and Data Processing</b>.
                     </p>
                     <p>
                         As I have always been interested in industries, I started my career in both the Oil and Gas
-                        industry and the aerospace industry. I worked on various topics such as parallel computing,
-                        real-time data processing, and data visualization. I&apos;m currently a Tech-Lead and Software
-                        Engineer at TotalEnergies Denmark, where we create PoC software for HSE, Production, CFR (Carbon
-                        Footprint Reduction), and Maintenance departments.
+                        industry and the aerospace industry. I worked on various topics such as{" "}
+                        <b>parallel computing</b>, <b>real-time data processing</b>, <b>data visualization</b>, building
+                        of <b>API</b> and <b>modern web UI</b>. I&apos;m looking for new challenges as a{" "}
+                        <b>Software and/or Data Engineer, starting in early 2025</b>.
                     </p>
                 </>
             }
@@ -186,9 +206,9 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                         location={"Esbjerg, Denmark"}
                         DescriptionComponent={
                             <p>
-                                I&apos;m currently working as a Tech-Lead and Software Engineer at TotalEnergies
-                                Denmark, where we create PoC software for HSE, Production, CFR (Carbon Footprint
-                                Reduction), and Maintenance departments.
+                                I&apos;m currently working as a <b>Tech-Lead and Software Engineer</b> at TotalEnergies
+                                Denmark, for the <b>Digital Laboratory (DLAB)</b> team. We create <b>PoC softwares</b>{" "}
+                                for the Production, HSE, Logistics, and C&P departments.
                             </p>
                         }
                         techStack={[

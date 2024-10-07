@@ -45,35 +45,51 @@
 }
 
 .presentation_menu {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 10px;
     margin-top: 20px;
-    padding-left: 5px;
     border-radius: 2px;
-    border-left: 2px solid var(--color-orange-dark);
     text-align: center;
     justify-content: center;
+}
+
+.presentation_menu_elevator {
+    position: absolute;
+    left: -1px;
+    top: 0px;
+    height: 35px;
+    border-radius: 4px;
+    border-left: 4px solid var(--color-orange);
+    transition: top 0.2s;
 }
 
 .presentation_menu_item {
     font-size: 1.2rem;
     font-weight: 700;
     color: var(--color-orange-dark);
-
+    border-left: 2px solid var(--color-orange-dark);
     height: 25px;
     width: fit-content;
 
-    padding-bottom: 7px;
-    padding-inline: 10px;
+    padding: 10px;
+    padding-left: 12px;
     
-    border-radius: 5px;
     align-items: center;
     display: flex;
+    justify-content: center;
 
     cursor: pointer;
 
     transition: color 0.15s, font-size 0.15s, background-color 0.15s;
+}
+
+.presentation_menu_item:first-child {
+    padding-top: 0px;
+}
+
+.presentation_menu_item:last-child {
+    padding-bottom: 0px;
 }
 
 .presentation_menu_item:hover {
