@@ -14,13 +14,11 @@ const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
 
-const PARTS = ["About", "Experience", "Education", "Hobbies"];
-
 const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
     function scrollToComponent(index, ref) {
         if (ref.current) {
             const elementTop = ref.current.getBoundingClientRect().top + window.scrollY;
-            const offsetPosition = elementTop - (index === 0 ? 170 : 80);
+            const offsetPosition = elementTop - (index === 0 ? 175 : 80);
 
             window.scrollTo({
                 top: offsetPosition,
@@ -50,8 +48,13 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
                                     ? {
                                           color: "var(--color-orange)",
                                           fontSize: "1.35em",
+                                          paddingTop: index === 0 ? 0 : 10,
+                                          paddingBottom: index === parts.length - 1 ? 0 : 10,
                                       }
-                                    : {}
+                                    : {
+                                          paddingTop: index === 0 ? 0 : 10,
+                                          paddingBottom: index === parts.length - 1 ? 0 : 10,
+                                      }
                             }
                             onClick={() => scrollToComponent(index, part.ref)}
                         >
@@ -60,7 +63,7 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
                     ))}
                     <div
                         className={styles.presentation_menu_elevator}
-                        style={{ top: PARTS.indexOf(currentPart) * 45 - 5 }}
+                        style={{ top: parts.map((key, id) => key.name).indexOf(currentPart) * 45 - 5 }}
                     />
                 </div>
             )}
@@ -68,24 +71,7 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
     );
 };
 
-const PartComponent = ({ isTwoColumnSetup, title, reference, setCurrentComponent, contentComponent }) => {
-    function onScroll() {
-        if (reference.current) {
-            const rect = reference.current.getBoundingClientRect();
-            if (rect.top < window.innerHeight * 0.4) {
-                console.log("In view", title);
-                setCurrentComponent(title);
-            }
-        }
-    }
-
-    useEffect(() => {
-        window.addEventListener("scroll", onScroll);
-        return () => {
-            window.removeEventListener("scroll", onScroll);
-        };
-    }, []);
-
+const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent }) => {
     return (
         <div ref={reference} className={styles.part_container}>
             {!isTwoColumnSetup && <div className={styles.part_title}>{title}</div>}
@@ -94,17 +80,16 @@ const PartComponent = ({ isTwoColumnSetup, title, reference, setCurrentComponent
     );
 };
 
-const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => {
+const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             title="About"
             reference={aboutRef}
-            setCurrentComponent={setCurrentComponent}
             contentComponent={
                 <>
                     <p>
-                        I&apos;m a {getNbYears("12-29-1998")} years old software engineer with more than{" "}
+                        I&apos;m a {getNbYears("12-29-1998")} years old french software engineer with more than{" "}
                         <b>{getNbYears("09-01-2020")} years of experience</b> in the field. Like many boys in my
                         generation, I got my first interest in IT thanks to video games and the first forums/IRC
                         channels about various topics I used to visit. From my first Minecraft server hosted on my
@@ -112,7 +97,7 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => 
                         passionate about technology, especially IT.
                     </p>
                     <p>
-                        I started my journey into programming in high entity with <b>EasyPIC</b> motherboard and
+                        I started my journey into programming in high entity with <b>EasyPIC</b> motherboard and{" "}
                         <b>Raspberry PI Uno</b>. Thanks to my teachers, I discovered the basics of programming and
                         electronics, which pushed me to enter engineering studies. There I learned the basics of
                         programming with <b>C</b>, <b>C++</b>, <b>Java</b>, and <b>Web</b>, but most of all{" "}
@@ -123,7 +108,10 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, setCurrentComponent }) => 
                         As I have always been interested in industries, I started my career in both the Oil and Gas
                         industry and the aerospace industry. I worked on various topics such as{" "}
                         <b>parallel computing</b>, <b>real-time data processing</b>, <b>data visualization</b>, building
-                        of <b>API</b> and <b>modern web UI</b>. I&apos;m looking for new challenges as a{" "}
+                        of <b>API</b> and <b>modern web UI</b>.
+                    </p>
+                    <p>
+                        I&apos;m currently looking for new challenges as a{" "}
                         <b>Software and/or Data Engineer, starting in early 2025</b>.
                     </p>
                 </>
@@ -192,12 +180,11 @@ const TimeLineComponent = ({
     );
 };
 
-const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentComponent }) => {
+const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={experienceRef}
-            setCurrentComponent={setCurrentComponent}
             title="Experience"
             contentComponent={
                 <div className={styles.timeline_items_container}>
@@ -222,7 +209,8 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
                                 </p>
                                 <p>
                                     Structured the development environment to accompany the growth of the team (5
-                                    Data-Scientists, 2 Software Enginers). Managed Azure resources and Windows servers.
+                                    Data-Scientists, 2 Software Engineers). I managed Azure resources and Windows
+                                    servers.
                                 </p>
                                 <p>
                                     Developed applications involving <b>Generative AI</b>, complexe user interactions
@@ -374,12 +362,11 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, setCurrentCompo
     );
 };
 
-const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponent }) => {
+const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={educationRef}
-            setCurrentComponent={setCurrentComponent}
             title="Education"
             contentComponent={
                 <div className={styles.timeline_items_container}>
@@ -429,7 +416,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
                                 </p>
                                 <p>
                                     Final Project: Development and <b>optimization</b> of an algorithm to filter data
-                                    cybes from <b>seismic imaging</b> on <b>Pangea II HPC</b> at TotalEnergies.
+                                    cubes from <b>seismic imaging</b> on Pangea II HPC at TotalEnergies.
                                 </p>
                             </>
                         }
@@ -456,7 +443,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, setCurrentComponen
     );
 };
 
-const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent }) => {
+const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
     const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false }) => {
         return (
             <div className={styles.hobby_container}>
@@ -491,7 +478,6 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={hobbiesRef}
-            setCurrentComponent={setCurrentComponent}
             title="Hobbies"
             contentComponent={
                 <div className={styles.hobbies_container}>
@@ -502,8 +488,10 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
                             <div>
                                 <p>
                                     I spend a lot of time doing sports. I&lsquo;m currently training for thriatlon after
-                                    having completed my first marathon in Copenhaguen in May 2024.
+                                    having completed my first marathon in Copenhaguen in May 2024. I also like from time
+                                    to time to play padel.
                                 </p>
+                                <p></p>
                             </div>
                         }
                     />
@@ -513,8 +501,9 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
                         onRight={true}
                         DescriptionComponent={
                             <p>
-                                I love to read books. From &apos;A song of ice and fire&apos; to &apos;The Grand
-                                Chessboard&apos;, I read articles and books on a large variety of topics.
+                                I love to read books even if I don&apos;t read as much as I would like. From &apos;
+                                <b>A song of ice and fire</b>&apos;, to &apos;<b>The Grand Chessboard</b>&apos;, I read
+                                fictions or articles and books on a large variety of topics.
                             </p>
                         }
                     />
@@ -522,10 +511,16 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, setCurrentComponent })
                         title={"Video Games"}
                         logo={<VideoGame size={40} secondaryColor={"rgb(255, 68, 0)"} />}
                         DescriptionComponent={
-                            <p>
-                                I started to be interested in IT thanks to online video games (Counter Strike!). I still
-                                play, less than before, to singleplayer games.
-                            </p>
+                            <div>
+                                <p>
+                                    I started to be interested in IT thanks to online video games (Counter Strike!). I
+                                    still play, less than before, to singleplayer games.
+                                </p>
+                                <p>
+                                    My favorite video games: <b>Urban Terror</b>, <b>Battlefield 3</b>,
+                                    <b>Cyberpunk 2077</b>, <b>Age of Empires II</b>, <b>Mass Effect</b>.
+                                </p>
+                            </div>
                         }
                     />
                 </div>
@@ -544,6 +539,13 @@ export default function Resume() {
     const educationRef = useRef();
     const hobbiesRef = useRef();
 
+    const PARTS = [
+        { name: "About", ref: aboutRef },
+        { name: "Experience", ref: experienceRef },
+        { name: "Education", ref: educationRef },
+        { name: "Hobbies", ref: hobbiesRef },
+    ];
+
     function handleWindowSizeChange() {
         if (window.innerWidth > TWO_COLUMNS_BREAKPOINT) {
             setIsTwoColumnSetup(true);
@@ -552,11 +554,40 @@ export default function Resume() {
         }
     }
 
+    function onScroll() {
+        const aboutHeight = aboutRef.current.getBoundingClientRect().height;
+        const experienceHeight = experienceRef.current.getBoundingClientRect().height;
+        const educationHeight = educationRef.current.getBoundingClientRect().height;
+        const hobbiesHeight = hobbiesRef.current.getBoundingClientRect().height;
+
+        const totalHeight = aboutHeight + experienceHeight + educationHeight + hobbiesHeight;
+        const scrollPercentage = (window.scrollY / (totalHeight - window.innerHeight / 2)) * 100;
+
+        console.log("!!!!!!!!!!!!!");
+        console.log(window.scrollY, " vs ", totalHeight);
+        console.log(scrollPercentage);
+        console.log((aboutHeight / totalHeight) * 100);
+        console.log(((aboutHeight + experienceHeight) / totalHeight) * 100);
+        console.log(((aboutHeight + experienceHeight + educationHeight) / totalHeight) * 100);
+
+        if (scrollPercentage < (aboutHeight / totalHeight) * 100) {
+            setCurrentPart("About");
+        } else if (scrollPercentage < ((aboutHeight + experienceHeight) / totalHeight) * 100) {
+            setCurrentPart("Experience");
+        } else if (scrollPercentage < ((aboutHeight + experienceHeight + educationHeight) / totalHeight) * 100) {
+            setCurrentPart("Education");
+        } else {
+            setCurrentPart("Hobbies");
+        }
+    }
+
     useEffect(() => {
         handleWindowSizeChange();
         window.addEventListener("resize", handleWindowSizeChange);
+        window.addEventListener("scroll", onScroll);
         return () => {
             window.removeEventListener("resize", handleWindowSizeChange);
+            window.removeEventListener("scroll", onScroll);
         };
     }, []);
 
@@ -566,12 +597,7 @@ export default function Resume() {
                 <div style={{ width: isTwoColumnSetup ? TWO_COLUMNS_PRESENTATION_WIDTH : "100%" }}>
                     <PresentationComponent
                         isTwoColumnSetup={isTwoColumnSetup}
-                        parts={[
-                            { name: "About", ref: aboutRef },
-                            { name: "Experience", ref: experienceRef },
-                            { name: "Education", ref: educationRef },
-                            { name: "Hobbies", ref: hobbiesRef },
-                        ]}
+                        parts={PARTS}
                         currentPart={currentPart}
                     />
                 </div>

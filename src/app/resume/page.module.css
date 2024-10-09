@@ -89,6 +89,7 @@
 }
 
 .presentation_menu_item:last-child {
+    border-left: 1px solid white;
     padding-bottom: 0px;
 }
 
