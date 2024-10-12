@@ -203,20 +203,20 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                     <b>PoC softwares</b> for the Production, HSE, Logistics, and C&P departments.{" "}
                                 </p>
                                 <p>
-                                    <b>
-                                        Two Applications in the Top 10 of the TotalEnergies &quot;E&P Best
-                                        Innovators&quot; awards.
-                                    </b>
-                                </p>
-                                <p>
-                                    Structured the development environment to accompany the growth of the team (5
+                                    I structured the development environment to accompany the growth of the team (5
                                     Data-Scientists, 2 Software Engineers). I managed Azure resources and Windows
                                     servers.
                                 </p>
                                 <p>
-                                    Developed applications involving <b>Generative AI</b>, complexe user interactions
-                                    (tchat, searches, animations), <b>data processing</b>,{" "}
-                                    <b>health and usage monitoring</b>, <b>Architecture</b>, and <b>SAP</b> data.
+                                    I designed and developed applications involving <b>Generative AI</b>, complexe user
+                                    interactions (chat, searches, animations), <b>data processing</b>,{" "}
+                                    <b>health and usage monitoring</b>, and <b>SAP</b> data integration.
+                                </p>
+                                <p>
+                                    <b>
+                                        Two Applications in the Top 10 of the TotalEnergies &quot;E&P Best
+                                        Innovators&quot; awards.
+                                    </b>
                                 </p>
                             </>
                         }
@@ -244,8 +244,9 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             <>
                                 <p>
                                     On behalf of <b>Viveris Technologies</b>, I was part of a team of <b>5 engineers</b>{" "}
-                                    in charge of the development of a software managing ground and satellite
-                                    communications, including <b>encryption</b> and <b>decryption</b>.
+                                    in charge of the development of a software managing{" "}
+                                    <b>ground and satellite communications</b>, including <b>encryption</b> and{" "}
+                                    <b>decryption</b>.
                                 </p>
                                 <p>
                                     I developed new features and sub-applications for this project, including a{" "}
@@ -374,7 +375,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
                     <TimeLineComponent
                         title="Master degree in Computer Science"
                         entity="CY-Tech"
-                        location="Pau"
+                        location="Pau, France"
                         dateFrom="2018"
                         dateTo="2021"
                         onRight={true}
@@ -405,7 +406,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
                     <TimeLineComponent
                         title="One year course in HPC and Data Processing"
                         entity="Univerty of La Coroña"
-                        location="La Coroña"
+                        location="La Coroña, Spain"
                         dateFrom="2020"
                         dateTo="2021"
                         onRight={true}
@@ -426,7 +427,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
                     <TimeLineComponent
                         title="Preparatory class for engineering schools"
                         entity="Saint-Cricq High School"
-                        location="Pau"
+                        location="Pau, France"
                         dateFrom="2016"
                         dateTo="2018"
                         onRight={true}
@@ -497,7 +498,6 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                             marginBottom: 20,
                                         }}
                                     >
-                                        My Profile
                                         <a
                                             className={styles.strava_profile_container}
                                             href={process.env.NEXT_PUBLIC_STRAVA_PROFILE}
