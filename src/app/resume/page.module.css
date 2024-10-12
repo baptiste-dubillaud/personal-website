@@ -181,13 +181,13 @@
     border-radius: 5px;
     padding: 5px 8px;
     transition: border-color 0.2s, background-color 0.2s;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
-.timeline_item_data_container:hover {
+/* .timeline_item_data_container:hover {
     background-color: var(--color-orange-opacity-05);
     border-color: var(--color-orange);
-}
+} */
 
 .timeline_item_data_container_right {
     text-align: right;
