@@ -9,6 +9,7 @@ import { getNbYears } from "@/utils/dateUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
 import BookShelfIcon from "@/components/common/icons/misc/BookIcon";
 import VideoGame from "@/components/common/icons/misc/VideoGame";
+import StravaIcon from "@/components/common/icons/apps/StravaIcon";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
@@ -487,11 +488,63 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                         DescriptionComponent={
                             <div>
                                 <p>
+                                    <div
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            textAlign: "center",
+                                            gap: 10,
+                                            marginBottom: 20,
+                                        }}
+                                    >
+                                        My Profile
+                                        <a
+                                            className={styles.strava_profile_container}
+                                            href={process.env.NEXT_PUBLIC_STRAVA_PROFILE}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            <div className={styles.strava_profile_text}>Strava</div>
+                                            <StravaIcon size={27} />
+                                        </a>
+                                    </div>
                                     I spend a lot of time doing sports. I&lsquo;m currently training for thriatlon after
                                     having completed my first marathon in Copenhaguen in May 2024. I also like from time
                                     to time to play padel.
                                 </p>
-                                <p></p>
+                                <p className={styles.hobby_description_95}>
+                                    <h4>PR</h4> Marathon: 3h 53m, Half-Marathon: 1h 42m
+                                </p>
+                                <p className={styles.hobby_description_95}>
+                                    <h4>2024</h4>
+                                    <ul>
+                                        <li>
+                                            <h4>Trails</h4> Fur Ultra (25 kms/ 600mD+), Climb of Aubisque (18kms/
+                                            1200mD+)
+                                        </li>
+                                        <li>
+                                            <h4>Marathon</h4> Copenhaguen
+                                        </li>
+                                        <li>
+                                            <h4>Half-Marathon</h4> Esbjerg, Fanø
+                                        </li>
+                                    </ul>
+                                </p>
+                                <p className={styles.hobby_description_95}>
+                                    <h4>2023</h4>
+                                    <ul>
+                                        <li>
+                                            <h4>Trails</h4> Climb of Aubisque (18kms/ 1200mD+)
+                                        </li>
+                                        <li>
+                                            <h4>Half-Marathon</h4> Esbjerg, Odense
+                                        </li>
+                                        <li>
+                                            <h4>Others</h4> West Coat Run (10kms), Color Fun Esbjerg (5kms)
+                                        </li>
+                                    </ul>
+                                </p>
+                                <p className={styles.hobby_description_95}>And many mores before...</p>
                             </div>
                         }
                     />
@@ -513,8 +566,8 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                         DescriptionComponent={
                             <div>
                                 <p>
-                                    I started to be interested in IT thanks to online video games (Counter Strike!). I
-                                    still play, less than before, to singleplayer games.
+                                    I started to be interested in IT thanks to competitive online video games (Counter
+                                    Strike). I still play, less than before, to singleplayer games.
                                 </p>
                                 <p>
                                     My favorite video games: <b>Urban Terror</b>, <b>Battlefield 3</b>,

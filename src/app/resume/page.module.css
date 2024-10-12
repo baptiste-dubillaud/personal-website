@@ -290,6 +290,24 @@
     margin-inline: 5px;
 }
 
+.hobby_description h4 {
+    display: inline;
+}
+
+.hobby_description li h4 {
+    display: inline;
+    color: var(--color-orange-dark);
+    margin-right: 5px;
+}
+
+.hobby_description li {
+    color: black;
+}
+
+.hobby_description_95 {
+    font-size: 0.95rem;
+}
+
 .hobby_decoration_top_right {
     position: absolute;
     top: 5px;
@@ -358,4 +376,32 @@
     height: 2px;
     background: linear-gradient(90deg, var(--color-orange), rgba(255, 255, 255, 0));
     margin: 5px;
+}
+
+.strava_profile_container {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    border: 1px solid var(--color-orange);
+    background-color: var(--color-orange-opacity-9);
+    width: fit-content;
+    padding: 1px;
+    padding-inline: 3px;
+    border-radius: 5px;
+
+    transition: background-color 0.15s;
+}
+
+.strava_profile_container:hover {
+    background-color: var(--color-orange);
+}
+
+.strava_profile_text {
+    font-size: 1.0rem;
+    font-weight: 500;
+    color: white;
+    margin-right: 5px;
+    user-select: none;
+    padding-left: 7px;
 }
