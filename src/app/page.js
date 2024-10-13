@@ -502,7 +502,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                 >
                                     <a
                                         className={styles.strava_profile_link}
-                                        href={process.env.STRAVA_PROFILE}
+                                        href={STRAVA_PROFILE}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
