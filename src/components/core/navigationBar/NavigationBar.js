@@ -31,10 +31,10 @@ export default function NavigationBarComponent({}) {
                 Hi, I&apos;m <span className={styles.hello_message_name}>Baptiste</span>!
             </div>
             <div className={styles.links_container}>
-                <NavLinkComponent name="Home" path="/" />
-                <NavLinkComponent name="Resume" path="/resume" />
+                {/* <NavLinkComponent name="Home" path="/" /> */}
+                <NavLinkComponent name="Resume" path="/" />
                 {/* <NavLinkComponent name="Portfolio" path="/portfolio"/> */}
-                <NavLinkComponent name="Blog" path="/blog" />
+                {/* <NavLinkComponent name="Blog" path="/blog" /> */}
             </div>
         </div>
     );
