@@ -618,13 +618,6 @@ export default function Resume() {
         const totalHeight = aboutHeight + experienceHeight + educationHeight + hobbiesHeight;
         const scrollPercentage = (window.scrollY / (totalHeight - window.innerHeight / 2)) * 100;
 
-        console.log("!!!!!!!!!!!!!");
-        console.log(window.scrollY, " vs ", totalHeight);
-        console.log(scrollPercentage);
-        console.log((aboutHeight / totalHeight) * 100);
-        console.log(((aboutHeight + experienceHeight) / totalHeight) * 100);
-        console.log(((aboutHeight + experienceHeight + educationHeight) / totalHeight) * 100);
-
         if (scrollPercentage < (aboutHeight / totalHeight) * 100) {
             setCurrentPart("About");
         } else if (scrollPercentage < ((aboutHeight + experienceHeight) / totalHeight) * 100) {
