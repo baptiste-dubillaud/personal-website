@@ -10,6 +10,7 @@ import FlagIcon from "@/components/common/icons/misc/FlagIcon";
 import Locationicon from "@/components/common/icons/misc/LocationIcon";
 
 import { getNbYears } from "@/utils/dateUtils";
+import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 
 const NewTabLink = ({ children, link, alt }) => {
     return (
@@ -79,13 +80,13 @@ export default function Home() {
                             </div>
                             {/* Profile links */}
                             <div className={styles.presentation_data_links_container}>
-                                <NewTabLink link={process.env.NEXT_PUBLIC_LINKEDIN_PROFILE} alt="LinkedIn profile">
+                                <NewTabLink link={LINKEDIN_PROFILE} alt="LinkedIn profile">
                                     <LinkedInIcon size={30} />
                                 </NewTabLink>
-                                <NewTabLink link={process.env.NEXT_PUBLIC_GITHUB_PROFILE} alt="Github profile">
+                                <NewTabLink link={GITHUB_PROFILE} alt="Github profile">
                                     <GithubIcon size={30} />
                                 </NewTabLink>
-                                {/* <NewTabLink link={process.env.NEXT_PUBLIC_MEDIUM_PROFILE} alt="Medium profile">
+                                {/* <NewTabLink link={MEDIUM_PROFILE} alt="Medium profile">
                                     <MediumIcon size={30}/>
                                 </NewTabLink> */}
                             </div>

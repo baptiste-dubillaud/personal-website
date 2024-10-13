@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
 import { getNbYears } from "@/utils/dateUtils";
+import { STRAVA_PROFILE } from "@/utils/linkUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
 import BookShelfIcon from "@/components/common/icons/misc/BookIcon";
 import VideoGame from "@/components/common/icons/misc/VideoGame";
@@ -501,7 +502,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                 >
                                     <a
                                         className={styles.strava_profile_link}
-                                        href={process.env.NEXT_PUBLIC_STRAVA_PROFILE}
+                                        href={process.env.STRAVA_PROFILE}
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
