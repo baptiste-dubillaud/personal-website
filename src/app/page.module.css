@@ -379,6 +379,15 @@
 }
 
 .strava_profile_container {
+    display: "flex";
+    align-items: "center";
+    text-align: "center";
+    gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.strava_profile_link {
     display: flex;
     text-align: center;
     align-items: center;
@@ -393,7 +402,7 @@
     transition: background-color 0.15s;
 }
 
-.strava_profile_container:hover {
+.strava_profile_link:hover {
     background-color: var(--color-orange);
 }
 

@@ -497,9 +497,10 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                         marginBottom: 10,
                                         marginTop: 10,
                                     }}
+                                    className={styles.strava_profile_container}
                                 >
                                     <a
-                                        className={styles.strava_profile_container}
+                                        className={styles.strava_profile_link}
                                         href={process.env.NEXT_PUBLIC_STRAVA_PROFILE}
                                         target="_blank"
                                         rel="noopener noreferrer"
