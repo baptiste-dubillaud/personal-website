@@ -529,7 +529,18 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                     <h4>PR</h4> Marathon: 3h 53m, Half-Marathon: 1h 42m
                                 </p>
                                 <p className={styles.hobby_description_95}>
-                                    <h4>2024</h4>
+                                    <h4>2025 - France</h4>
+                                    <ul>
+                                    <li>
+                                            <h4>Marathon</h4> Biarritz
+                                        </li>
+                                        <li>
+                                            <h4>Half-Marathon</h4> Nay
+                                        </li>
+                                    </ul>
+                                </p>
+                                <p className={styles.hobby_description_95}>
+                                    <h4>2024 - Denmark and France</h4>
                                     <ul>
                                         <li>
                                             <h4>Trails</h4> Fur Ultra (25 kms/ 600mD+), Climb of Aubisque (18kms/
@@ -544,7 +555,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                     </ul>
                                 </p>
                                 <p className={styles.hobby_description_95}>
-                                    <h4>2023</h4>
+                                    <h4>2023 - Denmark and France</h4>
                                     <ul>
                                         <li>
                                             <h4>Trails</h4> Climb of Aubisque (18kms/ 1200mD+)
