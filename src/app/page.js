@@ -112,10 +112,6 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
                         <b>parallel computing</b>, <b>real-time data processing</b>, <b>data visualization</b>, building
                         of <b>API</b> and <b>modern web UI</b>.
                     </p>
-                    <p>
-                        I&apos;m currently looking for new challenges as a{" "}
-                        <b>Software and/or Data Engineer, starting in early 2025</b>.
-                    </p>
                 </>
             }
         />
@@ -191,16 +187,30 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
             contentComponent={
                 <div className={styles.timeline_items_container}>
                     <TimeLineComponent
-                        dateFrom={"MAR. 2023"}
+                        dateFrom={"APR. 2025"}
                         dateTo={"PRESENT"}
+                        title={"Senior Software Engineer"}
+                        entity={"ThinkDeep AI"}
+                        location={"Bordeaux, France"}
+                        DescriptionComponent={
+                            <p>
+                                I am currently working as a <b>Senior Software Engineer</b> at{" "}
+                                <b>ThinkDeep AI</b>, a startup specialized in the development of{" "}
+                                <b>AI-based softwares</b>.
+                            </p>
+                        }
+                    />
+                    <TimeLineComponent
+                        dateFrom={"MAR. 2023"}
+                        dateTo={"MAR. 2025"}
                         title={"Tech Lead & Full-Stack Engineer"}
                         entity={"TotalEnergies Denmark"}
                         location={"Esbjerg, Denmark"}
                         DescriptionComponent={
                             <>
                                 <p>
-                                    I&apos;m currently working as a <b>Tech-Lead</b> and <b>Software Engineer</b> at
-                                    TotalEnergies Denmark, for the <b>Digital Laboratory (DLAB)</b> team. We create{" "}
+                                    I worked as a <b>Tech-Lead</b> and <b>Software Engineer</b> at
+                                    TotalEnergies Denmark, for the <b>Digital Laboratory (DLAB)</b> team, creating{" "}
                                     <b>PoC softwares</b> for the Production, HSE, Logistics, and C&P departments.{" "}
                                 </p>
                                 <p>
