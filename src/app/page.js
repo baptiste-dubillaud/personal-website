@@ -583,7 +583,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                     Strike). I still play, less than before, to singleplayer games.
                                 </p>
                                 <p>
-                                    My favorite video games: <b>Urban Terror</b>, <b>Battlefield 3</b>,
+                                    My favorite video games: <b>Urban Terror</b>, <b>Battlefield 3</b>,{" "}
                                     <b>Cyberpunk 2077</b>, <b>Age of Empires II</b>, <b>Mass Effect</b>.
                                 </p>
                             </div>
