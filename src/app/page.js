@@ -197,6 +197,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                 I am currently working as a <b>Senior Software Engineer</b> at{" "}
                                 <b>ThinkDeep AI</b>, a startup specialized in the development of{" "}
                                 <b>AI-based softwares</b>.
+
+                                <ul>
+                                    <li>
+                                        <b>DeepBrain :</b> platform extracting the knowledge from documents & data using online and on-premise LLM.
+                                    </li>
+                                </ul>
                             </p>
                         }
                     />
@@ -520,26 +526,26 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                         <StravaIcon size={27} />
                                     </a>
                                 </div>
-                                <p>
+                                <div>
                                     I spend a lot of time doing sports. I&lsquo;m currently training for thriatlon after
                                     having completed my first marathon in Copenhaguen in May 2024. I also like from time
                                     to time to play padel.
-                                </p>
-                                <p className={styles.hobby_description_95}>
-                                    <h4>PR</h4> Marathon: 3h 53m, Half-Marathon: 1h 42m
-                                </p>
-                                <p className={styles.hobby_description_95}>
+                                </div>
+                                <div className={styles.hobby_description_95}>
+                                    <h4>PR</h4> Marathon: 3h 43m w/ 500 mD+, Half-Marathon: 1h 42m
+                                </div>
+                                <div className={styles.hobby_description_95}>
                                     <h4>2025 - France</h4>
                                     <ul>
-                                    <li>
-                                            <h4>Marathon</h4> Biarritz
+                                        <li>
+                                            <h4>Marathon</h4> Biarritz - 500 mD+ - 3h44
                                         </li>
                                         <li>
-                                            <h4>Half-Marathon</h4> Nay
+                                            <h4>Half-Marathon</h4> Nay, Brussels
                                         </li>
                                     </ul>
-                                </p>
-                                <p className={styles.hobby_description_95}>
+                                </div>
+                                <div className={styles.hobby_description_95}>
                                     <h4>2024 - Denmark and France</h4>
                                     <ul>
                                         <li>
@@ -547,14 +553,14 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                             1200mD+)
                                         </li>
                                         <li>
-                                            <h4>Marathon</h4> Copenhaguen
+                                            <h4>Marathon</h4> Copenhaguen - 3h53
                                         </li>
                                         <li>
                                             <h4>Half-Marathon</h4> Esbjerg, Fanø
                                         </li>
                                     </ul>
-                                </p>
-                                <p className={styles.hobby_description_95}>
+                                </div>
+                                <div className={styles.hobby_description_95}>
                                     <h4>2023 - Denmark and France</h4>
                                     <ul>
                                         <li>
@@ -567,8 +573,8 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                             <h4>Others</h4> West Coat Run (10kms), Color Fun Esbjerg (5kms)
                                         </li>
                                     </ul>
-                                </p>
-                                <p className={styles.hobby_description_95}>And many mores before...</p>
+                                </div>
+                                <div className={styles.hobby_description_95}>And many mores before...</div>
                             </div>
                         }
                     />
