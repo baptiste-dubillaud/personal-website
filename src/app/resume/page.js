@@ -98,7 +98,7 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
                         passionate about technology, especially IT.
                     </p>
                     <p>
-                        I started my journey into programming in high entity with <b>EasyPIC</b> motherboard and{" "}
+                        I started my journey into programming in high school with <b>EasyPIC</b> motherboard and{" "}
                         <b>Raspberry PI Uno</b>. Thanks to my teachers, I discovered the basics of programming and
                         electronics, which pushed me to enter engineering studies. There I learned the basics of
                         programming with <b>C</b>, <b>C++</b>, <b>Java</b>, and <b>Web</b>, but most of all{" "}

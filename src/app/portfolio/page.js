@@ -80,7 +80,7 @@ export default async function Portfolio({}) {
         <div className={styles.portfolio_container}>
             <div className={styles.portfolio_title}>My Portfolio</div>
             <div className={styles.portfolio_subtitle}>
-                Here are some of the projects I've worked on. Each project showcases different technologies and skills I've developed over time.
+                Here are some of the projects I&apos;ve worked on. Each project showcases different technologies and skills I&apos;ve developed over time.
             </div>
             <div className={styles.projects_list}>
                 {projects.map((item, index) => {

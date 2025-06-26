@@ -120,7 +120,7 @@ export default function Home() {
                                 expanding my expertise in data engineering and cloud computing.
                             </p>
                             <p>
-                                Don't hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!
+                                Don&apos;t hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!
                             </p>
                         </div>
                     </div>
