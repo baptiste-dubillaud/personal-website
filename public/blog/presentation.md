@@ -1,7 +1,7 @@
 ---
 title: "Hello, I'm Baptiste!"
 author: "Baptiste Dubillaud"
-image: /images/welcome.jpg
+image: welcome.jpg
 created: "20th of June 2024"
 ---
 

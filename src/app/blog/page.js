@@ -52,7 +52,7 @@ export default function Blog({}) {
                             title={item.data.title}
                             link={"http://localhost:3000/blog/" + item.post}
                             key={index}
-                            image={item.data.image}
+                            image={"/blog/images/" + item.data.image}
                             date={item.data.created}
                         />
                     );
