@@ -1,0 +1,215 @@
+.error_full_screen_wrapper {
+    min-height: calc(100vh - 203px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    row-gap: 30px;
+    background-color: var(--color-background);
+}
+
+.error_container {
+    width: fit-content;
+    max-width: 80vw;
+    
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    gap: 25px;
+
+    border-bottom: 1px solid var(--color-orange-opacity-9);
+    
+    
+    padding: 40px;
+    margin-top: 30px;
+}
+
+.error_icon_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background-color: var(--color-orange-opacity-1);
+    border: 3px solid var(--color-orange-opacity-6);
+    position: relative;
+}
+
+.error_number {
+    font-size: 70px;
+    font-weight: 700;
+    color: var(--color-orange);
+    line-height: 1;
+    text-shadow: 2px 2px 4px var(--color-orange-opacity-2);
+}
+
+.error_icon {
+    font-size: 40px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.error_content_container {
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 600px;
+}
+
+.error_title_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.error_title_text {
+    font-size: 50px;
+    line-height: 1.2;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.error_highlight {
+    color: var(--color-orange);
+}
+
+.error_message_container {
+    margin-bottom: 25px;
+}
+
+.error_message {
+    font-size: 18px;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+    color: var(--color-orange-dark);
+}
+
+.error_buttons_container {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 50px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.error_button {
+    border: 1px solid var(--color-orange-opacity-6);
+    background-color: var(--color-orange-opacity-05);
+    color: var(--color-orange);
+    
+    min-width: 120px;
+    padding-inline: 25px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-radius: 5px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    font-size: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
+    
+    cursor: pointer;
+    
+    transition: all 0.3s ease;
+}
+
+.error_button:hover {
+    background-color: var(--color-orange-opacity-2);
+    font-weight: 600;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--color-orange-opacity-2);
+}
+
+.error_button_primary {
+    background-color: var(--color-orange);
+    color: white;
+    border-color: var(--color-orange);
+}
+
+.error_button_primary:hover {
+    background-color: var(--color-orange-dark);
+    border-color: var(--color-orange-dark);
+    box-shadow: 0 4px 8px var(--color-orange-opacity-4);
+}
+
+/* Responsive Design */
+@media (max-width: 1300px) {
+    .error_container {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .error_content_container {
+        padding-left: 0;
+        align-items: center;
+    }
+    
+    .error_title_text {
+        font-size: 40px;
+    }
+    
+    .error_message {
+        text-align: center;
+    }
+    
+    .error_suggestions_container {
+        text-align: left;
+    }
+}
+
+@media (max-width: 768px) {
+    .error_full_screen_wrapper {
+        padding: 10px;
+    }
+    
+    .error_container {
+        padding: 30px 20px;
+        max-width: 95vw;
+    }
+    
+    .error_icon_container {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .error_number {
+        font-size: 60px;
+    }
+    
+    .error_icon {
+        font-size: 30px;
+    }
+    
+    .error_title_text {
+        font-size: 35px;
+    }
+    
+    .error_message {
+        font-size: 16px;
+    }
+    
+    .error_buttons_container {
+        gap: 15px;
+    }
+    
+    .error_button {
+        min-width: 100px;
+        padding-inline: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 14px;
+    }
+}
