@@ -3,6 +3,7 @@
 import styles from "@/app/page.module.css";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
@@ -15,6 +16,7 @@ import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 
 const NewTabLink = ({ children, link, alt }) => {
+    
     return (
         <a href={link} target="_blank" alt={alt} className={styles.tab_link_container}>
             {children}
@@ -22,8 +24,17 @@ const NewTabLink = ({ children, link, alt }) => {
     );
 };
 
-const MainPageButton = ({ action, text, icon }) => {
-    return <div className={styles.main_button_container}>{text}</div>;
+const MainPageButton = ({ goTo, text }) => {
+
+    const router = useRouter();
+
+    const handleClick = () => {
+        if (goTo) {
+            router.push(`/${goTo}`);
+        }
+    };
+
+    return <div className={styles.main_button_container} onClick={handleClick}>{text}</div>;
 };
 
 export default function Home() {
@@ -103,17 +114,22 @@ export default function Home() {
                         </div>
                         {/* Description sentence */}
                         <div className={styles.presentation_data_sentence}>
-                            After almost 2 years spent in Denmark working on multiple user-oriented projects as a
-                            Tech-Lead and Software Engineer on data, software and UI parts, I&apos;m looking for a new
-                            position as a Software and/or Data engineer starting from early 2025.
+                            <p>
+                                5 years of experience in software and data engineering, with a passion for building
+                                innovative solutions and a strong foundation in computer science.Always eager to learn and explore new technologies, I am currently focused on
+                                expanding my expertise in data engineering and cloud computing.
+                            </p>
+                            <p>
+                                Don't hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!
+                            </p>
                         </div>
                     </div>
                 </div>
                 {/* Shortcut buttons */}
                 <div className={styles.presentation_buttons_container}>
-                    <MainPageButton text="Resume" />
-                    <MainPageButton text="Portfolio"/>
-                    {/* <MainPageButton text="Blog" /> */}
+                    <MainPageButton text="Resume" goTo="resume" />
+                    {/* <MainPageButton text="Portfolio"/> goTo="portfolio"  */}
+                    {/* <MainPageButton text="Blog" goTo="blog"  /> */}
                 </div>
             </div>
         </main>
