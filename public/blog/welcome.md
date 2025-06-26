@@ -1,7 +1,7 @@
 ---
 title: Hello there! 👋
 author: Baptiste Dubillaud
-image: hellothere.jpg
+image: /blog/images/hellothere.jpg
 created: 15th of June 2024
 updated: 1st of August 2024
 ---

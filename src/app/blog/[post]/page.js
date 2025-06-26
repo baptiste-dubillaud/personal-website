@@ -1,3 +1,5 @@
+'use server'
+
 import styles from "@/app/blog/[post]/page.module.css";
 
 import Image from "next/image";
@@ -10,7 +12,7 @@ import md from "markdown-it";
 import InternalNavigationButton from "@/components/common/buttons/InternalNavigationButton/InternalNavButton";
 import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
 
-export default function Page({ params }) {
+export default async function Page({ params }) {
     const readFile = fs.readFileSync(BLOG_FOLDER_PATH + params.post + ".md", "utf-8");
     const { data, content } = matter(readFile);
 

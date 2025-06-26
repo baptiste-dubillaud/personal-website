@@ -1,3 +1,5 @@
+'use server'
+
 import styles from "@/app/blog/page.module.css";
 
 import Image from "next/image";
@@ -23,20 +25,22 @@ const BlogArticleContainer = ({ title, date, image, link }) => {
     );
 };
 
-export default function Blog({}) {
+export default async function Blog({}) {
     const files = fs.readdirSync(BLOG_FOLDER_PATH);
 
-    const posts = files.map((fileName) => {
-        const post = fileName.replace(".md", "");
-        const readFile = fs.readFileSync(BLOG_FOLDER_PATH + fileName, "utf-8");
+    const posts = files
+        .filter((fileName) => fileName.endsWith('.md')) // Only process .md files
+        .map((fileName) => {
+            const post = fileName.replace(".md", "");
+            const readFile = fs.readFileSync(BLOG_FOLDER_PATH + fileName, "utf-8");
 
-        const { data } = matter(readFile);
+            const { data } = matter(readFile);
 
-        return {
-            post,
-            data,
-        };
-    });
+            return {
+                post,
+                data,
+            };
+        });
 
     return (
         <div className={styles.blog_container}>
@@ -52,7 +56,7 @@ export default function Blog({}) {
                             title={item.data.title}
                             link={"http://localhost:3000/blog/" + item.post}
                             key={index}
-                            image={"/blog/images/" + item.data.image}
+                            image={item.data.image}
                             date={item.data.created}
                         />
                     );
