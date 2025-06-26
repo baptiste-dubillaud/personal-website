@@ -519,7 +519,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                 </div>
                                 <div>
                                     I spend a lot of time doing sports. I&lsquo;m currently training for thriatlon after
-                                    having completed my first marathon in Copenhaguen in May 2024. I also like from time
+                                    having completed my second marathon in Biarritz in May 2025. I also like from time
                                     to time to play padel.
                                 </div>
                                 <div className={styles.hobby_description_95}>
