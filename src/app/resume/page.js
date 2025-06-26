@@ -125,7 +125,7 @@ const TimeLineComponent = ({
     dateFrom,
     dateTo,
     DescriptionComponent,
-    techStack = [],
+    techStack = [[]],
 }) => {
     return (
         <div
@@ -166,8 +166,13 @@ const TimeLineComponent = ({
                         style={onRight ? { justifyContent: "flex-end" } : {}}
                     >
                         {techStack.map((item, index) => (
-                            <div key={index} className={styles.timeline_item_tech_stack_item}>
-                                {item}
+                            <div key={index} className={styles.timeline_item_tech_stack_item_container}>
+                                {item && item.length > 0 && item.map((tech, techIndex) => (
+                                    <span key={techIndex} className={styles.timeline_item_tech_stack_item}>
+                                        {tech}
+                                    </span>
+                                ))}
+                                {index < techStack.length - 1 && " // "}
                             </div>
                         ))}
                     </div>
@@ -192,18 +197,30 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                         entity={"ThinkDeep AI"}
                         location={"Bordeaux, France"}
                         DescriptionComponent={
-                            <p>
-                                I am currently working as a <b>Senior Software Engineer</b> at{" "}
-                                <b>ThinkDeep AI</b>, a startup specialized in the development of{" "}
-                                <b>AI-based softwares</b>.
+                            <>
+                                <p>
+                                    I am currently working as a <b>Senior Software Engineer</b> at{" "}
+                                    <b>ThinkDeep AI</b>, a startup specialized in the development of{" "}
+                                    <b>AI-based softwares</b>.
+                                </p>
 
                                 <ul>
                                     <li>
                                         <b>DeepBrain :</b> platform extracting the knowledge from documents & data using online and on-premise LLM.
                                     </li>
+                                    <li>
+                                        <b>AI Assistant :</b> working for <b>DGFiP</b> (French tax administration) to build an AI platform for public agents.
+                                    </li>
                                 </ul>
-                            </p>
+                            </>
                         }
+                        techStack={[
+                            ["React", "Next.js", "Vue.js"],
+                            ["Python", "FastAPI", "SQLAlchemy"],
+                            ["PostgreSQL", "pg-vector"],
+                            ["Docker", "Alembic", "Poetry"],
+                            ["Azure Entra ID"]
+                        ]}
                     />
                     <TimeLineComponent
                         dateFrom={"MAR. 2023"}
@@ -237,18 +254,13 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             </>
                         }
                         techStack={[
-                            "React",
-                            "NextJS",
-                            "Python",
-                            "FastAPI",
-                            "Pandas",
-                            "Numpy",
-                            "PostgreSQL",
-                            "Windows Server",
-                            "Azure",
-                            "SAP",
-                            "Git/Github",
+                            ["React", "Next.js"], 
+                            ["Python", "FastAPI", "Pandas", "Numpy"], 
+                            ["PostgreSQL"],
+                            ["SAP", "PI-Vision"],
+                            ["Windows Server", "Azure"]
                         ]}
+                            
                     />
                     <TimeLineComponent
                         dateFrom={"OCT. 2021"}
@@ -272,20 +284,11 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             </>
                         }
                         techStack={[
-                            "Java",
-                            "Netty",
-                            "Swing",
-                            "Python",
-                            "Squish",
-                            "C++",
-                            "Qt",
-                            "Docker",
-                            "RedHat",
-                            "SNMP",
-                            "Git/Gitlab",
-                            "Redmine",
-                            "Jenkins",
-                            "SonarQube",
+                            ["Java", "JavaFX", "Swing", "Netty"],
+                            ["Python", "Squish"],
+                            ["C++", "Qt"],
+                            ["RedHat", "SNMP"],
+                            ["Redmine", "Jenkins", "SonarQube"]
                         ]}
                     />
                     <TimeLineComponent
@@ -308,17 +311,10 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             </>
                         }
                         techStack={[
-                            "Java",
-                            "Swing/AWT",
-                            "C++",
-                            "C",
-                            "Fortran",
-                            "Angular",
-                            "NodeJS",
-                            "Git/Github",
-                            "Gerrit",
-                            "Sonar",
-                            "Jenkins",
+                            ["Java", "JavaFX", "Swing/AWT"],
+                            ["C++", "C", "Fortran"],
+                            ["Angular", "NodeJS"],
+                            ["Gerrit", "SonarQube", "Jenkins"]
                         ]}
                     />
                     <TimeLineComponent
@@ -345,7 +341,11 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                 </p>
                             </>
                         }
-                        techStack={["Java", "JavaFX", "ControlFX", "Python", "Fortran", "Bash", "Git/BitBucket"]}
+                        techStack={[
+                            ["Java", "JavaFX", "ControlFX"], 
+                            ["Python", "Fortran"], 
+                            ["Bash", "VBA"]
+                        ]}
                     />
                     <TimeLineComponent
                         dateFrom={"MAY 2018"}
@@ -359,7 +359,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                 TotalEnergies on behalf of the <b>geophysics AVO</b> team.
                             </p>
                         }
-                        techStack={["Java", "Swing/AWT", "Git", "Gerrit"]}
+                        techStack={[["Java", "Swing/AWT", "Git", "Gerrit"]]}
                     />
                     <TimeLineComponent
                         dateFrom={"JUN. 2018"}
@@ -405,18 +405,10 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
                             </>
                         }
                         techStack={[
-                            "Java",
-                            "C",
-                            "C++",
-                            "Python",
-                            "OpenCV",
-                            "Spark",
-                            "Pandas",
-                            "HTML",
-                            "CSS",
-                            "JS",
-                            "React-Native",
-                            "Git",
+                            ["Java", "Spark"],
+                            ["Python", "Pandas", "NumPy", "OpenCV"],
+                            ["C", "C++", "Fortran"],
+                            ["HTML", "CSS", "JS", "React-Native"]
                         ]}
                     />
                     <TimeLineComponent
@@ -438,7 +430,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
                                 </p>
                             </>
                         }
-                        techStack={["C", "C++", "Fortran", "CUDA", "MPI", "OpenMP", "OpenCV"]}
+                        techStack={[["CUDA", "MPI", "OpenMP", "OpenCV"], ["C", "C++", "Fortran"]]}
                     />
                     <TimeLineComponent
                         title="Preparatory class for engineering schools"
