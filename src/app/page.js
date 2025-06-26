@@ -116,7 +116,7 @@ export default function Home() {
                         <div className={styles.presentation_data_sentence}>
                             <p>
                                 5 years of experience in software and data engineering, with a passion for building
-                                innovative solutions and a strong foundation in computer science.Always eager to learn and explore new technologies, I am currently focused on
+                                innovative solutions and a strong foundation in computer science. Always eager to learn and explore new technologies, I am currently focused on
                                 expanding my expertise in data engineering and cloud computing.
                             </p>
                             <p>
