@@ -2,7 +2,7 @@
 title: "Web Application template"
 description: "A template of Web application containing all needed resources to start a new project"
 image: "project-template.jpg"
-technologies: ["React/Next.js", "PostgreSQL", "FastAPI"]
+technologies: ["React/Next.js", "PostgreSQL", "FastAPI", "Docker"]
 github: "https://github.com/baptiste-dubillaud/auth-template"
 demo:
 created: "April 2025"
