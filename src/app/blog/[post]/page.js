@@ -3,13 +3,13 @@
 import styles from "@/app/blog/[post]/page.module.css";
 
 import Image from "next/image";
+import Link from "next/link";
 
 import fs from "fs";
 
 import matter from "gray-matter";
 import md from "markdown-it";
 
-import InternalNavigationButton from "@/components/common/buttons/InternalNavigationButton/InternalNavButton";
 import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
 
 export default async function Page({ params }) {
@@ -18,7 +18,9 @@ export default async function Page({ params }) {
 
     return (
         <div className={styles.container}>
-            <InternalNavigationButton className={styles.back_to_blog_button} text={"< Back to Blog"} path="/blog" />
+            <Link className={styles.back_to_blog_button} href="/blog">
+                {"< Back to Blog"}
+            </Link>
             <div className={styles.title}>{data.title}</div>
             <div className={styles.writing_data}>
                 <div className={styles.author_container}>

@@ -54,7 +54,7 @@ export default async function Blog({}) {
                     return (
                         <BlogArticleContainer
                             title={item.data.title}
-                            link={"http://localhost:3000/blog/" + item.post}
+                            link={"/blog/" + item.post}
                             key={index}
                             image={item.data.image}
                             date={item.data.created}
