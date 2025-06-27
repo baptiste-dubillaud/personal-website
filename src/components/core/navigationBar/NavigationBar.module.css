@@ -7,6 +7,18 @@
     height: 100px;
     z-index: 100;
     border-bottom: 2px solid var(--color-orange);
+    display: flex;
+    justify-content: center;
+}
+
+.nav_var_content_container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    max-width: 1500px;
+    width: 100%;
+    margin-inline: 30px;
 }
 
 .hello_message {

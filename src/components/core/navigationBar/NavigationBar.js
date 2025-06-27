@@ -27,14 +27,16 @@ export default function NavigationBarComponent({}) {
 
     return (
         <div className={styles.nav_bar_container}>
-            <div className={styles.hello_message} onClick={() => router.push("/")}>
-                Hi, I&apos;m <span className={styles.hello_message_name}>Baptiste</span>!
-            </div>
-            <div className={styles.links_container}>
-                <NavLinkComponent name="Home" path="/" />
-                <NavLinkComponent name="Resume" path="/resume" />
-                {/* <NavLinkComponent name="Portfolio" path="/portfolio"/> */}
-                {/* <NavLinkComponent name="Blog" path="/blog" /> */}
+            <div className={styles.nav_var_content_container}>
+                <div className={styles.hello_message} onClick={() => router.push("/")}>
+                    Hi, I&apos;m <span className={styles.hello_message_name}>Baptiste</span>!
+                </div>
+                <div className={styles.links_container}>
+                    <NavLinkComponent name="Home" path="/" />
+                    <NavLinkComponent name="Resume" path="/resume" />
+                    {/* <NavLinkComponent name="Portfolio" path="/portfolio"/> */}
+                    {/* <NavLinkComponent name="Blog" path="/blog" /> */}
+                </div>
             </div>
         </div>
     );
