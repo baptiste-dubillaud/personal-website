@@ -50,6 +50,8 @@ export default function Home() {
                                 alt="Baptiste Dubillaud profile picture"
                                 width={200}
                                 height={200}
+                                placeholder="blur"
+                                blurDataURL="/images/profile-blur.jpg"
                                 className={styles.presentation_picture}
                             />
                         </div>
