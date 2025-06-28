@@ -27,7 +27,7 @@ const ProjectContainer = ({ title, description, image, technologies, github, dem
                     <div className={styles.project_header}>
                         <div>
                             <div className={styles.project_title}>{title}</div>
-                            <div className={styles.project_date}>{date}</div>
+                            <div className={styles.project_date}>Started in {date}</div>
                         </div>
                     </div>
                     <div className={styles.project_description}>{description}</div>
