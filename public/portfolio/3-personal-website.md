@@ -1,16 +1,15 @@
 ---
 title: "Personal Website"
-description: "A personal website hosting my resume, portfolio and blog"
-image: "sample-project.jpg"
+description: "A personal website hosting my resume, portfolio and blog. Made to get hands on React/Next.js"
+image: "personal-website.png"
 technologies: ["React/Next.js", "Hostinger", "Azure"]
 github: "https://github.com/baptiste-dubillaud/personal-website"
 created: "October 2024"
 ---
 
-# PersonalHub
+# Personal Website
 
-A personal website hosting my resume, portfolio and blog.
-
+This website aims to host my resume, portfolio and blog
 ## In development
 
 - Portfolio
