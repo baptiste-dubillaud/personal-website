@@ -1,5 +1,5 @@
 .resume_container {
-    min-height: calc(100vh - 203px);
+    min-height: var(--base-container-height);
     background-color: var(--color-background);
     justify-content: center;
     display: flex;

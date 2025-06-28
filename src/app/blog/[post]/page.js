@@ -18,35 +18,37 @@ export default async function Page({ params }) {
 
     return (
         <div className={styles.container}>
-            <Link className={styles.back_to_blog_button} href="/blog">
-                {"< Back to Blog"}
-            </Link>
-            <div className={styles.title}>{data.title}</div>
-            <div className={styles.writing_data}>
-                <div className={styles.author_container}>
-                    By <span className={styles.author_name}>{data.author}</span>
-                </div>
-                <div className={styles.date_data}>
-                    <div>
-                        Written on <span className={styles.date}>{data.created}</span>
+            <div className={styles.post_container}>
+                <Link className={styles.back_to_blog_button} href="/blog">
+                    {"< Back to Blog"}
+                </Link>
+                <div className={styles.title}>{data.title}</div>
+                <div className={styles.writing_data}>
+                    <div className={styles.author_container}>
+                        By <span className={styles.author_name}>{data.author}</span>
                     </div>
-                    {data.updated && (
+                    <div className={styles.date_data}>
                         <div>
-                            Updated on <span className={styles.date}>{data.updated}</span>
+                            Written on <span className={styles.date}>{data.created}</span>
                         </div>
-                    )}
+                        {data.updated && (
+                            <div>
+                                Updated on <span className={styles.date}>{data.updated}</span>
+                            </div>
+                        )}
+                    </div>
                 </div>
+                <div className={styles.image_container}>
+                    <Image
+                        src={data.image}
+                        alt={"Main image of article " + data.title}
+                        width={1000}
+                        height={1000}
+                        className={styles.image}
+                    />
+                </div>
+                <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
             </div>
-            <div className={styles.image_container}>
-                <Image
-                    src={data.image}
-                    alt={"Main image of article " + data.title}
-                    width={1000}
-                    height={1000}
-                    className={styles.image}
-                />
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
         </div>
     );
 }

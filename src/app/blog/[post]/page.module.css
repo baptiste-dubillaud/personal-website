@@ -1,8 +1,6 @@
 .container {
-    min-height: calc(100vh - 263px);
+    min-height: var(--base-container-height);
     background-color: var(--color-background);
-    padding-top: 30px;
-    padding-bottom: 30px;
     overflow-y: auto;
 
     padding-inline: 30%;
@@ -42,16 +40,18 @@
     font-size: 20px;
 }
 
+.post_container {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
 .back_to_blog_button {
-    width: fit-content;
     color: gray;
     font-size: 12px;
     cursor: pointer;
     font-weight: normal;
     
     transition: color 0.2s, font-weight 0.2s;
-
-    margin-bottom: 10px;
 }
 
 .back_to_blog_button:hover {
@@ -63,6 +63,7 @@
     font-size: 44px;
     font-weight: 1000;
     margin-bottom: 20px;
+    
 }
 
 .image_container {
