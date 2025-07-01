@@ -566,7 +566,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                             <h4>Half-Marathon :</h4> Esbjerg, Odense
                                         </li>
                                         <li>
-                                            <h4>Others :</h4> West Coat Run (10kms), Color Fun Esbjerg (5kms)
+                                            <h4>Others :</h4> West Coast Run (10kms), Color Fun Esbjerg (5kms)
                                         </li>
                                     </ul>
                                 </div>
