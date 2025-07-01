@@ -212,6 +212,10 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                         <b>AI Assistant :</b> working for <b>DGFiP</b> (French tax administration) to build an AI platform for public agents.
                                     </li>
                                 </ul>
+
+                                <p>
+                                    Exhibitor at <b>NVIDIA GTC Europe</b> in Paris.
+                                </p>
                             </>
                         }
                         techStack={[
@@ -518,50 +522,51 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                     </a>
                                 </div>
                                 <div>
-                                    I spend a lot of time doing sports. I&lsquo;m currently training for thriatlon after
+                                    I spend a lot of time doing sports.  I&lsquo;m currently training for triathlon after
                                     having completed my second marathon in Biarritz in May 2025. I also like from time
                                     to time to play padel.
                                 </div>
                                 <div className={styles.hobby_description_95}>
-                                    <h4>PR</h4> Marathon: 3h 43m w/ 500 mD+, Half-Marathon: 1h 42m
+                                    <h4>PR</h4> Marathon: 3h 43m w/ 500 mD+, Half-Marathon: 1h 42m, Triathlon (S): 1h 38m
                                 </div>
                                 <div className={styles.hobby_description_95}>
-                                    <h4>2025 - France</h4>
+                                    <h4>2025 - France, Belgium</h4>
                                     <ul>
                                         <li>
-                                            <h4>Marathon</h4> Biarritz - 500 mD+ - 3h44
+                                            <h4>Marathon :</h4> Biarritz - 500 mD+ - 3h44
                                         </li>
                                         <li>
-                                            <h4>Half-Marathon</h4> Nay, Brussels
+                                            <h4>Half-Marathon :</h4> Nay, Brussels
                                         </li>
+                                        <li><h4>Triathlon :</h4> Pau (S) - 1h38</li>
                                     </ul>
                                 </div>
                                 <div className={styles.hobby_description_95}>
-                                    <h4>2024 - Denmark and France</h4>
+                                    <h4>2024 - Denmark, France</h4>
                                     <ul>
                                         <li>
-                                            <h4>Trails</h4> Fur Ultra (25 kms/ 600mD+), Climb of Aubisque (18kms/
+                                            <h4>Trails :</h4> Fur Ultra (25 kms/ 600mD+), Climb of Aubisque (18kms/
                                             1200mD+)
                                         </li>
                                         <li>
-                                            <h4>Marathon</h4> Copenhaguen - 3h53
+                                            <h4>Marathon :</h4> Copenhaguen - 3h53
                                         </li>
                                         <li>
-                                            <h4>Half-Marathon</h4> Esbjerg, Fanø
+                                            <h4>Half-Marathon :</h4> Esbjerg, Fanø
                                         </li>
                                     </ul>
                                 </div>
                                 <div className={styles.hobby_description_95}>
-                                    <h4>2023 - Denmark and France</h4>
+                                    <h4>2023 - Denmark, France</h4>
                                     <ul>
                                         <li>
-                                            <h4>Trails</h4> Climb of Aubisque (18kms/ 1200mD+)
+                                            <h4>Trails :</h4> Climb of Aubisque (18kms/ 1200mD+)
                                         </li>
                                         <li>
-                                            <h4>Half-Marathon</h4> Esbjerg, Odense
+                                            <h4>Half-Marathon :</h4> Esbjerg, Odense
                                         </li>
                                         <li>
-                                            <h4>Others</h4> West Coat Run (10kms), Color Fun Esbjerg (5kms)
+                                            <h4>Others :</h4> West Coat Run (10kms), Color Fun Esbjerg (5kms)
                                         </li>
                                     </ul>
                                 </div>
