@@ -23,9 +23,10 @@ export default async function Page({ params }) {
                     {"< Back to Portfolio"}
                 </Link>
                 <div>
-                    <div className={styles.title}>{data.title}</div>
-                    <div>
-                        Started on <span className={styles.date}>{data.created}</span>
+                <div className={styles.title}>{data.title}</div>
+                        <div>
+                            Started on <span className={styles.date}>{data.created}</span>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.image_container}>
