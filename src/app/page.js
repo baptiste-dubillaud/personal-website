@@ -130,7 +130,7 @@ export default function Home() {
                 {/* Shortcut buttons */}
                 <div className={styles.presentation_buttons_container}>
                     <MainPageButton text="Resume" goTo="resume" />
-                    {/* <MainPageButton text="Portfolio"/> goTo="portfolio"  */}
+                    <MainPageButton text="Portfolio" goTo="portfolio"/>
                     {/* <MainPageButton text="Blog" goTo="blog"  /> */}
                 </div>
             </div>
