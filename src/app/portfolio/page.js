@@ -11,9 +11,9 @@ import matter from "gray-matter";
 
 import { PORTFOLIO_FOLDER_PATH } from "@/utils/linkUtils";
 
-const ProjectContainer = ({ title, description, image, technologies, github, demo, date }) => {
+const ProjectContainer = ({ title, link, description, image, technologies, github, demo, date }) => {
     return (
-        <div className={styles.project_container}>
+        <Link href={link} className={styles.project_container}>
             <div className={styles.project_image_container}>
                 <Image 
                     src={image} 
@@ -54,7 +54,7 @@ const ProjectContainer = ({ title, description, image, technologies, github, dem
                     </div>
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 
@@ -87,6 +87,7 @@ export default async function Portfolio({}) {
                     return (
                         <ProjectContainer
                             key={index}
+                            link={"/portfolio/" + item.project}
                             title={item.data.title}
                             description={item.data.description}
                             image={`/portfolio/images/${item.data.image}`}
