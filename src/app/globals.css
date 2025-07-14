@@ -19,10 +19,12 @@
     --color-orange-opacity-9: rgba(255, 68, 0, 0.9);
 
     --base-container-height: calc(100vh - 203px);
+    --base-container-height: calc(100dvh - 203px);
 }
 
 body {
     margin: 0px;
     padding: 0px;
+    padding-bottom: env(safe-area-inset-bottom);
     
 }
