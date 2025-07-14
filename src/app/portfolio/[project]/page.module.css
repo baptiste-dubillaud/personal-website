@@ -62,7 +62,6 @@
 .title {
     font-size: 44px;
     font-weight: 1000;
-    margin-bottom: 20px;
     
 }
 
@@ -79,20 +78,8 @@
     border-radius: 5px;
 }
 
-.writing_data {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    border-top: 1px solid rgb(151, 151, 151);
-    border-bottom: 1px solid rgb(151, 151, 151);
-    padding-top: 15px;
-    padding-bottom: 15px;
-    font-size: 12px;
-}
-
-.author_container {
-    color: rgb(148, 148, 148);
+.started_date {
+    margin-bottom: 50px;
 }
 
 .author_name {
