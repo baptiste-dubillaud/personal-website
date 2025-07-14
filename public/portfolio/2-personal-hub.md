@@ -2,7 +2,7 @@
 title: "PersonalHub"
 description: "A personal hub giving all daily needed data."
 image: "sample-project.jpg"
-technologies: ["React/Vue.js", "Docker"]
+technologies: ["Vue.js", "Docker"]
 github: "https://github.com/baptiste-dubillaud/personal-dashboard"
 created: "June 2025"
 ---
