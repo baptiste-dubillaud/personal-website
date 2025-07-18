@@ -27,6 +27,12 @@
     cursor: pointer;
 }
 
+@media (max-width: 600px) {
+    .hello_message {
+        white-space: nowrap;
+    }
+}
+
 .hello_message_name {
     color: var(--color-orange);
 }
