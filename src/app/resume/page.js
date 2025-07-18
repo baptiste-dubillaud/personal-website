@@ -112,7 +112,7 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
                         of <b>API</b> and <b>modern web UI</b>.
                     </p>
                     <p>
-                        I'm working for two years now on AI-based softwares, building{" "}
+                        I&apos;m working for two years now on AI-based softwares, building{" "}
                         <b>AI assistants</b> and <b>data processing platforms</b> as a <b>AI Software & Data Engineer</b>.
                     </p>
                 </>
