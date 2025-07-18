@@ -75,14 +75,14 @@
     justify-content: center;
     margin-left: -3px;
     margin-top: 0px;
-    row-gap: 10px;
-    gap: 15px;
+    margin-bottom: 0px;
+    gap: 0px 15px;
 }
 
 .presentation_data_name_text {
     font-family: var(--font-serif);
-    font-size: 70px;
-    line-height: 60px;
+    font-size: clamp(45px, 7vw, 70px);
+
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: -0.02em;
