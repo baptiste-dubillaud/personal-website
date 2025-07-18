@@ -22,9 +22,9 @@ export default async function Page({ params }) {
                 <Link className={styles.back_to_blog_button} href="/portfolio">
                     {"< Back to Portfolio"}
                 </Link>
-                <div className={styles.writing_data}>
+                <div>
                     <div className={styles.title}>{data.title}</div>
-                    <div className={styles.started_date}>
+                    <div>
                         Started on <span className={styles.date}>{data.created}</span>
                     </div>
                 </div>
@@ -36,6 +36,11 @@ export default async function Page({ params }) {
                         height={1000}
                         className={styles.image}
                     />
+                </div>
+                <div className={styles.github_link_container}>
+                    <Link href={data.github} className={styles.github_link} target="_blank">
+                        View on GitHub
+                    </Link>
                 </div>
                 <div dangerouslySetInnerHTML={{ __html: md().render(content) }} />
             </div>
