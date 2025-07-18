@@ -22,9 +22,9 @@ export default async function Page({ params }) {
                 <Link className={styles.back_to_blog_button} href="/portfolio">
                     {"< Back to Portfolio"}
                 </Link>
-                <div className={styles.writing_data}>
+                <div>
                     <div className={styles.title}>{data.title}</div>
-                    <div className={styles.started_date}>
+                    <div>
                         Started on <span className={styles.date}>{data.created}</span>
                     </div>
                 </div>

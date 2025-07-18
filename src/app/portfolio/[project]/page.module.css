@@ -62,7 +62,6 @@
 .title {
     font-size: 44px;
     font-weight: 1000;
-    
 }
 
 .image_container {
@@ -80,8 +79,25 @@
     border-radius: 5px;
 }
 
-.started_date {
-    margin-bottom: 50px;
+.github_link_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github_link {
+    padding: 10px 50px;
+    background-color: var(--color-orange);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.github_link:hover {
+    background-color: var(--color-orange-dark);
 }
 
 .author_name {
