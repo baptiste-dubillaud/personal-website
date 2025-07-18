@@ -32,7 +32,7 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
         <div className={styles.presentation_container}>
             {/* Presentation data */}
             <div className={styles.presentation_name}>Baptiste Dubillaud</div>
-            <div className={styles.presentation_job}>Software Engineer</div>
+            <div className={styles.presentation_job}>AI Software & Data Engineer</div>
             <div className={styles.presentation_desc}>
                 I build reliable data and user-oriented industrial softwares.
             </div>
@@ -110,6 +110,10 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
                         industry and the aerospace industry. I worked on various topics such as{" "}
                         <b>parallel computing</b>, <b>real-time data processing</b>, <b>data visualization</b>, building
                         of <b>API</b> and <b>modern web UI</b>.
+                    </p>
+                    <p>
+                        I'm working for two years now on AI-based softwares, building{" "}
+                        <b>AI assistants</b> and <b>data processing platforms</b> as a <b>AI Software & Data Engineer</b>.
                     </p>
                 </>
             }
