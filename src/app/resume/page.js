@@ -503,7 +503,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                         title={"Sport"}
                         logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
                         DescriptionComponent={
-                            <div>
+                            <>
                                 <div
                                     style={{
                                         display: "flex",
@@ -574,8 +574,8 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                         </li>
                                     </ul>
                                 </div>
-                                <div className={styles.hobby_description_95}>And many mores before...</div>
-                            </div>
+                                <div className={styles.hobby_description_95} style={{marginBottom: 10}}>And many mores before...</div>
+                            </>
                         }
                     />
                     <HobbyComponent
@@ -594,7 +594,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                         title={"Video Games"}
                         logo={<VideoGame size={40} secondaryColor={"rgb(255, 68, 0)"} />}
                         DescriptionComponent={
-                            <div>
+                            <>
                                 <p>
                                     I started to be interested in IT thanks to competitive online video games (Counter
                                     Strike). I still play, less than before, to singleplayer games.
@@ -603,7 +603,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                     My favorite video games: <b>Urban Terror</b>, <b>Battlefield 3</b>,{" "}
                                     <b>Cyberpunk 2077</b>, <b>Age of Empires II</b>, <b>Mass Effect</b>.
                                 </p>
-                            </div>
+                            </>
                         }
                     />
                 </div>

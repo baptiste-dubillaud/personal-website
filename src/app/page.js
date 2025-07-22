@@ -98,7 +98,7 @@ export default function Home() {
                                 </div>
                                 <div className={styles.presentation_data_spec_container}>
                                     <Locationicon size={22} />
-                                    <span className={styles.presentation_data_specs_text}>Paris, Bordeaux, Pau</span>
+                                    <span className={styles.presentation_data_specs_text}>Pau</span>
                                 </div>
                             </div>
                             {/* Profile links */}
