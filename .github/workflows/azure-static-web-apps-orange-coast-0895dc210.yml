@@ -1,4 +1,4 @@
-name: DubillaudB personal website UI deployement
+name: Deployment workflow - NA
 
 on:
     push:
