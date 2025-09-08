@@ -204,18 +204,31 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             <>
                                 <p>
                                     I am currently working as a <b>Senior Software Engineer</b> at{" "}
-                                    <b>ThinkDeep AI</b>, a startup specialized in the development of{" "}
-                                    <b>AI-based softwares</b>.
+                                    <b>ThinkDeep AI</b>, a startup specialized in developing{" "}
+                                    <b>AI-powered software solutions</b>.
                                 </p>
 
                                 <ul>
                                     <li>
                                         <b>DeepBrain :</b> platform extracting the knowledge from documents & data using online and on-premise LLM.
+                                        <ul>
+                                            <li>Designed and implemented a group feature, integrated with <b>Azure Entra ID</b>, enabling secure knowledge and assistants sharing.</li>
+                                            <li>Implemented <b>Azure Entra ID</b>.</li>
+                                            <li>Improved the user experience with new UI components and better performance.</li>
+                                        </ul>
                                     </li>
                                     <li>
                                         <b>AI Assistant :</b> working for <b>DGFiP</b> (French tax administration) to build an AI platform for public agents.
+                                        <ul>
+                                            <li>Development of a administration features (users, prompts, alerts).</li>
+                                            <li>Improved overall project code quality by refactoring and formalization of practices.</li>
+                                        </ul>
                                     </li>
                                 </ul>
+
+                                <p>
+                                    I also mentor and help younger developers with best practices and technical guidance.
+                                </p>
 
                                 <p>
                                     Exhibitor at <b>NVIDIA GTC Europe</b> in Paris.
@@ -325,7 +338,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             ["Gerrit", "SonarQube", "Jenkins"]
                         ]}
                     />
-                    <TimeLineComponent
+                    {/* <TimeLineComponent
                         dateFrom={"MAY 2019"}
                         dateTo={"AUG. 2019"}
                         title={"Software Developer Internship"}
@@ -354,8 +367,8 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             ["Python", "Fortran"], 
                             ["Bash", "VBA"]
                         ]}
-                    />
-                    <TimeLineComponent
+                    /> */}
+                    {/* <TimeLineComponent
                         dateFrom={"MAY 2018"}
                         dateTo={"AUG. 2018"}
                         title={"Software Developer Internship"}
@@ -368,8 +381,8 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             </p>
                         }
                         techStack={[["Java", "Swing/AWT", "Git", "Gerrit"]]}
-                    />
-                    <TimeLineComponent
+                    /> */}
+                    {/* <TimeLineComponent
                         dateFrom={"JUN. 2018"}
                         dateTo={"AUG. 2019"}
                         title={"Salesman - Student Position"}
@@ -381,7 +394,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                 thursday afternoon saturdays during the school year.
                             </p>
                         }
-                    />
+                    /> */}
                 </div>
             }
         />
@@ -527,11 +540,11 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                 </div>
                                 <div>
                                     I spend a lot of time doing sports.  I&lsquo;m currently training for triathlon after
-                                    having completed my second marathon in Biarritz in May 2025. I also like from time
-                                    to time to play padel.
+                                    having completed my second marathon in Biarritz in May 2025 and my first triathlon in June 2025. I also like from time
+                                    to time to play padel, or hike.
                                 </div>
                                 <div className={styles.hobby_description_95}>
-                                    <h4>PR</h4> Marathon: 3h 43m w/ 500 mD+, Half-Marathon: 1h 42m, Triathlon (S): 1h 38m
+                                    <h4>PR</h4> Marathon: 3h 44m w/ 500 mD+, Half-Marathon: 1h 42m, Triathlon (S): 1h 38m
                                 </div>
                                 <div className={styles.hobby_description_95}>
                                     <h4>2025 - France, Belgium</h4>
@@ -583,11 +596,17 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                         logo={<BookShelfIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
                         onRight={true}
                         DescriptionComponent={
-                            <p>
-                                I love to read books even if I don&apos;t read as much as I would like. From &apos;
-                                <b>A song of ice and fire</b>&apos;, to &apos;<b>The Grand Chessboard</b>&apos;, I read
-                                fictions or articles and books on a large variety of topics.
-                            </p>
+                            <>
+                                <p>
+                                    I love to read books even if I don&apos;t read as much as I would like. From &apos;
+                                    <b>A song of ice and fire</b>&apos;, to &apos;<b>The Grand Chessboard</b>&apos;, I read
+                                    fictions or articles and books on a large variety of topics.
+                                </p>
+                                <p>
+                                    One of my favorite book is <b>Why we sleep?</b> by <b>Matthew Walker</b>, an
+                                    amazing book to understand why we sleep and how it works.
+                                </p>
+                            </>
                         }
                     />
                     <HobbyComponent
