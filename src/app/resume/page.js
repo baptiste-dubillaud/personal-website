@@ -220,7 +220,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                     <li>
                                         <b>AI Assistant :</b> working for <b>DGFiP</b> (French tax administration) to build an AI platform for public agents.
                                         <ul>
-                                            <li>Development of a administration features (users, prompts, alerts).</li>
+                                            <li>Development of administration features (users, prompts, alerts).</li>
                                             <li>Improved overall project code quality by refactoring and formalization of practices.</li>
                                         </ul>
                                     </li>
