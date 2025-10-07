@@ -213,7 +213,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                                         <b>DeepBrain :</b> platform extracting the knowledge from documents & data using online and on-premise LLM.
                                         <ul>
                                             <li>Designed and implemented a group feature, integrated with <b>Azure Entra ID</b>, enabling secure knowledge and assistants sharing.</li>
-                                            <li>Implemented <b>Azure Entra ID</b>.</li>
+                                            <li>Added <b>LLM tools</b> and <b>MCP servers</b>.</li>
                                             <li>Improved the user experience with new UI components and better performance.</li>
                                         </ul>
                                     </li>
