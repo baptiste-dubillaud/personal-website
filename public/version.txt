@@ -1,0 +1,2 @@
+1.0 - Release: 01/08/2025
+1.1 - Added iOS support: 28/11/2025
