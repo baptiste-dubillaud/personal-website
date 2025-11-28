@@ -10,6 +10,10 @@ import SportIcon from "@/components/common/icons/misc/SportIcon";
 import BookShelfIcon from "@/components/common/icons/misc/BookIcon";
 import VideoGame from "@/components/common/icons/misc/VideoGame";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
+import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
+import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
+import GithubIcon from "@/components/common/icons/apps/GithubIcon";
+import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
@@ -35,6 +39,15 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
             <div className={styles.presentation_job}>AI Software & Data Engineer</div>
             <div className={styles.presentation_desc}>
                 I build reliable data and user-oriented industrial softwares.
+            </div>
+
+            <div className={styles.presentation_buttons_container}>
+                <NavigationButton link={LINKEDIN_PROFILE} alt="LinkedIn profile">
+                    <LinkedInIcon size={30} />
+                </NavigationButton>
+                <NavigationButton link={GITHUB_PROFILE} alt="Github profile">
+                    <GithubIcon size={30} />
+                </NavigationButton>
             </div>
 
             {/* Menu / Showed only if enough space (isTwoColumnSetup = false) */}

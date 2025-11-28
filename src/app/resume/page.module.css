@@ -44,6 +44,12 @@
     max-width: 300px;
 }
 
+.presentation_buttons_container {
+    display: flex;
+    gap: 5px;
+    margin-top: 15px;
+}
+
 .presentation_menu {
     position: relative;
     display: flex;

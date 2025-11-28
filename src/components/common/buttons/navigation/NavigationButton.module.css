@@ -1,0 +1,8 @@
+.tab_link_container {
+    scale: 1.0;
+    transition: scale 0.1s ease;
+}
+
+.tab_link_container:hover {
+    scale: 1.1;
+}

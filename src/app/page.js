@@ -14,18 +14,9 @@ import Locationicon from "@/components/common/icons/misc/LocationIcon";
 
 import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
-
-const NewTabLink = ({ children, link, alt }) => {
-    
-    return (
-        <a href={link} target="_blank" alt={alt} className={styles.tab_link_container}>
-            {children}
-        </a>
-    );
-};
+import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
 
 const MainPageButton = ({ goTo, text }) => {
-
     const router = useRouter();
 
     const handleClick = () => {
@@ -34,7 +25,11 @@ const MainPageButton = ({ goTo, text }) => {
         }
     };
 
-    return <div className={styles.main_button_container} onClick={handleClick}>{text}</div>;
+    return (
+        <div className={styles.main_button_container} onClick={handleClick}>
+            {text}
+        </div>
+    );
 };
 
 export default function Home() {
@@ -103,26 +98,28 @@ export default function Home() {
                             </div>
                             {/* Profile links */}
                             <div className={styles.presentation_data_links_container}>
-                                <NewTabLink link={LINKEDIN_PROFILE} alt="LinkedIn profile">
+                                <NavigationButton link={LINKEDIN_PROFILE} alt="LinkedIn profile">
                                     <LinkedInIcon size={30} />
-                                </NewTabLink>
-                                <NewTabLink link={GITHUB_PROFILE} alt="Github profile">
+                                </NavigationButton>
+                                <NavigationButton link={GITHUB_PROFILE} alt="Github profile">
                                     <GithubIcon size={30} />
-                                </NewTabLink>
-                                {/* <NewTabLink link={MEDIUM_PROFILE} alt="Medium profile">
+                                </NavigationButton>
+                                {/* <NavigationButton link={MEDIUM_PROFILE} alt="Medium profile">
                                     <MediumIcon size={30}/>
-                                </NewTabLink> */}
+                                </NavigationButton> */}
                             </div>
                         </div>
                         {/* Description sentence */}
                         <div className={styles.presentation_data_sentence}>
                             <p>
                                 5 years of experience in software and data engineering, with a passion for building
-                                innovative solutions and a strong foundation in computer science. Always eager to learn and explore new technologies, I am currently focused on
-                                expanding my expertise in data engineering and cloud computing.
+                                innovative solutions and a strong foundation in computer science. Always eager to learn
+                                and explore new technologies, I am currently focused on expanding my expertise in data
+                                engineering and cloud computing.
                             </p>
                             <p>
-                                Don&apos;t hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!
+                                Don&apos;t hesitate to contact me if you want to discuss about a project, a
+                                collaboration or just to say hi!
                             </p>
                         </div>
                     </div>
