@@ -112,8 +112,8 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
                         of <b>API</b> and <b>modern web UI</b>.
                     </p>
                     <p>
-                        I&apos;m working for two years now on AI-based softwares, building{" "}
-                        <b>AI assistants</b> and <b>data processing platforms</b> as a <b>AI Software & Data Engineer</b>.
+                        I&apos;m working since 2023 on AI-based softwares, building <b>AI assistants</b> and{" "}
+                        <b>data processing platforms</b> as a <b>AI Software & Data Engineer</b>.
                     </p>
                 </>
             }
@@ -171,11 +171,13 @@ const TimeLineComponent = ({
                     >
                         {techStack.map((item, index) => (
                             <div key={index} className={styles.timeline_item_tech_stack_item_container}>
-                                {item && item.length > 0 && item.map((tech, techIndex) => (
-                                    <span key={techIndex} className={styles.timeline_item_tech_stack_item}>
-                                        {tech}
-                                    </span>
-                                ))}
+                                {item &&
+                                    item.length > 0 &&
+                                    item.map((tech, techIndex) => (
+                                        <span key={techIndex} className={styles.timeline_item_tech_stack_item}>
+                                            {tech}
+                                        </span>
+                                    ))}
                                 {index < techStack.length - 1 && " // "}
                             </div>
                         ))}
@@ -203,31 +205,44 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                         DescriptionComponent={
                             <>
                                 <p>
-                                    I am currently working as a <b>Senior Software Engineer</b> at{" "}
-                                    <b>ThinkDeep AI</b>, a startup specialized in developing{" "}
-                                    <b>AI-powered software solutions</b>.
+                                    I am currently working as a <b>Senior Software Engineer</b> at <b>ThinkDeep AI</b>,
+                                    a startup specialized in developing <b>AI-powered software solutions</b>.
                                 </p>
 
                                 <ul>
                                     <li>
-                                        <b>DeepBrain :</b> platform extracting the knowledge from documents & data using online and on-premise LLM.
+                                        <b>DeepBrain :</b> platform extracting the knowledge from documents & data using
+                                        online and on-premise LLM.
                                         <ul>
-                                            <li>Designed and implemented a group feature, integrated with <b>Azure Entra ID</b>, enabling secure knowledge and assistants sharing.</li>
-                                            <li>Added <b>LLM tools</b> and <b>MCP servers</b>.</li>
-                                            <li>Improved the user experience with new UI components and better performance.</li>
+                                            <li>
+                                                Designed and implemented a group feature, integrated with{" "}
+                                                <b>Azure Entra ID</b>, enabling secure knowledge and assistants sharing.
+                                            </li>
+                                            <li>
+                                                Added <b>LLM tools</b> and <b>MCP servers</b>.
+                                            </li>
+                                            <li>
+                                                Improved the user experience with new UI components and better
+                                                performance.
+                                            </li>
                                         </ul>
                                     </li>
                                     <li>
-                                        <b>AI Assistant :</b> working for <b>DGFiP</b> (French tax administration) to build an AI platform for public agents.
+                                        <b>AI Assistant :</b> working for <b>DGFiP</b> (French tax administration) to
+                                        build an AI platform for public agents.
                                         <ul>
                                             <li>Development of administration features (users, prompts, alerts).</li>
-                                            <li>Improved overall project code quality by refactoring and formalization of practices.</li>
+                                            <li>
+                                                Improved overall project code quality by refactoring and formalization
+                                                of practices.
+                                            </li>
                                         </ul>
                                     </li>
                                 </ul>
 
                                 <p>
-                                    I also mentor and help younger developers with best practices and technical guidance.
+                                    I also mentor and help younger developers with best practices and technical
+                                    guidance.
                                 </p>
 
                                 <p>
@@ -240,7 +255,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             ["Python", "FastAPI", "SQLAlchemy"],
                             ["PostgreSQL", "pg-vector"],
                             ["Docker", "Alembic", "Poetry"],
-                            ["Azure Entra ID"]
+                            ["Azure Entra ID"],
                         ]}
                     />
                     <TimeLineComponent
@@ -252,8 +267,8 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                         DescriptionComponent={
                             <>
                                 <p>
-                                    I worked as a <b>Tech-Lead</b> and <b>Software Engineer</b> at
-                                    TotalEnergies Denmark, for the <b>Digital Laboratory (DLAB)</b> team, creating{" "}
+                                    I worked as a <b>Tech-Lead</b> and <b>Software Engineer</b> at TotalEnergies
+                                    Denmark, for the <b>Digital Laboratory (DLAB)</b> team, creating{" "}
                                     <b>PoC softwares</b> for the Production, HSE, Logistics, and C&P departments.{" "}
                                 </p>
                                 <p>
@@ -275,13 +290,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             </>
                         }
                         techStack={[
-                            ["React", "Next.js"], 
-                            ["Python", "FastAPI", "Pandas", "Numpy"], 
+                            ["React", "Next.js"],
+                            ["Python", "FastAPI", "Pandas", "Numpy"],
                             ["PostgreSQL"],
                             ["SAP", "PI-Vision"],
-                            ["Windows Server", "Azure"]
+                            ["Windows Server", "Azure"],
                         ]}
-                            
                     />
                     <TimeLineComponent
                         dateFrom={"OCT. 2021"}
@@ -309,7 +323,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             ["Python", "Squish"],
                             ["C++", "Qt"],
                             ["RedHat", "SNMP"],
-                            ["Redmine", "Jenkins", "SonarQube"]
+                            ["Redmine", "Jenkins", "SonarQube"],
                         ]}
                     />
                     <TimeLineComponent
@@ -335,7 +349,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
                             ["Java", "JavaFX", "Swing/AWT"],
                             ["C++", "C", "Fortran"],
                             ["Angular", "NodeJS"],
-                            ["Gerrit", "SonarQube", "Jenkins"]
+                            ["Gerrit", "SonarQube", "Jenkins"],
                         ]}
                     />
                     {/* <TimeLineComponent
@@ -429,7 +443,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
                             ["Java", "Spark"],
                             ["Python", "Pandas", "NumPy", "OpenCV"],
                             ["C", "C++", "Fortran"],
-                            ["HTML", "CSS", "JS", "React-Native"]
+                            ["HTML", "CSS", "JS", "React-Native"],
                         ]}
                     />
                     <TimeLineComponent
@@ -451,7 +465,10 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
                                 </p>
                             </>
                         }
-                        techStack={[["CUDA", "MPI", "OpenMP", "OpenCV"], ["C", "C++", "Fortran"]]}
+                        techStack={[
+                            ["CUDA", "MPI", "OpenMP", "OpenCV"],
+                            ["C", "C++", "Fortran"],
+                        ]}
                     />
                     <TimeLineComponent
                         title="Preparatory class for engineering schools"
@@ -539,12 +556,13 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                     </a>
                                 </div>
                                 <div>
-                                    I spend a lot of time doing sports.  I&lsquo;m currently training for triathlon after
-                                    having completed my second marathon in Biarritz in May 2025 and my first triathlon in June 2025. I also like from time
-                                    to time to play padel, or hike.
+                                    I spend a lot of time doing sports. I&lsquo;m currently training for triathlon after
+                                    having completed my second marathon in Biarritz in May 2025 and my first triathlon
+                                    in June 2025. I also like from time to time to play padel, or hike.
                                 </div>
                                 <div className={styles.hobby_description_95}>
-                                    <h4>PR</h4> Marathon: 3h 44m w/ 500 mD+, Half-Marathon: 1h 42m, Triathlon (S): 1h 38m
+                                    <h4>PR</h4> Marathon: 3h 44m w/ 500 mD+, Half-Marathon: 1h 42m, Triathlon (S): 1h
+                                    38m
                                 </div>
                                 <div className={styles.hobby_description_95}>
                                     <h4>2025 - France, Belgium</h4>
@@ -555,7 +573,9 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                         <li>
                                             <h4>Half-Marathon :</h4> Nay, Brussels
                                         </li>
-                                        <li><h4>Triathlon :</h4> Pau (S) - 1h38</li>
+                                        <li>
+                                            <h4>Triathlon :</h4> Pau (S) - 1h38
+                                        </li>
                                     </ul>
                                 </div>
                                 <div className={styles.hobby_description_95}>
@@ -587,7 +607,9 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                                         </li>
                                     </ul>
                                 </div>
-                                <div className={styles.hobby_description_95} style={{marginBottom: 10}}>And many mores before...</div>
+                                <div className={styles.hobby_description_95} style={{ marginBottom: 10 }}>
+                                    And many mores before...
+                                </div>
                             </>
                         }
                     />
@@ -599,12 +621,12 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
                             <>
                                 <p>
                                     I love to read books even if I don&apos;t read as much as I would like. From &apos;
-                                    <b>A song of ice and fire</b>&apos;, to &apos;<b>The Grand Chessboard</b>&apos;, I read
-                                    fictions or articles and books on a large variety of topics.
+                                    <b>A song of ice and fire</b>&apos;, to &apos;<b>The Grand Chessboard</b>&apos;, I
+                                    read fictions or articles and books on a large variety of topics.
                                 </p>
                                 <p>
-                                    One of my favorite book is <b>Why we sleep?</b> by <b>Matthew Walker</b>, an
-                                    amazing book to understand why we sleep and how it works.
+                                    One of my favorite book is <b>Why we sleep?</b> by <b>Matthew Walker</b>, an amazing
+                                    book to understand why we sleep and how it works.
                                 </p>
                             </>
                         }
