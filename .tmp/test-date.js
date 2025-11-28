@@ -1,58 +1,49 @@
 function parseToDate(date) {
-    // If already a Date instance
     if (date instanceof Date) return date;
-
-    // If it's a number (timestamp)
     if (typeof date === "number") return new Date(date);
-
     if (typeof date !== "string") return new Date(NaN);
-
-    // Trim whitespace
     const s = date.trim();
-
-    // If looks like an ISO datetime with T or timezone, let Date parse it
     if (s.includes("T") || s.endsWith("Z") || s.includes("+")) {
         return new Date(s);
     }
-
-    // Split on common separators
     const parts = s.split(/[-\/_\.]/);
-
-    // Expecting 3 parts: either YYYY-MM-DD or MM-DD-YYYY
     if (parts.length === 3) {
         let year, month, day;
-
-        // If first part has length 4, assume YYYY-MM-DD
         if (parts[0].length === 4) {
             year = parseInt(parts[0], 10);
             month = parseInt(parts[1], 10);
             day = parseInt(parts[2], 10);
         } else {
-            // Assume MM-DD-YYYY (common in this project)
             month = parseInt(parts[0], 10);
             day = parseInt(parts[1], 10);
             year = parseInt(parts[2], 10);
         }
-
-        // Validate numbers
         if ([year, month, day].some((n) => Number.isNaN(n))) return new Date(NaN);
-
-        // Month in JS Date is 0-based
         return new Date(year, month - 1, day);
     }
-
-    // Fallback to Date parsing
     return new Date(s);
 }
 
-export function getNbYears(date) {
+function getNbYears(date) {
     const currDate = new Date();
     const birthdayDate = parseToDate(date);
-
-    // If invalid date, return NaN so callers can handle it (was previously NaN on iOS)
     if (Number.isNaN(birthdayDate.getTime())) return NaN;
-
     const age = (currDate - birthdayDate) / (1000 * 60 * 60 * 24 * 365.25);
-
     return Math.floor(age);
+}
+
+const tests = [
+    "12-29-1998",
+    "1998-12-29",
+    "09-01-2020",
+    "2020-09-01",
+    "1998/12/29",
+    "1998.12.29",
+    "1998-12-29T00:00:00Z",
+    new Date(1998, 11, 29),
+    915148800000, // timestamp for 1999-01-01-ish
+];
+
+for (const t of tests) {
+    console.log(String(t).padEnd(30), "->", getNbYears(t));
 }
