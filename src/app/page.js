@@ -16,7 +16,6 @@ import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 
 const NewTabLink = ({ children, link, alt }) => {
-    
     return (
         <a href={link} target="_blank" alt={alt} className={styles.tab_link_container}>
             {children}
@@ -25,7 +24,6 @@ const NewTabLink = ({ children, link, alt }) => {
 };
 
 const MainPageButton = ({ goTo, text }) => {
-
     const router = useRouter();
 
     const handleClick = () => {
@@ -34,7 +32,11 @@ const MainPageButton = ({ goTo, text }) => {
         }
     };
 
-    return <div className={styles.main_button_container} onClick={handleClick}>{text}</div>;
+    return (
+        <div className={styles.main_button_container} onClick={handleClick}>
+            {text}
+        </div>
+    );
 };
 
 export default function Home() {
@@ -98,7 +100,7 @@ export default function Home() {
                                 </div>
                                 <div className={styles.presentation_data_spec_container}>
                                     <Locationicon size={22} />
-                                    <span className={styles.presentation_data_specs_text}>Paris, Bordeaux, Pau</span>
+                                    <span className={styles.presentation_data_specs_text}>Pau</span>
                                 </div>
                             </div>
                             {/* Profile links */}
@@ -118,11 +120,13 @@ export default function Home() {
                         <div className={styles.presentation_data_sentence}>
                             <p>
                                 5 years of experience in software and data engineering, with a passion for building
-                                innovative solutions and a strong foundation in computer science. Always eager to learn and explore new technologies, I am currently focused on
-                                expanding my expertise in data engineering and cloud computing.
+                                innovative solutions and a strong foundation in computer science. Always eager to learn
+                                and explore new technologies, I am currently focused on expanding my expertise in data
+                                engineering and cloud computing.
                             </p>
                             <p>
-                                Don&apos;t hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!
+                                Don&apos;t hesitate to contact me if you want to discuss about a project, a
+                                collaboration or just to say hi!
                             </p>
                         </div>
                     </div>
@@ -130,7 +134,7 @@ export default function Home() {
                 {/* Shortcut buttons */}
                 <div className={styles.presentation_buttons_container}>
                     <MainPageButton text="Resume" goTo="resume" />
-                    <MainPageButton text="Portfolio" goTo="portfolio"/>
+                    <MainPageButton text="Portfolio" goTo="portfolio" />
                     {/* <MainPageButton text="Blog" goTo="blog"  /> */}
                 </div>
             </div>
