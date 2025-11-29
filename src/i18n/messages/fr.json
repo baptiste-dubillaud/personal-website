@@ -34,14 +34,140 @@
                 "title": "Ingénieur Logiciel IA & Data",
                 "intro": "Je construis des logiciels orientés données et utilisateurs."
             },
-            "about": {
-                "paragraphs": [
-                    "Je suis un ingénieur logiciel français de {age} ans avec plus de <bold>{experience} ans d'expérience</bold> dans le domaine. Comme beaucoup de garçons de ma génération, j'ai découvert l'informatique grâce aux jeux vidéo et aux premiers forums/canaux IRC sur divers sujets que je fréquentais. De mon premier serveur Minecraft hébergé sur l'ordinateur de mes parents à mon premier script pour automatiser une tâche ennuyeuse, j'ai toujours été passionné par la technologie, en particulier l'informatique.",
-                    "J'ai commencé mon parcours dans la programmation au lycée avec une carte <bold>EasyPIC</bold> et un <bold>Raspberry PI Uno</bold>. Grâce à mes professeurs, j'ai découvert les bases de la programmation et de l'électronique, ce qui m'a poussé à intégrer des études d'ingénieur. J'y ai appris les bases de la programmation avec <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold> et le <bold>Web</bold>, mais surtout les <bold>principes de l'ingénierie logicielle</bold> et comment travailler en équipe. J'ai terminé mes études avec une spécialisation en <bold>Calcul Haute Performance et Traitement des Données</bold>.",
-                    "Ayant toujours été intéressé par l'industrie, j'ai commencé ma carrière dans les secteurs pétrolier et gazier ainsi que dans l'aérospatiale. J'ai travaillé sur divers sujets tels que le <bold>calcul parallèle</bold>, le <bold>traitement de données en temps réel</bold>, la <bold>visualisation de données</bold>, la construction <bold>d'API</bold> et <bold>d'interfaces web modernes.</bold>",
-                    "Depuis 2023, je travaille sur des logiciels basés sur l'IA, en développant des <bold>assistants IA</bold> et des <bold>plateformes de traitement de données</bold> en tant qu'Ingénieur <bold>Logiciel IA & Data</bold>."
-                ]
-            }
+            "about": [
+                "Je suis un ingénieur logiciel français de {age} ans avec plus de <bold>{experience} ans d'expérience</bold> dans le domaine. Comme beaucoup de garçons de ma génération, j'ai découvert l'informatique grâce aux jeux vidéo et aux premiers forums/canaux IRC sur divers sujets que je fréquentais. De mon premier serveur Minecraft hébergé sur l'ordinateur de mes parents à mon premier script pour automatiser une tâche ennuyeuse, j'ai toujours été passionné par la technologie, en particulier l'informatique.",
+                "J'ai commencé mon parcours dans la programmation au lycée avec une carte <bold>EasyPIC</bold> et un <bold>Raspberry PI Uno</bold>. Grâce à mes professeurs, j'ai découvert les bases de la programmation et de l'électronique, ce qui m'a poussé à intégrer des études d'ingénieur. J'y ai appris les bases de la programmation avec <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold> et le <bold>Web</bold>, mais surtout les <bold>principes de l'ingénierie logicielle</bold> et comment travailler en équipe. J'ai terminé mes études avec une spécialisation en <bold>Calcul Haute Performance et Traitement des Données</bold>.",
+                "Ayant toujours été intéressé par l'industrie, j'ai commencé ma carrière dans les secteurs pétrolier et gazier ainsi que dans l'aérospatiale. J'ai travaillé sur divers sujets tels que le <bold>calcul parallèle</bold>, le <bold>traitement de données en temps réel</bold>, la <bold>visualisation de données</bold>, la construction <bold>d'API</bold> et <bold>d'interfaces web modernes.</bold>",
+                "Depuis 2023, je travaille sur des logiciels basés sur l'IA, en développant des <bold>assistants IA</bold> et des <bold>plateformes de traitement de données</bold> en tant qu'Ingénieur <bold>Logiciel IA & Data</bold>."
+            ],
+            "experiences": [
+                {
+                    "start_date": "AVR. 2025",
+                    "end_date": "PRÉSENT",
+                    "title": "Ingénieur Logiciel Senior",
+                    "company": "ThinkDeep AI",
+                    "location": "Bordeaux, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Je travaille actuellement en tant qu<bold>Ingénieur Logiciel Senior</bold> chez <bold>ThinkDeep AI</bold>, une startup spécialisée dans le développement de <bold>solutions logicielles basées sur l'IA</bold>."
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<bold>DeepBrain</bold> : plateforme d'extraction de connaissances à partir de documents et données utilisant des LLM hébergés en local ou en ligne.",
+                                    "subitems": [
+                                        "Conception et implémentation d'une fonctionnalité de groupes, intégrée avec <bold>Azure Entra ID</bold>, permettant le partage sécurisé de connaissances et d'assistants.",
+                                        "Amélioration de l'expérience utilisateur avec de nouveaux composants UI et de meilleures performances."
+                                    ]
+                                },
+                                {
+                                    "content": "<bold>Assistant IA</bold> : développement pour la <bold>DGFiP</bold> (Direction Générale des Finances Publiques) d'une plateforme IA pour les agents publics.",
+                                    "subitems": [
+                                        "Développement de fonctionnalités d'administration (utilisateurs, prompts, alertes).",
+                                        "Amélioration de la qualité globale du code du projet par refactorisation et formalisation des pratiques."
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Je forme et accompagne également les développeurs juniors avec les bonnes pratiques et conseils techniques."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Exposant à <bold>NVIDIA GTC Europe</bold> à Paris."
+                        }
+                    ],
+                    "stack": [
+                        ["React", "Next.js", "Vue.js"],
+                        ["Python", "FastAPI", "SQLAlchemy, Alembic"],
+                        ["PostgreSQL"], 
+                        ["Docker", "Poetry"],
+                        ["Azure"]
+                    ]
+                },
+                {
+                    "start_date": "MARS 2023",
+                    "end_date": "MARS 2025",
+                    "title": "Tech Lead & Ingénieur Full-Stack",
+                    "company": "TotalEnergies Denmark",
+                    "location": "Esbjerg, Danemark",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "J'ai travaillé en tant que <bold>Tech-Lead</bold> et <bold>Ingénieur Logiciel</bold> chez TotalEnergies Danemark, pour l'équipe du <bold>Laboratoire Digital (DLAB)</bold>, créant des <bold>logiciels PoC</bold> pour les départements Production, HSE, Logistique et C&P."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "J'ai structuré l'environnement de développement pour accompagner la croissance de l'équipe (5 Data-Scientists, 2 Ingénieurs Logiciel). J'ai géré les ressources Azure et les serveurs Windows."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "J'ai conçu et développé des applications impliquant <bold>l'IA Générative</bold>, des interactions utilisateur complexes (chat, recherches, animations), le <bold>traitement de données</bold>, la <bold>surveillance de santé et d'utilisation</bold>, et l'intégration de données <bold>SAP</bold>."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "<bold>Deux applications dans le Top 10 des prix TotalEnergies \"E&P Best Innovators\".</bold>"
+                        }
+                    ],
+                    "stack": [
+                        ["React", "Next.js"],
+                        ["Python", "FastAPI", "Pandas", "Numpy"],
+                        ["PostgreSQL"],
+                        ["SAP", "PI-Vision"],
+                        ["Windows Server", "Azure"]
+                    ]
+                },
+                {
+                    "start_date": "OCT. 2021",
+                    "end_date": "FÉV. 2023",
+                    "title": "Ingénieur Logiciel",
+                    "company": "Airbus Defense & Space",
+                    "location": "Toulouse, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Pour le compte de <bold>Viveris Technologies</bold>, j'ai fait partie d'une équipe de <bold>5 ingénieurs</bold> en charge du développement d'un logiciel gérant les <bold>communications sol-satellite</bold>, incluant le <bold>chiffrement</bold> et le <bold>déchiffrement</bold>."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "J'ai développé de nouvelles fonctionnalités et sous-applications pour ce projet, incluant un <bold>nouveau framework de test</bold> pour les tests unitaires et d'intégration, respectant des exigences strictes de qualité et de couverture de code."
+                        }
+                    ],
+                    "stack": [
+                        ["Java", "JavaFX", "Swing", "Netty"],
+                        ["Python", "Squish"],
+                        ["C++", "Qt"],
+                        ["RedHat", "SNMP"],
+                        ["Redmine", "Jenkins", "SonarQube"]
+                    ]
+                },
+                {
+                    "start_date": "SEPT. 2020",
+                    "end_date": "SEPT. 2021",
+                    "title": "Ingénieur Logiciel",
+                    "company": "TotalEnergies",
+                    "location": "Pau, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Membre de l'équipe AVO de <bold>géophysiciens</bold>, j'ai travaillé sur un nouvel ensemble <bold>d'algorithmes de calcul</bold> et <bold>d'outils de visualisation</bold> pour la plateforme de géophysique SISMAGE-CIG appartenant à TotalEnergies."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "J'ai également encadré <bold>3 stagiaires</bold> pour développer une application web contenant de petits outils de géophysique."
+                        }
+                    ],
+                    "stack": [
+                        ["Java", "JavaFX", "Swing/AWT"],
+                        ["C++", "C", "Fortran"],
+                        ["Angular", "NodeJS"],
+                        ["Gerrit", "SonarQube", "Jenkins"]
+                    ]
+                }
+            ]
         }
     }
 }

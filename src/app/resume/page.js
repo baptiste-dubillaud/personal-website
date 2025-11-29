@@ -15,6 +15,7 @@ import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 import { useTranslations, useLocale } from "next-intl";
+import React from "react";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
@@ -106,17 +107,15 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, translation }) => {
             reference={aboutRef}
             contentComponent={
                 <>
-                    {translation.raw("about.paragraphs").map((paragraph, index) => {
-                        return (
-                            <p key={index}>
-                                {translation.rich(`about.paragraphs.${index}`, {
-                                    age,
-                                    experience,
-                                    bold: (chunks) => <b>{chunks}</b>,
-                                })}
-                            </p>
-                        );
-                    })}
+                    {translation.raw("about").map((_, index) => (
+                        <p key={index}>
+                            {translation.rich(`about.${index}`, {
+                                age,
+                                experience,
+                                bold: (chunks) => <b>{chunks}</b>,
+                            })}
+                        </p>
+                    ))}
                 </>
             }
         />
@@ -191,6 +190,49 @@ const TimeLineComponent = ({
 };
 
 const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) => {
+    const renderDescription = (desc, descIndex, expIndex) => {
+        if (desc.type === "paragraph") {
+            return (
+                <p
+                    key={descIndex}
+                    dangerouslySetInnerHTML={{
+                        __html: desc.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
+                    }}
+                />
+            );
+        }
+
+        if (desc.type === "list") {
+            return (
+                <ul key={descIndex}>
+                    {desc.items.map((item, itemIndex) => (
+                        <li key={itemIndex}>
+                            <span
+                                dangerouslySetInnerHTML={{
+                                    __html: item.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
+                                }}
+                            />
+                            {item.subitems && item.subitems.length > 0 && (
+                                <ul>
+                                    {item.subitems.map((subitem, subIndex) => (
+                                        <li
+                                            key={subIndex}
+                                            dangerouslySetInnerHTML={{
+                                                __html: subitem.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
+                                            }}
+                                        />
+                                    ))}
+                                </ul>
+                            )}
+                        </li>
+                    ))}
+                </ul>
+            );
+        }
+
+        return null;
+    };
+
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -198,219 +240,24 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) 
             title={translation("menu.experience")}
             contentComponent={
                 <div className={styles.timeline_items_container}>
-                    <TimeLineComponent
-                        dateFrom={"APR. 2025"}
-                        dateTo={"PRESENT"}
-                        title={"Senior Software Engineer"}
-                        entity={"ThinkDeep AI"}
-                        location={"Bordeaux, France"}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    I am currently working as a <b>Senior Software Engineer</b> at <b>ThinkDeep AI</b>,
-                                    a startup specialized in developing <b>AI-powered software solutions</b>.
-                                </p>
-
-                                <ul>
-                                    <li>
-                                        <b>DeepBrain :</b> platform extracting the knowledge from documents & data using
-                                        online and on-premise LLM.
-                                        <ul>
-                                            <li>
-                                                Designed and implemented a group feature, integrated with{" "}
-                                                <b>Azure Entra ID</b>, enabling secure knowledge and assistants sharing.
-                                            </li>
-                                            <li>
-                                                Added <b>LLM tools</b> and <b>MCP servers</b>.
-                                            </li>
-                                            <li>
-                                                Improved the user experience with new UI components and better
-                                                performance.
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <b>AI Assistant :</b> working for <b>DGFiP</b> (French tax administration) to
-                                        build an AI platform for public agents.
-                                        <ul>
-                                            <li>Development of administration features (users, prompts, alerts).</li>
-                                            <li>
-                                                Improved overall project code quality by refactoring and formalization
-                                                of practices.
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-
-                                <p>
-                                    I also mentor and help younger developers with best practices and technical
-                                    guidance.
-                                </p>
-
-                                <p>
-                                    Exhibitor at <b>NVIDIA GTC Europe</b> in Paris.
-                                </p>
-                            </>
-                        }
-                        techStack={[
-                            ["React", "Next.js", "Vue.js"],
-                            ["Python", "FastAPI", "SQLAlchemy"],
-                            ["PostgreSQL", "pg-vector"],
-                            ["Docker", "Alembic", "Poetry"],
-                            ["Azure Entra ID"],
-                        ]}
-                    />
-                    <TimeLineComponent
-                        dateFrom={"MAR. 2023"}
-                        dateTo={"MAR. 2025"}
-                        title={"Tech Lead & Full-Stack Engineer"}
-                        entity={"TotalEnergies Denmark"}
-                        location={"Esbjerg, Denmark"}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    I worked as a <b>Tech-Lead</b> and <b>Software Engineer</b> at TotalEnergies
-                                    Denmark, for the <b>Digital Laboratory (DLAB)</b> team, creating{" "}
-                                    <b>PoC softwares</b> for the Production, HSE, Logistics, and C&P departments.{" "}
-                                </p>
-                                <p>
-                                    I structured the development environment to accompany the growth of the team (5
-                                    Data-Scientists, 2 Software Engineers). I managed Azure resources and Windows
-                                    servers.
-                                </p>
-                                <p>
-                                    I designed and developed applications involving <b>Generative AI</b>, complexe user
-                                    interactions (chat, searches, animations), <b>data processing</b>,{" "}
-                                    <b>health and usage monitoring</b>, and <b>SAP</b> data integration.
-                                </p>
-                                <p>
-                                    <b>
-                                        Two Applications in the Top 10 of the TotalEnergies &quot;E&P Best
-                                        Innovators&quot; awards.
-                                    </b>
-                                </p>
-                            </>
-                        }
-                        techStack={[
-                            ["React", "Next.js"],
-                            ["Python", "FastAPI", "Pandas", "Numpy"],
-                            ["PostgreSQL"],
-                            ["SAP", "PI-Vision"],
-                            ["Windows Server", "Azure"],
-                        ]}
-                    />
-                    <TimeLineComponent
-                        dateFrom={"OCT. 2021"}
-                        dateTo={"FEB. 2023"}
-                        title={"Software Engineer"}
-                        entity={"Airbus Defense & Space"}
-                        location={"Toulouse, France"}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    On behalf of <b>Viveris Technologies</b>, I was part of a team of <b>5 engineers</b>{" "}
-                                    in charge of the development of a software managing{" "}
-                                    <b>ground and satellite communications</b>, including <b>encryption</b> and{" "}
-                                    <b>decryption</b>.
-                                </p>
-                                <p>
-                                    I developed new features and sub-applications for this project, including a{" "}
-                                    <b>new testing framework</b> for unit and integration testing, adhering to strict
-                                    quality requirements and code coverage standards.
-                                </p>
-                            </>
-                        }
-                        techStack={[
-                            ["Java", "JavaFX", "Swing", "Netty"],
-                            ["Python", "Squish"],
-                            ["C++", "Qt"],
-                            ["RedHat", "SNMP"],
-                            ["Redmine", "Jenkins", "SonarQube"],
-                        ]}
-                    />
-                    <TimeLineComponent
-                        dateFrom={"SEPT. 2020"}
-                        dateTo={"SEPT. 2021"}
-                        title={"Software Engineer"}
-                        entity={"TotalEnergies"}
-                        location={"Pau, France"}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    Member of the AVO <b>geophysicist team</b>, I worked on a new set of{" "}
-                                    <b>computation algorithms</b> and <b>visualization tools</b> for the SISMAGE-CIG
-                                    geophysics platform owned by TotalEnergies.
-                                </p>
-                                <p>
-                                    I also managed <b>3 interns</b> to develop a web application containing small
-                                    geophysics tools.
-                                </p>
-                            </>
-                        }
-                        techStack={[
-                            ["Java", "JavaFX", "Swing/AWT"],
-                            ["C++", "C", "Fortran"],
-                            ["Angular", "NodeJS"],
-                            ["Gerrit", "SonarQube", "Jenkins"],
-                        ]}
-                    />
-                    {/* <TimeLineComponent
-                        dateFrom={"MAY 2019"}
-                        dateTo={"AUG. 2019"}
-                        title={"Software Developer Internship"}
-                        entity={"TotalEnergies"}
-                        location={"Pau, France"}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    <b>Design</b> and <b>development</b> from scratch of a well water injection
-                                    simulation software. This software had to wrap a Fortran simulation engine and
-                                    allows for different kinds of simulations, data visualization, and data export.
-                                </p>
-                                <p>
-                                    The difficulty was to make the architecture open for multiple simulations
-                                    (thousands) for statistical analysis, but still allowing unit conversion of input
-                                    and output data as well as visualization.
-                                </p>
-                                <p>
-                                    More than <b>140 parameters per simulation</b> to handle, so{" "}
-                                    <b>I fell in love with Design Patterns</b>.
-                                </p>
-                            </>
-                        }
-                        techStack={[
-                            ["Java", "JavaFX", "ControlFX"], 
-                            ["Python", "Fortran"], 
-                            ["Bash", "VBA"]
-                        ]}
-                    /> */}
-                    {/* <TimeLineComponent
-                        dateFrom={"MAY 2018"}
-                        dateTo={"AUG. 2018"}
-                        title={"Software Developer Internship"}
-                        entity={"TotalEnergies"}
-                        location={"Pau, France"}
-                        DescriptionComponent={
-                            <p>
-                                Development of <b>vizualisation tools</b> on SISMAGE-CIG, the geophysics platform of
-                                TotalEnergies on behalf of the <b>geophysics AVO</b> team.
-                            </p>
-                        }
-                        techStack={[["Java", "Swing/AWT", "Git", "Gerrit"]]}
-                    /> */}
-                    {/* <TimeLineComponent
-                        dateFrom={"JUN. 2018"}
-                        dateTo={"AUG. 2019"}
-                        title={"Salesman - Student Position"}
-                        entity={"Conforama"}
-                        location={"Pau, France"}
-                        DescriptionComponent={
-                            <p>
-                                Seller of household appliances and furniture during the summer holidays and every
-                                thursday afternoon saturdays during the school year.
-                            </p>
-                        }
-                    /> */}
+                    {translation.raw("experiences").map((experience, expIndex) => (
+                        <TimeLineComponent
+                            key={expIndex}
+                            dateFrom={experience.start_date}
+                            dateTo={experience.end_date}
+                            title={experience.title}
+                            entity={experience.company}
+                            location={experience.location}
+                            DescriptionComponent={
+                                <>
+                                    {experience.descriptions.map((desc, descIndex) =>
+                                        renderDescription(desc, descIndex, expIndex)
+                                    )}
+                                </>
+                            }
+                            techStack={experience.stack || [[]]}
+                        />
+                    ))}
                 </div>
             }
         />

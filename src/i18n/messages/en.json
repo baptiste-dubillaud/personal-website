@@ -34,14 +34,140 @@
                 "title": "AI Software & Data Engineer",
                 "intro": "I build reliable data and user-oriented industrial softwares."
             },
-            "about": {
-                "paragraphs": [
-                    "I'm a {age} years old french software engineer with more than <bold>{experience} years of experience</bold> in the field. Like many boys in my generation, I got my first interest in IT thanks to video games and the first forums/IRC channels about various topics I used to visit. From my first Minecraft server hosted on my parents' computer to my first script to automate a boring task, I've always been passionate about technology, especially IT.",
-                    "I started my journey into programming in high school with <bold>EasyPIC</bold> motherboard and <bold>Raspberry PI Uno</bold>. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed me to enter engineering studies. There I learned the basics of programming with <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold>, and <bold>Web</bold>, but most of all <bold>software engineering principles</bold> and how to work in a team. I finished my studies with a specialization in <bold>High Performance Computing and Data Processing</bold>.",
-                    "As I have always been interested in industries, I started my career in both the Oil and Gas industry and the aerospace industry. I worked on various topics such as <bold>parallel computing</bold>, <bold>real-time data processing</bold>, <bold>data visualization</bold>, building of <bold>API</bold> and <bold>modern web UI</bold>.",
-                    "I'm working since 2023 on AI-based softwares, building <bold>AI assistants</bold> and <bold>data processing platforms</bold> as a <bold>AI Software & Data Engineer</bold>."
-                ]
-            }
+            "about": [
+                "I'm a {age} years old french software engineer with more than <bold>{experience} years of experience</bold> in the field. Like many boys in my generation, I got my first interest in IT thanks to video games and the first forums/IRC channels about various topics I used to visit. From my first Minecraft server hosted on my parents' computer to my first script to automate a boring task, I've always been passionate about technology, especially IT.",
+                "I started my journey into programming in high school with <bold>EasyPIC</bold> motherboard and <bold>Raspberry PI Uno</bold>. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed me to enter engineering studies. There I learned the basics of programming with <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold>, and <bold>Web</bold>, but most of all <bold>software engineering principles</bold> and how to work in a team. I finished my studies with a specialization in <bold>High Performance Computing and Data Processing</bold>.",
+                "As I have always been interested in industries, I started my career in both the Oil and Gas industry and the aerospace industry. I worked on various topics such as <bold>parallel computing</bold>, <bold>real-time data processing</bold>, <bold>data visualization</bold>, building of <bold>API</bold> and <bold>modern web UI</bold>.",
+                "I'm working since 2023 on AI-based softwares, building <bold>AI assistants</bold> and <bold>data processing platforms</bold> as a <bold>AI Software & Data Engineer</bold>."
+            ],
+            "experiences": [
+                {
+                    "start_date": "APR. 2025",
+                    "end_date": "PRESENT",
+                    "title": "Senior Software Engineer",
+                    "company": "ThinkDeep AI",
+                    "location": "Bordeaux, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "I am currently working as a <bold>Senior Software Engineer</bold> at <bold>ThinkDeep AI</bold>, a startup specialized in developing <bold>AI-powered software solutions</bold>."
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<bold>DeepBrain</bold> : platform extracting the knowledge from documents & data using online and on-premise LLM.",
+                                    "subitems": [
+                                        "Designed and implemented a group feature, integrated with <bold>Azure Entra ID</bold>, enabling secure knowledge and assistants sharing.",
+                                        "Improved the user experience with new UI components and better performance."
+                                    ]
+                                },
+                                {
+                                    "content": "<bold>AI Assistant</bold> : working for <bold>DGFiP</bold> (French tax administration) to build an AI platform for public agents.",
+                                    "subitems": [
+                                        "Development of administration features (users, prompts, alerts).",
+                                        "Improved overall project code quality by refactoring and formalization of practices."
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "I also mentor and help younger developers with best practices and technical guidance."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Exhibitor at <bold>NVIDIA GTC Europe</bold> in Paris."
+                        }
+                    ],
+                    "stack": [
+                        ["React", "Next.js", "Vue.js"],
+                        ["Python", "FastAPI", "SQLAlchemy, Alembic"],
+                        ["PostgreSQL"], 
+                        ["Docker", "Poetry"],
+                        ["Azure"]
+                    ]
+                },
+                {
+                    "start_date": "MAR. 2023",
+                    "end_date": "MAR. 2025",
+                    "title": "Tech Lead & Full-Stack Engineer",
+                    "company": "TotalEnergies Denmark",
+                    "location": "Esbjerg, Denmark",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "I worked as a <bold>Tech-Lead</bold> and <bold>Software Engineer</bold> at TotalEnergies Denmark, for the <bold>Digital Laboratory (DLAB)</bold> team, creating <bold>PoC softwares</bold> for the Production, HSE, Logistics, and C&P departments."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "I structured the development environment to accompany the growth of the team (5 Data-Scientists, 2 Software Engineers). I managed Azure resources and Windows servers."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "I designed and developed applications involving <bold>Generative AI</bold>, complexe user interactions (chat, searches, animations), <bold>data processing</bold>, <bold>health and usage monitoring</bold>, and <bold>SAP</bold> data integration."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "<bold>Two Applications in the Top 10 of the TotalEnergies \"E&P Best Innovators\" awards.</bold>"
+                        }
+                    ],
+                    "stack": [
+                        ["React", "Next.js"],
+                        ["Python", "FastAPI", "Pandas", "Numpy"],
+                        ["PostgreSQL"],
+                        ["SAP", "PI-Vision"],
+                        ["Windows Server", "Azure"]
+                    ]
+                },
+                {
+                    "start_date": "OCT. 2021",
+                    "end_date": "FEB. 2023",
+                    "title": "Software Engineer",
+                    "company": "Airbus Defense & Space",
+                    "location": "Toulouse, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "On behalf of <bold>Viveris Technologies</bold>, I was part of a team of <bold>5 engineers</bold> in charge of the development of a software managing <bold>ground and satellite communications</bold>, including <bold>encryption</bold> and <bold>decryption</bold>."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "I developed new features and sub-applications for this project, including a <bold>new testing framework</bold> for unit and integration testing, adhering to strict quality requirements and code coverage standards."
+                        }
+                    ],
+                    "stack": [
+                        ["Java", "JavaFX", "Swing", "Netty"],
+                        ["Python", "Squish"],
+                        ["C++", "Qt"],
+                        ["RedHat", "SNMP"],
+                        ["Redmine", "Jenkins", "SonarQube"]
+                    ]
+                },
+                {
+                    "start_date": "SEPT. 2020",
+                    "end_date": "SEPT. 2021",
+                    "title": "Software Engineer",
+                    "company": "TotalEnergies",
+                    "location": "Pau, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Member of the AVO <bold>geophysicist team</bold>, I worked on a new set of <bold>computation algorithms</bold> and <bold>visualization tools</bold> for the SISMAGE-CIG geophysics platform owned by TotalEnergies."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "I also managed <bold>3 interns</bold> to develop a web application containing small geophysics tools."
+                        }
+                    ],
+                    "stack": [
+                        ["Java", "JavaFX", "Swing/AWT"],
+                        ["C++", "C", "Fortran"],
+                        ["Angular", "NodeJS"],
+                        ["Gerrit", "SonarQube", "Jenkins"]
+                    ]
+                }
+            ]
         }
     }
 }
