@@ -37,6 +37,8 @@ export function middleware(request) {
         const response = NextResponse.next();
         response.cookies.set(cookieName, locale, {
             path: "/",
+            maxAge: 365 * 24 * 60 * 60,
+            sameSite: "lax",
         });
         return response;
     }
