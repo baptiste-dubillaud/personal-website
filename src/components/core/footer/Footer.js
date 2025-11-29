@@ -24,10 +24,10 @@ export default function FooterComponent({}) {
     return (
         <div className={styles.footer_container}>
             <span>
-                Developed in <span className={styles.bold_text}>2024-2025</span> by
+                Developed in <span className={styles.bold_text}>2024-2025</span>
             </span>
-            <span className={`${styles.orange_text} ${styles.bold_text}`}>Baptiste DUBILLAUD</span>
-
+            {/* <span className={`${styles.orange_text} ${styles.bold_text}`}>Baptiste DUBILLAUD</span>
+             */}
             <span className={styles.version} title={`version: ${version}`}>
                 {version}
             </span>

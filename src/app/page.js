@@ -93,7 +93,7 @@ export default function Home() {
                                 </div>
                                 <div className={styles.presentation_data_spec_container}>
                                     <Locationicon size={22} />
-                                    <span className={styles.presentation_data_specs_text}>Pau</span>
+                                    <span className={styles.presentation_data_specs_text}>Pau, France</span>
                                 </div>
                             </div>
                             {/* Profile links */}
