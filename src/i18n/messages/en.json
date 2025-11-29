@@ -19,6 +19,26 @@
                 "paragraph2": "Don't hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!"
             },
             "resume_button": "Check out my resume"
+        }, 
+        "resume": {
+            "menu": {
+                "about": "About",
+                "experience": "Experiences",
+                "education": "Education",
+                "hobbies": "Hobbies"
+            },
+            "prensentation": {
+                "title": "AI Software & Data Engineer",
+                "intro": "I build reliable data and user-oriented industrial softwares."
+            },
+            "about": {
+                "paragraphs": [
+                    "I'm a {age} years old french software engineer with more than <bold>{experience} years of experience</bold> in the field. Like many boys in my generation, I got my first interest in IT thanks to video games and the first forums/IRC channels about various topics I used to visit. From my first Minecraft server hosted on my parents' computer to my first script to automate a boring task, I've always been passionate about technology, especially IT.",
+                    "I started my journey into programming in high school with <bold>EasyPIC</bold> motherboard and <bold>Raspberry PI Uno</bold>. Thanks to my teachers, I discovered the basics of programming and electronics, which pushed me to enter engineering studies. There I learned the basics of programming with <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold>, and <bold>Web</bold>, but most of all <bold>software engineering principles</bold> and how to work in a team. I finished my studies with a specialization in <bold>High Performance Computing and Data Processing</bold>.",
+                    "As I have always been interested in industries, I started my career in both the Oil and Gas industry and the aerospace industry. I worked on various topics such as <bold>parallel computing</bold>, <bold>real-time data processing</bold>, <bold>data visualization</bold>, building of <bold>API</bold> and <bold>modern web UI</bold>.",
+                    "I'm working since 2023 on AI-based softwares, building <bold>AI assistants</bold> and <bold>data processing platforms</bold> as a <bold>AI Software & Data Engineer</bold>."
+                ]
+            }
         }
     }
 }

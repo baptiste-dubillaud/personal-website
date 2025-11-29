@@ -14,12 +14,15 @@ import NavigationButton from "@/components/common/buttons/navigation/NavigationB
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
+import { useTranslations, useLocale } from "next-intl";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
 
-const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
+const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translation }) => {
+    const locale = useLocale();
+
     function scrollToComponent(index, ref) {
         if (ref.current) {
             const elementTop = ref.current.getBoundingClientRect().top + window.scrollY;
@@ -36,13 +39,11 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
         <div className={styles.presentation_container}>
             {/* Presentation data */}
             <div className={styles.presentation_name}>Baptiste Dubillaud</div>
-            <div className={styles.presentation_job}>AI Software & Data Engineer</div>
-            <div className={styles.presentation_desc}>
-                I build reliable data and user-oriented industrial softwares.
-            </div>
+            <div className={styles.presentation_job}>{translation("prensentation.title")}</div>
+            <div className={styles.presentation_desc}>{translation("prensentation.intro")}</div>
 
             <div className={styles.presentation_buttons_container}>
-                <NavigationButton link={LINKEDIN_PROFILE} alt="LinkedIn profile">
+                <NavigationButton link={`${LINKEDIN_PROFILE}?locale=${locale}`} alt="LinkedIn profile">
                     <LinkedInIcon size={30} />
                 </NavigationButton>
                 <NavigationButton link={GITHUB_PROFILE} alt="Github profile">
@@ -72,7 +73,7 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts }) => {
                             }
                             onClick={() => scrollToComponent(index, part.ref)}
                         >
-                            {part.name}
+                            {part.display}
                         </div>
                     ))}
                     <div
@@ -94,40 +95,28 @@ const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent })
     );
 };
 
-const AboutComponent = ({ isTwoColumnSetup, aboutRef }) => {
+const AboutComponent = ({ isTwoColumnSetup, aboutRef, translation }) => {
+    const age = getNbYears("12-29-1998");
+    const experience = getNbYears("09-01-2020");
+
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
-            title="About"
+            title={translation("menu.about")}
             reference={aboutRef}
             contentComponent={
                 <>
-                    <p>
-                        I&apos;m a {getNbYears("12-29-1998")} years old french software engineer with more than{" "}
-                        <b>{getNbYears("09-01-2020")} years of experience</b> in the field. Like many boys in my
-                        generation, I got my first interest in IT thanks to video games and the first forums/IRC
-                        channels about various topics I used to visit. From my first Minecraft server hosted on my
-                        parents&apos; computer to my first script to automate a boring task, I&apos;ve always been
-                        passionate about technology, especially IT.
-                    </p>
-                    <p>
-                        I started my journey into programming in high school with <b>EasyPIC</b> motherboard and{" "}
-                        <b>Raspberry PI Uno</b>. Thanks to my teachers, I discovered the basics of programming and
-                        electronics, which pushed me to enter engineering studies. There I learned the basics of
-                        programming with <b>C</b>, <b>C++</b>, <b>Java</b>, and <b>Web</b>, but most of all{" "}
-                        <b>software engineering principles</b> and how to work in a team. I finished my studies with a
-                        specialization in <b>High Performance Computing and Data Processing</b>.
-                    </p>
-                    <p>
-                        As I have always been interested in industries, I started my career in both the Oil and Gas
-                        industry and the aerospace industry. I worked on various topics such as{" "}
-                        <b>parallel computing</b>, <b>real-time data processing</b>, <b>data visualization</b>, building
-                        of <b>API</b> and <b>modern web UI</b>.
-                    </p>
-                    <p>
-                        I&apos;m working since 2023 on AI-based softwares, building <b>AI assistants</b> and{" "}
-                        <b>data processing platforms</b> as a <b>AI Software & Data Engineer</b>.
-                    </p>
+                    {translation.raw("about.paragraphs").map((paragraph, index) => {
+                        return (
+                            <p key={index}>
+                                {translation.rich(`about.paragraphs.${index}`, {
+                                    age,
+                                    experience,
+                                    bold: (chunks) => <b>{chunks}</b>,
+                                })}
+                            </p>
+                        );
+                    })}
                 </>
             }
         />
@@ -201,12 +190,12 @@ const TimeLineComponent = ({
     );
 };
 
-const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
+const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={experienceRef}
-            title="Experience"
+            title={translation("menu.experience")}
             contentComponent={
                 <div className={styles.timeline_items_container}>
                     <TimeLineComponent
@@ -428,12 +417,12 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef }) => {
     );
 };
 
-const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
+const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={educationRef}
-            title="Education"
+            title={translation("menu.education")}
             contentComponent={
                 <div className={styles.timeline_items_container}>
                     <TimeLineComponent
@@ -504,7 +493,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef }) => {
     );
 };
 
-const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
+const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
     const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false }) => {
         return (
             <div className={styles.hobby_container}>
@@ -539,7 +528,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             reference={hobbiesRef}
-            title="Hobbies"
+            title={translation("menu.hobbies")}
             contentComponent={
                 <div className={styles.hobbies_container}>
                     <HobbyComponent
@@ -667,6 +656,8 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef }) => {
 };
 
 export default function Resume() {
+    const t = useTranslations("pages.resume");
+
     const [isTwoColumnSetup, setIsTwoColumnSetup] = useState(false);
 
     const [currentPart, setCurrentPart] = useState("About");
@@ -677,10 +668,10 @@ export default function Resume() {
     const hobbiesRef = useRef();
 
     const PARTS = [
-        { name: "About", ref: aboutRef },
-        { name: "Experience", ref: experienceRef },
-        { name: "Education", ref: educationRef },
-        { name: "Hobbies", ref: hobbiesRef },
+        { name: "About", display: t("menu.about"), ref: aboutRef },
+        { name: "Experience", display: t("menu.experience"), ref: experienceRef },
+        { name: "Education", display: t("menu.education"), ref: educationRef },
+        { name: "Hobbies", display: t("menu.hobbies"), ref: hobbiesRef },
     ];
 
     function handleWindowSizeChange() {
@@ -729,6 +720,7 @@ export default function Resume() {
                         isTwoColumnSetup={isTwoColumnSetup}
                         parts={PARTS}
                         currentPart={currentPart}
+                        translation={t}
                     />
                 </div>
                 <div
@@ -739,21 +731,25 @@ export default function Resume() {
                         isTwoColumnSetup={isTwoColumnSetup}
                         aboutRef={aboutRef}
                         setCurrentComponent={setCurrentPart}
+                        translation={t}
                     />
                     <ExperiencesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
                         experienceRef={experienceRef}
                         setCurrentComponent={setCurrentPart}
+                        translation={t}
                     />
                     <EducationComponent
                         isTwoColumnSetup={isTwoColumnSetup}
                         educationRef={educationRef}
                         setCurrentComponent={setCurrentPart}
+                        translation={t}
                     />
                     <HobbiesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
                         hobbiesRef={hobbiesRef}
                         setCurrentComponent={setCurrentPart}
+                        translation={t}
                     />
                 </div>
             </div>

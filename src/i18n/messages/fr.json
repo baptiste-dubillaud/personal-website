@@ -19,6 +19,26 @@
                 "paragraph2": "N'hésitez pas à me contacter si vous souhaitez discuter d'un projet, d'une collaboration ou simplement pour dire bonjour !"
             },
             "resume_button": "Consultez mon CV"
+        },
+        "resume": {
+            "menu": {
+                "about": "À propos",
+                "experience": "Expériences",
+                "education": "Éducation",
+                "hobbies": "Loisirs"
+            },
+            "prensentation": {
+                "title": "Ingénieur Logiciel IA & Data",
+                "intro": "Je construis des logiciels orientés données et utilisateurs."
+            },
+            "about": {
+                "paragraphs": [
+                    "Je suis un ingénieur logiciel français de {age} ans avec plus de <bold>{experience} ans d'expérience</bold> dans le domaine. Comme beaucoup de garçons de ma génération, j'ai découvert l'informatique grâce aux jeux vidéo et aux premiers forums/canaux IRC sur divers sujets que je fréquentais. De mon premier serveur Minecraft hébergé sur l'ordinateur de mes parents à mon premier script pour automatiser une tâche ennuyeuse, j'ai toujours été passionné par la technologie, en particulier l'informatique.",
+                    "J'ai commencé mon parcours dans la programmation au lycée avec une carte <bold>EasyPIC</bold> et un <bold>Raspberry PI Uno</bold>. Grâce à mes professeurs, j'ai découvert les bases de la programmation et de l'électronique, ce qui m'a poussé à intégrer des études d'ingénieur. J'y ai appris les bases de la programmation avec <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold> et le <bold>Web</bold>, mais surtout les <bold>principes de l'ingénierie logicielle</bold> et comment travailler en équipe. J'ai terminé mes études avec une spécialisation en <bold>Calcul Haute Performance et Traitement des Données</bold>.",
+                    "Ayant toujours été intéressé par l'industrie, j'ai commencé ma carrière dans les secteurs pétrolier et gazier ainsi que dans l'aérospatiale. J'ai travaillé sur divers sujets tels que le <bold>calcul parallèle</bold>, le <bold>traitement de données en temps réel</bold>, la <bold>visualisation de données</bold>, la construction <bold>d'API</bold> et <bold>d'interfaces web modernes.</bold>",
+                    "Depuis 2023, je travaille sur des logiciels basés sur l'IA, en développant des <bold>assistants IA</bold> et des <bold>plateformes de traitement de données</bold> en tant qu'Ingénieur <bold>Logiciel IA & Data</bold>."
+                ]
+            }
         }
     }
 }
