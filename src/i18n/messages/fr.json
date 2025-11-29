@@ -4,6 +4,9 @@
         "home": "Accueil",
         "resume": "CV"
     },
+    "footer": {
+        "text": "Next.js/React. Développé en <bold>{years}</bold>"
+    },
     "pages": {
         "home": {
             "workTitle": {

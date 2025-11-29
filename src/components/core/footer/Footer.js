@@ -1,6 +1,7 @@
 import styles from "./Footer.module.css";
 import fs from "fs";
 import path from "path";
+import { useTranslations } from "next-intl";
 
 function readVersionFile() {
     try {
@@ -19,13 +20,13 @@ function readVersionFile() {
 }
 
 export default function FooterComponent({}) {
+    const t = useTranslations("footer");
+
     const version = readVersionFile();
 
     return (
         <div className={styles.footer_container}>
-            <span>
-                Developed in <span className={styles.bold_text}>2024-2025</span>
-            </span>
+            <span>{t.rich("text", { years: "2024-2025", bold: (chunks) => <strong>{chunks}</strong> })}</span>
             {/* <span className={`${styles.orange_text} ${styles.bold_text}`}>Baptiste DUBILLAUD</span>
              */}
             <span className={styles.version} title={`version: ${version}`}>
