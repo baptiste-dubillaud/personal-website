@@ -163,11 +163,10 @@
 }
 
 .main_button_container {
-    border: 1px solid var(--color-orange-opacity-6);
+    border: 1px solid var(--color-orange-opacity-8);
     background-color: var(--color-orange-opacity-05);
     color: var(--color-orange);
 
-    width: 100px;
     padding-inline: 25px;
     padding-top: 7px;
     padding-bottom: 7px;
@@ -178,7 +177,7 @@
     align-items: center;
 
     font-size: 15px;
-    text-transform: uppercase;
+    font-weight: 600;
 
     cursor: pointer;
 
@@ -187,5 +186,5 @@
 
 .main_button_container:hover {
     background-color: var(--color-orange-opacity-2);
-    font-weight: 600;
+    font-weight: 800;
 }

@@ -1,0 +1,24 @@
+{
+    "navigation": {
+        "name": "Bienvenue !",
+        "home": "Accueil",
+        "resume": "CV"
+    },
+    "pages": {
+        "home": {
+            "workTitle": {
+                "soft": "Logiciel",
+                "data": "Data",
+                "engineer": "Ingénieur"
+            },
+            "age": "ans",
+            "nationality": "Français",
+            "linkedin_lang": "fr_FR",
+            "prensentation": {
+                "paragraph1": "ans d'expérience en ingénierie logicielle et des données, avec une passion pour la création de solutions innovantes et une solide formation en informatique. Toujours avide d'apprendre et d'explorer de nouvelles technologies, je me concentre actuellement sur l'expansion de mon expertise en ingénierie des données et en infrastructure cloud.",
+                "paragraph2": "N'hésitez pas à me contacter si vous souhaitez discuter d'un projet, d'une collaboration ou simplement pour dire bonjour !"
+            },
+            "resume_button": "Consultez mon CV"
+        }
+    }
+}

@@ -4,16 +4,16 @@ import styles from "@/app/page.module.css";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
 
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
-import MediumIcon from "@/components/common/icons/apps/MediumIcon";
 import ProfileIcon from "@/components/common/icons/misc/ProfileIcon";
 import FlagIcon from "@/components/common/icons/misc/FlagIcon";
 import Locationicon from "@/components/common/icons/misc/LocationIcon";
 
 import { getNbYears } from "@/utils/dateUtils";
-import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
+import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
 
 const MainPageButton = ({ goTo, text }) => {
@@ -33,6 +33,10 @@ const MainPageButton = ({ goTo, text }) => {
 };
 
 export default function Home() {
+    const t = useTranslations("pages.home");
+    const linkedInLocale = t("linkedin_lang");
+    const currentLocale = useLocale();
+
     return (
         <main>
             <div className={styles.presentation_full_screen_wrapper}>
@@ -64,18 +68,41 @@ export default function Home() {
                             </div>
                             {/* Position def */}
                             <div className={styles.presentation_data_role_container}>
-                                <span
-                                    className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                >
-                                    Software
-                                </span>
-                                <span className={styles.presentation_data_role_text}>&</span>
-                                <span
-                                    className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                >
-                                    Data
-                                </span>
-                                <span className={styles.presentation_data_role_text}>Engineer</span>
+                                {currentLocale === "fr" ? (
+                                    <>
+                                        <span className={styles.presentation_data_role_text}>
+                                            {t("workTitle.engineer")}
+                                        </span>
+                                        <span
+                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
+                                        >
+                                            {t("workTitle.soft")}
+                                        </span>
+                                        <span className={styles.presentation_data_role_text}>&</span>
+                                        <span
+                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
+                                        >
+                                            {t("workTitle.data")}
+                                        </span>
+                                    </>
+                                ) : (
+                                    <>
+                                        <span
+                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
+                                        >
+                                            {t("workTitle.soft")}
+                                        </span>
+                                        <span className={styles.presentation_data_role_text}>&</span>
+                                        <span
+                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
+                                        >
+                                            {t("workTitle.data")}
+                                        </span>
+                                        <span className={styles.presentation_data_role_text}>
+                                            {t("workTitle.engineer")}
+                                        </span>
+                                    </>
+                                )}
                             </div>
                         </div>
                         <div className={styles.presentation_data_group_container}>
@@ -84,12 +111,12 @@ export default function Home() {
                                 <div className={styles.presentation_data_spec_container}>
                                     <ProfileIcon size={20} />
                                     <span className={styles.presentation_data_specs_text}>
-                                        {getNbYears("12-29-1998")} years old
+                                        {getNbYears("12-29-1998")} {t("age")}
                                     </span>
                                 </div>
                                 <div className={styles.presentation_data_spec_container}>
                                     <FlagIcon size={20} />
-                                    <span className={styles.presentation_data_specs_text}>French</span>
+                                    <span className={styles.presentation_data_specs_text}>{t("nationality")}</span>
                                 </div>
                                 <div className={styles.presentation_data_spec_container}>
                                     <Locationicon size={22} />
@@ -98,7 +125,10 @@ export default function Home() {
                             </div>
                             {/* Profile links */}
                             <div className={styles.presentation_data_links_container}>
-                                <NavigationButton link={LINKEDIN_PROFILE} alt="LinkedIn profile">
+                                <NavigationButton
+                                    link={`${LINKEDIN_PROFILE}?locale=${linkedInLocale}`}
+                                    alt="LinkedIn profile"
+                                >
                                     <LinkedInIcon size={30} />
                                 </NavigationButton>
                                 <NavigationButton link={GITHUB_PROFILE} alt="Github profile">
@@ -111,22 +141,14 @@ export default function Home() {
                         </div>
                         {/* Description sentence */}
                         <div className={styles.presentation_data_sentence}>
-                            <p>
-                                5 years of experience in software and data engineering, with a passion for building
-                                innovative solutions and a strong foundation in computer science. Always eager to learn
-                                and explore new technologies, I am currently focused on expanding my expertise in data
-                                engineering and cloud computing.
-                            </p>
-                            <p>
-                                Don&apos;t hesitate to contact me if you want to discuss about a project, a
-                                collaboration or just to say hi!
-                            </p>
+                            <p>5 {t("prensentation.paragraph1")}</p>
+                            <p>{t("prensentation.paragraph2")}</p>
                         </div>
                     </div>
                 </div>
                 {/* Shortcut buttons */}
                 <div className={styles.presentation_buttons_container}>
-                    <MainPageButton text="Resume" goTo="resume" />
+                    <MainPageButton text={t("resume_button")} goTo="resume" />
                     {/* <MainPageButton text="Portfolio" goTo="portfolio"/> */}
                     {/* <MainPageButton text="Blog" goTo="blog"  /> */}
                 </div>

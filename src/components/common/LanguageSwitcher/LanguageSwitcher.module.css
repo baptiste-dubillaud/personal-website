@@ -1,0 +1,39 @@
+.language_switcher {
+    display: flex;
+    align-items: center;
+}
+
+.language_button {
+    background: none;
+    border: none;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 2px 4px;
+    transition: all 0.2s ease;
+    opacity: 0.8;
+    border-radius: 4px;
+    color: white;
+}
+
+.language_button:hover {
+    opacity: 1;
+    background-color: var(--color-orange-opacity-05);
+}
+
+.language_button.active {
+    opacity: 1;
+    font-weight: 700;
+    color: var(--color-orange);
+}
+
+.language_button:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+}
+
+.separator {
+    opacity: 0.3;
+    font-size: 14px;
+}
+

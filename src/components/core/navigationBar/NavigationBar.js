@@ -3,10 +3,13 @@
 import styles from "@/components/core/navigationBar/NavigationBar.module.css";
 
 import { useRouter, usePathname } from "next/navigation";
+import { useTranslations } from "next-intl";
+import LanguageSwitcher from "@/components/common/LanguageSwitcher/LanguageSwitcher";
 
 export default function NavigationBarComponent({}) {
     const router = useRouter();
     const pathname = usePathname();
+    const t = useTranslations("navigation");
 
     const NavLinkComponent = ({ name, path }) => {
         const isHome = path == "/";
@@ -29,13 +32,18 @@ export default function NavigationBarComponent({}) {
         <div className={styles.nav_bar_container}>
             <div className={styles.nav_var_content_container}>
                 <div className={styles.hello_message} onClick={() => router.push("/")}>
-                    Hi, I&apos;m <span className={styles.hello_message_name}>Baptiste</span>!
+                    {t("name")}
                 </div>
-                <div className={styles.links_container}>
-                    <NavLinkComponent name="Home" path="/" />
-                    <NavLinkComponent name="Resume" path="/resume" />
-                    {/* <NavLinkComponent name="Portfolio" path="/portfolio"/> */}
-                    {/* <NavLinkComponent name="Blog" path="/blog" /> */}
+                <div className={styles.actions_container}>
+                    <div className={styles.lang_switcher_container}>
+                        <LanguageSwitcher />
+                    </div>
+                    <div className={styles.links_container}>
+                        <NavLinkComponent name={t("home")} path="/" />
+                        <NavLinkComponent name={t("resume")} path="/resume" />
+                        {/* <NavLinkComponent name="Portfolio" path="/portfolio"/> */}
+                        {/* <NavLinkComponent name="Blog" path="/blog" /> */}
+                    </div>
                 </div>
             </div>
         </div>
