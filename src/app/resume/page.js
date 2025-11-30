@@ -15,45 +15,15 @@ import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE, STRAVA_PROFILE } from
 import { useTranslations, useLocale } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
+import RichText from "@/components/common/RichText";
 
 // Common renderer for description objects (paragraph | list)
 function renderDescriptionBlock(desc, key) {
     if (desc.type === "paragraph") {
-        return (
-            <p
-                key={key}
-                dangerouslySetInnerHTML={{
-                    __html: desc.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
-                }}
-            />
-        );
+        return <RichText key={key} type="paragraph" content={desc.content} />;
     }
     if (desc.type === "list") {
-        return (
-            <ul key={key}>
-                {desc.items.map((item, itemIndex) => (
-                    <li key={itemIndex}>
-                        <span
-                            dangerouslySetInnerHTML={{
-                                __html: item.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
-                            }}
-                        />
-                        {item.subitems && item.subitems.length > 0 && (
-                            <ul>
-                                {item.subitems.map((sub, subIndex) => (
-                                    <li
-                                        key={subIndex}
-                                        dangerouslySetInnerHTML={{
-                                            __html: sub.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
-                                        }}
-                                    />
-                                ))}
-                            </ul>
-                        )}
-                    </li>
-                ))}
-            </ul>
-        );
+        return <RichText key={key} type="list" items={desc.items} />;
     }
     return null;
 }
