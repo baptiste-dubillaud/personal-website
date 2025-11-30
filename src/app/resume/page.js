@@ -5,17 +5,58 @@ import styles from "@/app/resume/page.module.css";
 import { useEffect, useRef, useState } from "react";
 
 import { getNbYears } from "@/utils/dateUtils";
-import { STRAVA_PROFILE } from "@/utils/linkUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
 import BookShelfIcon from "@/components/common/icons/misc/BookIcon";
 import VideoGame from "@/components/common/icons/misc/VideoGame";
-import StravaIcon from "@/components/common/icons/apps/StravaIcon";
 import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
-import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
+import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE, STRAVA_PROFILE } from "@/utils/linkUtils";
 import { useTranslations, useLocale } from "next-intl";
 import React from "react";
+import StravaIcon from "@/components/common/icons/apps/StravaIcon";
+
+// Common renderer for description objects (paragraph | list)
+function renderDescriptionBlock(desc, key) {
+    if (desc.type === "paragraph") {
+        return (
+            <p
+                key={key}
+                dangerouslySetInnerHTML={{
+                    __html: desc.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
+                }}
+            />
+        );
+    }
+    if (desc.type === "list") {
+        return (
+            <ul key={key}>
+                {desc.items.map((item, itemIndex) => (
+                    <li key={itemIndex}>
+                        <span
+                            dangerouslySetInnerHTML={{
+                                __html: item.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
+                            }}
+                        />
+                        {item.subitems && item.subitems.length > 0 && (
+                            <ul>
+                                {item.subitems.map((sub, subIndex) => (
+                                    <li
+                                        key={subIndex}
+                                        dangerouslySetInnerHTML={{
+                                            __html: sub.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
+                                        }}
+                                    />
+                                ))}
+                            </ul>
+                        )}
+                    </li>
+                ))}
+            </ul>
+        );
+    }
+    return null;
+}
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
@@ -190,49 +231,6 @@ const TimeLineComponent = ({
 };
 
 const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) => {
-    const renderDescription = (desc, descIndex, expIndex) => {
-        if (desc.type === "paragraph") {
-            return (
-                <p
-                    key={descIndex}
-                    dangerouslySetInnerHTML={{
-                        __html: desc.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
-                    }}
-                />
-            );
-        }
-
-        if (desc.type === "list") {
-            return (
-                <ul key={descIndex}>
-                    {desc.items.map((item, itemIndex) => (
-                        <li key={itemIndex}>
-                            <span
-                                dangerouslySetInnerHTML={{
-                                    __html: item.content.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
-                                }}
-                            />
-                            {item.subitems && item.subitems.length > 0 && (
-                                <ul>
-                                    {item.subitems.map((subitem, subIndex) => (
-                                        <li
-                                            key={subIndex}
-                                            dangerouslySetInnerHTML={{
-                                                __html: subitem.replace(/<bold>(.*?)<\/bold>/g, "<b>$1</b>"),
-                                            }}
-                                        />
-                                    ))}
-                                </ul>
-                            )}
-                        </li>
-                    ))}
-                </ul>
-            );
-        }
-
-        return null;
-    };
-
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -251,7 +249,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) 
                             DescriptionComponent={
                                 <>
                                     {experience.descriptions.map((desc, descIndex) =>
-                                        renderDescription(desc, descIndex, expIndex)
+                                        renderDescriptionBlock(desc, `${expIndex}-exp-${descIndex}`)
                                     )}
                                 </>
                             }
@@ -272,68 +270,25 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => 
             title={translation("menu.education")}
             contentComponent={
                 <div className={styles.timeline_items_container}>
-                    <TimeLineComponent
-                        title="Master degree in Computer Science"
-                        entity="CY-Tech"
-                        location="Pau, France"
-                        dateFrom="2018"
-                        dateTo="2021"
-                        onRight={true}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    I learned the basics of programming with <b>C</b>, <b>C++</b>, <b>Java</b>, and Web,
-                                    but most of all <b>software engineering principles</b>. specialization in{" "}
-                                    <b>Big Data frameworks</b> through Big Data Analytics classes on last year.
-                                </p>
-                            </>
-                        }
-                        techStack={[
-                            ["Java", "Spark"],
-                            ["Python", "Pandas", "NumPy", "OpenCV"],
-                            ["C", "C++", "Fortran"],
-                            ["HTML", "CSS", "JS", "React-Native"],
-                        ]}
-                    />
-                    <TimeLineComponent
-                        title="One year course in HPC and Data Processing"
-                        entity="Univerty of La Coroña"
-                        location="La Coroña, Spain"
-                        dateFrom="2020"
-                        dateTo="2021"
-                        onRight={true}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    Learned the basics of <b>HPC architectures</b>, <b>CPU/GPU programming</b>, and
-                                    <b>large parallel data processing</b>.
-                                </p>
-                                <p>
-                                    Final Project: Development and <b>optimization</b> of an algorithm to filter data
-                                    cubes from <b>seismic imaging</b> on Pangea II HPC at TotalEnergies.
-                                </p>
-                            </>
-                        }
-                        techStack={[
-                            ["CUDA", "MPI", "OpenMP", "OpenCV"],
-                            ["C", "C++", "Fortran"],
-                        ]}
-                    />
-                    <TimeLineComponent
-                        title="Preparatory class for engineering schools"
-                        entity="Saint-Cricq High School"
-                        location="Pau, France"
-                        dateFrom="2016"
-                        dateTo="2018"
-                        onRight={true}
-                        DescriptionComponent={
-                            <p>
-                                <b>2</b> years of intensive course in <b>mathematics</b>, <b>physics</b>,{" "}
-                                <b>chemistry</b>, and <b>engineering sciences</b> to prepare for the entrance exams of
-                                engineering schools.
-                            </p>
-                        }
-                    />
+                    {translation.raw("education").map((edu, eduIndex) => (
+                        <TimeLineComponent
+                            key={eduIndex}
+                            dateFrom={edu.start_date}
+                            dateTo={edu.end_date}
+                            title={edu.title}
+                            entity={edu.company}
+                            location={edu.location}
+                            onRight={true}
+                            DescriptionComponent={
+                                <>
+                                    {edu.descriptions.map((desc, descIndex) =>
+                                        renderDescriptionBlock(desc, `${eduIndex}-edu-${descIndex}`)
+                                    )}
+                                </>
+                            }
+                            techStack={edu.stack || [[]]}
+                        />
+                    ))}
                 </div>
             }
         />
@@ -371,6 +326,16 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
         );
     };
 
+    function pickIcon(title) {
+        const t = title.toLowerCase();
+        if (t.includes("sport")) return <SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />;
+        if (t.includes("lecture") || t.includes("reading"))
+            return <BookShelfIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />;
+        if (t.includes("video") || t.includes("jeux"))
+            return <VideoGame size={40} secondaryColor={"rgb(255, 68, 0)"} />;
+        return null;
+    }
+
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
@@ -378,124 +343,46 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
             title={translation("menu.hobbies")}
             contentComponent={
                 <div className={styles.hobbies_container}>
-                    <HobbyComponent
-                        title={"Sport"}
-                        logo={<SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
-                        DescriptionComponent={
-                            <>
-                                <div
-                                    style={{
-                                        display: "flex",
-                                        alignItems: "center",
-                                        textAlign: "center",
-                                        gap: 10,
-                                        marginBottom: 10,
-                                        marginTop: 10,
-                                    }}
-                                    className={styles.strava_profile_container}
-                                >
-                                    <a
-                                        className={styles.strava_profile_link}
-                                        href={STRAVA_PROFILE}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        <div className={styles.strava_profile_text}>Strava</div>
-                                        <StravaIcon size={27} />
-                                    </a>
-                                </div>
-                                <div>
-                                    I spend a lot of time doing sports. I&lsquo;m currently training for triathlon after
-                                    having completed my second marathon in Biarritz in May 2025 and my first triathlon
-                                    in June 2025. I also like from time to time to play padel, or hike.
-                                </div>
-                                <div className={styles.hobby_description_95}>
-                                    <h4>PR</h4> Marathon: 3h 44m w/ 500 mD+, Half-Marathon: 1h 42m, Triathlon (S): 1h
-                                    38m
-                                </div>
-                                <div className={styles.hobby_description_95}>
-                                    <h4>2025 - France, Belgium</h4>
-                                    <ul>
-                                        <li>
-                                            <h4>Marathon :</h4> Biarritz - 500 mD+ - 3h44
-                                        </li>
-                                        <li>
-                                            <h4>Half-Marathon :</h4> Nay, Brussels
-                                        </li>
-                                        <li>
-                                            <h4>Triathlon :</h4> Pau (S) - 1h38
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className={styles.hobby_description_95}>
-                                    <h4>2024 - Denmark, France</h4>
-                                    <ul>
-                                        <li>
-                                            <h4>Trails :</h4> Fur Ultra (25 kms/ 600mD+), Climb of Aubisque (18kms/
-                                            1200mD+)
-                                        </li>
-                                        <li>
-                                            <h4>Marathon :</h4> Copenhaguen - 3h53
-                                        </li>
-                                        <li>
-                                            <h4>Half-Marathon :</h4> Esbjerg, Fanø
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className={styles.hobby_description_95}>
-                                    <h4>2023 - Denmark, France</h4>
-                                    <ul>
-                                        <li>
-                                            <h4>Trails :</h4> Climb of Aubisque (18kms/ 1200mD+)
-                                        </li>
-                                        <li>
-                                            <h4>Half-Marathon :</h4> Esbjerg, Odense
-                                        </li>
-                                        <li>
-                                            <h4>Others :</h4> West Coast Run (10kms), Color Fun Esbjerg (5kms)
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div className={styles.hobby_description_95} style={{ marginBottom: 10 }}>
-                                    And many mores before...
-                                </div>
-                            </>
-                        }
-                    />
-                    <HobbyComponent
-                        title={"Reading"}
-                        logo={<BookShelfIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />}
-                        onRight={true}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    I love to read books even if I don&apos;t read as much as I would like. From &apos;
-                                    <b>A song of ice and fire</b>&apos;, to &apos;<b>The Grand Chessboard</b>&apos;, I
-                                    read fictions or articles and books on a large variety of topics.
-                                </p>
-                                <p>
-                                    One of my favorite book is <b>Why we sleep?</b> by <b>Matthew Walker</b>, an amazing
-                                    book to understand why we sleep and how it works.
-                                </p>
-                            </>
-                        }
-                    />
-                    <HobbyComponent
-                        title={"Video Games"}
-                        logo={<VideoGame size={40} secondaryColor={"rgb(255, 68, 0)"} />}
-                        DescriptionComponent={
-                            <>
-                                <p>
-                                    I started to be interested in IT thanks to competitive online video games (Counter
-                                    Strike). I still play, less than before, to singleplayer games.
-                                </p>
-                                <p>
-                                    My favorite video games: <b>Urban Terror</b>, <b>Battlefield 3</b>,{" "}
-                                    <b>Cyberpunk 2077</b>, <b>Age of Empires II</b>, <b>Mass Effect</b>.
-                                </p>
-                            </>
-                        }
-                    />
+                    {translation.raw("hobbies").map((hobby, hobbyIndex) => (
+                        <HobbyComponent
+                            key={hobbyIndex}
+                            title={hobby.title}
+                            logo={pickIcon(hobby.title)}
+                            onRight={hobbyIndex % 2 === 1}
+                            DescriptionComponent={
+                                <>
+                                    {hobby.descriptions.map((desc, descIndex) => (
+                                        <>
+                                            {renderDescriptionBlock(desc, `${hobbyIndex}-hob-${descIndex}`)}
+                                            {hobbyIndex === 0 && descIndex === 0 && (
+                                                <div
+                                                    style={{
+                                                        display: "flex",
+                                                        alignItems: "center",
+                                                        textAlign: "center",
+                                                        gap: 10,
+                                                        marginBottom: 10,
+                                                        marginTop: 10,
+                                                    }}
+                                                    className={styles.strava_profile_container}
+                                                >
+                                                    <a
+                                                        className={styles.strava_profile_link}
+                                                        href={STRAVA_PROFILE}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        <div className={styles.strava_profile_text}>Strava</div>
+                                                        <StravaIcon size={27} />
+                                                    </a>
+                                                </div>
+                                            )}
+                                        </>
+                                    ))}
+                                </>
+                            }
+                        />
+                    ))}
                 </div>
             }
         />

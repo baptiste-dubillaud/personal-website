@@ -167,6 +167,146 @@
                         ["Gerrit", "SonarQube", "Jenkins"]
                     ]
                 }
+            ],
+            "education": [
+                {
+                    "start_date": "2018",
+                    "end_date": "2021",
+                    "title": "Master informatique",
+                    "company": "CY-Tech",
+                    "location": "Pau, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "J'ai appris les bases de la programmation avec <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold> et Web, mais surtout les <bold>principes de l'ingénierie logicielle</bold>. Spécialisation en <bold>Big Data frameworks</bold> via des cours de Big Data Analytics la dernière année."
+                        }
+                    ],
+                    "stack": [
+                        ["Java", "Spark"],
+                        ["Python", "Pandas", "NumPy", "OpenCV"],
+                        ["C", "C++", "Fortran"],
+                        ["HTML", "CSS", "JS", "React-Native"]
+                    ]
+                },
+                {
+                    "start_date": "2020",
+                    "end_date": "2021",
+                    "title": "Cours d'un an en HPC & Traitement de Données",
+                    "company": "Université de La Coruña",
+                    "location": "La Coruña, Espagne",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Apprentissage des bases des <bold>architectures HPC</bold>, de la <bold>programmation CPU/GPU</bold> et du <bold>traitement parallèle de grandes données</bold>."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Projet final : Développement et <bold>optimisation</bold> d'un algorithme pour filtrer des cubes de données issus de <bold>l'imagerie sismique</bold> sur le supercalculateur Pangea II (TotalEnergies)."
+                        }
+                    ],
+                    "stack": [
+                        ["CUDA", "MPI", "OpenMP", "OpenCV"],
+                        ["C", "C++", "Fortran"]
+                    ]
+                },
+                {
+                    "start_date": "2016",
+                    "end_date": "2018",
+                    "title": "Classe préparatoire aux écoles d'ingénieurs",
+                    "company": "Lycée Saint-Cricq",
+                    "location": "Pau, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "<bold>2</bold> ans de cours intensifs en <bold>mathématiques</bold>, <bold>physique</bold>, <bold>chimie</bold> et <bold>sciences de l'ingénieur</bold> pour préparer les concours d'entrée aux écoles d'ingénieurs."
+                        }
+                    ],
+                    "stack": []
+                }
+            ],
+            "hobbies": [
+                {
+                    "title": "Sport",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Je passe beaucoup de temps à faire du sport. Je m'entraîne actuellement pour le triathlon après avoir terminé mon deuxième marathon à Biarritz en mai 2025 et mon premier triathlon en juin 2025. J'aime aussi parfois jouer au padel ou faire des randonnées."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "<h4>PR</h4> Marathon : 3h44 (500 mD+), Semi-Marathon : 1h42, Triathlon (S) : 1h38"
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<h4>2025 - France, Belgique</h4>",
+                                    "subitems": [
+                                        "Marathon : Biarritz - 500 mD+ - 3h44",
+                                        "Semi-Marathon : Nay, Bruxelles",
+                                        "Triathlon : Pau (S) - 1h38"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<h4>2024 - Danemark, France</h4>",
+                                    "subitems": [
+                                        "Trails : Fur Ultra (25 kms / 600mD+), Montée de l'Aubisque (18 kms / 1200mD+)",
+                                        "Marathon : Copenhague - 3h53",
+                                        "Semi-Marathon : Esbjerg, Fanø"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<h4>2023 - Danemark, France</h4>",
+                                    "subitems": [
+                                        "Trails : Montée de l'Aubisque (18 kms / 1200mD+)",
+                                        "Semi-Marathon : Esbjerg, Odense",
+                                        "Autres : West Coast Run (10 kms), Color Fun Esbjerg (5 kms)"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Et bien d'autres avant..."
+                        }
+                    ]
+                },
+                {
+                    "title": "Lecture",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "J'aime lire des livres même si je ne lis pas autant que je le voudrais. De '<bold>Le Trône de fer</bold>' à '<bold>The Grand Chessboard</bold>', je lis des fictions ou des articles et livres sur une grande variété de sujets."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Un de mes livres préférés est <bold>Pourquoi nous dormons ?</bold> de <bold>Matthew Walker</bold>, un livre incroyable pour comprendre pourquoi nous dormons et comment cela fonctionne."
+                        }
+                    ]
+                },
+                {
+                    "title": "Jeux Vidéo",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Je me suis intéressé à l'informatique grâce aux jeux vidéo compétitifs en ligne (Counter Strike). Je joue encore, moins qu'avant, à des jeux solo."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Mes jeux vidéo préférés : <bold>Urban Terror</bold>, <bold>Battlefield 3</bold>, <bold>Cyberpunk 2077</bold>, <bold>Age of Empires II</bold>, <bold>Mass Effect</bold>."
+                        }
+                    ]
+                }
             ]
         }
     }

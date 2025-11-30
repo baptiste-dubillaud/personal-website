@@ -167,6 +167,146 @@
                         ["Gerrit", "SonarQube", "Jenkins"]
                     ]
                 }
+            ],
+            "education": [
+                {
+                    "start_date": "2018",
+                    "end_date": "2021",
+                    "title": "Master degree in Computer Science",
+                    "company": "CY-Tech",
+                    "location": "Pau, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "I learned the basics of programming with <bold>C</bold>, <bold>C++</bold>, <bold>Java</bold>, and Web, but most of all <bold>software engineering principles</bold>. Specialization in <bold>Big Data frameworks</bold> through Big Data Analytics classes on last year."
+                        }
+                    ],
+                    "stack": [
+                        ["Java", "Spark"],
+                        ["Python", "Pandas", "NumPy", "OpenCV"],
+                        ["C", "C++", "Fortran"],
+                        ["HTML", "CSS", "JS", "React-Native"]
+                    ]
+                },
+                {
+                    "start_date": "2020",
+                    "end_date": "2021",
+                    "title": "One year course in HPC and Data Processing",
+                    "company": "University of La Coruña",
+                    "location": "La Coruña, Spain",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "Learned the basics of <bold>HPC architectures</bold>, <bold>CPU/GPU programming</bold>, and <bold>large parallel data processing</bold>."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Final Project: Development and <bold>optimization</bold> of an algorithm to filter data cubes from <bold>seismic imaging</bold> on Pangea II HPC at TotalEnergies."
+                        }
+                    ],
+                    "stack": [
+                        ["CUDA", "MPI", "OpenMP", "OpenCV"],
+                        ["C", "C++", "Fortran"]
+                    ]
+                },
+                {
+                    "start_date": "2016",
+                    "end_date": "2018",
+                    "title": "Preparatory class for engineering schools",
+                    "company": "Saint-Cricq High School",
+                    "location": "Pau, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "<bold>2</bold> years of intensive course in <bold>mathematics</bold>, <bold>physics</bold>, <bold>chemistry</bold>, and <bold>engineering sciences</bold> to prepare for the entrance exams of engineering schools."
+                        }
+                    ],
+                    "stack": []
+                }
+            ],
+            "hobbies": [
+                {
+                    "title": "Sport",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "I spend a lot of time doing sports. I'm currently training for triathlon after having completed my second marathon in Biarritz in May 2025 and my first triathlon in June 2025. I also like from time to time to play padel, or hike."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "<h4>PR</h4> Marathon: 3h44 (500 mD+), Half-Marathon: 1h42, Triathlon (S): 1h38"
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<h4>2025 - France, Belgium</h4>",
+                                    "subitems": [
+                                        "Marathon: Biarritz - 500 mD+ - 3h44",
+                                        "Half-Marathon: Nay, Brussels",
+                                        "Triathlon: Pau (S) - 1h38"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<h4>2024 - Denmark, France</h4>",
+                                    "subitems": [
+                                        "Trails: Fur Ultra (25 kms / 600mD+), Climb of Aubisque (18 kms / 1200mD+)",
+                                        "Marathon: Copenhaguen - 3h53",
+                                        "Half-Marathon: Esbjerg, Fanø"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<h4>2023 - Denmark, France</h4>",
+                                    "subitems": [
+                                        "Trails: Climb of Aubisque (18 kms / 1200mD+)",
+                                        "Half-Marathon: Esbjerg, Odense",
+                                        "Others: West Coast Run (10 kms), Color Fun Esbjerg (5 kms)"
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "And many mores before..."
+                        }
+                    ]
+                },
+                {
+                    "title": "Reading",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "I love to read books even if I don't read as much as I would like. From '<bold>A song of ice and fire</bold>', to '<bold>The Grand Chessboard</bold>', I read fictions or articles and books on a large variety of topics."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "One of my favorite book is <bold>Why we sleep?</bold> by <bold>Matthew Walker</bold>, an amazing book to understand why we sleep and how it works."
+                        }
+                    ]
+                },
+                {
+                    "title": "Video Games",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "I started to be interested in IT thanks to competitive online video games (Counter Strike). I still play, less than before, to singleplayer games."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "My favorite video games: <bold>Urban Terror</bold>, <bold>Battlefield 3</bold>, <bold>Cyberpunk 2077</bold>, <bold>Age of Empires II</bold>, <bold>Mass Effect</bold>."
+                        }
+                    ]
+                }
             ]
         }
     }
