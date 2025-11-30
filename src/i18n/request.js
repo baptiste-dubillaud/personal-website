@@ -1,10 +1,16 @@
 import { getRequestConfig } from "next-intl/server";
-import { cookies } from "next/headers";
+import { headers } from "next/headers";
 
 export default getRequestConfig(async () => {
-    // Get locale from cookie, fallback to "en"
-    const cookieStore = await cookies();
-    const locale = cookieStore.get("NEXT_LOCALE")?.value || "en";
+    // Try to get locale from header set by middleware, fallback to default
+    const headersList = await headers();
+    let locale = headersList.get("x-locale") || "en";
+
+    // Validate locale
+    const supportedLocales = ["en", "fr"];
+    if (!supportedLocales.includes(locale)) {
+        locale = "en";
+    }
 
     return {
         locale,

@@ -10,16 +10,18 @@ export default function LanguageSwitcher() {
     const currentLocale = useLocale();
     const [isLoading, setIsLoading] = useState(false);
 
-    const changeLanguage = async (newLocale) => {
+    const changeLanguage = (newLocale) => {
         if (newLocale === currentLocale || isLoading) return;
 
         setIsLoading(true);
 
-        // Set cookie with iOS-compatible settings
-        const maxAge = 365 * 24 * 60 * 60; // 1 year
-        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${maxAge}; SameSite=Lax; Secure=true`;
+        // Save to localStorage
+        localStorage.setItem("NEXT_LOCALE", newLocale);
 
-        // Refresh the page to apply new locale
+        // Also set as cookie so middleware can read it on next request
+        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
+
+        // Force full page reload to apply new locale
         router.refresh();
 
         setIsLoading(false);
