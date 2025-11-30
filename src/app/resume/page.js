@@ -63,7 +63,7 @@ const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
 
 const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translation }) => {
-    const locale = useLocale();
+    const linkedInLocale = useTranslations("common")("linkedin_lang");
 
     function scrollToComponent(index, ref) {
         if (ref.current) {
@@ -85,7 +85,7 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translati
             <div className={styles.presentation_desc}>{translation("prensentation.intro")}</div>
 
             <div className={styles.presentation_buttons_container}>
-                <NavigationButton link={`${LINKEDIN_PROFILE}?locale=${locale}`} alt="LinkedIn profile">
+                <NavigationButton link={`${LINKEDIN_PROFILE}?locale=${linkedInLocale}`} alt="LinkedIn profile">
                     <LinkedInIcon size={30} />
                 </NavigationButton>
                 <NavigationButton link={GITHUB_PROFILE} alt="Github profile">

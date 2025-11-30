@@ -34,7 +34,7 @@ const MainPageButton = ({ goTo, text }) => {
 
 export default function Home() {
     const t = useTranslations("pages.home");
-    const linkedInLocale = t("linkedin_lang");
+    const commont = useTranslations("common");
     const currentLocale = useLocale();
 
     return (
@@ -126,7 +126,7 @@ export default function Home() {
                             {/* Profile links */}
                             <div className={styles.presentation_data_links_container}>
                                 <NavigationButton
-                                    link={`${LINKEDIN_PROFILE}?locale=${linkedInLocale}`}
+                                    link={`${LINKEDIN_PROFILE}?locale=${commont("linkedin_lang")}`}
                                     alt="LinkedIn profile"
                                 >
                                     <LinkedInIcon size={30} />

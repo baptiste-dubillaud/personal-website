@@ -4,6 +4,9 @@
         "home": "Home",
         "resume": "Resume"
     },
+    "common": {
+        "linkedin_lang": "en_US"
+    },
     "footer": {
         "text": "Next.js/React. Developed in <bold>{years}</bold>"
     },
@@ -16,7 +19,6 @@
             },
             "age": "years old",
             "nationality": "French",
-            "linkedin_lang": "en_US",
             "prensentation": {
                 "paragraph1": "years of experience in software and data engineering, with a passion for building innovative solutions and a strong foundation in computer science. Always eager to learn and explore new technologies, I am currently focused on expanding my expertise in data engineering and cloud computing.",
                 "paragraph2": "Don't hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!"
