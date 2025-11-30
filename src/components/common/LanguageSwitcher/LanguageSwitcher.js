@@ -17,7 +17,7 @@ export default function LanguageSwitcher() {
 
         // Set cookie with iOS-compatible settings
         const maxAge = 365 * 24 * 60 * 60; // 1 year
-        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${maxAge}; SameSite=Lax`;
+        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=${maxAge}; SameSite=Lax; Secure=true`;
 
         // Refresh the page to apply new locale
         router.refresh();
