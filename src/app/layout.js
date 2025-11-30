@@ -2,8 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavigationBarComponent from "@/components/core/navigationBar/NavigationBar";
 import FooterComponent from "@/components/core/footer/Footer";
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getLocale } from "next-intl/server";
+import ClientIntlProvider from "@/components/providers/ClientIntlProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -13,18 +12,15 @@ export const metadata = {
 };
 
 export default async function RootLayout({ children }) {
-    const messages = await getMessages();
-    const locale = await getLocale();
-
     return (
-        <html lang={locale}>
+        <html lang="en">
             <link rel="icon" href="/icon.png" sizes="any" />
             <body className={inter.className} style={{ position: "relative" }}>
-                <NextIntlClientProvider messages={messages} locale={locale}>
+                <ClientIntlProvider>
                     <NavigationBarComponent />
                     {children}
                     <FooterComponent />
-                </NextIntlClientProvider>
+                </ClientIntlProvider>
             </body>
         </html>
     );

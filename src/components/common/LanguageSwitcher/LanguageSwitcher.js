@@ -1,28 +1,22 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./LanguageSwitcher.module.css";
 import { useLocale } from "next-intl";
+import { useLocaleController } from "@/components/providers/ClientIntlProvider";
 
 export default function LanguageSwitcher() {
-    const router = useRouter();
     const currentLocale = useLocale();
     const [isLoading, setIsLoading] = useState(false);
+    const { setLocale } = useLocaleController();
 
     const changeLanguage = (newLocale) => {
         if (newLocale === currentLocale || isLoading) return;
 
         setIsLoading(true);
 
-        // Save to localStorage
-        localStorage.setItem("NEXT_LOCALE", newLocale);
-
-        // Also set as cookie so middleware can read it on next request
-        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; SameSite=Lax`;
-
-        // Force full page reload to apply new locale
-        router.refresh();
+        // Update client provider (persists to localStorage internally)
+        setLocale(newLocale);
 
         setIsLoading(false);
     };
