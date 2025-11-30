@@ -7,8 +7,34 @@ import ClientIntlProvider from "@/components/providers/ClientIntlProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-    title: "Hi, I'm Baptiste!",
-    description: "My personal website built to present my personal projetcs and contributions.",
+    metadataBase: new URL("https://www.dubillaudb.fr"),
+    title: {
+        default: "Baptiste Dubillaud",
+        template: "%s — Baptiste Dubillaud",
+    },
+    description: "Personal website, blog, portfolio and resume.",
+    openGraph: {
+        title: "Baptiste Dubillaud",
+        description: "Personal website, blog, portfolio and resume.",
+        url: "/",
+        siteName: "Baptiste Dubillaud",
+        images: [
+            {
+                url: "/images/profile.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Baptiste Dubillaud",
+            },
+        ],
+        locale: "en_US",
+        type: "website",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Baptiste Dubillaud",
+        description: "Personal website, blog, portfolio and resume.",
+        images: ["/images/profile.jpg"],
+    },
 };
 
 export default async function RootLayout({ children }) {
