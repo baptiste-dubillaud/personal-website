@@ -8,7 +8,7 @@
         "linkedin_lang": "en_US"
     },
     "footer": {
-        "text": "Next.js/React. Developed in <bold>{years}</bold>"
+        "text": "Developed in <bold>{years}</bold>"
     },
     "pages": {
         "home": {
