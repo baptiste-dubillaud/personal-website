@@ -172,19 +172,15 @@
     padding-bottom: 7px;
     border-radius: 3px;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     font-size: 15px;
     font-weight: 600;
 
     cursor: pointer;
 
-    transition: background-color 0.4s, font-weight 0.4s;
+    transition: background-color 0.4s, transform 0.4s;
 }
 
 .main_button_container:hover {
     background-color: var(--color-orange-opacity-2);
-    font-weight: 800;
+    transform: scale(1.02);
 }

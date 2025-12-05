@@ -17,6 +17,10 @@ import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
 import RichText from "@/components/common/RichText";
 
+const TWO_COLUMNS_BREAKPOINT = 1200;
+const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
+const TWO_COLUMNS_CONTENT_WIDTH = "59%";
+
 // Common renderer for description objects (paragraph | list)
 function renderDescriptionBlock(desc, key) {
     if (desc.type === "paragraph") {
@@ -27,10 +31,6 @@ function renderDescriptionBlock(desc, key) {
     }
     return null;
 }
-
-const TWO_COLUMNS_BREAKPOINT = 1200;
-const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
-const TWO_COLUMNS_CONTENT_WIDTH = "59%";
 
 const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translation }) => {
     const linkedInLocale = useTranslations("common")("linkedin_lang");
@@ -94,6 +94,18 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translati
                     />
                 </div>
             )}
+
+            <button
+                className={styles.presentation_download_button_container}
+                onClick={() => {
+                    const link = document.createElement("a");
+                    link.href = `/resume/resume_${linkedInLocale.split("_")[0]}.pdf`;
+                    link.download = `resume_${linkedInLocale.split("_")[0]}.pdf`;
+                    link.click();
+                }}
+            >
+                {translation("menu.download")}
+            </button>
         </div>
     );
 };
