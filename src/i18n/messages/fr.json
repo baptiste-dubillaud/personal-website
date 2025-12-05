@@ -236,13 +236,13 @@
                         },
                         {
                             "type": "paragraph",
-                            "content": "<h4>PR</h4> Marathon : 3h44 (500 mD+), Semi-Marathon : 1h42, Triathlon (S) : 1h38"
+                            "content": "<bold>PR</bold> : Marathon 3h44 (500 mD+), Semi-Marathon 1h42, Triathlon (S) 1h38"
                         },
                         {
                             "type": "list",
                             "items": [
                                 {
-                                    "content": "<h4>2025 - France, Belgique</h4>",
+                                    "content": "<bold>2025 - France, Belgique</bold>",
                                     "subitems": [
                                         "Marathon : Biarritz - 500 mD+ - 3h44",
                                         "Semi-Marathon : Nay, Bruxelles",
@@ -255,7 +255,7 @@
                             "type": "list",
                             "items": [
                                 {
-                                    "content": "<h4>2024 - Danemark, France</h4>",
+                                    "content": "<bold>2024 - Danemark, France</bold>",
                                     "subitems": [
                                         "Trails : Fur Ultra (25 kms / 600mD+), Montée de l'Aubisque (18 kms / 1200mD+)",
                                         "Marathon : Copenhague - 3h53",
@@ -268,7 +268,7 @@
                             "type": "list",
                             "items": [
                                 {
-                                    "content": "<h4>2023 - Danemark, France</h4>",
+                                    "content": "<bold>2023 - Danemark, France</bold>",
                                     "subitems": [
                                         "Trails : Montée de l'Aubisque (18 kms / 1200mD+)",
                                         "Semi-Marathon : Esbjerg, Odense",
