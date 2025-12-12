@@ -41,7 +41,7 @@ export default function NavigationBarComponent({}) {
                     <div className={styles.links_container}>
                         <NavLinkComponent name={t("home")} path="/" />
                         <NavLinkComponent name={t("resume")} path="/resume" />
-                        {/* <NavLinkComponent name="Portfolio" path="/portfolio"/> */}
+                        <NavLinkComponent name={t("portfolio")} path="/portfolio"/>
                         {/* <NavLinkComponent name="Blog" path="/blog" /> */}
                     </div>
                 </div>

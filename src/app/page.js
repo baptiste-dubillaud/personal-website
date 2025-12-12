@@ -149,8 +149,8 @@ export default function Home() {
                 {/* Shortcut buttons */}
                 <div className={styles.presentation_buttons_container}>
                     <MainPageButton text={t("resume_button")} goTo="resume" />
-                    {/* <MainPageButton text="Portfolio" goTo="portfolio"/> */}
-                    {/* <MainPageButton text="Blog" goTo="blog"  /> */}
+                    <MainPageButton text={t("portfolio_button")} goTo="portfolio"/>
+                    {/* <MainPageButton text={t("blog_button")} goTo="blog"  /> */}
                 </div>
             </div>
         </main>

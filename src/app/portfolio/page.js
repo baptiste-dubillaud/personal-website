@@ -11,7 +11,12 @@ import matter from "gray-matter";
 
 import { PORTFOLIO_FOLDER_PATH } from "@/utils/linkUtils";
 
+import { getTranslations } from 'next-intl/server';
+
+
 const ProjectContainer = ({ title, link, description, image, technologies, github, demo, date }) => {
+
+    
     return (
         <Link href={link} className={styles.project_container}>
             <div className={styles.project_image_container}>
@@ -59,6 +64,8 @@ const ProjectContainer = ({ title, link, description, image, technologies, githu
 };
 
 export default async function Portfolio({}) {
+    const t = await getTranslations('pages.portfolio')
+
     const files = fs.readdirSync(PORTFOLIO_FOLDER_PATH);
 
     const projects = files
@@ -78,9 +85,9 @@ export default async function Portfolio({}) {
 
     return (
         <div className={styles.portfolio_container}>
-            <div className={styles.portfolio_title}>My Portfolio</div>
+            <div className={styles.portfolio_title}>{ t("title") }</div>
             <div className={styles.portfolio_subtitle}>
-                Here are some of the projects I&apos;ve worked on. Each project showcases different technologies and skills I&apos;ve developed over time.
+                {t("introduction")}
             </div>
             <div className={styles.projects_list}>
                 {projects.map((item, index) => {
