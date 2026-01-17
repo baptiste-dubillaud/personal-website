@@ -87,7 +87,7 @@ export default function Home() {
                                         <motion.span
                                             key={index}
                                             animate={{ y: [10, 0], opacity: [0, 1] }}
-                                            transition={{ delay: 1 + index * 0.05, duration: 0 }}
+                                            transition={{ delay: 1 + index * 0.1, duration: 0 }}
                                         >
                                             {char}
                                         </motion.span>
@@ -98,7 +98,7 @@ export default function Home() {
                                         <motion.span
                                             key={index}
                                             animate={{ y: [10, 0], opacity: [0, 1] }}
-                                            transition={{ delay: 1.5 + index * 0.05, duration: 0 }}
+                                            transition={{ delay: 1.9 + index * 0.1, duration: 0 }}
                                         >
                                             {char}
                                         </motion.span>
@@ -110,7 +110,7 @@ export default function Home() {
                                 className={styles.presentation_data_role_container}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 2 }}
+                                transition={{ duration: 2, delay: 2.4 }}
                             >
                                 {currentLocale === "fr" ? (
                                     <>
@@ -155,7 +155,7 @@ export default function Home() {
                                 className={styles.presentation_data_specs_container}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 2.5 }}
+                                transition={{ duration: 2, delay: 2.8 }}
                             >
                                 <div className={styles.presentation_data_spec_container}>
                                     <ProfileIcon size={20} />
@@ -177,7 +177,7 @@ export default function Home() {
                                 className={styles.presentation_data_links_container}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                transition={{ duration: 0.5, delay: 3 }}
+                                transition={{ duration: 2, delay: 3.2 }}
                             >
                                 <NavigationButton
                                     link={`${LINKEDIN_PROFILE}?locale=${commont("linkedin_lang")}`}
@@ -198,7 +198,7 @@ export default function Home() {
                             className={styles.presentation_data_sentence}
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5, delay: 3.5 }}
+                            transition={{ duration: 2, delay: 3.6 }}
                         >
                             <p>
                                 {getExpNbYears()} {t("prensentation.paragraph1")}
@@ -212,7 +212,7 @@ export default function Home() {
                     className={styles.presentation_buttons_container}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 4 }}
+                    transition={{ duration: 1, delay: 4 }}
                 >
                     <MainPageButton text={t("resume_button")} goTo="resume" />
                     {/* <MainPageButton text="Portfolio" goTo="portfolio"/> */}
