@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   nextjs-app-dev:
     build:
@@ -14,4 +12,12 @@ services:
     environment:
       - WATCHPACK_POLLING=true
       - CHOKIDAR_USEPOLLING=true
+    develop:
+      watch:
+        - path: .
+          action: sync
+          target: /app
+          ignore:
+            - node_modules/
+            - .next/
     command: npm run dev
