@@ -16,6 +16,8 @@ import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
 
+import { motion } from "framer-motion";
+
 const MainPageButton = ({ goTo, text }) => {
     const router = useRouter();
 
@@ -37,13 +39,32 @@ export default function Home() {
     const commont = useTranslations("common");
     const currentLocale = useLocale();
 
+    function getExpNbYears() {
+        return new Date().getFullYear() - 2021;
+    }
+
     return (
         <main>
             <div className={styles.presentation_full_screen_wrapper}>
-                <div className={styles.presentation_container}>
+                <motion.div
+                    className={styles.presentation_container}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.2, delay: 0.5 }}
+                >
                     {/* Profile pic */}
-                    <div className={styles.presentation_picture_border_container}>
-                        <div className={styles.presentation_picture_container}>
+                    <motion.div
+                        className={styles.presentation_picture_border_container}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.75 }}
+                    >
+                        <motion.div
+                            className={styles.presentation_picture_container}
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.75, duration: 0.5 }}
+                        >
                             <Image
                                 src="/images/profile.jpg"
                                 alt="Baptiste Dubillaud profile picture"
@@ -53,8 +74,8 @@ export default function Home() {
                                 blurDataURL="/images/profile-blur.jpg"
                                 className={styles.presentation_picture}
                             />
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                     <div className={styles.presentation_data_container}>
                         <div className={styles.presentation_data_group_container}>
                             {/* First and Last names */}
@@ -62,12 +83,35 @@ export default function Home() {
                                 <span
                                     className={`${styles.presentation_data_name_text} ${styles.presentation_data_firstname}`}
                                 >
-                                    Baptiste
+                                    {"Baptiste".split("").map((char, index) => (
+                                        <motion.span
+                                            key={index}
+                                            animate={{ y: [10, 0], opacity: [0, 1] }}
+                                            transition={{ delay: 1 + index * 0.05, duration: 0 }}
+                                        >
+                                            {char}
+                                        </motion.span>
+                                    ))}
                                 </span>
-                                <span className={styles.presentation_data_name_text}>Dubillaud</span>
+                                <span className={styles.presentation_data_name_text}>
+                                    {"Dubillaud".split("").map((char, index) => (
+                                        <motion.span
+                                            key={index}
+                                            animate={{ y: [10, 0], opacity: [0, 1] }}
+                                            transition={{ delay: 1.5 + index * 0.05, duration: 0 }}
+                                        >
+                                            {char}
+                                        </motion.span>
+                                    ))}
+                                </span>
                             </div>
                             {/* Position def */}
-                            <div className={styles.presentation_data_role_container}>
+                            <motion.div
+                                className={styles.presentation_data_role_container}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, delay: 2 }}
+                            >
                                 {currentLocale === "fr" ? (
                                     <>
                                         <span className={styles.presentation_data_role_text}>
@@ -103,11 +147,16 @@ export default function Home() {
                                         </span>
                                     </>
                                 )}
-                            </div>
+                            </motion.div>
                         </div>
                         <div className={styles.presentation_data_group_container}>
                             {/* Age / Nationality / Location */}
-                            <div className={styles.presentation_data_specs_container}>
+                            <motion.div
+                                className={styles.presentation_data_specs_container}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, delay: 2.5 }}
+                            >
                                 <div className={styles.presentation_data_spec_container}>
                                     <ProfileIcon size={20} />
                                     <span className={styles.presentation_data_specs_text}>
@@ -122,9 +171,14 @@ export default function Home() {
                                     <Locationicon size={22} />
                                     <span className={styles.presentation_data_specs_text}>Pau, France</span>
                                 </div>
-                            </div>
+                            </motion.div>
                             {/* Profile links */}
-                            <div className={styles.presentation_data_links_container}>
+                            <motion.div
+                                className={styles.presentation_data_links_container}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, delay: 3 }}
+                            >
                                 <NavigationButton
                                     link={`${LINKEDIN_PROFILE}?locale=${commont("linkedin_lang")}`}
                                     alt="LinkedIn profile"
@@ -137,21 +191,33 @@ export default function Home() {
                                 {/* <NavigationButton link={MEDIUM_PROFILE} alt="Medium profile">
                                     <MediumIcon size={30}/>
                                 </NavigationButton> */}
-                            </div>
+                            </motion.div>
                         </div>
                         {/* Description sentence */}
-                        <div className={styles.presentation_data_sentence}>
-                            <p>5 {t("prensentation.paragraph1")}</p>
+                        <motion.div
+                            className={styles.presentation_data_sentence}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, delay: 3.5 }}
+                        >
+                            <p>
+                                {getExpNbYears()} {t("prensentation.paragraph1")}
+                            </p>
                             <p>{t("prensentation.paragraph2")}</p>
-                        </div>
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
                 {/* Shortcut buttons */}
-                <div className={styles.presentation_buttons_container}>
+                <motion.div
+                    className={styles.presentation_buttons_container}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5, delay: 4 }}
+                >
                     <MainPageButton text={t("resume_button")} goTo="resume" />
                     {/* <MainPageButton text="Portfolio" goTo="portfolio"/> */}
                     {/* <MainPageButton text="Blog" goTo="blog"  /> */}
-                </div>
+                </motion.div>
             </div>
         </main>
     );
