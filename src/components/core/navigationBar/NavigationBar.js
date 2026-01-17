@@ -8,6 +8,13 @@ import LanguageSwitcher from "@/components/common/LanguageSwitcher/LanguageSwitc
 
 import { motion } from "framer-motion";
 
+const links = [
+    { nameKey: "home", path: "/" },
+    { nameKey: "resume", path: "/resume" },
+    // { nameKey: "portfolio", path: "/portfolio" },
+    // { nameKey: "blog", path: "/blog" },
+];
+
 export default function NavigationBarComponent({}) {
     const router = useRouter();
     const pathname = usePathname();
@@ -53,14 +60,25 @@ export default function NavigationBarComponent({}) {
                     ></motion.div>
                 </div>
                 <div className={styles.actions_container}>
-                    <div className={styles.lang_switcher_container}>
+                    <motion.div
+                        className={styles.lang_switcher_container}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.25 }}
+                    >
                         <LanguageSwitcher />
-                    </div>
+                    </motion.div>
                     <div className={styles.links_container}>
-                        <NavLinkComponent name={t("home")} path="/" />
-                        <NavLinkComponent name={t("resume")} path="/resume" />
-                        {/* <NavLinkComponent name="Portfolio" path="/portfolio"/> */}
-                        {/* <NavLinkComponent name="Blog" path="/blog" /> */}
+                        {links.map((link, index) => (
+                            <motion.div
+                                key={link.path}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.5, delay: 0.5 + index * 0.25 }}
+                            >
+                                <NavLinkComponent name={t(link.nameKey)} path={link.path} />
+                            </motion.div>
+                        ))}
                     </div>
                 </div>
             </div>
