@@ -1,3 +1,4 @@
 1.0 - Release: 01/08/2025
 1.1 - Added iOS support: 28/11/2025
 1.2 - Supports FR/EN: 29/11/2025
+1.3 - Polished design - added animation: 17/01/2025
