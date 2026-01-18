@@ -39,10 +39,6 @@ export default function Home() {
     const commont = useTranslations("common");
     const currentLocale = useLocale();
 
-    function getExpNbYears() {
-        return new Date().getFullYear() - 2021;
-    }
-
     return (
         <main>
             <div className={styles.presentation_full_screen_wrapper}>
@@ -201,7 +197,7 @@ export default function Home() {
                             transition={{ duration: 2, delay: 3.6 }}
                         >
                             <p>
-                                {getExpNbYears()} {t("prensentation.paragraph1")}
+                                {getNbYears(new Date("09-01-2020"))} {t("prensentation.paragraph1")}
                             </p>
                             <p>{t("prensentation.paragraph2")}</p>
                         </motion.div>

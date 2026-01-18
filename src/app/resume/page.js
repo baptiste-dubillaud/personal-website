@@ -407,7 +407,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, isInitialized, hobbiesRef, transla
                             DescriptionComponent={
                                 <>
                                     {hobby.descriptions.map((desc, descIndex) => (
-                                        <>
+                                        <React.Fragment key={`${hobbyIndex}-hob-${descIndex}`}>
                                             {renderDescriptionBlock(desc, `${hobbyIndex}-hob-${descIndex}`)}
                                             {hobbyIndex === 0 && descIndex === 0 && (
                                                 <div
@@ -432,7 +432,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, isInitialized, hobbiesRef, transla
                                                     </a>
                                                 </div>
                                             )}
-                                        </>
+                                        </React.Fragment>
                                     ))}
                                 </>
                             }
@@ -466,7 +466,6 @@ export default function Resume() {
     ];
 
     function handleWindowSizeChange(isInit = false) {
-        console.log("Window resized, isInit:", isInit, "isInitialized:", isInitialized);
         if (window.innerWidth > TWO_COLUMNS_BREAKPOINT) {
             setIsTwoColumnSetup(true);
         } else {
@@ -474,7 +473,6 @@ export default function Resume() {
         }
 
         if (typeof isInit !== "boolean" && !isInitialized) {
-            console.log("Setting isInitialized to true");
             setIsInitialized(true);
         }
     }

@@ -45,7 +45,7 @@ export default function NavigationBarComponent({}) {
                 <div key={name} className={styles.typewriter} onClick={() => router.push("/")}>
                     {name.split("").map((char, index) => (
                         <motion.span
-                            key={index}
+                            key={`${name}-${index}`}
                             animate={{ opacity: 1 }}
                             initial={{ opacity: 0 }}
                             transition={{ delay: index * 0.1, duration: 0 }}
