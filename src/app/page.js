@@ -197,7 +197,7 @@ export default function Home() {
                             transition={{ duration: 2, delay: 3.6 }}
                         >
                             <p>
-                                {getNbYears(new Date("09-01-2020"))} {t("prensentation.paragraph1")}
+                                {getNbYears("09-01-2020")} {t("prensentation.paragraph1")}
                             </p>
                             <p>{t("prensentation.paragraph2")}</p>
                         </motion.div>
