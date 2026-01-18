@@ -4,6 +4,8 @@ import styles from "@/app/resume/page.module.css";
 
 import { useEffect, useRef, useState } from "react";
 
+import { delay, motion } from "framer-motion";
+
 import { getNbYears } from "@/utils/dateUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
 import BookShelfIcon from "@/components/common/icons/misc/BookIcon";
@@ -11,11 +13,12 @@ import VideoGame from "@/components/common/icons/misc/VideoGame";
 import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
-import { LINKEDIN_PROFILE, MEDIUM_PROFILE, GITHUB_PROFILE, STRAVA_PROFILE } from "@/utils/linkUtils";
-import { useTranslations, useLocale } from "next-intl";
+import { LINKEDIN_PROFILE, GITHUB_PROFILE, STRAVA_PROFILE } from "@/utils/linkUtils";
+import { useTranslations } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
 import RichText from "@/components/common/RichText";
+import { scale } from "motion";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
@@ -32,7 +35,7 @@ function renderDescriptionBlock(desc, key) {
     return null;
 }
 
-const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translation }) => {
+const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, parts, translation }) => {
     const linkedInLocale = useTranslations("common")("linkedin_lang");
 
     function scrollToComponent(index, ref) {
@@ -50,24 +53,55 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translati
     return (
         <div className={styles.presentation_container}>
             {/* Presentation data */}
-            <div className={styles.presentation_name}>Baptiste Dubillaud</div>
-            <div className={styles.presentation_job}>{translation("prensentation.title")}</div>
-            <div className={styles.presentation_desc}>{translation("prensentation.intro")}</div>
+            <motion.div
+                className={styles.presentation_name}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.25 }}
+            >
+                Baptiste Dubillaud
+            </motion.div>
+            <motion.div
+                className={styles.presentation_job}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+            >
+                {translation("prensentation.title")}
+            </motion.div>
+            <motion.div
+                className={styles.presentation_desc}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.75 }}
+            >
+                {translation("prensentation.intro")}
+            </motion.div>
 
-            <div className={styles.presentation_buttons_container}>
+            <motion.div
+                className={styles.presentation_buttons_container}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 1 }}
+            >
                 <NavigationButton link={`${LINKEDIN_PROFILE}?locale=${linkedInLocale}`} alt="LinkedIn profile">
                     <LinkedInIcon size={30} />
                 </NavigationButton>
                 <NavigationButton link={GITHUB_PROFILE} alt="Github profile">
                     <GithubIcon size={30} />
                 </NavigationButton>
-            </div>
+            </motion.div>
 
             {/* Menu / Showed only if enough space (isTwoColumnSetup = false) */}
             {isTwoColumnSetup && (
-                <div className={styles.presentation_menu}>
+                <motion.div
+                    className={styles.presentation_menu}
+                    initial={{ opacity: isInitialized ? 1 : 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 1, delay: 1 }}
+                >
                     {parts.map((part, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             className={styles.presentation_menu_item}
                             style={
@@ -84,18 +118,22 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translati
                                       }
                             }
                             onClick={() => scrollToComponent(index, part.ref)}
+                            initial={{ opacity: isInitialized ? 1 : 0, x: isInitialized ? 0 : -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5, delay: 1 + index * 0.15 }}
                         >
                             {part.display}
-                        </div>
+                        </motion.div>
                     ))}
-                    <div
+                    <motion.div
                         className={styles.presentation_menu_elevator}
                         style={{ top: parts.map((key, id) => key.name).indexOf(currentPart) * 45 - 5 }}
                     />
-                </div>
+                </motion.div>
             )}
 
-            <button
+            <motion.button
+                key={`download_resume_button-${isTwoColumnSetup}`}
                 className={styles.presentation_download_button_container}
                 onClick={() => {
                     const link = document.createElement("a");
@@ -103,41 +141,60 @@ const PresentationComponent = ({ isTwoColumnSetup, currentPart, parts, translati
                     link.download = `resume_${linkedInLocale.split("_")[0]}.pdf`;
                     link.click();
                 }}
+                initial={{ opacity: isInitialized ? 1 : 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: isTwoColumnSetup ? 2 : 1 }}
             >
                 {translation("menu.download")}
-            </button>
+            </motion.button>
         </div>
     );
 };
 
-const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent }) => {
+const PartComponent = ({ isTwoColumnSetup, isInitialized, title, reference, contentComponent, titleDelay }) => {
     return (
         <div ref={reference} className={styles.part_container}>
-            {!isTwoColumnSetup && <div className={styles.part_title}>{title}</div>}
+            {!isTwoColumnSetup && (
+                <motion.div
+                    className={styles.part_title}
+                    initial={{ opacity: isInitialized ? 1 : 0, scale: isInitialized ? 1 : 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: titleDelay }}
+                >
+                    {title}
+                </motion.div>
+            )}
             <div className={styles.part_content}>{contentComponent}</div>
         </div>
     );
 };
 
-const AboutComponent = ({ isTwoColumnSetup, aboutRef, translation }) => {
+const AboutComponent = ({ isTwoColumnSetup, isInitialized, aboutRef, translation }) => {
     const age = getNbYears("12-29-1998");
     const experience = getNbYears("09-01-2020");
 
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
+            isInitialized={isInitialized}
             title={translation("menu.about")}
+            titleDelay={1.25}
             reference={aboutRef}
             contentComponent={
                 <>
                     {translation.raw("about").map((_, index) => (
-                        <p key={index}>
+                        <motion.p
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 1, delay: 1.25 + index * 0.15 }}
+                        >
                             {translation.rich(`about.${index}`, {
                                 age,
                                 experience,
                                 bold: (chunks) => <b>{chunks}</b>,
                             })}
-                        </p>
+                        </motion.p>
                     ))}
                 </>
             }
@@ -154,12 +211,14 @@ const TimeLineComponent = ({
     dateTo,
     DescriptionComponent,
     techStack = [[]],
+    ...props
 }) => {
     return (
-        <div
+        <motion.div
             className={`${styles.timeline_item_container} ${
                 onRight ? styles.timeline_item_container_right : styles.timeline_item_container_left
             }`}
+            {...props}
         >
             <div
                 className={`${styles.timeline_item_dot_decoration} ${
@@ -208,20 +267,25 @@ const TimeLineComponent = ({
                     </div>
                 )}
             </div>
-        </div>
+        </motion.div>
     );
 };
 
-const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) => {
+const ExperiencesComponent = ({ isTwoColumnSetup, isInitialized, experienceRef, translation }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
+            isInitialized={isInitialized}
             reference={experienceRef}
             title={translation("menu.experience")}
+            titleDelay={2}
             contentComponent={
                 <div className={styles.timeline_items_container}>
                     {translation.raw("experiences").map((experience, expIndex) => (
                         <TimeLineComponent
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1, delay: 2 + 0.25 * expIndex }}
                             key={expIndex}
                             dateFrom={experience.start_date}
                             dateTo={experience.end_date}
@@ -231,7 +295,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) 
                             DescriptionComponent={
                                 <>
                                     {experience.descriptions.map((desc, descIndex) =>
-                                        renderDescriptionBlock(desc, `${expIndex}-exp-${descIndex}`)
+                                        renderDescriptionBlock(desc, `${expIndex}-exp-${descIndex}`),
                                     )}
                                 </>
                             }
@@ -244,17 +308,22 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) 
     );
 };
 
-const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => {
+const EducationComponent = ({ isTwoColumnSetup, isInitialized, educationRef, translation }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
+            isInitialized={isInitialized}
             reference={educationRef}
             title={translation("menu.education")}
+            titleDelay={3}
             contentComponent={
                 <div className={styles.timeline_items_container}>
                     {translation.raw("education").map((edu, eduIndex) => (
                         <TimeLineComponent
                             key={eduIndex}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1, delay: 3 + 0.25 * eduIndex }}
                             dateFrom={edu.start_date}
                             dateTo={edu.end_date}
                             title={edu.title}
@@ -264,7 +333,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => 
                             DescriptionComponent={
                                 <>
                                     {edu.descriptions.map((desc, descIndex) =>
-                                        renderDescriptionBlock(desc, `${eduIndex}-edu-${descIndex}`)
+                                        renderDescriptionBlock(desc, `${eduIndex}-edu-${descIndex}`),
                                     )}
                                 </>
                             }
@@ -277,37 +346,37 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => 
     );
 };
 
-const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
-    const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false }) => {
-        return (
-            <div className={styles.hobby_container}>
-                {/* Decorations */}
-                <div className={styles.hobby_decoration_top_right} />
-                <div className={styles.hobby_decoration_top_right_1} />
-                <div className={styles.hobby_decoration_top_right_2} />
-                <div className={styles.hobby_decoration_bottom_left} />
-                <div className={styles.hobby_decoration_bottom_left_1} />
-                <div className={styles.hobby_decoration_bottom_left_2} />
-                {/* Title */}
-                <div className={styles.hobby_title_container}>
-                    {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
-                    <div className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
-                        {title}
-                    </div>
-                    {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
+const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false, ...props }) => {
+    return (
+        <motion.div className={styles.hobby_container} {...props}>
+            {/* Decorations */}
+            <div className={styles.hobby_decoration_top_right} />
+            <div className={styles.hobby_decoration_top_right_1} />
+            <div className={styles.hobby_decoration_top_right_2} />
+            <div className={styles.hobby_decoration_bottom_left} />
+            <div className={styles.hobby_decoration_bottom_left_1} />
+            <div className={styles.hobby_decoration_bottom_left_2} />
+            {/* Title */}
+            <div className={styles.hobby_title_container}>
+                {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
+                <div className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
+                    {title}
                 </div>
-                <div
-                    className={styles.hobby_title_separator_container}
-                    style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}
-                >
-                    <div className={styles.hobby_title_separator} style={onRight ? { rotate: "180deg" } : {}} />
-                </div>
-                {/* Description */}
-                <div className={styles.hobby_description}>{DescriptionComponent}</div>
+                {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
             </div>
-        );
-    };
+            <div
+                className={styles.hobby_title_separator_container}
+                style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}
+            >
+                <div className={styles.hobby_title_separator} style={onRight ? { rotate: "180deg" } : {}} />
+            </div>
+            {/* Description */}
+            <div className={styles.hobby_description}>{DescriptionComponent}</div>
+        </motion.div>
+    );
+};
 
+const HobbiesComponent = ({ isTwoColumnSetup, isInitialized, hobbiesRef, translation }) => {
     function pickIcon(title) {
         const t = title.toLowerCase();
         if (t.includes("sport")) return <SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />;
@@ -321,13 +390,18 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
+            isInitialized={isInitialized}
             reference={hobbiesRef}
             title={translation("menu.hobbies")}
+            titleDelay={4}
             contentComponent={
                 <div className={styles.hobbies_container}>
                     {translation.raw("hobbies").map((hobby, hobbyIndex) => (
                         <HobbyComponent
-                            key={hobbyIndex}
+                            key={`hobby-item-${hobbyIndex}`}
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            transition={{ duration: 1, delay: 4 + 0.25 * hobbyIndex }}
                             title={hobby.title}
                             logo={pickIcon(hobby.title)}
                             onRight={hobbyIndex % 2 === 1}
@@ -376,6 +450,8 @@ export default function Resume() {
 
     const [isTwoColumnSetup, setIsTwoColumnSetup] = useState(false);
 
+    const [isInitialized, setIsInitialized] = useState(false);
+
     const [currentPart, setCurrentPart] = useState("About");
 
     const aboutRef = useRef();
@@ -390,11 +466,17 @@ export default function Resume() {
         { name: "Hobbies", display: t("menu.hobbies"), ref: hobbiesRef },
     ];
 
-    function handleWindowSizeChange() {
+    function handleWindowSizeChange(isInit = false) {
+        console.log("Window resized, isInit:", isInit, "isInitialized:", isInitialized);
         if (window.innerWidth > TWO_COLUMNS_BREAKPOINT) {
             setIsTwoColumnSetup(true);
         } else {
             setIsTwoColumnSetup(false);
+        }
+
+        if (typeof isInit !== "boolean" && !isInitialized) {
+            console.log("Setting isInitialized to true");
+            setIsInitialized(true);
         }
     }
 
@@ -419,9 +501,10 @@ export default function Resume() {
     }
 
     useEffect(() => {
-        handleWindowSizeChange();
+        handleWindowSizeChange(true);
         window.addEventListener("resize", handleWindowSizeChange);
         window.addEventListener("scroll", onScroll);
+
         return () => {
             window.removeEventListener("resize", handleWindowSizeChange);
             window.removeEventListener("scroll", onScroll);
@@ -434,6 +517,7 @@ export default function Resume() {
                 <div style={{ width: isTwoColumnSetup ? TWO_COLUMNS_PRESENTATION_WIDTH : "100%" }}>
                     <PresentationComponent
                         isTwoColumnSetup={isTwoColumnSetup}
+                        isInitialized={isInitialized}
                         parts={PARTS}
                         currentPart={currentPart}
                         translation={t}
@@ -445,24 +529,28 @@ export default function Resume() {
                 >
                     <AboutComponent
                         isTwoColumnSetup={isTwoColumnSetup}
+                        isInitialized={isInitialized}
                         aboutRef={aboutRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
                     <ExperiencesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
+                        isInitialized={isInitialized}
                         experienceRef={experienceRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
                     <EducationComponent
                         isTwoColumnSetup={isTwoColumnSetup}
+                        isInitialized={isInitialized}
                         educationRef={educationRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
                     <HobbiesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
+                        isInitialized={isInitialized}
                         hobbiesRef={hobbiesRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}

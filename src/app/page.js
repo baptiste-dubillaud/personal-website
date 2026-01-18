@@ -6,6 +6,8 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useTranslations, useLocale } from "next-intl";
 
+import { motion } from "framer-motion";
+
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import ProfileIcon from "@/components/common/icons/misc/ProfileIcon";
@@ -15,8 +17,6 @@ import Locationicon from "@/components/common/icons/misc/LocationIcon";
 import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
-
-import { motion } from "framer-motion";
 
 const MainPageButton = ({ goTo, text }) => {
     const router = useRouter();
@@ -87,7 +87,7 @@ export default function Home() {
                                         <motion.span
                                             key={index}
                                             animate={{ y: [10, 0], opacity: [0, 1] }}
-                                            transition={{ delay: 1 + index * 0.1, duration: 0 }}
+                                            transition={{ delay: 1 + index * 0.075, duration: 0 }}
                                         >
                                             {char}
                                         </motion.span>
@@ -98,7 +98,7 @@ export default function Home() {
                                         <motion.span
                                             key={index}
                                             animate={{ y: [10, 0], opacity: [0, 1] }}
-                                            transition={{ delay: 1.9 + index * 0.1, duration: 0 }}
+                                            transition={{ delay: 1.6 + index * 0.075, duration: 0 }}
                                         >
                                             {char}
                                         </motion.span>
