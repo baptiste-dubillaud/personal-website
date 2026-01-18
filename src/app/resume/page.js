@@ -4,7 +4,7 @@ import styles from "@/app/resume/page.module.css";
 
 import { useEffect, useRef, useState } from "react";
 
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 import { getNbYears } from "@/utils/dateUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
@@ -18,7 +18,6 @@ import { useTranslations } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
 import RichText from "@/components/common/RichText";
-import { scale } from "motion";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
