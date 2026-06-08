@@ -23,6 +23,18 @@ const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
 
+const SUB_PARTS_DELAY = 0.12;
+
+const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: SUB_PARTS_DELAY } },
+};
+
+const itemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
+};
+
 // Common renderer for description objects (paragraph | list)
 function renderDescriptionBlock(desc, key) {
     if (desc.type === "paragraph") {
@@ -64,7 +76,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 className={styles.presentation_job}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
+                transition={{ duration: 1, delay: 0.25 }}
             >
                 {translation("prensentation.title")}
             </motion.div>
@@ -72,7 +84,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 className={styles.presentation_desc}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.75 }}
+                transition={{ duration: 1, delay: 0.25 }}
             >
                 {translation("prensentation.intro")}
             </motion.div>
@@ -81,7 +93,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 className={styles.presentation_buttons_container}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 1 }}
+                transition={{ duration: 1, delay: 0.25 }}
             >
                 <NavigationButton link={`${LINKEDIN_PROFILE}?locale=${linkedInLocale}`} alt="LinkedIn profile">
                     <LinkedInIcon size={30} />
@@ -97,7 +109,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                     className={styles.presentation_menu}
                     initial={{ opacity: isInitialized ? 1 : 0 }}
                     animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
                 >
                     {parts.map((part, index) => (
                         <motion.div
@@ -119,7 +131,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                             onClick={() => scrollToComponent(index, part.ref)}
                             initial={{ opacity: isInitialized ? 1 : 0, x: isInitialized ? 0 : -20 }}
                             animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.5, delay: 1 + index * 0.15 }}
+                            transition={{ duration: 0.5, delay: 0.5 + index * SUB_PARTS_DELAY, ease: "easeOut" }}
                         >
                             {part.display}
                         </motion.div>
@@ -127,6 +139,9 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                     <motion.div
                         className={styles.presentation_menu_elevator}
                         style={{ top: parts.map((key, id) => key.name).indexOf(currentPart) * 45 - 5 }}
+                        initial={{ opacity: 0, scale: 0 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.75, ease: "easeOut" }}
                     />
                 </motion.div>
             )}
@@ -142,7 +157,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 }}
                 initial={{ opacity: isInitialized ? 1 : 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: isTwoColumnSetup ? 2 : 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
             >
                 {translation("menu.download")}
             </motion.button>
@@ -150,15 +165,16 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
     );
 };
 
-const PartComponent = ({ isTwoColumnSetup, isInitialized, title, reference, contentComponent, titleDelay }) => {
+const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent }) => {
     return (
         <div ref={reference} className={styles.part_container}>
             {!isTwoColumnSetup && (
                 <motion.div
                     className={styles.part_title}
-                    initial={{ opacity: isInitialized ? 1 : 0, scale: isInitialized ? 1 : 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 1, delay: titleDelay }}
+                    variants={itemVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-80px" }}
                 >
                     {title}
                 </motion.div>
@@ -168,26 +184,24 @@ const PartComponent = ({ isTwoColumnSetup, isInitialized, title, reference, cont
     );
 };
 
-const AboutComponent = ({ isTwoColumnSetup, isInitialized, aboutRef, translation }) => {
+const AboutComponent = ({ isTwoColumnSetup, aboutRef, translation }) => {
     const age = getNbYears("12-29-1998");
     const experience = getNbYears("09-01-2020");
 
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
-            isInitialized={isInitialized}
             title={translation("menu.about")}
-            titleDelay={1.25}
             reference={aboutRef}
             contentComponent={
-                <>
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-60px" }}
+                >
                     {translation.raw("about").map((_, index) => (
-                        <motion.p
-                            key={index}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 1, delay: 1.25 + index * 0.15 }}
-                        >
+                        <motion.p key={index} variants={itemVariants}>
                             {translation.rich(`about.${index}`, {
                                 age,
                                 experience,
@@ -195,7 +209,7 @@ const AboutComponent = ({ isTwoColumnSetup, isInitialized, aboutRef, translation
                             })}
                         </motion.p>
                     ))}
-                </>
+                </motion.div>
             }
         />
     );
@@ -270,21 +284,23 @@ const TimeLineComponent = ({
     );
 };
 
-const ExperiencesComponent = ({ isTwoColumnSetup, isInitialized, experienceRef, translation }) => {
+const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
-            isInitialized={isInitialized}
             reference={experienceRef}
             title={translation("menu.experience")}
-            titleDelay={2}
             contentComponent={
-                <div className={styles.timeline_items_container}>
+                <motion.div
+                    className={styles.timeline_items_container}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-60px" }}
+                >
                     {translation.raw("experiences").map((experience, expIndex) => (
                         <TimeLineComponent
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 1, delay: 2 + 0.25 * expIndex }}
+                            variants={itemVariants}
                             key={expIndex}
                             dateFrom={experience.start_date}
                             dateTo={experience.end_date}
@@ -301,28 +317,30 @@ const ExperiencesComponent = ({ isTwoColumnSetup, isInitialized, experienceRef, 
                             techStack={experience.stack || [[]]}
                         />
                     ))}
-                </div>
+                </motion.div>
             }
         />
     );
 };
 
-const EducationComponent = ({ isTwoColumnSetup, isInitialized, educationRef, translation }) => {
+const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => {
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
-            isInitialized={isInitialized}
             reference={educationRef}
             title={translation("menu.education")}
-            titleDelay={3}
             contentComponent={
-                <div className={styles.timeline_items_container}>
+                <motion.div
+                    className={styles.timeline_items_container}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-60px" }}
+                >
                     {translation.raw("education").map((edu, eduIndex) => (
                         <TimeLineComponent
                             key={eduIndex}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 1, delay: 3 + 0.25 * eduIndex }}
+                            variants={itemVariants}
                             dateFrom={edu.start_date}
                             dateTo={edu.end_date}
                             title={edu.title}
@@ -339,7 +357,7 @@ const EducationComponent = ({ isTwoColumnSetup, isInitialized, educationRef, tra
                             techStack={edu.stack || [[]]}
                         />
                     ))}
-                </div>
+                </motion.div>
             }
         />
     );
@@ -375,7 +393,7 @@ const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false, ..
     );
 };
 
-const HobbiesComponent = ({ isTwoColumnSetup, isInitialized, hobbiesRef, translation }) => {
+const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
     function pickIcon(title) {
         const t = title.toLowerCase();
         if (t.includes("sport")) return <SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />;
@@ -389,18 +407,20 @@ const HobbiesComponent = ({ isTwoColumnSetup, isInitialized, hobbiesRef, transla
     return (
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
-            isInitialized={isInitialized}
             reference={hobbiesRef}
             title={translation("menu.hobbies")}
-            titleDelay={4}
             contentComponent={
-                <div className={styles.hobbies_container}>
+                <motion.div
+                    className={styles.hobbies_container}
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-60px" }}
+                >
                     {translation.raw("hobbies").map((hobby, hobbyIndex) => (
                         <HobbyComponent
                             key={`hobby-item-${hobbyIndex}`}
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ scale: 1, opacity: 1 }}
-                            transition={{ duration: 1, delay: 4 + 0.25 * hobbyIndex }}
+                            variants={itemVariants}
                             title={hobby.title}
                             logo={pickIcon(hobby.title)}
                             onRight={hobbyIndex % 2 === 1}
@@ -438,7 +458,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, isInitialized, hobbiesRef, transla
                             }
                         />
                     ))}
-                </div>
+                </motion.div>
             }
         />
     );
@@ -526,28 +546,24 @@ export default function Resume() {
                 >
                     <AboutComponent
                         isTwoColumnSetup={isTwoColumnSetup}
-                        isInitialized={isInitialized}
                         aboutRef={aboutRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
                     <ExperiencesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
-                        isInitialized={isInitialized}
                         experienceRef={experienceRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
                     <EducationComponent
                         isTwoColumnSetup={isTwoColumnSetup}
-                        isInitialized={isInitialized}
                         educationRef={educationRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
                     <HobbiesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
-                        isInitialized={isInitialized}
                         hobbiesRef={hobbiesRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
