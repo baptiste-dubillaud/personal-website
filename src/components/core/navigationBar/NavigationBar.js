@@ -11,6 +11,7 @@ import { motion } from "framer-motion";
 const links = [
     { nameKey: "home", path: "/" },
     { nameKey: "resume", path: "/resume" },
+    { nameKey: "contact", path: "/contact" },
     // { nameKey: "portfolio", path: "/portfolio" },
     // { nameKey: "blog", path: "/blog" },
 ];

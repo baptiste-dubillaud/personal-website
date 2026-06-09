@@ -15,7 +15,7 @@
 .portfolio_subtitle {
     text-align: center;
     margin-inline: 50px;
-    color: rgb(0, 0, 0);
+    color: var(--color-text);
     margin-bottom: 50px;
 }
 
@@ -37,7 +37,7 @@
     border-radius: 10px;
     overflow: hidden;
     cursor: pointer;
-    color: black;
+    color: var(--color-text);
     text-decoration: none;
     transition: background-color 0.2s ease, transform 0.2s ease;
     min-height: 200px;
@@ -82,7 +82,7 @@
 
 .project_date {
     font-size: 0.8em;
-    color: rgb(75, 75, 75);
+    color: var(--color-text-muted);
     font-weight: normal;
 }
 
@@ -90,7 +90,7 @@
     font-size: 1em;
     line-height: 1.4;
     margin-bottom: 15px;
-    color: rgb(50, 50, 50);
+    color: var(--color-text-secondary);
 }
 
 .project_footer {
@@ -123,7 +123,7 @@
 .project_link {
     padding: 6px 12px;
     background-color: var(--color-orange);
-    color: white;
+    color: var(--color-white);
     text-decoration: none;
     border-radius: 4px;
     font-size: 0.9em;

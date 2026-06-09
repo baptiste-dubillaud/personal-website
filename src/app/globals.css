@@ -18,6 +18,19 @@
     --color-orange-opacity-8: rgba(255, 68, 0, 0.8);
     --color-orange-opacity-9: rgba(255, 68, 0, 0.9);
 
+    /* ui colors */
+    --color-dark: #45474B;
+    --color-white: #ffffff;
+    --color-white-dim: rgba(255, 255, 255, 0.45);
+
+    /* text colors */
+    --color-text: rgb(30, 30, 30);
+    --color-text-secondary: rgb(50, 50, 50);
+    --color-text-muted: rgb(100, 100, 100);
+    --color-text-light: rgb(150, 150, 150);
+    --color-text-warm: rgb(80, 70, 60);
+    --color-text-warm-muted: rgb(150, 130, 110);
+
     --base-container-height: calc(100vh - 188px);
     --base-container-height: calc(100dvh - 188px);
 }

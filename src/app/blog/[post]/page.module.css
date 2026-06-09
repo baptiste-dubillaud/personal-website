@@ -31,7 +31,7 @@
 
 .container h2 {
     font-size: 30px;
-    border-top: 1px solid rgb(151, 151, 151);
+    border-top: 1px solid var(--color-text-light);
     width: fit-content;
     padding-top: 10px;
 }
@@ -46,7 +46,7 @@
 }
 
 .back_to_blog_button {
-    color: gray;
+    color: var(--color-text-light);
     font-size: 12px;
     cursor: pointer;
     font-weight: normal;
@@ -55,7 +55,7 @@
 }
 
 .back_to_blog_button:hover {
-    color: black;
+    color: var(--color-text);
     font-weight: 500;
 }
 
@@ -84,30 +84,30 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
-    border-top: 1px solid rgb(151, 151, 151);
-    border-bottom: 1px solid rgb(151, 151, 151);
+    border-top: 1px solid var(--color-text-light);
+    border-bottom: 1px solid var(--color-text-light);
     padding-top: 15px;
     padding-bottom: 15px;
     font-size: 12px;
 }
 
 .author_container {
-    color: rgb(148, 148, 148);
+    color: var(--color-text-light);
 }
 
 .author_name {
     font-weight: bold;
-    color: black;
+    color: var(--color-text);
 }
 
 .date_data {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    color: rgb(148, 148, 148);
+    color: var(--color-text-light);
 }
 
 .date {
-    color: black;
+    color: var(--color-text);
     font-weight: bold;
 }

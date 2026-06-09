@@ -14,6 +14,7 @@ import NavigationButton from "@/components/common/buttons/navigation/NavigationB
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import { LINKEDIN_PROFILE, GITHUB_PROFILE, STRAVA_PROFILE } from "@/utils/linkUtils";
+import { COLORS } from "@/utils/colorUtils";
 import { useTranslations } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
@@ -64,30 +65,30 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
     return (
         <div className={styles.presentation_container}>
             {/* Presentation data */}
-            <motion.div
+            <motion.h1
                 className={styles.presentation_name}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.25 }}
             >
                 Baptiste Dubillaud
-            </motion.div>
-            <motion.div
+            </motion.h1>
+            <motion.h2
                 className={styles.presentation_job}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.25 }}
             >
                 {translation("prensentation.title")}
-            </motion.div>
-            <motion.div
+            </motion.h2>
+            <motion.p
                 className={styles.presentation_desc}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.25 }}
             >
                 {translation("prensentation.intro")}
-            </motion.div>
+            </motion.p>
 
             <motion.div
                 className={styles.presentation_buttons_container}
@@ -146,7 +147,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 </motion.div>
             )}
 
-            <motion.button
+            {/* <motion.button
                 key={`download_resume_button-${isTwoColumnSetup}`}
                 className={styles.presentation_download_button_container}
                 onClick={() => {
@@ -160,7 +161,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 transition={{ duration: 1, delay: 0.5 }}
             >
                 {translation("menu.download")}
-            </motion.button>
+            </motion.button> */}
         </div>
     );
 };
@@ -169,7 +170,7 @@ const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent })
     return (
         <div ref={reference} className={styles.part_container}>
             {!isTwoColumnSetup && (
-                <motion.div
+                <motion.h2
                     className={styles.part_title}
                     variants={itemVariants}
                     initial="hidden"
@@ -177,7 +178,7 @@ const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent })
                     viewport={{ once: true, margin: "-80px" }}
                 >
                     {title}
-                </motion.div>
+                </motion.h2>
             )}
             <div className={styles.part_content}>{contentComponent}</div>
         </div>
@@ -255,8 +256,8 @@ const TimeLineComponent = ({
                             : styles.timeline_item_title_container
                     }
                 >
-                    <div className={styles.timeline_item_title}>{title}</div>
-                    <div className={styles.timeline_item_entity}>{entity}</div>
+                    <h3 className={styles.timeline_item_title}>{title}</h3>
+                    <p className={styles.timeline_item_entity}>{entity}</p>
                 </div>
                 <div className={styles.timeline_item_location}>{location}</div>
                 <div className={styles.timeline_item_description}>{DescriptionComponent}</div>
@@ -376,9 +377,9 @@ const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false, ..
             {/* Title */}
             <div className={styles.hobby_title_container}>
                 {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
-                <div className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
+                <h3 className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
                     {title}
-                </div>
+                </h3>
                 {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
             </div>
             <div
@@ -396,11 +397,11 @@ const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false, ..
 const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
     function pickIcon(title) {
         const t = title.toLowerCase();
-        if (t.includes("sport")) return <SportIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />;
+        if (t.includes("sport")) return <SportIcon size={40} secondaryColor={COLORS.orange} />;
         if (t.includes("lecture") || t.includes("reading"))
-            return <BookShelfIcon size={40} secondaryColor={"rgb(255, 68, 0)"} />;
+            return <BookShelfIcon size={40} secondaryColor={COLORS.orange} />;
         if (t.includes("video") || t.includes("jeux"))
-            return <VideoGame size={40} secondaryColor={"rgb(255, 68, 0)"} />;
+            return <VideoGame size={40} secondaryColor={COLORS.orange} />;
         return null;
     }
 

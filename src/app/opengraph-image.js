@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { readFileSync } from "fs";
 import { join } from "path";
+import { COLORS } from "@/utils/colorUtils";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -19,7 +20,7 @@ export default function OGImage() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    backgroundColor: "rgb(236, 226, 210)",
+                    backgroundColor: COLORS.background,
                 }}
             >
                 {/* Card — mirrors .presentation_container */}
@@ -29,7 +30,7 @@ export default function OGImage() {
                         flexDirection: "row",
                         alignItems: "center",
                         gap: 40,
-                        backgroundColor: "rgba(255, 68, 0, 0.05)",
+                        backgroundColor: COLORS.orangeOpacity05,
                         borderRadius: 20,
                         padding: 50,
                     }}
@@ -40,7 +41,7 @@ export default function OGImage() {
                             width: 220,
                             height: 220,
                             borderRadius: "50%",
-                            backgroundColor: "rgba(255, 68, 0, 0.6)",
+                            backgroundColor: COLORS.orangeOpacity6,
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -55,7 +56,7 @@ export default function OGImage() {
                                 borderRadius: "50%",
                                 objectFit: "cover",
                                 objectPosition: "center 5%",
-                                boxShadow: "0px 0px 10px rgba(255, 68, 0, 0.9)",
+                                boxShadow: `0px 0px 10px ${COLORS.orangeOpacity9}`,
                             }}
                         />
                     </div>
@@ -70,7 +71,7 @@ export default function OGImage() {
                                     fontWeight: 800,
                                     textTransform: "uppercase",
                                     letterSpacing: "-1.5px",
-                                    color: "rgb(255, 68, 0)",
+                                    color: COLORS.orange,
                                     lineHeight: 1.1,
                                 }}
                             >
@@ -82,7 +83,7 @@ export default function OGImage() {
                                     fontWeight: 800,
                                     textTransform: "uppercase",
                                     letterSpacing: "-1.5px",
-                                    color: "rgb(30, 30, 30)",
+                                    color: COLORS.text,
                                     lineHeight: 1.1,
                                 }}
                             >
@@ -92,17 +93,17 @@ export default function OGImage() {
 
                         {/* Role — mirrors .presentation_data_role_container */}
                         <div style={{ display: "flex", flexDirection: "row", gap: 6, marginTop: 12 }}>
-                            <span style={{ fontSize: 30, color: "rgb(50, 50, 50)" }}>Freelance</span>
-                            <span style={{ fontSize: 30, color: "rgb(255, 68, 0)" }}>Tech-Lead</span>
-                            <span style={{ fontSize: 30, color: "rgb(50, 50, 50)" }}>&amp;</span>
-                            <span style={{ fontSize: 30, color: "rgb(255, 68, 0)" }}>AI Software Engineer</span>
+                            <span style={{ fontSize: 30, color: COLORS.textSecondary }}>Freelance</span>
+                            <span style={{ fontSize: 30, color: COLORS.orange }}>Tech-Lead</span>
+                            <span style={{ fontSize: 30, color: COLORS.textSecondary }}>&amp;</span>
+                            <span style={{ fontSize: 30, color: COLORS.orange }}>AI Software Engineer</span>
                         </div>
 
                         {/* URL + email */}
                         <div style={{ display: "flex", flexDirection: "row", gap: 12, marginTop: 18, alignItems: "center" }}>
-                            <span style={{ fontSize: 22, color: "rgba(150, 130, 110, 1)" }}>dubillaudb.fr</span>
-                            <span style={{ fontSize: 30, color: "rgba(150, 130, 110, 1)" }}>·</span>
-                            <span style={{ fontSize: 22, color: "rgba(150, 130, 110, 1)" }}>contact@dubillaudb.fr</span>
+                            <span style={{ fontSize: 22, color: COLORS.textWarmMuted }}>dubillaudb.fr</span>
+                            <span style={{ fontSize: 30, color: COLORS.textWarmMuted }}>·</span>
+                            <span style={{ fontSize: 22, color: COLORS.textWarmMuted }}>contact@dubillaudb.fr</span>
                         </div>
                     </div>
                 </div>

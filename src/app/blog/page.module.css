@@ -15,7 +15,7 @@
 .blog_subtitle {
     text-align: center;
     margin-inline: 50px;
-    color: rgb(0, 0, 0);
+    color: var(--color-text);
 }
 
 .articles_list {
@@ -38,7 +38,7 @@
     overflow: hidden;
     cursor: pointer;
     font-weight: 400;
-    color: black;
+    color: var(--color-text);
     text-decoration: none;
     transition: background-color 0.2s ease, font-weight 0.2s;
 }
@@ -73,5 +73,5 @@
     bottom: 3px;
     font-size: 0.6em;
     font-weight: normal;
-    color: rgb(75, 75, 75);
+    color: var(--color-text-muted);
 }

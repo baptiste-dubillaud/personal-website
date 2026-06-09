@@ -2,7 +2,8 @@
     "navigation": {
         "name": "Bienvenue !",
         "home": "Accueil",
-        "resume": "CV"
+        "resume": "CV",
+        "contact": "Contact"
     },
     "common": {
         "linkedin_lang": "fr_FR"
@@ -23,7 +24,16 @@
                 "paragraph1": "ans d'expérience en ingénierie logicielle et des données, avec une passion pour la création de solutions innovantes et une solide formation en informatique. Toujours avide d'apprendre et d'explorer de nouvelles technologies, je me concentre actuellement sur l'expansion de mon expertise en ingénierie des données et en infrastructure cloud.",
                 "paragraph2": "Je suis disponible pour de nouvelles opportunités et collaborations. N'hésitez pas à me contacter ! :)"
             },
-            "resume_button": "Consultez mon CV"
+            "resume_button": "Consultez mon CV",
+            "contact_button": "Me contacter"
+        },
+        "contact": {
+            "availability": "Disponibilité: moins de 3 mois",
+            "title": "Travaillons ensemble",
+            "subtitle": "Je suis disponible pour des projets freelance et collaborations. N'hésitez pas à me contacter !",
+            "email_label": "Email",
+            "linkedin_label": "LinkedIn",
+            "github_label": "GitHub"
         },
         "resume": {
             "menu": {

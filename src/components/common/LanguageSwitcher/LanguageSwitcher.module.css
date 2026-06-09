@@ -13,7 +13,7 @@
     transition: all 0.2s ease;
     opacity: 0.8;
     border-radius: 4px;
-    color: white;
+    color: var(--color-white);
 }
 
 .language_button:hover {

@@ -74,9 +74,8 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 0;
     margin-left: -3px;
-    margin-top: 0px;
-    margin-bottom: 0px;
     gap: 0px 15px;
 }
 
@@ -102,6 +101,7 @@
     flex-wrap: wrap;
     justify-content: flex-start;
     gap: 5px;
+    margin: 0;
 }
 
 .presentation_data_specs_container {

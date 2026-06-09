@@ -73,7 +73,7 @@ export default function Home() {
                     <div className={styles.presentation_data_container}>
                         <div className={styles.presentation_data_group_container}>
                             {/* First and Last names */}
-                            <div className={styles.presentation_data_name_container}>
+                            <h1 className={styles.presentation_data_name_container}>
                                 <span
                                     className={`${styles.presentation_data_name_text} ${styles.presentation_data_firstname}`}
                                 >
@@ -98,9 +98,9 @@ export default function Home() {
                                         </motion.span>
                                     ))}
                                 </span>
-                            </div>
+                            </h1>
                             {/* Position def */}
-                            <motion.div
+                            <motion.h2
                                 className={styles.presentation_data_role_container}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -141,7 +141,7 @@ export default function Home() {
                                         </span>
                                     </>
                                 )}
-                            </motion.div>
+                            </motion.h2>
                         </div>
                         <div className={styles.presentation_data_group_container}>
                             {/* Age / Nationality / Location */}
@@ -209,6 +209,7 @@ export default function Home() {
                     transition={{ duration: 1, delay: 3.0 }}
                 >
                     <MainPageButton text={t("resume_button")} goTo="resume" />
+                    <MainPageButton text={t("contact_button")} goTo="contact" />
                     {/* <MainPageButton text="Portfolio" goTo="portfolio"/> */}
                     {/* <MainPageButton text="Blog" goTo="blog"  /> */}
                 </motion.div>
