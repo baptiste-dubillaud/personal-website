@@ -62,12 +62,10 @@ export default function Home() {
                             transition={{ type: "spring", stiffness: 280, damping: 22, delay: 0.4 }}
                         >
                             <Image
-                                src="/images/profile.jpg"
+                                src="/images/profile.png"
                                 alt="Baptiste Dubillaud profile picture"
                                 width={200}
                                 height={200}
-                                placeholder="blur"
-                                blurDataURL="/images/profile-blur.jpg"
                                 className={styles.presentation_picture}
                             />
                         </motion.div>

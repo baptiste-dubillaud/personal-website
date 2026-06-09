@@ -1,7 +1,15 @@
 "use client";
 
 import { createContext, useContext, useEffect, useState } from "react";
-import { NextIntlClientProvider } from "next-intl";
+import { NextIntlClientProvider, useLocale } from "next-intl";
+
+function LangSynchronizer() {
+    const locale = useLocale();
+    useEffect(() => {
+        document.documentElement.lang = locale;
+    }, [locale]);
+    return null;
+}
 
 const supportedLocales = ["en", "fr"];
 
@@ -59,6 +67,7 @@ export default function ClientIntlProvider({ children }) {
     return (
         <LocaleControllerContext.Provider value={{ setLocale: changeLocale }}>
             <NextIntlClientProvider locale={locale} messages={messages}>
+                <LangSynchronizer />
                 {children}
             </NextIntlClientProvider>
         </LocaleControllerContext.Provider>
