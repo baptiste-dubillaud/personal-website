@@ -26,7 +26,7 @@ export default function FooterComponent({}) {
 
     return (
         <div className={styles.footer_container}>
-            <span>{t.rich("text", { years: "2024-2025", bold: (chunks) => <strong>{chunks}</strong> })}</span>
+            <span>{t.rich("text", { years: "2024-2026", bold: (chunks) => <strong>{chunks}</strong> })}</span>
             {/* <span className={`${styles.orange_text} ${styles.bold_text}`}>Baptiste DUBILLAUD</span>
              */}
             <span className={styles.version} title={`version: ${version}`}>

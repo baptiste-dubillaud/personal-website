@@ -13,15 +13,15 @@
     "pages": {
         "home": {
             "workTitle": {
-                "soft": "Software",
-                "data": "Data",
-                "engineer": "Engineer"
+                "soft": "Tech-Lead",
+                "data": "AI Software Engineer",
+                "engineer": "Freelance"
             },
             "age": "years old",
             "nationality": "French",
             "prensentation": {
                 "paragraph1": "years of experience in software and data engineering, with a passion for building innovative solutions and a strong foundation in computer science. Always eager to learn and explore new technologies, I am currently focused on expanding my expertise in data engineering and cloud computing.",
-                "paragraph2": "Don't hesitate to contact me if you want to discuss about a project, a collaboration or just to say hi!"
+                "paragraph2": "I'm available for new opportunities and collaborations. Don't hesitate to contact me! :)"
             },
             "resume_button": "Check out my resume"
         }, 
@@ -34,8 +34,8 @@
                 "download": "Download (PDF)"
             },
             "prensentation": {
-                "title": "AI Software & Data Engineer",
-                "intro": "I build reliable data and user-oriented industrial softwares."
+                "title": "Tech-Lead & AI Software Engineer",
+                "intro": "I build robust and maintainable software, user-oriented, based on AI."
             },
             "about": [
                 "I'm a {age} years old french software engineer with more than <bold>{experience} years of experience</bold> in the field. Like many boys in my generation, I got my first interest in IT thanks to video games and the first forums/IRC channels about various topics I used to visit. From my first Minecraft server hosted on my parents' computer to my first script to automate a boring task, I've always been passionate about technology, especially IT.",
@@ -45,15 +45,38 @@
             ],
             "experiences": [
                 {
-                    "start_date": "APR. 2025",
+                    "start_date": "JUL. 2026",
                     "end_date": "PRESENT",
+                    "title": "Freelance Tech-Lead & AI Software Engineer",
+                    "company": "Self-employed",
+                    "location": "Pau/Bordeaux/Paris, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "I am currently working as a freelance <bold>Tech-Lead</bold> and <bold>AI Software Engineer</bold>, helping companies to build their AI-based software solutions."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "I am available for new projects and collaborations. Don't hesitate to contact me! :)"
+                        }
+                    ],
+                    "stack": [
+                        ["React", "Next.js", "Vue.js"],
+                        ["Python", "FastAPI", "SQLAlchemy, Alembic"],
+                        ["PostgreSQL", "QDrant"], 
+                        ["Docker", "Poetry", "uv"]
+                    ]
+                },
+                {
+                    "start_date": "APR. 2025",
+                    "end_date": "APR. 2026",
                     "title": "Senior Software Engineer",
                     "company": "ThinkDeep AI",
                     "location": "Bordeaux, France",
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "I am currently working as a <bold>Senior Software Engineer</bold> at <bold>ThinkDeep AI</bold>, a startup specialized in developing <bold>AI-powered software solutions</bold>."
+                            "content": "I worked as a <bold>Senior Software Engineer</bold> at <bold>ThinkDeep AI</bold>, a startup specialized in developing <bold>AI-powered software solutions</bold>."
                         },
                         {
                             "type": "list",
@@ -76,7 +99,7 @@
                         },
                         {
                             "type": "paragraph",
-                            "content": "I also mentor and help younger developers with best practices and technical guidance."
+                            "content": "I also mentored and helped younger developers with best practices and technical guidance."
                         },
                         {
                             "type": "paragraph",
@@ -86,7 +109,7 @@
                     "stack": [
                         ["React", "Next.js", "Vue.js"],
                         ["Python", "FastAPI", "SQLAlchemy, Alembic"],
-                        ["PostgreSQL"], 
+                        ["PostgreSQL", "QDrant", "Vespa"], 
                         ["Docker", "Poetry"],
                         ["Azure"]
                     ]

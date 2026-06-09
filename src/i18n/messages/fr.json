@@ -13,15 +13,15 @@
     "pages": {
         "home": {
             "workTitle": {
-                "soft": "Logiciel",
-                "data": "Data",
-                "engineer": "Ingénieur"
+                "soft": "Tech-Lead",
+                "data": "Ingénieur Logiciel IA",
+                "engineer": "Freelance"
             },
             "age": "ans",
             "nationality": "Français",
             "prensentation": {
                 "paragraph1": "ans d'expérience en ingénierie logicielle et des données, avec une passion pour la création de solutions innovantes et une solide formation en informatique. Toujours avide d'apprendre et d'explorer de nouvelles technologies, je me concentre actuellement sur l'expansion de mon expertise en ingénierie des données et en infrastructure cloud.",
-                "paragraph2": "N'hésitez pas à me contacter si vous souhaitez discuter d'un projet, d'une collaboration ou simplement pour dire bonjour !"
+                "paragraph2": "Je suis disponible pour de nouvelles opportunités et collaborations. N'hésitez pas à me contacter ! :)"
             },
             "resume_button": "Consultez mon CV"
         },
@@ -34,8 +34,8 @@
                 "download": "Télécharger (PDF)"
             },
             "prensentation": {
-                "title": "Ingénieur Logiciel IA & Data",
-                "intro": "Je construis des logiciels orientés données et utilisateurs."
+                "title": "Tech-Lead & Ingénieur Logiciel IA",
+                "intro": "Je construis des logiciels robustes et maintenables, orientés utilisateurs, basés sur l'IA."
             },
             "about": [
                 "Je suis un ingénieur logiciel français de {age} ans avec plus de <bold>{experience} ans d'expérience</bold> dans le domaine. Comme beaucoup de garçons de ma génération, j'ai découvert l'informatique grâce aux jeux vidéo et aux premiers forums/canaux IRC sur divers sujets que je fréquentais. De mon premier serveur Minecraft hébergé sur l'ordinateur de mes parents à mon premier script pour automatiser une tâche ennuyeuse, j'ai toujours été passionné par la technologie, en particulier l'informatique.",
@@ -45,15 +45,38 @@
             ],
             "experiences": [
                 {
-                    "start_date": "AVR. 2025",
+                    "start_date": "AVR. 2026",
                     "end_date": "PRÉSENT",
+                    "title": "Freelance Tech-Lead & Ingénieur Logiciel IA",
+                    "company": "Indépendant",
+                    "location": "Pau/Bordeaux/Paris, France",
+                    "descriptions": [
+                        {
+                            "type": "paragraph",
+                            "content": "En tant que <bold>Freelance Tech-Lead & Ingénieur Logiciel IA</bold>, je travaille avec des clients pour concevoir et développer des solutions logicielles basées sur l'IA, en mettant l'accent sur la qualité du code, les bonnes pratiques et la satisfaction du client."
+                        },
+                        {
+                            "type": "paragraph",
+                            "content": "Je gère tous les aspects du développement logiciel, de la collecte des exigences à la livraison finale, en passant par la conception de l'architecture, le développement, les tests et le déploiement. Je collabore étroitement avec les clients pour comprendre leurs besoins et fournir des solutions adaptées à leurs objectifs commerciaux."
+                        }
+                    ],
+                    "stack": [
+                        ["React", "Next.js", "Vue.js"],
+                        ["Python", "FastAPI", "SQLAlchemy, Alembic"],
+                        ["PostgreSQL", "QDrant"],
+                        ["Docker", "Poetry", "uv"]
+                    ]
+                },
+                {
+                    "start_date": "AVR. 2025",
+                    "end_date": "AVR. 2026",
                     "title": "Ingénieur Logiciel Senior",
                     "company": "ThinkDeep AI",
                     "location": "Bordeaux, France",
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "Je travaille actuellement en tant qu<bold>Ingénieur Logiciel Senior</bold> chez <bold>ThinkDeep AI</bold>, une startup spécialisée dans le développement de <bold>solutions logicielles basées sur l'IA</bold>."
+                            "content": "J'ai travaillé en tant qu'<bold>Ingénieur Logiciel Senior</bold> chez <bold>ThinkDeep AI</bold>, une startup spécialisée dans le développement de <bold>solutions logicielles basées sur l'IA / GenAI</bold>."
                         },
                         {
                             "type": "list",
@@ -76,7 +99,7 @@
                         },
                         {
                             "type": "paragraph",
-                            "content": "Je forme et accompagne également les développeurs juniors avec les bonnes pratiques et conseils techniques."
+                            "content": "J'ai aussi formé et accompagné les développeurs juniors avec les bonnes pratiques et conseils techniques."
                         },
                         {
                             "type": "paragraph",
@@ -86,7 +109,7 @@
                     "stack": [
                         ["React", "Next.js", "Vue.js"],
                         ["Python", "FastAPI", "SQLAlchemy, Alembic"],
-                        ["PostgreSQL"], 
+                        ["PostgreSQL", "QDrant", "Vespa"], 
                         ["Docker", "Poetry"],
                         ["Azure"]
                     ]
