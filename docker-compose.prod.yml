@@ -8,21 +8,14 @@ services:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
     networks:
-      - traefik
+      - traefik-public
     labels:
-      # ── HTTPS ──────────────────────────────────────────────────────────────
       - "traefik.enable=true"
-      - "traefik.http.routers.personal-website.rule=Host(`dubillaudb.fr`) || Host(`www.dubillaudb.fr`)"
+      - "traefik.http.routers.personal-website.rule=Host(`www.dubillaudb.fr`)"
       - "traefik.http.routers.personal-website.entrypoints=websecure"
       - "traefik.http.routers.personal-website.tls=true"
       - "traefik.http.routers.personal-website.tls.certresolver=letsencrypt"
       - "traefik.http.services.personal-website.loadbalancer.server.port=3000"
-      # ── HTTP → HTTPS redirect (remove if Traefik handles it globally) ──────
-      - "traefik.http.routers.personal-website-http.rule=Host(`dubillaudb.fr`) || Host(`www.dubillaudb.fr`)"
-      - "traefik.http.routers.personal-website-http.entrypoints=web"
-      - "traefik.http.routers.personal-website-http.middlewares=https-redirect@docker"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.middlewares.https-redirect.redirectscheme.permanent=true"
 
 networks:
   traefik-public:
