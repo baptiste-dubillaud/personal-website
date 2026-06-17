@@ -4,6 +4,7 @@ import styles from "@/components/core/navigationBar/NavigationBar.module.css";
 
 import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher/LanguageSwitcher";
 
@@ -43,17 +44,19 @@ export default function NavigationBarComponent({}) {
     useEffect(() => setMobileOS(detectMobileOS()), []);
 
     const NavLinkComponent = ({ name, path }) => {
+        const active = isActive(pathname, path);
         return (
-            <div
+            <Link
+                href={path}
+                aria-current={active ? "page" : undefined}
                 className={
-                    isActive(pathname, path)
+                    active
                         ? `${styles.nav_link_text} ${styles.nav_link_selected}`
                         : `${styles.nav_link_text} ${styles.nav_link}`
                 }
-                onClick={() => router.push(path)}
             >
                 {name}
-            </div>
+            </Link>
         );
     };
 
@@ -132,7 +135,7 @@ export default function NavigationBarComponent({}) {
                                     transition={{ type: "spring", stiffness: 500, damping: 35 }}
                                 />
                             )}
-                            <span className={styles.tab_icon}>
+                            <span className={styles.tab_icon} aria-hidden="true">
                                 <Icon size={24} color="currentColor" />
                             </span>
                             <span className={styles.tab_label}>{t(link.nameKey)}</span>

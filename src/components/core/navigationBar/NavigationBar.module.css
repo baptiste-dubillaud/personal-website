@@ -46,6 +46,8 @@
     text-transform: uppercase;
     cursor: pointer;
     user-select: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 .nav_link_selected {

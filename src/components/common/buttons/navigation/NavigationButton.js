@@ -4,7 +4,13 @@ import styles from "@/components/common/buttons/navigation/NavigationButton.modu
 
 export default function NavigationButton({ children, link, alt }) {
     return (
-        <a href={link} target="_blank" alt={alt} className={styles.tab_link_container}>
+        <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={alt}
+            className={styles.tab_link_container}
+        >
             {children}
         </a>
     );

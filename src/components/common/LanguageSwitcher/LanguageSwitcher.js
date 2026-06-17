@@ -1,45 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment } from "react";
 import styles from "./LanguageSwitcher.module.css";
 import { useLocale } from "next-intl";
-import { useLocaleController } from "@/components/providers/ClientIntlProvider";
+import { useRouter } from "next/navigation";
+
+const LOCALES = [
+    { code: "fr", label: "FR", ariaLabel: "Passer en français" },
+    { code: "en", label: "EN", ariaLabel: "Switch to English" },
+];
 
 export default function LanguageSwitcher() {
     const currentLocale = useLocale();
-    const [isLoading, setIsLoading] = useState(false);
-    const { setLocale } = useLocaleController();
+    const router = useRouter();
 
     const changeLanguage = (newLocale) => {
-        if (newLocale === currentLocale || isLoading) return;
-
-        setIsLoading(true);
-
-        // Update client provider (persists to localStorage internally)
-        setLocale(newLocale);
-
-        setIsLoading(false);
+        if (newLocale === currentLocale) return;
+        // Persist the choice; the middleware reads this cookie to localize SSR,
+        // then router.refresh() re-renders the tree in the new language.
+        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; samesite=lax`;
+        router.refresh();
     };
 
     return (
         <div className={styles.language_switcher}>
-            <button
-                className={`${styles.language_button} ${currentLocale === "fr" && styles.active}`}
-                onClick={() => changeLanguage("fr")}
-                disabled={isLoading}
-                aria-label="Passer en français"
-            >
-                FR
-            </button>
-            <span className={styles.separator}>|</span>
-            <button
-                className={`${styles.language_button} ${currentLocale === "en" && styles.active}`}
-                onClick={() => changeLanguage("en")}
-                disabled={isLoading}
-                aria-label="Switch to English"
-            >
-                EN
-            </button>
+            {LOCALES.map(({ code, label, ariaLabel }, index) => (
+                <Fragment key={code}>
+                    {index > 0 && <span className={styles.separator}>|</span>}
+                    <button
+                        className={`${styles.language_button} ${currentLocale === code ? styles.active : ""}`}
+                        onClick={() => changeLanguage(code)}
+                        aria-label={ariaLabel}
+                    >
+                        {label}
+                    </button>
+                </Fragment>
+            ))}
         </div>
     );
 }
