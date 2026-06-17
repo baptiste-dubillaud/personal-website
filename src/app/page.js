@@ -28,9 +28,9 @@ const MainPageButton = ({ goTo, text }) => {
     };
 
     return (
-        <div className={styles.main_button_container} onClick={handleClick}>
+        <button className={styles.main_button_container} onClick={handleClick}>
             {text}
-        </div>
+        </button>
     );
 };
 

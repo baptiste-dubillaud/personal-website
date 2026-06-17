@@ -81,7 +81,7 @@
 
 .presentation_data_name_text {
     font-family: var(--font-serif);
-    font-size: clamp(45px, 7vw, 70px);
+    font-size: var(--text-hero);
 
     font-weight: 700;
     text-transform: uppercase;
@@ -93,7 +93,7 @@
 }
 
 .presentation_data_role_text {
-    font-size: 25px;
+    font-size: var(--text-24);
 }
 
 .presentation_data_role_container {
@@ -149,7 +149,7 @@
 }
 
 .presentation_data_specs_text {
-    font-size: 17px;
+    font-size: var(--text-16);
     margin-right: 15px;
     margin-left: 5px;
 }
@@ -158,7 +158,7 @@
 
 .presentation_buttons_container {
     display: flex;
-    gap: 40px;
+    gap: min(40px, 10%);
     padding-bottom: 50px;
 }
 
@@ -172,7 +172,7 @@
     padding-bottom: 7px;
     border-radius: 3px;
 
-    font-size: 15px;
+    font-size: var(--text-16);
     font-weight: 600;
 
     cursor: pointer;

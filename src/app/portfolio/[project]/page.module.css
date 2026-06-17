@@ -30,14 +30,14 @@
 }
 
 .container h2 {
-    font-size: 30px;
+    font-size: var(--text-32);
     border-top: 1px solid var(--color-text-light);
     width: fit-content;
     padding-top: 10px;
 }
 
 .container h3 {
-    font-size: 20px;
+    font-size: var(--text-20);
 }
 
 .post_container {
@@ -47,7 +47,7 @@
 
 .back_to_blog_button {
     color: var(--color-text-light);
-    font-size: 12px;
+    font-size: var(--text-12);
     cursor: pointer;
     font-weight: normal;
     
@@ -60,7 +60,7 @@
 }
 
 .title {
-    font-size: 44px;
+    font-size: var(--text-44);
     font-weight: 1000;
 }
 

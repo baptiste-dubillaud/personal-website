@@ -30,6 +30,6 @@
     position: absolute;
     right: 12px;
     bottom: 6px;
-    font-size: 0.75rem;
+    font-size: var(--text-12);
     color: var(--color-white-dim);
 }

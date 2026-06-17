@@ -2,6 +2,21 @@
     /* font */
     --font-mono: "Roboto Mono";
 
+    /* Type scale — a small set of named sizes shared across every page (the way
+       colors are centralized). Named by the px size at the desktop root of 16px;
+       values are in rem so they follow the fluid root (see html rule below) and
+       shrink together on small phones. Use these instead of raw px/rem. */
+    --text-12: 0.75rem; /* 12px — captions, labels, tags */
+    --text-14: 0.875rem; /* 14px — secondary text */
+    --text-16: 1rem; /* 16px — body */
+    --text-20: 1.25rem; /* 20px — lead / small headings */
+    --text-24: 1.5rem; /* 24px — sub-headings */
+    --text-32: 2rem; /* 32px — headings */
+    --text-44: 2.75rem; /* 44px — page titles */
+    /* Fluid display sizes (min → max across viewport width). */
+    --text-display: clamp(2.25rem, 6vw, 3.75rem); /* 36 → 60px (section / 404 titles) */
+    --text-hero: clamp(2.8125rem, 7vw, 4.375rem); /* 45 → 70px (home name, 404 number) */
+
     /* base colors */
     --color-background: rgb(236, 226, 210);
     --color-background-opacity-2: rgba(236, 226, 210, 0.2);
@@ -38,6 +53,13 @@
     --tab-bar-height: 60px;
     --tab-bar-gap: 14px; /* gap between the floating tab bar and the screen edges */
     --nav-bar-height-mobile: 58px;
+}
+
+/* Fluid root font-size: shrinks the whole site (everything sized in rem) on small
+   phones, caps at 16px from ~667px up so desktop/tablet stay unchanged. The rem
+   term keeps the user's browser font preference (zoom/accessibility) working. */
+html {
+    font-size: clamp(0.875rem, 0.75rem + 0.6vw, 1rem);
 }
 
 body {

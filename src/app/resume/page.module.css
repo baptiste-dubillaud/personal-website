@@ -27,19 +27,19 @@
 }
 
 .presentation_name {
-    font-size: 2.8rem;
+    font-size: var(--text-44);
     font-weight: 800;
     margin: 0;
 }
 
 .presentation_job {
-    font-size: 1.5rem;
+    font-size: var(--text-24);
     font-weight: 500;
     margin: 0;
 }
 
 .presentation_desc {
-    font-size: 1rem;
+    font-size: var(--text-16);
     font-weight: 400;
     max-width: 300px;
     margin: 15px 0 0 0;
@@ -73,7 +73,7 @@
 }
 
 .presentation_menu_item {
-    font-size: 1.2rem;
+    font-size: var(--text-20);
     font-weight: 700;
     color: var(--color-orange-dark);
     border-left: 2px solid var(--color-orange-dark);
@@ -114,7 +114,7 @@
     margin-top: 10px;
     border-radius: 3px;
 
-    font-size: 15px;
+    font-size: var(--text-16);
     font-weight: 600;
 
     cursor: pointer;
@@ -128,7 +128,7 @@
 }
 
 .presentation_menu_item:hover {
-    font-size: 1.4rem;
+    font-size: var(--text-24);
     color: var(--color-orange);
 }
 
@@ -144,7 +144,7 @@
 .part_title {
     position: sticky;
     top: 60px;
-    font-size: 1.6rem;
+    font-size: var(--text-24);
     color: var(--color-orange);
     font-weight: 700;
     left: 0;
@@ -237,7 +237,7 @@
 
 .timeline_item_dates_container {
     color: var(--color-text-muted);
-    font-size: 0.75rem;
+    font-size: var(--text-12);
     font-weight: 700;
 }
 
@@ -254,26 +254,26 @@
 }
 
 .timeline_item_title {
-    font-size: 1.2rem;
+    font-size: var(--text-20);
     font-weight: 700;
     color: var(--color-orange);
     margin: 0;
 }
 
 .timeline_item_entity {
-    font-size: 1.2rem;
+    font-size: var(--text-20);
     font-weight: 700;
     margin: 0;
 }
 
 .timeline_item_location {
     margin-top: 5px;
-    font-size: 0.9rem;
+    font-size: var(--text-14);
     font-weight: 500;
 }
 
 .timeline_item_description {
-    font-size: 1.0rem;
+    font-size: var(--text-16);
 }
 
 .timeline_item_tech_stack {
@@ -291,7 +291,7 @@
 }
 
 .timeline_item_tech_stack_item {
-    font-size: 0.9rem;
+    font-size: var(--text-14);
     font-weight: 700;
     background-color: var(--color-orange-opacity-1);
     border: 1px solid var(--color-orange-dark-opacity-8);
@@ -331,14 +331,14 @@
 .hobby_title {
     display: flex;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: var(--text-20);
     font-weight: 700;
     width: calc(100% - 50px);
     margin: 0;
 }
 
 .hobby_description {
-    font-size: 1.0rem;
+    font-size: var(--text-16);
     margin-inline: 5px;
 }
 
@@ -357,7 +357,7 @@
 }
 
 .hobby_description_95 {
-    font-size: 0.95rem;
+    font-size: var(--text-16);
     padding: 5px 0px;
 }
 
@@ -460,7 +460,7 @@
 }
 
 .strava_profile_text {
-    font-size: 1.0rem;
+    font-size: var(--text-16);
     font-weight: 500;
     color: var(--color-white);
     margin-right: 5px;

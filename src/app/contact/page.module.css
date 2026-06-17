@@ -31,7 +31,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 13px;
+    font-size: var(--text-14);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -58,7 +58,7 @@
 }
 
 .contact_title {
-    font-size: clamp(36px, 6vw, 60px);
+    font-size: var(--text-display);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: -0.025em;
@@ -68,7 +68,7 @@
 }
 
 .contact_subtitle {
-    font-size: 15px;
+    font-size: var(--text-16);
     line-height: 1.6;
     color: var(--color-text-warm);
     font-style: italic;
@@ -131,7 +131,7 @@
 }
 
 .contact_row_label {
-    font-size: 11px;
+    font-size: var(--text-12);
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -139,7 +139,7 @@
 }
 
 .contact_row_value {
-    font-size: 15px;
+    font-size: var(--text-16);
     font-weight: 500;
     color: var(--color-text-secondary);
     white-space: nowrap;
@@ -148,7 +148,7 @@
 }
 
 .contact_row_arrow {
-    font-size: 20px;
+    font-size: var(--text-20);
     color: var(--color-orange-opacity-6);
     transition: transform 0.2s, color 0.2s;
     flex-shrink: 0;
@@ -161,6 +161,6 @@
 
 @media (max-width: 480px) {
     .contact_row_value {
-        font-size: 13px;
+        font-size: var(--text-14);
     }
 }
