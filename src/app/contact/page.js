@@ -5,6 +5,8 @@ import styles from "@/app/contact/page.module.css";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { staggerContainer as containerVariants, fadeInUp as itemVariants } from "@/utils/animations";
+
 import EmailIcon from "@/components/common/icons/misc/EmailIcon";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
@@ -13,16 +15,6 @@ import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 import { COLORS } from "@/utils/colorUtils";
 
 const EMAIL = "contact@dubillaudb.fr";
-
-const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.12 } },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
 
 const CONTACT_LINKS = [
     {

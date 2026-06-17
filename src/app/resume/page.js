@@ -19,22 +19,15 @@ import { useTranslations } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
 import RichText from "@/components/common/RichText";
+import {
+    STAGGER_CHILDREN as SUB_PARTS_DELAY,
+    staggerContainer as containerVariants,
+    fadeInLeft as itemVariants,
+} from "@/utils/animations";
 
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
-
-const SUB_PARTS_DELAY = 0.12;
-
-const containerVariants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: SUB_PARTS_DELAY } },
-};
-
-const itemVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: "easeOut" } },
-};
 
 // Common renderer for description objects (paragraph | list)
 function renderDescriptionBlock(desc, key) {
