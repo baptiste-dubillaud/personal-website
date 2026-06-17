@@ -143,7 +143,7 @@
         margin-inline: auto;
         z-index: 100;
         min-height: var(--tab-bar-height);
-        padding: 6px;
+        padding-inline: 6px;
         border-radius: 26px;
     }
 
@@ -173,7 +173,8 @@
         align-items: center;
         justify-content: center;
         gap: 3px;
-        padding-bottom: 5px;
+        padding-top: 0px;
+        padding-bottom: 0px;
         border: none;
         background: none;
         cursor: pointer;
@@ -183,6 +184,8 @@
         text-transform: uppercase;
         letter-spacing: 0.5px;
         user-select: none;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
         transition: color 0.2s ease;
     }
 
@@ -192,6 +195,21 @@
 
     .tab_item_selected {
         color: var(--color-orange);
+        font-weight: bold;
+    }
+
+     /* On the translucent iOS glass, darken behind the active tab with a large,
+       soft radial halo. It extends past the item edges and fades gradually so it
+       reads as gentle shading (no visible blob) while keeping the orange legible. */
+    .tab_bar_ios .tab_item_selected {
+        background: radial-gradient(
+            circle at 50% 45%,
+            rgba(0, 0, 0, 0.4) 0%,
+            transparent 78%
+        );
+        /* Draw the halo only inside the padding, leaving a transparent margin at
+           the top/bottom so it never reaches the item edge (no visible border). */
+        background-clip: content-box;
     }
 
     .tab_icon {
