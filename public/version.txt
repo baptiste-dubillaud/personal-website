@@ -4,3 +4,4 @@
 1.3 - Polished design - added animation: 17/01/2025
 1.4 - Improved animations and navigation: 09/06/2025
 1.5 - Adds Contact Page
+1.6 - Adds iOS/Android support

@@ -35,7 +35,8 @@
     --base-container-height: calc(100dvh - 188px);
 
     /* Mobile/tablet chrome heights (bottom tab bar + slimmed top bar). */
-    --tab-bar-height: 64px;
+    --tab-bar-height: 60px;
+    --tab-bar-gap: 14px; /* gap between the floating tab bar and the screen edges */
     --nav-bar-height-mobile: 58px;
 }
 
@@ -53,10 +54,14 @@ body {
    real chrome (slim top bar + tab bar, no footer). */
 @media (max-width: 1024px) {
     body {
-        padding-bottom: calc(var(--tab-bar-height) + env(safe-area-inset-bottom));
+        /* Room reserved at the bottom for the floating tab bar (height + gap above
+           and below it + the home-indicator safe area). Single source of truth. */
+        --mobile-bottom-reserve: calc(
+            var(--tab-bar-height) + var(--tab-bar-gap) * 2 + env(safe-area-inset-bottom)
+        );
+        padding-bottom: var(--mobile-bottom-reserve);
         --base-container-height: calc(
-            100dvh - var(--nav-bar-height-mobile) - var(--tab-bar-height) -
-                env(safe-area-inset-bottom)
+            100dvh - var(--nav-bar-height-mobile) - var(--mobile-bottom-reserve)
         );
     }
 }

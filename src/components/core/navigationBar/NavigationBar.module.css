@@ -132,46 +132,86 @@
         margin-bottom: 2px;
     }
 
-    /* Fixed to the bottom of the viewport, above the scrolling content. */
+    /* Floating pill: detached from the edges, centered, width-capped, rounded. */
     .tab_bar_container {
         display: flex;
         position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
+        bottom: calc(var(--tab-bar-gap) + env(safe-area-inset-bottom));
+        left: var(--tab-bar-gap);
+        right: var(--tab-bar-gap);
+        max-width: 380px;
+        margin-inline: auto;
         z-index: 100;
         min-height: var(--tab-bar-height);
+        padding: 6px;
+        border-radius: 26px;
+    }
+
+    /* iOS / default — "liquid glass": translucent, blurred & saturated surface. */
+    .tab_bar_ios {
+        background-color: rgba(48, 44, 40, 0.547);
+        -webkit-backdrop-filter: blur(22px) saturate(180%);
+        backdrop-filter: blur(11px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow:
+            0 10px 34px rgba(0, 0, 0, 0.28),
+            inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Android — solid Material surface with elevation. */
+    .tab_bar_android {
         background-color: var(--color-dark);
-        border-top: 2px solid var(--color-orange);
-        padding-bottom: env(safe-area-inset-bottom);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
     }
 
     .tab_item {
+        position: relative;
         flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 4px;
-        padding: 4px 0;
+        gap: 3px;
+        padding-bottom: 5px;
         border: none;
         background: none;
         cursor: pointer;
         color: var(--color-white-dim);
         font-family: inherit;
-        font-size: 0.7em;
+        font-size: 0.68em;
         text-transform: uppercase;
         letter-spacing: 0.5px;
         user-select: none;
         transition: color 0.2s ease;
     }
 
-    .tab_item:hover {
+    .tab_item_hover:hover {
         color: var(--color-white);
     }
 
     .tab_item_selected {
         color: var(--color-orange);
+    }
+
+    .tab_icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Orange accent line pinned to the bottom of the active tab; it slides between
+       tabs (framer-motion layoutId) when navigating. */
+    .tab_indicator {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 26px;
+        height: 3px;
+        margin: 0 auto;
+        border-radius: 999px;
+        background-color: var(--color-orange);
     }
 
     .tab_label {

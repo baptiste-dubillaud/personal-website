@@ -2,6 +2,7 @@
 
 import styles from "@/components/core/navigationBar/NavigationBar.module.css";
 
+import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import LanguageSwitcher from "@/components/common/LanguageSwitcher/LanguageSwitcher";
@@ -25,10 +26,21 @@ function isActive(pathname, path) {
     return (isHome && pathname == path) || (!isHome && pathname.includes(path));
 }
 
+// Detect the mobile platform to theme the bottom tab bar (Android Material vs the
+// default iOS/other "liquid glass" look).
+function detectMobileOS() {
+    if (typeof navigator === "undefined") return "ios";
+    return /Android/i.test(navigator.userAgent || "") ? "android" : "ios";
+}
+
 export default function NavigationBarComponent({}) {
     const router = useRouter();
     const pathname = usePathname();
     const t = useTranslations("navigation");
+
+    // Default to the glass theme until the client resolves the real platform.
+    const [mobileOS, setMobileOS] = useState("ios");
+    useEffect(() => setMobileOS(detectMobileOS()), []);
 
     const NavLinkComponent = ({ name, path }) => {
         return (
@@ -93,9 +105,11 @@ export default function NavigationBarComponent({}) {
                 </div>
             </div>
 
-            {/* Mobile / tablet bottom tab bar */}
+            {/* Mobile / tablet bottom tab bar — floating, themed per platform */}
             <motion.nav
-                className={styles.tab_bar_container}
+                className={`${styles.tab_bar_container} ${
+                    mobileOS === "android" ? styles.tab_bar_android : styles.tab_bar_ios
+                }`}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
@@ -106,12 +120,21 @@ export default function NavigationBarComponent({}) {
                     return (
                         <button
                             key={link.path}
-                            className={`${styles.tab_item} ${active ? styles.tab_item_selected : ""}`}
+                            className={`${styles.tab_item} ${active ? styles.tab_item_selected : styles.tab_item_hover}`}
                             onClick={() => router.push(link.path)}
                             aria-current={active ? "page" : undefined}
                             aria-label={t(link.nameKey)}
                         >
-                            <Icon size={24} color="currentColor" />
+                            {active && (
+                                <motion.span
+                                    layoutId="tab_indicator"
+                                    className={styles.tab_indicator}
+                                    transition={{ type: "spring", stiffness: 500, damping: 35 }}
+                                />
+                            )}
+                            <span className={styles.tab_icon}>
+                                <Icon size={24} color="currentColor" />
+                            </span>
                             <span className={styles.tab_label}>{t(link.nameKey)}</span>
                         </button>
                     );
