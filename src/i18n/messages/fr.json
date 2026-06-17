@@ -269,8 +269,16 @@
                             "content": "Je passe beaucoup de temps à faire du sport. Je m'entraîne actuellement pour le triathlon après avoir terminé mon deuxième marathon à Biarritz en mai 2025 et mon premier triathlon en juin 2025. J'aime aussi parfois jouer au padel ou faire des randonnées."
                         },
                         {
-                            "type": "paragraph",
-                            "content": "<bold>PR</bold> : Marathon 3h44 (500 mD+), Semi-Marathon 1h42, Triathlon (S) 1h38"
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<bold>2026 - France</bold>",
+                                    "subitems": [
+                                        "Triathlon de Luchon - Courte Distance",
+                                        "10 kms de Lacq"
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "type": "list",
@@ -278,9 +286,9 @@
                                 {
                                     "content": "<bold>2025 - France, Belgique</bold>",
                                     "subitems": [
-                                        "Marathon : Biarritz - 500 mD+ - 3h44",
+                                        "Marathon : Biarritz",
                                         "Semi-Marathon : Nay, Bruxelles",
-                                        "Triathlon : Pau (S) - 1h38"
+                                        "Triathlon : Pau (S)"
                                     ]
                                 }
                             ]
@@ -292,7 +300,7 @@
                                     "content": "<bold>2024 - Danemark, France</bold>",
                                     "subitems": [
                                         "Trails : Fur Ultra (25 kms / 600mD+), Montée de l'Aubisque (18 kms / 1200mD+)",
-                                        "Marathon : Copenhague - 3h53",
+                                        "Marathon : Copenhague",
                                         "Semi-Marathon : Esbjerg, Fanø"
                                     ]
                                 }

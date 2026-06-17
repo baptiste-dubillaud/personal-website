@@ -11,6 +11,13 @@
     position: relative;
 }
 
+/* On phones & tablets the bottom tab bar replaces the footer. */
+@media (max-width: 1024px) {
+    .footer_container {
+        display: none;
+    }
+}
+
 .bold_text {
     font-weight: bold;
 }
@@ -23,6 +30,6 @@
     position: absolute;
     right: 12px;
     bottom: 6px;
-    font-size: 0.75rem;
+    font-size: var(--text-12);
     color: var(--color-white-dim);
 }

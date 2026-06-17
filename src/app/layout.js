@@ -1,8 +1,9 @@
 import { Inter } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
 import NavigationBarComponent from "@/components/core/navigationBar/NavigationBar";
 import FooterComponent from "@/components/core/footer/Footer";
-import ClientIntlProvider from "@/components/providers/ClientIntlProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -53,16 +54,18 @@ const jsonLd = {
 };
 
 export default async function RootLayout({ children }) {
+    const locale = await getLocale();
+    const messages = await getMessages();
     return (
-        <html lang="en">
+        <html lang={locale}>
             <link rel="icon" href="/icon.png" sizes="any" />
             <body className={inter.className} style={{ position: "relative" }}>
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-                <ClientIntlProvider>
+                <NextIntlClientProvider locale={locale} messages={messages}>
                     <NavigationBarComponent />
                     {children}
                     <FooterComponent />
-                </ClientIntlProvider>
+                </NextIntlClientProvider>
             </body>
         </html>
     );

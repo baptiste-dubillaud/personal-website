@@ -15,8 +15,10 @@ function readVersionFile() {
             }
         }
     } catch (e) {
-        return "1.0 - xxxx-xx-xx";
+        return "1.0";
     }
+    // File missing or empty: fall back instead of returning undefined.
+    return "1.0";
 }
 
 export default function FooterComponent({}) {

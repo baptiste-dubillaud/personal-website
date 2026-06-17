@@ -1,0 +1,23 @@
+services:
+  personal-website-pre-prod:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    networks:
+      - traefik-public
+    labels:
+      - "traefik.enable=true"
+      # Single host, one-level subdomain (covered by Cloudflare *.dubillaudb.fr).
+      - "traefik.http.routers.personal-website-pre-prod.rule=Host(`pprod.dubillaudb.fr`)"
+      - "traefik.http.routers.personal-website-pre-prod.entrypoints=websecure"
+      - "traefik.http.routers.personal-website-pre-prod.tls=true"
+      - "traefik.http.routers.personal-website-pre-prod.tls.certresolver=letsencrypt"
+      - "traefik.http.services.personal-website-pre-prod.loadbalancer.server.port=3000"
+
+networks:
+  traefik-public:
+    external: true
