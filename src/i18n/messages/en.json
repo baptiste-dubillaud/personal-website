@@ -269,8 +269,16 @@
                             "content": "I spend a lot of time doing sports. I'm currently training for triathlon after having completed my second marathon in Biarritz in May 2025 and my first triathlon in June 2025. I also like from time to time to play padel, or hike."
                         },
                         {
-                            "type": "paragraph",
-                            "content": "<bold>PR</bold>: Marathon 3h44 (500 mD+), Half-Marathon 1h42, Triathlon (S) 1h38"
+                            "type": "list",
+                            "items": [
+                                {
+                                    "content": "<bold>2023 - France</bold>",
+                                    "subitems": [
+                                        "Triathlon de Luchon - Short Distance",
+                                        "10 kms of Lacq"
+                                    ]
+                                }
+                            ]
                         },
                         {
                             "type": "list",
@@ -278,9 +286,9 @@
                                 {
                                     "content": "<bold>2025 - France, Belgium</bold>",
                                     "subitems": [
-                                        "Marathon: Biarritz - 500 mD+ - 3h44",
+                                        "Marathon: Biarritz - 500 mD+",
                                         "Half-Marathon: Nay, Brussels",
-                                        "Triathlon: Pau (S) - 1h38"
+                                        "Triathlon: Pau (S)"
                                     ]
                                 }
                             ]
@@ -292,7 +300,7 @@
                                     "content": "<bold>2024 - Denmark, France</bold>",
                                     "subitems": [
                                         "Trails: Fur Ultra (25 kms / 600mD+), Climb of Aubisque (18 kms / 1200mD+)",
-                                        "Marathon: Copenhaguen - 3h53",
+                                        "Marathon: Copenhaguen",
                                         "Half-Marathon: Esbjerg, Fanø"
                                     ]
                                 }
