@@ -95,11 +95,11 @@
 }
 
 @media (max-width: 1024px) {
-    /* Slim the top bar down to brand + language switcher on a single row.
-       It's the first (non-scrolling) row of the app-shell flex column. */
+    /* Slim the top bar down to brand + language switcher on a single row,
+       pinned to the top while the document scrolls underneath. */
     .nav_bar_container {
-        position: static;
-        flex-shrink: 0;
+        position: sticky;
+        top: 0;
         height: var(--nav-bar-height-mobile);
         padding: 0;
         align-items: center;
@@ -132,11 +132,14 @@
         margin-bottom: 2px;
     }
 
-    /* Last (non-scrolling) row of the app-shell flex column. */
+    /* Fixed to the bottom of the viewport, above the scrolling content. */
     .tab_bar_container {
         display: flex;
-        order: 2;
-        flex-shrink: 0;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
         min-height: var(--tab-bar-height);
         background-color: var(--color-dark);
         border-top: 2px solid var(--color-orange);

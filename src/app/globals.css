@@ -47,26 +47,16 @@ body {
     background-color: var(--color-background);
 }
 
-/* On phones & tablets the layout is an app-shell: the top bar and the bottom
-   tab bar are fixed flex rows that never scroll, and only the page content
-   (.app_content) is scrollable — so the scrollbar lives between the two bars. */
+/* On phones & tablets the document itself scrolls (so the browser's address bar
+   collapses on scroll, like a normal page). The top bar is sticky and the bottom
+   tab bar is fixed; we reserve room for it and recompute the page height from the
+   real chrome (slim top bar + tab bar, no footer). */
 @media (max-width: 1024px) {
     body {
-        height: 100dvh;
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        padding-bottom: 0;
+        padding-bottom: calc(var(--tab-bar-height) + env(safe-area-inset-bottom));
         --base-container-height: calc(
             100dvh - var(--nav-bar-height-mobile) - var(--tab-bar-height) -
                 env(safe-area-inset-bottom)
         );
-    }
-
-    .app_content {
-        order: 1;
-        flex: 1 1 auto;
-        min-height: 0;
-        overflow-y: auto;
     }
 }
