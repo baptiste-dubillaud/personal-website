@@ -33,11 +33,40 @@
 
     --base-container-height: calc(100vh - 188px);
     --base-container-height: calc(100dvh - 188px);
+
+    /* Mobile/tablet chrome heights (bottom tab bar + slimmed top bar). */
+    --tab-bar-height: 64px;
+    --nav-bar-height-mobile: 58px;
 }
 
 body {
     margin: 0px;
     padding: 0px;
     padding-bottom: env(safe-area-inset-bottom);
-    
+    /* Fallback canvas color so short pages never reveal white in fullscreen. */
+    background-color: var(--color-background);
+}
+
+/* On phones & tablets the layout is an app-shell: the top bar and the bottom
+   tab bar are fixed flex rows that never scroll, and only the page content
+   (.app_content) is scrollable — so the scrollbar lives between the two bars. */
+@media (max-width: 1024px) {
+    body {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        padding-bottom: 0;
+        --base-container-height: calc(
+            100dvh - var(--nav-bar-height-mobile) - var(--tab-bar-height) -
+                env(safe-area-inset-bottom)
+        );
+    }
+
+    .app_content {
+        order: 1;
+        flex: 1 1 auto;
+        min-height: 0;
+        overflow-y: auto;
+    }
 }

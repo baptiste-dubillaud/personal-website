@@ -156,6 +156,14 @@
     margin: 0 0 10px 0;
 }
 
+/* On mobile/tablet the page content scrolls inside .app_content, which already
+   starts below the top bar — so the sticky titles pin to its top, not 60px down. */
+@media (max-width: 1024px) {
+    .part_title {
+        top: 0;
+    }
+}
+
 .part_content {
     padding-inline: 5px;
 }

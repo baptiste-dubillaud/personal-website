@@ -60,7 +60,7 @@ export default async function RootLayout({ children }) {
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
                 <ClientIntlProvider>
                     <NavigationBarComponent />
-                    {children}
+                    <div className="app_content">{children}</div>
                     <FooterComponent />
                 </ClientIntlProvider>
             </body>

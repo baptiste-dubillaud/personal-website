@@ -85,3 +85,93 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+/* ----------------------------------------------------------------------------
+   Bottom tab bar — phones & tablets (portrait). Hidden on desktop / landscape.
+---------------------------------------------------------------------------- */
+
+.tab_bar_container {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    /* Slim the top bar down to brand + language switcher on a single row.
+       It's the first (non-scrolling) row of the app-shell flex column. */
+    .nav_bar_container {
+        position: static;
+        flex-shrink: 0;
+        height: var(--nav-bar-height-mobile);
+        padding: 0;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .nav_var_content_container {
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-inline: 20px;
+    }
+
+    .actions_container {
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    /* Links move to the bottom tab bar. */
+    .links_container {
+        display: none;
+    }
+
+    .typewriter {
+        font-size: 2em;
+        padding-bottom: 0;
+    }
+
+    .typewriter_cursor {
+        margin-top: 2px;
+        margin-bottom: 2px;
+    }
+
+    /* Last (non-scrolling) row of the app-shell flex column. */
+    .tab_bar_container {
+        display: flex;
+        order: 2;
+        flex-shrink: 0;
+        min-height: var(--tab-bar-height);
+        background-color: var(--color-dark);
+        border-top: 2px solid var(--color-orange);
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+
+    .tab_item {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+        padding: 4px 0;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: var(--color-white-dim);
+        font-family: inherit;
+        font-size: 0.7em;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        user-select: none;
+        transition: color 0.2s ease;
+    }
+
+    .tab_item:hover {
+        color: var(--color-white);
+    }
+
+    .tab_item_selected {
+        color: var(--color-orange);
+    }
+
+    .tab_label {
+        line-height: 1;
+    }
+}
