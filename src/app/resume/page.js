@@ -10,7 +10,7 @@ import { getNbYears } from "@/utils/dateUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
 import BookShelfIcon from "@/components/common/icons/misc/BookIcon";
 import VideoGame from "@/components/common/icons/misc/VideoGame";
-import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
+import NavigationButton from "@/components/common/ui/NavigationButton/NavigationButton";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import { LINKEDIN_PROFILE, GITHUB_PROFILE, STRAVA_PROFILE } from "@/utils/linkUtils";
@@ -18,7 +18,8 @@ import { COLORS } from "@/utils/colorUtils";
 import { useTranslations } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
-import RichText from "@/components/common/RichText";
+import RichText from "@/components/common/ui/RichText";
+import Tag from "@/components/common/ui/Tag/Tag";
 import {
     STAGGER_CHILDREN as SUB_PARTS_DELAY,
     staggerContainer as containerVariants,
@@ -264,9 +265,7 @@ const TimeLineComponent = ({
                                 {item &&
                                     item.length > 0 &&
                                     item.map((tech, techIndex) => (
-                                        <span key={techIndex} className={styles.timeline_item_tech_stack_item}>
-                                            {tech}
-                                        </span>
+                                        <Tag key={techIndex}>{tech}</Tag>
                                     ))}
                                 {index < techStack.length - 1 && " // "}
                             </div>

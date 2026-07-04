@@ -3,17 +3,18 @@
 import styles from "@/app/blog/page.module.css";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import fs from "fs";
 
 import matter from "gray-matter";
 
 import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
+import Card from "@/components/common/ui/Card/Card";
+import PageHeader from "@/components/common/ui/PageHeader/PageHeader";
 
 const BlogArticleContainer = ({ title, date, image, link }) => {
     return (
-        <Link href={link} className={styles.article_container}>
+        <Card internal href={link} interactive className={styles.article_container}>
             <div className={styles.article_image_container}>
                 <Image src={image} alt={"Main image of article " + title} fill={true} objectFit="cover" />
             </div>
@@ -21,7 +22,7 @@ const BlogArticleContainer = ({ title, date, image, link }) => {
                 <span className={styles.article_text_title}>{title}</span>
                 <span className={styles.article_text_date}>{date}</span>
             </div>
-        </Link>
+        </Card>
     );
 };
 
@@ -44,11 +45,10 @@ export default async function Blog({}) {
 
     return (
         <div className={styles.blog_container}>
-            <div className={styles.blog_title}>Welcome to my blog!</div>
-            <div className={styles.blog_subtitle}>
-                Sometimes I write about experiments or implementations of frameworks/libraries/langages I discovered on
-                subjects projects in my portfolio or not.
-            </div>
+            <PageHeader
+                title="Welcome to my blog!"
+                subtitle="Sometimes I write about experiments or implementations of frameworks/libraries/langages I discovered on side projects."
+            />
             <div className={styles.articles_list}>
                 {posts.map((item, index) => {
                     return (

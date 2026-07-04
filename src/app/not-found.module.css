@@ -5,26 +5,25 @@
     align-items: center;
     justify-content: center;
     overflow-y: auto;
-    row-gap: 30px;
+    row-gap: var(--space-xl);
     background-color: var(--color-background);
 }
 
 .error_container {
     width: fit-content;
     max-width: 80vw;
-    
+
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
-    
-    gap: 25px;
 
-    border-bottom: 1px solid var(--color-orange-opacity-9);
-    
-    
-    padding: 40px;
-    margin-top: 30px;
+    gap: var(--space-lg);
+
+    border-bottom: var(--border-thin) solid var(--color-orange-opacity-9);
+
+    padding: var(--space-2xl);
+    margin-top: var(--space-xl);
 }
 
 .error_icon_container {
@@ -34,7 +33,7 @@
     justify-content: center;
     width: 250px;
     height: 250px;
-    border-radius: 50%;
+    border-radius: var(--radius-full);
     background-color: var(--color-orange-opacity-1);
     border: 3px solid var(--color-orange-opacity-6);
     position: relative;
@@ -50,12 +49,12 @@
 
 .error_icon {
     font-size: var(--text-44);
-    margin-top: 10px;
+    margin-top: var(--space-xs);
     opacity: 0.8;
 }
 
 .error_content_container {
-    padding-left: 15px;
+    padding-left: var(--space-sm);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -66,7 +65,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: var(--space-md);
 }
 
 .error_title_text {
@@ -82,7 +81,7 @@
 }
 
 .error_message_container {
-    margin-bottom: 25px;
+    margin-bottom: var(--space-lg);
 }
 
 .error_message {
@@ -96,53 +95,10 @@
 
 .error_buttons_container {
     display: flex;
-    gap: 20px;
-    padding-bottom: 50px;
+    gap: var(--space-md);
+    padding-bottom: var(--space-3xl);
     flex-wrap: wrap;
     justify-content: center;
-}
-
-.error_button {
-    border: 1px solid var(--color-orange-opacity-6);
-    background-color: var(--color-orange-opacity-05);
-    color: var(--color-orange);
-    
-    min-width: 120px;
-    padding-inline: 25px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    border-radius: 5px;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    font-size: var(--text-16);
-    font-weight: 500;
-    text-transform: uppercase;
-    
-    cursor: pointer;
-    
-    transition: all 0.3s ease;
-}
-
-.error_button:hover {
-    background-color: var(--color-orange-opacity-2);
-    font-weight: 600;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--color-orange-opacity-2);
-}
-
-.error_button_primary {
-    background-color: var(--color-orange);
-    color: white;
-    border-color: var(--color-orange);
-}
-
-.error_button_primary:hover {
-    background-color: var(--color-orange-dark);
-    border-color: var(--color-orange-dark);
-    box-shadow: 0 4px 8px var(--color-orange-opacity-4);
 }
 
 /* Responsive Design */
@@ -151,20 +107,20 @@
         flex-direction: column;
         text-align: center;
     }
-    
+
     .error_content_container {
         padding-left: 0;
         align-items: center;
     }
-    
+
     .error_title_text {
         font-size: var(--text-44);
     }
-    
+
     .error_message {
         text-align: center;
     }
-    
+
     .error_suggestions_container {
         text-align: left;
     }
@@ -172,44 +128,36 @@
 
 @media (max-width: 768px) {
     .error_full_screen_wrapper {
-        padding: 10px;
+        padding: var(--space-xs);
     }
-    
+
     .error_container {
-        padding: 30px 20px;
+        padding: var(--space-xl) var(--space-md);
         max-width: 95vw;
     }
-    
+
     .error_icon_container {
         width: 200px;
         height: 200px;
     }
-    
+
     .error_number {
         font-size: var(--text-display);
     }
-    
+
     .error_icon {
         font-size: var(--text-32);
     }
-    
+
     .error_title_text {
         font-size: var(--text-32);
     }
-    
+
     .error_message {
         font-size: var(--text-16);
     }
-    
+
     .error_buttons_container {
-        gap: 15px;
-    }
-    
-    .error_button {
-        min-width: 100px;
-        padding-inline: 20px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        font-size: var(--text-14);
+        gap: var(--space-sm);
     }
 }

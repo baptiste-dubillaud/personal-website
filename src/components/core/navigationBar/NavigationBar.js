@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import LanguageSwitcher from "@/components/common/LanguageSwitcher/LanguageSwitcher";
+import LanguageSwitcher from "@/components/common/ui/LanguageSwitcher/LanguageSwitcher";
 
 import { motion } from "framer-motion";
 

@@ -4,59 +4,33 @@
     overflow-y: auto;
 }
 
-.blog_title {
-    text-align: center;
-    font-weight: 700;
-    font-size: var(--text-44);
-    margin-top: 40px;
-    margin-bottom: 30px;
-}
-
-.blog_subtitle {
-    text-align: center;
-    margin-inline: 50px;
-    color: var(--color-text);
-}
-
 .articles_list {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    margin-top: 50px;
-    margin-bottom: 20px;
-    margin-inline: 20px;
-    gap: 10px;
+    margin-top: var(--space-3xl);
+    margin-bottom: var(--space-md);
+    margin-inline: var(--space-md);
+    gap: var(--space-xs);
 }
 
 .article_container {
     height: 250px;
     width: 350px;
-    border: 1px solid var(--color-orange);
-    background-color: var(--color-orange-opacity-05);
-    border-radius: 5px;
     overflow: hidden;
-    cursor: pointer;
     font-weight: 400;
-    color: var(--color-text);
-    text-decoration: none;
-    transition: background-color 0.2s ease, font-weight 0.2s;
-}
-
-.article_container:hover {
-    background-color: var(--color-orange-opacity-1);
-    font-weight: 500;
 }
 
 .article_image_container {
     width: 100%;
     height: calc(100% - 55px);
     position: relative;
-    border-bottom: 1px solid var(--color-orange-opacity-6);
+    border-bottom: var(--border-thin) solid var(--color-orange-opacity-6);
 }
 
 .article_text_container {
-    padding: 5px;
+    padding: var(--space-2xs);
     height: 44px;
     display: flex;
     align-items: center;
@@ -64,14 +38,14 @@
 }
 
 .article_text_title {
-    font-size: 1.05em;
+    font-size: var(--text-16);
 }
 
 .article_text_date {
     position: absolute;
     right: 3px;
     bottom: 3px;
-    font-size: 0.6em;
+    font-size: var(--text-12);
     font-weight: normal;
     color: var(--color-text-muted);
 }

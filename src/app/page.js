@@ -16,7 +16,7 @@ import Locationicon from "@/components/common/icons/misc/LocationIcon";
 
 import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
-import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
+import NavigationButton from "@/components/common/ui/NavigationButton/NavigationButton";
 import Button from "@/components/common/ui/Button/Button";
 
 const MainPageButton = ({ goTo, text }) => {

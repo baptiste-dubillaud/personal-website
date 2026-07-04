@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-background);
-    padding: 30px 20px;
+    padding: var(--space-xl) var(--space-md);
 }
 
 .contact_content {
@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: var(--space-3xl);
     width: 100%;
 }
 
@@ -23,38 +23,38 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: var(--space-md);
     text-align: center;
 }
 
 .availability_badge {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-xs);
     font-size: var(--text-14);
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--color-orange);
     background-color: var(--color-orange-opacity-1);
-    border: 1px solid var(--color-orange-opacity-4);
-    border-radius: 999px;
-    padding: 5px 14px;
+    border: var(--border-thin) solid var(--color-orange-opacity-4);
+    border-radius: var(--radius-pill);
+    padding: var(--space-2xs) var(--space-sm);
 }
 
 .availability_dot {
     width: 7px;
     height: 7px;
-    border-radius: 50%;
-    background-color: #22c55e;
-    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
+    border-radius: var(--radius-full);
+    background-color: var(--color-success);
+    box-shadow: 0 0 0 2px var(--color-success-opacity-3);
     animation: pulse 2s ease-in-out infinite;
     flex-shrink: 0;
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3); }
-    50%       { box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+    0%, 100% { box-shadow: 0 0 0 2px var(--color-success-opacity-3); }
+    50%       { box-shadow: 0 0 0 5px var(--color-success-opacity-0); }
 }
 
 .contact_title {
@@ -82,7 +82,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: var(--space-xs);
     width: 100%;
     max-width: 600px;
 }
@@ -90,14 +90,15 @@
 .contact_row {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    border-radius: 14px;
-    border: 1px solid var(--color-orange-opacity-2);
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: var(--border-thin) solid var(--color-orange-opacity-2);
     background-color: var(--color-orange-opacity-05);
     text-decoration: none;
     color: inherit;
-    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+    transition: background-color var(--transition-base),
+        border-color var(--transition-base), transform var(--transition-base);
 }
 
 .contact_row:hover {
@@ -109,13 +110,13 @@
 .contact_row_icon {
     width: 48px;
     height: 48px;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     background-color: var(--color-orange);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-base);
 }
 
 .contact_row:hover .contact_row_icon {
@@ -150,7 +151,7 @@
 .contact_row_arrow {
     font-size: var(--text-20);
     color: var(--color-orange-opacity-6);
-    transition: transform 0.2s, color 0.2s;
+    transition: transform var(--transition-base), color var(--transition-base);
     flex-shrink: 0;
 }
 
