@@ -9,10 +9,11 @@
     font-size: var(--text-14);
     font-weight: 500;
     cursor: pointer;
-    padding: 2px 4px;
-    transition: all 0.2s ease;
+    padding: var(--space-3xs) 4px;
+    transition: color var(--transition-base), background-color var(--transition-base),
+        opacity var(--transition-base);
     opacity: 0.8;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     color: var(--color-white);
 }
 

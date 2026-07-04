@@ -1,0 +1,75 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2xs);
+    box-sizing: border-box;
+
+    border: var(--border-thin) solid transparent;
+    border-radius: var(--radius-sm);
+
+    font-family: inherit;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+
+    cursor: pointer;
+    user-select: none;
+
+    transition: background-color var(--transition-slow),
+        border-color var(--transition-slow), color var(--transition-fast),
+        transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+/* ── Sizes ─────────────────────────────────────────────────────── */
+
+.sm {
+    padding: var(--space-2xs) var(--space-sm);
+    font-size: var(--text-14);
+}
+
+.md {
+    padding: 7px var(--space-lg);
+    font-size: var(--text-16);
+}
+
+/* ── Variants ──────────────────────────────────────────────────── */
+
+/* outline — the site's primary CTA look (orange tint, orange text) */
+.outline {
+    border-color: var(--color-orange-opacity-8);
+    background-color: var(--color-orange-opacity-05);
+    color: var(--color-orange);
+}
+
+.outline:hover {
+    background-color: var(--color-orange-opacity-2);
+    transform: translateY(-1px);
+}
+
+/* solid — filled orange, white label */
+.solid {
+    border-color: var(--color-orange);
+    background-color: var(--color-orange);
+    color: var(--color-white);
+}
+
+.solid:hover {
+    background-color: var(--color-orange-dark);
+    border-color: var(--color-orange-dark);
+    transform: translateY(-1px);
+}
+
+/* ghost — muted text button (back links, tertiary actions) */
+.ghost {
+    padding: var(--space-3xs) var(--space-2xs);
+    color: var(--color-text-light);
+    font-size: var(--text-12);
+    font-weight: 400;
+}
+
+.ghost:hover {
+    color: var(--color-text);
+    background-color: var(--color-orange-opacity-05);
+}
