@@ -18,8 +18,6 @@ const links = [
     { nameKey: "home", path: "/", icon: HomeIcon },
     { nameKey: "resume", path: "/resume", icon: ResumeIcon },
     { nameKey: "contact", path: "/contact", icon: EmailIcon },
-    // { nameKey: "portfolio", path: "/portfolio" },
-    // { nameKey: "blog", path: "/blog" },
 ];
 
 function isActive(pathname, path) {

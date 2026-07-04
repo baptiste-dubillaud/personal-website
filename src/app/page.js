@@ -17,6 +17,7 @@ import Locationicon from "@/components/common/icons/misc/LocationIcon";
 import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 import NavigationButton from "@/components/common/buttons/navigation/NavigationButton";
+import Button from "@/components/common/ui/Button/Button";
 
 const MainPageButton = ({ goTo, text }) => {
     const router = useRouter();
@@ -28,9 +29,9 @@ const MainPageButton = ({ goTo, text }) => {
     };
 
     return (
-        <button className={styles.main_button_container} onClick={handleClick}>
+        <Button variant="outline" onClick={handleClick}>
             {text}
-        </button>
+        </Button>
     );
 };
 
@@ -210,8 +211,6 @@ export default function Home() {
                 >
                     <MainPageButton text={t("resume_button")} goTo="resume" />
                     <MainPageButton text={t("contact_button")} goTo="contact" />
-                    {/* <MainPageButton text="Portfolio" goTo="portfolio"/> */}
-                    {/* <MainPageButton text="Blog" goTo="blog"  /> */}
                 </motion.div>
             </div>
         </main>
