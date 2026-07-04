@@ -1,4 +1,4 @@
-import { Inter } from "next/font/google";
+import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import "./globals.css";
@@ -6,6 +6,9 @@ import NavigationBarComponent from "@/components/core/navigationBar/NavigationBa
 import FooterComponent from "@/components/core/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
+// Real monospace for the design-system mono details (MonoLabel, code-ish bits).
+// Exposed as the global --font-mono, overriding the previously-unloaded value.
+const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono" });
 
 const DESCRIPTION =
     "Baptiste Dubillaud — Software & Data Engineer based in Pau, France. Personal website, resume, and blog.";
@@ -59,7 +62,7 @@ export default async function RootLayout({ children }) {
     return (
         <html lang={locale}>
             <link rel="icon" href="/icon.png" sizes="any" />
-            <body className={inter.className} style={{ position: "relative" }}>
+            <body className={`${inter.className} ${mono.variable}`} style={{ position: "relative" }}>
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
                 <NextIntlClientProvider locale={locale} messages={messages}>
                     <NavigationBarComponent />

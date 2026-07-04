@@ -18,8 +18,10 @@ import { getNbYears } from "@/utils/dateUtils";
 import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
 import NavigationButton from "@/components/common/ui/NavigationButton/NavigationButton";
 import Button from "@/components/common/ui/Button/Button";
+import PageBackground from "@/components/common/ui/PageBackground/PageBackground";
+import Heading from "@/components/common/ui/Heading/Heading";
 
-const MainPageButton = ({ goTo, text }) => {
+const MainPageButton = ({ goTo, text, type="outline" }) => {
     const router = useRouter();
 
     const handleClick = () => {
@@ -29,7 +31,7 @@ const MainPageButton = ({ goTo, text }) => {
     };
 
     return (
-        <Button variant="outline" onClick={handleClick}>
+        <Button variant={type} onClick={handleClick} size="md">
             {text}
         </Button>
     );
@@ -42,7 +44,7 @@ export default function Home() {
 
     return (
         <main>
-            <div className={styles.presentation_full_screen_wrapper}>
+            <PageBackground className={styles.presentation_full_screen_wrapper}>
                 <motion.div
                     className={styles.presentation_container}
                     initial={{ opacity: 0 }}
@@ -74,10 +76,8 @@ export default function Home() {
                     <div className={styles.presentation_data_container}>
                         <div className={styles.presentation_data_group_container}>
                             {/* First and Last names */}
-                            <h1 className={styles.presentation_data_name_container}>
-                                <span
-                                    className={`${styles.presentation_data_name_text} ${styles.presentation_data_firstname}`}
-                                >
+                            <Heading as="h1" className={styles.presentation_data_name_container}>
+                                <Heading.Accent className={styles.presentation_data_name_text}>
                                     {"Baptiste".split("").map((char, index) => (
                                         <motion.span
                                             key={index}
@@ -87,7 +87,7 @@ export default function Home() {
                                             {char}
                                         </motion.span>
                                     ))}
-                                </span>
+                                </Heading.Accent>
                                 <span className={styles.presentation_data_name_text}>
                                     {"Dubillaud".split("").map((char, index) => (
                                         <motion.span
@@ -99,7 +99,7 @@ export default function Home() {
                                         </motion.span>
                                     ))}
                                 </span>
-                            </h1>
+                            </Heading>
                             {/* Position def */}
                             <motion.h2
                                 className={styles.presentation_data_role_container}
@@ -200,19 +200,19 @@ export default function Home() {
                             </p>
                             <p>{t("prensentation.paragraph2")}</p>
                         </motion.div>
+                        {/* Shortcut buttons — action row inside the card */}
+                        <motion.div
+                            className={styles.presentation_buttons_container}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 3.0 }}
+                        >
+                            <MainPageButton text={t("resume_button")} goTo="resume" type="solid" />
+                            <MainPageButton text={t("contact_button")} goTo="contact" />
+                        </motion.div>
                     </div>
                 </motion.div>
-                {/* Shortcut buttons */}
-                <motion.div
-                    className={styles.presentation_buttons_container}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 3.0 }}
-                >
-                    <MainPageButton text={t("resume_button")} goTo="resume" />
-                    <MainPageButton text={t("contact_button")} goTo="contact" />
-                </motion.div>
-            </div>
+            </PageBackground>
         </main>
     );
 }
