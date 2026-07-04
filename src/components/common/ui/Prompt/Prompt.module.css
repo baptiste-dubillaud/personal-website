@@ -1,0 +1,38 @@
+.prompt {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+
+    font-family: var(--font-mono), monospace;
+    color: inherit;
+
+    background-color: var(--color-orange-opacity-05);
+    border: var(--border-thin) solid var(--color-orange-opacity-1);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2xs) var(--space-sm);
+}
+
+.size_sm { font-size: var(--text-14); }
+.size_md { font-size: var(--text-16); }
+.size_lg { font-size: var(--text-20); }
+
+.sign {
+    margin-right: var(--space-2xs);
+    color: var(--color-orange);
+    font-weight: 600;
+}
+
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 1.05em;
+    margin-left: 4px;
+    background-color: var(--color-orange);
+    translate: 0 2px;
+    animation: blink 1.15s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    50.01%, 100% { opacity: 0; }
+}

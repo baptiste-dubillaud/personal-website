@@ -1,0 +1,27 @@
+/* Blueprint canvas: an engineering-paper line grid that doesn't sit flat — a
+   centred radial mask keeps it dense in the middle and fades it evenly into the
+   bare beige toward every edge (spotlight). On a ::before so the mask never
+   touches the content; direct children are lifted above it. */
+.page_bg {
+    position: relative;
+    isolation: isolate;
+}
+
+.page_bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(var(--blueprint-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px);
+    background-size: var(--blueprint-size) var(--blueprint-size);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 50%, #000 0%, #000 28%, transparent 80%);
+    mask-image: radial-gradient(ellipse 90% 75% at 50% 50%, #000 0%, #000 28%, transparent 80%);
+}
+
+.page_bg > * {
+    position: relative;
+    z-index: 1;
+}

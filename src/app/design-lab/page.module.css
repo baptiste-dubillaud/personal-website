@@ -1,0 +1,440 @@
+/* ============================================================================
+   DESIGN SYSTEM — living reference for the site.
+   Foundations (tokens) + Components, in the validated "glow + blueprint"
+   direction (strict orange/beige, subtle motion). Local classes prefixed by
+   intent; primitives marked "à créer" in the page are the build list for the
+   shared components.
+   ========================================================================== */
+
+/* The blueprint grid comes from the <PageBackground> wrapper; this class only
+   owns the page's layout (height, scroll, padding). */
+.lab_page {
+    min-height: var(--base-container-height);
+    background-color: var(--color-background);
+    overflow-y: auto;
+    padding: var(--space-2xl) var(--space-md) var(--space-3xl);
+}
+
+.inner {
+    max-width: 1080px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+}
+
+/* Mono primitives (MonoLabel & Prompt) are now shared components. */
+
+/* ── Hero ─────────────────────────────────────────────────────── */
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    padding-top: var(--space-md);
+}
+
+.hero_title {
+    font-size: var(--text-hero);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    margin: 0;
+    line-height: 1;
+}
+
+.hero_accent {
+    color: var(--color-orange);
+    text-shadow: 0 0 22px var(--color-orange-opacity-4);
+}
+
+.hero_sub {
+    max-width: 620px;
+    margin: 0;
+    font-size: var(--text-16);
+    line-height: 1.6;
+    color: var(--color-text-warm);
+}
+
+/* ── Section scaffolding ──────────────────────────────────────── */
+
+.section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.section_head {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.section_rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--color-orange-opacity-4), transparent);
+}
+
+.section_note {
+    margin: 0;
+    max-width: 640px;
+    font-size: var(--text-14);
+    line-height: 1.5;
+    color: var(--color-text-warm);
+}
+
+.group_label {
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-12);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-text-light);
+}
+
+/* Caption naming the component behind a demo + build status. */
+.comp_note {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
+    margin: 0;
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-12);
+    color: var(--color-text-muted);
+}
+
+.badge_status_new {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 1px 6px;
+    border-radius: var(--radius-pill);
+    color: var(--color-orange);
+    background: transparent;
+    border: 1px dashed var(--color-orange-opacity-4);
+}
+
+.comp_path {
+    color: var(--color-text-secondary);
+}
+
+/* ── 01 · Colors ──────────────────────────────────────────────── */
+
+.swatch_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-sm);
+}
+
+.swatch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+.swatch_color {
+    height: 68px;
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-elevation);
+}
+
+.swatch_color_bordered {
+    border: var(--border-thin) solid var(--color-orange-opacity-2);
+}
+
+.swatch_meta {
+    display: flex;
+    flex-direction: column;
+}
+
+.swatch_name {
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-12);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.swatch_hex {
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-12);
+    color: var(--color-text-light);
+}
+
+/* ── 02 · Typography ──────────────────────────────────────────── */
+
+.type_list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.type_row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+    padding-bottom: var(--space-2xs);
+    border-bottom: 1px dashed var(--color-orange-opacity-1);
+}
+
+.type_sample {
+    line-height: 1.1;
+    color: var(--color-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.type_meta {
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-12);
+    color: var(--color-text-light);
+    white-space: nowrap;
+}
+
+/* ── 03 · Spacing ─────────────────────────────────────────────── */
+
+.space_list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+.space_row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.space_bar {
+    height: 14px;
+    min-width: 2px;
+    border-radius: var(--radius-xs);
+    background: var(--gradient-orange);
+}
+
+/* ── 04 · Radius ──────────────────────────────────────────────── */
+
+.radius_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+}
+
+.radius_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2xs);
+}
+
+.radius_box {
+    width: 72px;
+    height: 72px;
+    background: var(--color-orange-opacity-1);
+    border: var(--border-thin) solid var(--color-orange-opacity-4);
+}
+
+.radius_pill {
+    border-radius: var(--radius-pill);
+}
+
+.radius_full {
+    border-radius: var(--radius-full);
+}
+
+/* ── 05 · Shadows ─────────────────────────────────────────────── */
+
+.shadow_grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-lg);
+}
+
+.shadow_item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2xs);
+}
+
+.shadow_tile {
+    width: 96px;
+    height: 64px;
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.55);
+    border: var(--border-thin) solid var(--color-orange-opacity-1);
+}
+
+.gradient_bar {
+    height: 48px;
+    border-radius: var(--radius-sm);
+    background: var(--gradient-orange);
+    box-shadow: var(--shadow-glow-orange);
+    display: flex;
+    align-items: center;
+    padding-inline: var(--space-md);
+}
+
+.gradient_label {
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-12);
+    letter-spacing: 0.1em;
+    color: var(--color-white);
+    text-transform: uppercase;
+}
+
+/* ── 06 · Blueprint demo ──────────────────────────────────────── */
+
+.blueprint_demo {
+    position: relative;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    border: var(--border-thin) solid var(--color-orange-opacity-2);
+    background-color: var(--color-background);
+    background-image:
+        linear-gradient(var(--blueprint-line-strong) 1px, transparent 1px),
+        linear-gradient(90deg, var(--blueprint-line-strong) 1px, transparent 1px);
+    background-size: 18px 18px;
+}
+
+/* ── Surfaces ─────────────────────────────────────────────────── */
+
+.cards_row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--space-md);
+}
+
+/* Padding/layout wrapper for the Surface demos — the Surface component is
+   box-only (border/tint/glow/corners), the consumer owns padding & layout. */
+.demo_surface {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+    padding: var(--space-md);
+    min-height: 120px;
+}
+
+.surface_text {
+    margin: 0;
+    font-size: var(--text-14);
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+/* ── Buttons row ──────────────────────────────────────────────── */
+
+.btn_row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+/* ── Tags & badges (Badge is now a shared component) ──────────── */
+
+.chips_row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2xs);
+}
+
+/* ── Mono lines & dividers ────────────────────────────────────── */
+
+.mono_lines {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    align-items: flex-start;
+}
+
+/* ── Page header & icon links ─────────────────────────────────── */
+
+.demo_block {
+    border: 1px dashed var(--color-orange-opacity-2);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.icon_links {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+/* ── Text & language ──────────────────────────────────────────── */
+
+.richtext_demo {
+    max-width: 560px;
+    color: var(--color-text);
+    font-size: var(--text-16);
+    line-height: 1.55;
+}
+
+/* LanguageSwitcher is built for the dark nav (white text) — show it in a dark
+   chip so it reads in context on the beige reference page. */
+.nav_context {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-dark);
+    border-radius: var(--radius-sm);
+    padding: var(--space-2xs) var(--space-sm);
+}
+
+/* ── Example experience card ──────────────────────────────────── */
+
+/* exp_card is a Surface variant="glow" — border/tint/glow/hover come from the
+   component; here we only set its size, padding and inner layout. */
+.exp_card {
+    max-width: 560px;
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.exp_meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.exp_dot {
+    width: 4px;
+    height: 4px;
+    border-radius: var(--radius-full);
+    background-color: var(--color-orange);
+}
+
+.exp_title {
+    margin: 0;
+    font-size: var(--text-20);
+    font-weight: 700;
+    color: var(--color-orange);
+}
+
+.exp_entity {
+    margin: 0;
+    font-size: var(--text-16);
+    font-weight: 700;
+    color: var(--color-text);
+}
+
+.exp_desc {
+    margin: 0;
+    font-size: var(--text-14);
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 600px) {
+    .hero_sub {
+        font-size: var(--text-14);
+    }
+}

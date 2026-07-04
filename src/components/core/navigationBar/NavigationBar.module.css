@@ -72,20 +72,11 @@
     background-size: 100% 2px;
 }
 
-.typewriter {
-    font-size: 2.8em;
-    padding-bottom: var(--space-sm);
+.brand {
     cursor: pointer;
     display: inline-flex;
+    align-items: center;
     white-space: nowrap;
-}
-
-.typewriter_cursor {
-    border-left: 3px solid var(--color-orange);
-    border-radius: var(--radius-xs);
-    margin-left: var(--space-2xs);
-    margin-top: var(--space-2xs);
-    margin-bottom: var(--space-2xs);
 }
 
 /* ----------------------------------------------------------------------------
@@ -122,16 +113,6 @@
     /* Links move to the bottom tab bar. */
     .links_container {
         display: none;
-    }
-
-    .typewriter {
-        font-size: 2em;
-        padding-bottom: 0;
-    }
-
-    .typewriter_cursor {
-        margin-top: 2px;
-        margin-bottom: 2px;
     }
 
     /* Floating pill: detached from the edges, centered, width-capped, rounded. */
