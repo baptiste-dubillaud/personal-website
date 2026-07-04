@@ -9,7 +9,7 @@ export default function NavigationButton({ children, link, alt }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={alt}
-            className={styles.tab_link_container}
+            className={styles.icon_button}
         >
             {children}
         </a>
