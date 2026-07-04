@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/components/common/buttons/navigation/NavigationButton.module.css";
+import styles from "@/components/common/ui/NavigationButton/NavigationButton.module.css";
 
 export default function NavigationButton({ children, link, alt }) {
     return (
