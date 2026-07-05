@@ -385,7 +385,7 @@ const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false, ..
                     </Heading>
                     {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
                 </div>
-                <Divider className={styles.hobby_divider} />
+                <Divider className={styles.hobby_divider} subtle />
                 {/* Description */}
                 <div className={styles.hobby_description}>{DescriptionComponent}</div>
             </Surface>
@@ -545,18 +545,21 @@ export default function Resume() {
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
+                    {isTwoColumnSetup && <Divider className={styles.part_divider} />}
                     <ExperiencesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
                         experienceRef={experienceRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
+                    {isTwoColumnSetup && <Divider className={styles.part_divider} />}
                     <EducationComponent
                         isTwoColumnSetup={isTwoColumnSetup}
                         educationRef={educationRef}
                         setCurrentComponent={setCurrentPart}
                         translation={t}
                     />
+                    {isTwoColumnSetup && <Divider className={styles.part_divider} />}
                     <HobbiesComponent
                         isTwoColumnSetup={isTwoColumnSetup}
                         hobbiesRef={hobbiesRef}

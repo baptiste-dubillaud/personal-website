@@ -180,6 +180,14 @@
     padding-inline: var(--space-2xs);
 }
 
+/* Two-column (desktop) only: section titles are hidden there, so a divider marks
+   the boundary between categories. Symmetric margin centres it in the gap.
+   Anchored under .right_component to out-specify Divider's own `.divider {margin:0}`
+   (its module loads after this one, so a bare .part_divider would lose). */
+.right_component .part_divider {
+    margin: var(--space-2xl) 0;
+}
+
 /* EXPERIENCES */
 
 .timeline_items_container {

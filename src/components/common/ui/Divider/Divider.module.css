@@ -10,3 +10,14 @@
         transparent
     );
 }
+
+/* Minor, in-component separator — fainter so it doesn't compete with the
+   stronger dividers between major sections. */
+.subtle {
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--color-orange-opacity-2),
+        transparent
+    );
+}
