@@ -9,12 +9,12 @@ import fs from "fs";
 import matter from "gray-matter";
 
 import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
-import Card from "@/components/common/ui/Card/Card";
+import Surface from "@/components/common/ui/Surface/Surface";
 import PageHeader from "@/components/common/ui/PageHeader/PageHeader";
 
 const BlogArticleContainer = ({ title, date, image, link }) => {
     return (
-        <Card internal href={link} interactive className={styles.article_container}>
+        <Surface internal href={link} interactive className={styles.article_container}>
             <div className={styles.article_image_container}>
                 <Image src={image} alt={"Main image of article " + title} fill={true} objectFit="cover" />
             </div>
@@ -22,7 +22,7 @@ const BlogArticleContainer = ({ title, date, image, link }) => {
                 <span className={styles.article_text_title}>{title}</span>
                 <span className={styles.article_text_date}>{date}</span>
             </div>
-        </Card>
+        </Surface>
     );
 };
 
