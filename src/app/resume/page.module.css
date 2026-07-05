@@ -11,17 +11,17 @@
     justify-content: space-between;
     max-width: 1500px;
     width: 100%;
-    margin-inline: 20px;
-    margin-top: 20px;
-    margin-bottom: 30px;
+    margin-inline: var(--space-md);
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xl);
 }
 
 .presentation_container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    margin-top: 20px;
-    padding-inline: 5px;
+    gap: var(--space-2xs);
+    margin-top: var(--space-md);
+    padding-inline: var(--space-2xs);
     position: sticky;
     top: 70px;
 }
@@ -42,22 +42,22 @@
     font-size: var(--text-16);
     font-weight: 400;
     max-width: 300px;
-    margin: 15px 0 0 0;
+    margin: var(--space-sm) 0 0 0;
 }
 
 .presentation_buttons_container {
     display: flex;
-    gap: 5px;
-    margin-top: 5px;
+    gap: var(--space-2xs);
+    margin-top: var(--space-2xs);
 }
 
 .presentation_menu {
     position: relative;
     display: flex;
     flex-direction: column;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    border-radius: 2px;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-xs);
+    border-radius: var(--radius-xs);
     text-align: center;
     justify-content: center;
 }
@@ -67,29 +67,51 @@
     left: -1px;
     top: 0px;
     height: 35px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     border-left: 4px solid var(--color-orange);
-    transition: top 0.2s;
+    transition: top var(--transition-base);
 }
 
 .presentation_menu_item {
-    font-size: var(--text-20);
+    font-size: var(--text-16);
     font-weight: 700;
     color: var(--color-orange-dark);
-    border-left: 2px solid var(--color-orange-dark);
+    border-left: var(--border-thick) solid var(--color-orange-dark);
     height: 25px;
     width: fit-content;
 
-    padding: 10px;
+    padding: var(--space-xs);
     padding-left: 12px;
-    
+
     align-items: center;
     display: flex;
     justify-content: center;
+    gap: var(--space-2xs);
 
     cursor: pointer;
 
-    transition: color 0.15s, font-size 0.15s, background-color 0.15s;
+    transition: color var(--transition-base), font-size var(--transition-base),
+        text-shadow var(--transition-base), transform var(--transition-base),
+        background-color var(--transition-base);
+}
+
+/* Mono index prefix on each menu item — echoes the "SECTION / 0N" headers.
+   Sized in `em` so it scales together with the label when the item grows
+   (hover / active). Kept muted in every state, so only the label carries colour. */
+.presentation_menu_num {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.6em;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--color-text-muted);
+}
+
+/* Slash separator between the index and the label — orange accent, also in `em`
+   so it grows with the rest. */
+.presentation_menu_sep {
+    font-family: var(--font-mono), monospace;
+    font-size: 0.7em;
+    color: var(--color-orange);
 }
 
 .presentation_menu_item:first-child {
@@ -97,48 +119,31 @@
 }
 
 .presentation_menu_item:last-child {
-    border-left: 1px solid var(--color-white);
+    border-left: var(--border-thin) solid var(--color-white);
     padding-bottom: 0px;
 }
 
-.presentation_download_button_container {
-    border: 1px solid var(--color-orange-opacity-8);
-    background-color: var(--color-orange-opacity-05);
+.presentation_menu_item:not(.presentation_menu_item_active):hover {
+    font-size: var(--text-20);
     color: var(--color-orange);
-
-    width: fit-content;
-
-    padding-inline: 25px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    margin-top: 10px;
-    border-radius: 3px;
-
-    font-size: var(--text-16);
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition: background-color 0.4s, transform 0.4s;
 }
 
-.presentation_download_button_container:hover {
-    background-color: var(--color-orange-opacity-2);
-    transform: scale(1.02);
-}
-
-.presentation_menu_item:hover {
+/* Current section — the strongest accent: orange + a soft glow, nudged along the
+   rail toward its content. Size matches hover; the glow + shift set it apart. */
+.presentation_menu_item_active {
     font-size: var(--text-24);
     color: var(--color-orange);
+    text-shadow: 0 0 22px var(--color-orange-opacity-4);
+    transform: translateX(5px);
 }
 
 .part_container {
-    margin-top: 40px;
+    margin-top: var(--space-2xl);
     scroll-margin: 80px;
 }
 
 .part_container:first-child {
-    margin-top: 20px;
+    margin-top: var(--space-md);
 }
 
 .part_title {
@@ -148,12 +153,12 @@
     color: var(--color-orange);
     font-weight: 700;
     left: 0;
-    padding: 10px;
-    padding-inline: 5px;
+    padding: var(--space-xs);
+    padding-inline: var(--space-2xs);
     background-color: var(--color-background-opacity-2);
     backdrop-filter: blur(3px);
     z-index: 1;
-    margin: 0 0 10px 0;
+    margin: 0 0 var(--space-xs) 0;
 }
 
 /* On mobile/tablet the document scrolls under the sticky top bar, so the sticky
@@ -164,8 +169,23 @@
     }
 }
 
+/* Mono numeric index next to the section title — the "SECTION / 0N" kicker.
+   The title is orange, so the index is dimmed to muted so the two don't clash. */
+.part_title_index {
+    margin-left: var(--space-xs);
+    --mono-slash-color: var(--color-text-muted);
+}
+
 .part_content {
-    padding-inline: 5px;
+    padding-inline: var(--space-2xs);
+}
+
+/* Two-column (desktop) only: section titles are hidden there, so a divider marks
+   the boundary between categories. Symmetric margin centres it in the gap.
+   Anchored under .right_component to out-specify Divider's own `.divider {margin:0}`
+   (its module loads after this one, so a bare .part_divider would lose). */
+.right_component .part_divider {
+    margin: var(--space-2xl) 0;
 }
 
 /* EXPERIENCES */
@@ -178,19 +198,19 @@
 
 .timeline_item_container {
     position: relative;
-    padding-bottom: 30px;
+    padding-bottom: var(--space-2xl);
 }
 
 .timeline_item_container_left {
-    margin-left: 10px;
-    padding-left: 10px;
-    border-left: 2px solid var(--color-orange);
+    margin-left: var(--space-xs);
+    padding-left: var(--space-md);
+    border-left: var(--border-thick) solid var(--color-orange);
 }
 
 .timeline_item_container_right {
-    margin-right: 10px;
-    padding-right: 10px;
-    border-right: 2px solid var(--color-orange);
+    margin-right: var(--space-xs);
+    padding-right: var(--space-md);
+    border-right: var(--border-thick) solid var(--color-orange);
 }
 
 .timeline_item_container:last-child {
@@ -202,9 +222,9 @@
     top: -1px;
     width: 8px;
     height: 8px;
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
     background-color: var(--color-white);
-    border: 2px solid var(--color-orange);
+    border: var(--border-thick) solid var(--color-orange);
 }
 
 .timeline_item_dot_decoration_left {
@@ -215,21 +235,16 @@
     right: -7px;
 }
 
+/* The card surface (border/tint/radius/glow/hover) comes from <Surface
+   variant="glow">; here we keep its placement against the timeline line plus a
+   roomy, evenly-spaced inner layout. */
 .timeline_item_data_container {
     margin-top: -8px;
-    padding-left: 10px;
-    border: 1px solid transparent;
-    background-color: transparent;
-    border-radius: 5px;
-    padding: 5px 8px;
-    transition: border-color 0.2s, background-color 0.2s;
-    /* cursor: pointer; */
+    padding: var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
 }
-
-/* .timeline_item_data_container:hover {
-    background-color: var(--color-orange-opacity-05);
-    border-color: var(--color-orange);
-} */
 
 .timeline_item_data_container_right {
     text-align: right;
@@ -245,8 +260,7 @@
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
-    column-gap: 15px;
-    margin-top: 5px;
+    column-gap: var(--space-sm);
 }
 
 .timeline_item_title_container_right {
@@ -261,63 +275,56 @@
 }
 
 .timeline_item_entity {
-    font-size: var(--text-20);
-    font-weight: 700;
+    font-size: var(--text-16);
+    font-weight: 600;
+    color: var(--color-text-secondary);
     margin: 0;
 }
 
+/* Location line: pin + mono place, under the title. */
 .timeline_item_location {
-    margin-top: 5px;
-    font-size: var(--text-14);
-    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: var(--space-2xs);
 }
 
 .timeline_item_description {
     font-size: var(--text-16);
 }
 
+/* Tech stack: a single wrapping monospace line — categories separated by a
+   middle dot, technologies within a category by commas. */
 .timeline_item_tech_stack {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin: 2px 0px;
-}
-
-.timeline_item_tech_stack_item_container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin: 2px 0px;
-}
-
-.timeline_item_tech_stack_item {
+    font-family: var(--font-mono), monospace;
     font-size: var(--text-14);
+    line-height: 1.6;
+    color: var(--color-text-muted);
+}
+
+/* Category separator — orange & bold so it clearly marks category boundaries. */
+.timeline_item_tech_sep {
+    color: var(--color-orange);
     font-weight: 700;
-    background-color: var(--color-orange-opacity-1);
-    border: 1px solid var(--color-orange-dark-opacity-8);
-    color: var(--color-orange-dark);
-    padding: 2px 8px;
-    border-radius: 5px;
+    padding: 0 var(--space-3xs);
 }
 
 .hobbies_container {
     display: flex;
     flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
 }
 
+/* The panel surface (base/tint/border/glow/hover + corner ticks) comes from
+   <Surface variant="glow" corners>; here we only own the inner padding. */
 .hobby_container {
-    position: relative;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: var(--color-orange-opacity-1);
+    padding: var(--space-md);
 }
 
 .hobby_title_container {
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: var(--space-xs);
 }
 
 .hobby_logo_container {
@@ -325,7 +332,7 @@
     justify-content: center;
     align-items: center;
     width: 40px;
-    margin: 5px;
+    margin: var(--space-2xs);
 }
 
 .hobby_title {
@@ -339,7 +346,7 @@
 
 .hobby_description {
     font-size: var(--text-16);
-    margin-inline: 5px;
+    margin-inline: var(--space-2xs);
 }
 
 .hobby_description h4 {
@@ -349,7 +356,7 @@
 .hobby_description li h4 {
     display: inline;
     color: var(--color-orange-dark);
-    margin-right: 5px;
+    margin-right: var(--space-2xs);
 }
 
 .hobby_description li {
@@ -358,112 +365,16 @@
 
 .hobby_description_95 {
     font-size: var(--text-16);
-    padding: 5px 0px;
+    padding: var(--space-2xs) 0px;
 }
 
-.hobby_decoration_top_right {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    width: 12px;
-    height: 12px;
-    border-top: 2px solid var(--color-text);
-    border-right: 2px solid var(--color-text);
-    border-radius: 0px 2px 0px 0px;
+.hobby_divider {
+    margin: var(--space-xs) 0;
 }
 
-.hobby_decoration_top_right_1 {
-    position: absolute;
-    top: 5px;
-    right: 22px;
-    width: 3px;
-    height: 0px;
-    border-bottom: 2px solid var(--color-text);
-}
-
-.hobby_decoration_top_right_2 {
-    position: absolute;
-    top: 22px;
-    right: 5px;
-    width: 0px;
-    height: 3px;
-    border-left: 2px solid var(--color-text);
-}
-
-.hobby_decoration_bottom_left {
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-    width: 12px;
-    height: 12px;
-    border-bottom: 2px solid var(--color-text);
-    border-left: 2px solid var(--color-text);
-    border-radius: 0px 0px 0px 2px;
-}
-
-.hobby_decoration_bottom_left_1 {
-    position: absolute;
-    bottom: 5px;
-    left: 22px;
-    width: 3px;
-    height: 0px;
-    border-bottom: 2px solid var(--color-text);
-}
-
-.hobby_decoration_bottom_left_2 {
-    position: absolute;
-    bottom: 22px;
-    left: 5px;
-    width: 0px;
-    height: 3px;
-    border-left: 2px solid var(--color-text);
-}
-
-.hobby_title_separator_container {
-    display: flex;
-}
-
-.hobby_title_separator {
-    width: 66%;
-    min-width: 200px;
-    height: 2px;
-    background: linear-gradient(90deg, var(--color-orange), rgba(255, 255, 255, 0));
-    margin: 5px;
-}
-
+/* Wrapper only owns spacing; the pill itself is now a <Button variant="solid">. */
 .strava_profile_container {
-    display: "flex";
-    align-items: "center";
-    text-align: "center";
-    gap: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
-}
-
-.strava_profile_link {
     display: flex;
-    text-align: center;
     align-items: center;
-    text-decoration: none;
-    border: 1px solid var(--color-orange);
-    background-color: var(--color-orange-opacity-9);
-    width: fit-content;
-    padding: 1px;
-    padding-inline: 3px;
-    border-radius: 5px;
-
-    transition: background-color 0.15s;
-}
-
-.strava_profile_link:hover {
-    background-color: var(--color-orange);
-}
-
-.strava_profile_text {
-    font-size: var(--text-16);
-    font-weight: 500;
-    color: var(--color-white);
-    margin-right: 5px;
-    user-select: none;
-    padding-left: 7px;
+    margin: var(--space-xs) 0;
 }

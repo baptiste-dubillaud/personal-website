@@ -33,7 +33,8 @@
             "subtitle": "I'm available for freelance projects and collaborations. Don't hesitate to reach out!",
             "email_label": "Email",
             "linkedin_label": "LinkedIn",
-            "github_label": "GitHub"
+            "github_label": "GitHub",
+            "copied": "Copied!"
         },
         "resume": {
             "menu": {
@@ -55,7 +56,7 @@
             ],
             "experiences": [
                 {
-                    "start_date": "JUL. 2026",
+                    "start_date": "APR. 2026",
                     "end_date": "PRESENT",
                     "title": "Freelance Tech-Lead & AI Software Engineer",
                     "company": "Self-employed",

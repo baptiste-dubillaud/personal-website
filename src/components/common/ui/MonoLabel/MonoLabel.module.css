@@ -1,0 +1,15 @@
+.mono_label {
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-12);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+}
+
+/* Accent colour is overridable via --mono-slash-color (defaults to orange), so a
+   consumer can dim/recolour the "/ num" without touching the component. */
+.slash {
+    color: var(--mono-slash-color, var(--color-orange));
+}

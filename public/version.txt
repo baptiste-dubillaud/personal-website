@@ -5,3 +5,4 @@
 1.4 - Improved animations and navigation: 09/06/2025
 1.5 - Adds Contact Page: 12/06/2025
 1.6 - Adds iOS/Android support: 17/06/2025
+2.0 - New Design: 05/07/2026

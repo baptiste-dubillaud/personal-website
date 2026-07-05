@@ -1,0 +1,58 @@
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2xs);
+
+    font-size: var(--text-12);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    border: var(--border-thin) solid transparent;
+    border-radius: var(--radius-pill);
+    padding: var(--space-2xs) var(--space-sm);
+}
+
+/* ── Tones ────────────────────────────────────────────────────── */
+
+.tone_orange {
+    color: var(--color-orange);
+    background: var(--color-orange-opacity-1);
+    border-color: var(--color-orange-opacity-4);
+}
+
+.tone_muted {
+    color: var(--color-text-muted);
+    background: var(--color-orange-opacity-05);
+    border-color: var(--color-orange-opacity-2);
+}
+
+/* ── Status dot ───────────────────────────────────────────────── */
+
+/* Ring colours are CSS vars so one keyframe animates any dot tone. */
+.dot {
+    --ring: var(--color-orange-opacity-2);
+    --ring-fade: var(--color-orange-opacity-01);
+
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: var(--radius-full);
+    background: var(--color-orange);
+    box-shadow: 0 0 0 2px var(--ring);
+}
+
+.dot_success {
+    background: var(--color-success);
+    --ring: var(--color-success-opacity-3);
+    --ring-fade: var(--color-success-opacity-0);
+}
+
+.dot_pulse {
+    animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+    0%, 100% { box-shadow: 0 0 0 2px var(--ring); }
+    50% { box-shadow: 0 0 0 5px var(--ring-fade); }
+}

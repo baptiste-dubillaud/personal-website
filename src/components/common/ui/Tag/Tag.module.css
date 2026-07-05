@@ -1,0 +1,13 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-3xs) var(--space-xs);
+    border-radius: var(--radius-sm);
+
+    font-size: var(--text-14);
+    font-weight: 700;
+
+    background-color: var(--color-orange-opacity-1);
+    border: var(--border-thin) solid var(--color-orange-dark-opacity-8);
+    color: var(--color-orange-dark);
+}

@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
-import LanguageSwitcher from "@/components/common/LanguageSwitcher/LanguageSwitcher";
+import LanguageSwitcher from "@/components/common/ui/LanguageSwitcher/LanguageSwitcher";
+import Prompt from "@/components/common/ui/Prompt/Prompt";
 
 import { motion } from "framer-motion";
 
@@ -18,8 +19,6 @@ const links = [
     { nameKey: "home", path: "/", icon: HomeIcon },
     { nameKey: "resume", path: "/resume", icon: ResumeIcon },
     { nameKey: "contact", path: "/contact", icon: EmailIcon },
-    // { nameKey: "portfolio", path: "/portfolio" },
-    // { nameKey: "blog", path: "/blog" },
 ];
 
 function isActive(pathname, path) {
@@ -66,22 +65,10 @@ export default function NavigationBarComponent({}) {
         <>
             <div className={styles.nav_bar_container}>
                 <div className={styles.nav_var_content_container}>
-                    <div key={name} className={styles.typewriter} onClick={() => router.push("/")}>
-                        {name.split("").map((char, index) => (
-                            <motion.span
-                                key={`${name}-${index}`}
-                                animate={{ opacity: 1 }}
-                                initial={{ opacity: 0 }}
-                                transition={{ delay: index * 0.1, duration: 0 }}
-                            >
-                                {char}
-                            </motion.span>
-                        ))}
-                        <motion.div
-                            animate={{ opacity: [0, 1, 0] }}
-                            transition={{ repeat: Infinity, duration: 2, delay: name.length * 0.1 }}
-                            className={styles.typewriter_cursor}
-                        ></motion.div>
+                    <div className={styles.brand} onClick={() => router.push("/")}>
+                        <Prompt sign=">" size="lg">
+                            {name}
+                        </Prompt>
                     </div>
                     <div className={styles.actions_container}>
                         <motion.div

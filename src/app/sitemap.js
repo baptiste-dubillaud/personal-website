@@ -2,7 +2,7 @@ export default async function sitemap() {
     const baseUrl = "https://www.dubillaudb.fr";
 
     // Static pages
-    const routes = ["/", "/blog", "/portfolio", "/resume"].map((route) => ({
+    const routes = ["/", "/blog", "/resume"].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date().toISOString().split("T")[0],
         changeFrequency: "weekly",

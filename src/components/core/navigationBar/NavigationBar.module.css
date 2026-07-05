@@ -1,12 +1,12 @@
 .nav_bar_container {
     background-color: var(--color-dark);
     color: var(--color-white);
-    padding: 15px;
+    padding: var(--space-sm);
     position: sticky;
     top: -70px;
     height: 100px;
     z-index: 100;
-    border-bottom: 2px solid var(--color-orange);
+    border-bottom: var(--border-thick) solid var(--color-orange);
     display: flex;
     justify-content: center;
 }
@@ -18,7 +18,7 @@
 
     max-width: 1500px;
     width: 100%;
-    margin-inline: 30px;
+    margin-inline: var(--space-xl);
 }
 
 @media (max-width: 600px) {
@@ -38,7 +38,7 @@
     display: flex;
     width: 100%;
     justify-content: flex-end;
-    gap: 20px;
+    gap: var(--space-md);
 }
 
 .nav_link_text {
@@ -72,20 +72,11 @@
     background-size: 100% 2px;
 }
 
-.typewriter {
-    font-size: 2.8em;
-    padding-bottom: 15px;
+.brand {
     cursor: pointer;
     display: inline-flex;
+    align-items: center;
     white-space: nowrap;
-}
-
-.typewriter_cursor {
-    border-left: 3px solid var(--color-orange);
-    border-radius: 3px;
-    margin-left: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
 }
 
 /* ----------------------------------------------------------------------------
@@ -124,16 +115,6 @@
         display: none;
     }
 
-    .typewriter {
-        font-size: 2em;
-        padding-bottom: 0;
-    }
-
-    .typewriter_cursor {
-        margin-top: 2px;
-        margin-bottom: 2px;
-    }
-
     /* Floating pill: detached from the edges, centered, width-capped, rounded. */
     .tab_bar_container {
         display: flex;
@@ -149,22 +130,23 @@
         border-radius: 26px;
     }
 
-    /* iOS / default — "liquid glass": translucent, blurred & saturated surface. */
+    /* iOS / default — "liquid glass": translucent, blurred & saturated surface.
+       The dark tint (48,44,40) is bespoke to this glass and kept inline. */
     .tab_bar_ios {
         background-color: rgba(48, 44, 40, 0.547);
         -webkit-backdrop-filter: blur(22px) saturate(180%);
         backdrop-filter: blur(11px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        border: var(--border-thin) solid var(--color-white-glass-20);
         box-shadow:
-            0 10px 34px rgba(0, 0, 0, 0.28),
-            inset 0 1px 0 rgba(255, 255, 255, 0.25);
+            0 10px 34px var(--color-black-glass-28),
+            inset 0 1px 0 var(--color-white-glass-25);
     }
 
     /* Android — solid Material surface with elevation. */
     .tab_bar_android {
         background-color: var(--color-dark);
-        border: 1px solid rgba(255, 255, 255, 0.06);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+        border: var(--border-thin) solid var(--color-white-glass-06);
+        box-shadow: 0 6px 18px var(--color-black-glass-35);
     }
 
     .tab_item {
@@ -206,7 +188,7 @@
     .tab_bar_ios .tab_item_selected {
         background: radial-gradient(
             circle at 50% 45%,
-            rgba(0, 0, 0, 0.4) 0%,
+            var(--color-black-glass-40) 0%,
             transparent 78%
         );
         /* Draw the halo only inside the padding, leaving a transparent margin at
@@ -230,7 +212,7 @@
         width: 26px;
         height: 3px;
         margin: 0 auto;
-        border-radius: 999px;
+        border-radius: var(--radius-pill);
         background-color: var(--color-orange);
     }
 

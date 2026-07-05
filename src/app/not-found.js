@@ -2,6 +2,7 @@
 
 import styles from "@/app/not-found.module.css";
 import { useRouter } from "next/navigation";
+import Button from "@/components/common/ui/Button/Button";
 
 export default function NotFound() {
     const router = useRouter();
@@ -42,18 +43,12 @@ export default function NotFound() {
                 
                 {/* Action buttons */}
                 <div className={styles.error_buttons_container}>
-                    <button 
-                        className={styles.error_button}
-                        onClick={handleGoBack}
-                    >
+                    <Button variant="outline" onClick={handleGoBack}>
                         Go Back
-                    </button>
-                    <button 
-                        className={`${styles.error_button} ${styles.error_button_primary}`}
-                        onClick={handleGoHome}
-                    >
+                    </Button>
+                    <Button variant="solid" onClick={handleGoHome}>
                         Go Home
-                    </button>
+                    </Button>
                 </div>
             </div>
         </main>

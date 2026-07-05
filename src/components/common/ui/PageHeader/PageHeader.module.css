@@ -1,0 +1,14 @@
+.header {
+    text-align: center;
+}
+
+.title {
+    font-size: var(--text-44);
+    font-weight: 700;
+    margin: var(--space-2xl) 0 var(--space-xl) 0;
+}
+
+.subtitle {
+    margin: 0 var(--space-3xl) var(--space-xl) var(--space-3xl);
+    color: var(--color-text);
+}

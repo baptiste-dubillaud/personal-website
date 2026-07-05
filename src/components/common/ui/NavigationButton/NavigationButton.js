@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "@/components/common/buttons/navigation/NavigationButton.module.css";
+import styles from "@/components/common/ui/NavigationButton/NavigationButton.module.css";
 
 export default function NavigationButton({ children, link, alt }) {
     return (
@@ -9,7 +9,7 @@ export default function NavigationButton({ children, link, alt }) {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={alt}
-            className={styles.tab_link_container}
+            className={styles.icon_button}
         >
             {children}
         </a>

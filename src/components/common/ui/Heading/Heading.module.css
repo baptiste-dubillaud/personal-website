@@ -1,0 +1,12 @@
+.heading {
+    margin: 0;
+    color: var(--color-text);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+/* Orange accent with a soft glow — the "highlight" part of a two-tone title. */
+.accent {
+    color: var(--color-orange);
+    text-shadow: 0 0 22px var(--color-orange-opacity-4);
+}

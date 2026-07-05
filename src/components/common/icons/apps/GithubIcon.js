@@ -1,6 +1,6 @@
 export default function GithubIcon({ size, color }) {
     const sz = size || 25
-    const cl = color || "black"
+    const cl = color || "currentColor"
 
     return (
         <svg fill={cl} width={sz} height={sz} viewBox="0 0 24 24">

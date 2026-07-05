@@ -1,6 +1,7 @@
 :root {
-    /* font */
-    --font-mono: "Roboto Mono";
+    /* font — overridden on <body> by the loaded IBM Plex Mono (next/font);
+       this is just the ultimate fallback. */
+    --font-mono: "Roboto Mono", monospace;
 
     /* Type scale — a small set of named sizes shared across every page (the way
        colors are centralized). Named by the px size at the desktop root of 16px;
@@ -38,6 +39,20 @@
     --color-white: #ffffff;
     --color-white-dim: rgba(255, 255, 255, 0.45);
 
+    /* Translucent whites & blacks — used by the nav "liquid glass" chrome and
+       overlays. Centralized so glass surfaces stay consistent. */
+    --color-white-glass-25: rgba(255, 255, 255, 0.25);
+    --color-white-glass-20: rgba(255, 255, 255, 0.2);
+    --color-white-glass-06: rgba(255, 255, 255, 0.06);
+    --color-black-glass-40: rgba(0, 0, 0, 0.4);
+    --color-black-glass-35: rgba(0, 0, 0, 0.35);
+    --color-black-glass-28: rgba(0, 0, 0, 0.28);
+
+    /* feedback colors */
+    --color-success: rgb(34, 197, 94);
+    --color-success-opacity-3: rgba(34, 197, 94, 0.3);
+    --color-success-opacity-0: rgba(34, 197, 94, 0);
+
     /* text colors */
     --color-text: rgb(30, 30, 30);
     --color-text-secondary: rgb(50, 50, 50);
@@ -45,6 +60,75 @@
     --color-text-light: rgb(150, 150, 150);
     --color-text-warm: rgb(80, 70, 60);
     --color-text-warm-muted: rgb(150, 130, 110);
+
+    /* ---------------------------------------------------------------------
+       Spacing scale — a single named rhythm shared across every page, the way
+       colors and type are centralized. Built on the 5px rhythm the site already
+       uses (5 / 10 / 15 / 20 / 25 / 30 / 40 / 50). Use these instead of raw px.
+       --------------------------------------------------------------------- */
+    --space-3xs: 2px;
+    --space-2xs: 5px;
+    --space-xs: 10px;
+    --space-sm: 15px;
+    --space-md: 20px;
+    --space-lg: 25px;
+    --space-xl: 30px;
+    --space-2xl: 40px;
+    --space-3xl: 50px;
+
+    /* Radius scale — buttons/tags land on sm, content cards on md, hero
+       containers on lg, chips/badges on pill, avatars/dots on full. */
+    --radius-xs: 2px;
+    --radius-sm: 4px;
+    --radius-md: 10px;
+    --radius-lg: 20px;
+    --radius-pill: 999px;
+    --radius-full: 50%;
+
+    /* Border widths */
+    --border-thin: 1px;
+    --border-thick: 2px;
+
+    /* Shadows — the orange "glow" is the site's signature; neutral shadows are
+       for lift/hover. Nav glass shadows stay bespoke (platform-specific). */
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.08);
+    --shadow-sm: 0 4px 8px var(--color-orange-opacity-2);
+    --shadow-md: 0 4px 8px var(--color-orange-opacity-4);
+    --shadow-glow: 0px 0px 10px var(--color-orange-opacity-9);
+    --shadow-glow-sm: 0px 0px 5px var(--color-orange-opacity-9);
+
+    /* Transitions — one set of speeds/easing for all hover & motion feedback.
+       fast = micro-interactions, base = standard hovers, slow = deliberate. */
+    --transition-fast: 0.15s ease;
+    --transition-base: 0.25s ease;
+    --transition-slow: 0.4s ease;
+
+    /* ---------------------------------------------------------------------
+       "Glow + blueprint" enhancement layer (design-lab). Strict orange/beige,
+       just enriched: an engineering-paper grid, a deeper orange ramp, signature
+       gradients and orange-tinted glow/elevation shadows. Additive & inert
+       until referenced — prototyped on /design-lab before rolling out.
+       --------------------------------------------------------------------- */
+
+    /* Blueprint grid — warm orange ink (dots/lines), barely-there over the beige
+       canvas. `--blueprint-line` for lines, `--blueprint-line-strong` for the
+       lower-coverage dot grid; `--blueprint-size` is the cell pitch. */
+    --blueprint-line: rgba(177, 48, 1, 0.05);
+    --blueprint-line-strong: rgba(177, 48, 1, 0.09);
+    --blueprint-size: 28px;
+
+    /* Enriched orange ramp (more depth, no new hue) */
+    --color-orange-bright: rgb(255, 106, 0);
+    --color-orange-deep: rgb(140, 38, 0);
+
+    /* Signature gradients for CTAs / accents */
+    --gradient-orange: linear-gradient(135deg, var(--color-orange-bright), var(--color-orange));
+    --gradient-orange-deep: linear-gradient(135deg, var(--color-orange), var(--color-orange-deep));
+
+    /* Orange-tinted glow & warm elevation shadows */
+    --shadow-glow-orange: 0 4px 20px rgba(255, 68, 0, 0.14), 0 0 40px rgba(255, 68, 0, 0.06);
+    --shadow-glow-orange-lg: 0 8px 34px rgba(255, 68, 0, 0.22), 0 0 60px rgba(255, 68, 0, 0.1);
+    --shadow-elevation: 0 6px 22px rgba(80, 40, 10, 0.1);
 
     --base-container-height: calc(100vh - 188px);
     --base-container-height: calc(100dvh - 188px);

@@ -1,0 +1,150 @@
+/* Blueprint canvas: an engineering-paper line grid that doesn't sit flat — a
+   centred radial mask keeps it dense in the middle and fades it evenly into the
+   bare beige toward every edge (spotlight). Fixed to the viewport so the
+   spotlight stays put while long pages scroll; on a ::before so the mask never
+   touches the content; direct children are lifted above it. */
+.page_bg {
+    position: relative;
+    isolation: isolate;
+}
+
+.page_bg::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(var(--blueprint-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--blueprint-line) 1px, transparent 1px);
+    background-size: var(--blueprint-size) var(--blueprint-size);
+    -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 50%, #000 0%, #000 28%, transparent 80%);
+    mask-image: radial-gradient(ellipse 90% 75% at 50% 50%, #000 0%, #000 28%, transparent 80%);
+}
+
+.page_bg > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* ── Blueprint drafting marks ──────────────────────────────────────
+   A fixed, viewport-sized layer sitting with the grid (z-0), under the
+   content. overflow:hidden clips the off-screen shapes so they never add
+   scrollbars; children are absolute within this viewport-sized layer. */
+.page_bg > .page_deco {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.deco_circle,
+.deco_ring,
+.deco_axis,
+.deco_crosshair,
+.deco_node {
+    position: absolute;
+}
+
+/* Arc: circle centred just off the bottom-left corner. */
+.deco_circle {
+    width: 50vmax;
+    height: 50vmax;
+    left: -18vmax;
+    bottom: -22vmax;
+    border: 1px solid var(--blueprint-line-strong);
+    border-radius: 50%;
+}
+
+/* Concentric ring (same centre, smaller) — the "compass" detail. */
+.deco_ring {
+    width: 30vmax;
+    height: 30vmax;
+    left: -8vmax;
+    bottom: -12vmax;
+    border: 1px solid var(--blueprint-line-strong);
+    border-radius: 50%;
+}
+
+/* Diagonal axis crossing the bottom-left arc: a zero-height rotated frame so its
+   line and mono labels share the same tilt (labels read along the line). */
+.deco_axis {
+    width: 54vmax;
+    height: 0;
+    left: -6vmax;
+    bottom: 4vmax;
+    transform: rotate(-50deg);
+    transform-origin: left center;
+}
+
+.deco_axis_line {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--blueprint-line-strong) 20%,
+        var(--blueprint-line-strong) 50%,
+        transparent
+    );
+}
+
+/* Faint mono annotation along the axis. `left` (position on the line) is set
+   inline; the +42deg counter-rotation cancels the axis tilt so text stays
+   upright, pivoting at its anchor point on the line. */
+.deco_axis_label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: 10px;
+    transform: rotate(50deg);
+    transform-origin: 0 0;
+    font-family: var(--font-mono), monospace;
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: rgba(255, 68, 0, 0.25);
+}
+
+/* Target crosshair (top-right): a "+" mark (no ring). */
+.deco_crosshair {
+    top: 15vh;
+    right: 10vw;
+    width: 66px;
+    height: 66px;
+}
+
+.deco_crosshair::before,
+.deco_crosshair::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: var(--blueprint-line-strong);
+    transform: translate(-50%, -50%);
+}
+
+.deco_crosshair::before {
+    width: 50px;
+    height: 1px;
+}
+
+.deco_crosshair::after {
+    width: 1px;
+    height: 50px;
+}
+
+/* Small node ring (mid-right). */
+.deco_node {
+    top: 46vh;
+    right: 22vw;
+    width: 9vmax;
+    height: 9vmax;
+    border: 1px solid var(--blueprint-line-strong);
+    border-radius: 50%;
+}

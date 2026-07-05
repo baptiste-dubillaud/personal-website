@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--color-background);
-    padding: 30px 20px;
+    padding: var(--space-xl) var(--space-md);
 }
 
 .contact_content {
@@ -13,7 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: var(--space-3xl);
     width: 100%;
 }
 
@@ -23,38 +23,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: var(--space-md);
     text-align: center;
 }
 
-.availability_badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: var(--text-14);
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-orange);
-    background-color: var(--color-orange-opacity-1);
-    border: 1px solid var(--color-orange-opacity-4);
-    border-radius: 999px;
-    padding: 5px 14px;
-}
-
-.availability_dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background-color: #22c55e;
-    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3);
-    animation: pulse 2s ease-in-out infinite;
-    flex-shrink: 0;
-}
-
-@keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3); }
-    50%       { box-shadow: 0 0 0 5px rgba(34, 197, 94, 0); }
+/* Terminal kicker above the title — pulled a touch closer than the header gap. */
+.contact_kicker {
+    margin-bottom: calc(-1 * var(--space-2xs));
 }
 
 .contact_title {
@@ -76,32 +51,56 @@
     margin: 0;
 }
 
+.contact_divider {
+    width: 100%;
+    max-width: 600px;
+}
+
 /* ── Contact rows ────────────────────────────────────────────── */
 
 .contact_links {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: var(--space-xs);
     width: 100%;
     max-width: 600px;
 }
 
 .contact_row {
+    /* Reset: a row is an <a> for links but a <button> for the copyable email.
+       border-box so <a> and <button> resolve width: 100% identically. */
+    width: 100%;
+    box-sizing: border-box;
+    font: inherit;
+    text-align: left;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    border-radius: 14px;
-    border: 1px solid var(--color-orange-opacity-2);
-    background-color: var(--color-orange-opacity-05);
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    border: var(--border-thin) solid var(--color-orange-opacity-2);
+    /* Opaque base + orange tint so the blueprint grid never bleeds through. */
+    background-color: var(--color-background);
+    background-image: linear-gradient(
+        var(--color-orange-opacity-05),
+        var(--color-orange-opacity-05)
+    );
     text-decoration: none;
     color: inherit;
-    transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+    transition: background-image var(--transition-base),
+        border-color var(--transition-base), transform var(--transition-base);
 }
 
 .contact_row:hover {
-    background-color: var(--color-orange-opacity-1);
+    background-image: linear-gradient(
+        var(--color-orange-opacity-1),
+        var(--color-orange-opacity-1)
+    );
     border-color: var(--color-orange-opacity-6);
     transform: translateX(5px);
 }
@@ -109,13 +108,13 @@
 .contact_row_icon {
     width: 48px;
     height: 48px;
-    border-radius: 10px;
+    border-radius: var(--radius-md);
     background-color: var(--color-orange);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-base);
 }
 
 .contact_row:hover .contact_row_icon {
@@ -125,12 +124,15 @@
 .contact_row_text {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: var(--space-3xs);
     flex: 1;
     min-width: 0;
 }
 
 .contact_row_label {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-3xs);
     font-size: var(--text-12);
     font-weight: 700;
     text-transform: uppercase;
@@ -138,25 +140,47 @@
     color: var(--color-orange);
 }
 
+/* Mono numeric index on each row — echoes the CV's "0N /" language. */
+.contact_row_num {
+    font-family: var(--font-mono), monospace;
+    color: var(--color-text-muted);
+}
+
+.contact_row_sep {
+    font-family: var(--font-mono), monospace;
+    color: var(--color-orange);
+}
+
+/* Content: the actual address / handle — mono (technical strings) and in the
+   primary text colour so it reads as the row's anchor, under the orange kicker. */
 .contact_row_value {
-    font-size: var(--text-16);
-    font-weight: 500;
-    color: var(--color-text-secondary);
+    font-family: var(--font-mono), monospace;
+    font-size: var(--text-14);
+    color: var(--color-text);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .contact_row_arrow {
+    display: inline-flex;
+    align-items: center;
     font-size: var(--text-20);
     color: var(--color-orange-opacity-6);
-    transition: transform 0.2s, color 0.2s;
+    transition: transform var(--transition-base), color var(--transition-base);
     flex-shrink: 0;
 }
 
 .contact_row:hover .contact_row_arrow {
     transform: translateX(4px);
     color: var(--color-orange);
+}
+
+/* Copied state — green check, kept green even while the row is hovered. */
+.contact_row_arrow_done,
+.contact_row:hover .contact_row_arrow_done {
+    color: var(--color-success);
+    transform: none;
 }
 
 @media (max-width: 480px) {

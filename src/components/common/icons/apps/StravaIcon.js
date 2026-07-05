@@ -2,7 +2,7 @@ export default function StravaIcon({ size, fillColor, strokeColorTop, strokeColo
     const sz = size || 25;
     const fill = fillColor || "none";
     const strokeTop = strokeColorTop || "#fff";
-    const strokeBottom = strokeColorBottom || "#fda580";
+    const strokeBottom = strokeColorBottom || "#e95d21";
 
     return (
         <svg aria-label="Strava" width={sz} height={sz} viewBox="0 0 512 512">

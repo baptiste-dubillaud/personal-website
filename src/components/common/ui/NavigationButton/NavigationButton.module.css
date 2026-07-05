@@ -1,0 +1,25 @@
+/* Icon link button — no frame: a bare icon (orange-dark) that, on hover, brightens
+   to orange, scales up a touch and gains a soft orange glow. The glow uses
+   drop-shadow so it hugs the icon's silhouette instead of a box. */
+.icon_button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+
+    padding: var(--space-2xs);
+    color: var(--color-orange-dark); /* drives the icon fill (currentColor) */
+
+    transition: color var(--transition-base), transform var(--transition-base),
+        filter var(--transition-base);
+}
+
+.icon_button:hover {
+    color: var(--color-orange);
+    transform: scale(1.07);
+    filter: drop-shadow(0 0 5px var(--color-orange-opacity-4));
+}
+
+.icon_button:active {
+    transform: scale(1.02);
+}

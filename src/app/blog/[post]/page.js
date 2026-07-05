@@ -3,7 +3,6 @@
 import styles from "@/app/blog/[post]/page.module.css";
 
 import Image from "next/image";
-import Link from "next/link";
 
 import fs from "fs";
 
@@ -11,6 +10,7 @@ import matter from "gray-matter";
 import md from "markdown-it";
 
 import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
+import Button from "@/components/common/ui/Button/Button";
 
 export default async function Page({ params }) {
     const readFile = fs.readFileSync(BLOG_FOLDER_PATH + params.post + ".md", "utf-8");
@@ -19,9 +19,9 @@ export default async function Page({ params }) {
     return (
         <div className={styles.container}>
             <div className={styles.post_container}>
-                <Link className={styles.back_to_blog_button} href="/blog">
+                <Button internal href="/blog" variant="ghost">
                     {"< Back to Blog"}
-                </Link>
+                </Button>
                 <div className={styles.title}>{data.title}</div>
                 <div className={styles.writing_data}>
                     <div className={styles.author_container}>
