@@ -8,6 +8,8 @@
     white-space: nowrap;
 }
 
+/* Accent colour is overridable via --mono-slash-color (defaults to orange), so a
+   consumer can dim/recolour the "/ num" without touching the component. */
 .slash {
-    color: var(--color-orange);
+    color: var(--mono-slash-color, var(--color-orange));
 }

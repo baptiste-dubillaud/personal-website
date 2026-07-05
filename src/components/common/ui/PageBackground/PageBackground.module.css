@@ -1,6 +1,7 @@
 /* Blueprint canvas: an engineering-paper line grid that doesn't sit flat — a
    centred radial mask keeps it dense in the middle and fades it evenly into the
-   bare beige toward every edge (spotlight). On a ::before so the mask never
+   bare beige toward every edge (spotlight). Fixed to the viewport so the
+   spotlight stays put while long pages scroll; on a ::before so the mask never
    touches the content; direct children are lifted above it. */
 .page_bg {
     position: relative;
@@ -9,7 +10,7 @@
 
 .page_bg::before {
     content: "";
-    position: absolute;
+    position: fixed;
     inset: 0;
     z-index: 0;
     pointer-events: none;

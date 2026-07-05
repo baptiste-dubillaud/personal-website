@@ -18,8 +18,14 @@ import { COLORS } from "@/utils/colorUtils";
 import { useTranslations } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
+import Locationicon from "@/components/common/icons/misc/LocationIcon";
 import RichText from "@/components/common/ui/RichText";
-import Tag from "@/components/common/ui/Tag/Tag";
+import PageBackground from "@/components/common/ui/PageBackground/PageBackground";
+import Heading from "@/components/common/ui/Heading/Heading";
+import MonoLabel from "@/components/common/ui/MonoLabel/MonoLabel";
+import Surface from "@/components/common/ui/Surface/Surface";
+import Divider from "@/components/common/ui/Divider/Divider";
+import Button from "@/components/common/ui/Button/Button";
 import {
     STAGGER_CHILDREN as SUB_PARTS_DELAY,
     staggerContainer as containerVariants,
@@ -65,7 +71,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.25 }}
             >
-                Baptiste Dubillaud
+                <Heading.Accent>Baptiste</Heading.Accent> Dubillaud
             </motion.h1>
             <motion.h2
                 className={styles.presentation_job}
@@ -109,25 +115,22 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                     {parts.map((part, index) => (
                         <motion.div
                             key={index}
-                            className={styles.presentation_menu_item}
-                            style={
-                                currentPart === part.name
-                                    ? {
-                                          color: "var(--color-orange)",
-                                          fontSize: "1.35em",
-                                          paddingTop: index === 0 ? 0 : 10,
-                                          paddingBottom: index === parts.length - 1 ? 0 : 10,
-                                      }
-                                    : {
-                                          paddingTop: index === 0 ? 0 : 10,
-                                          paddingBottom: index === parts.length - 1 ? 0 : 10,
-                                      }
-                            }
+                            className={`${styles.presentation_menu_item} ${
+                                currentPart === part.name ? styles.presentation_menu_item_active : ""
+                            }`}
+                            style={{
+                                paddingTop: index === 0 ? 0 : 10,
+                                paddingBottom: index === parts.length - 1 ? 0 : 10,
+                            }}
                             onClick={() => scrollToComponent(index, part.ref)}
                             initial={{ opacity: isInitialized ? 1 : 0, x: isInitialized ? 0 : -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5, delay: 0.5 + index * SUB_PARTS_DELAY, ease: "easeOut" }}
                         >
+                            <span className={styles.presentation_menu_num}>
+                                {String(index + 1).padStart(2, "0")}
+                            </span>
+                            <span className={styles.presentation_menu_sep}>/</span>
                             {part.display}
                         </motion.div>
                     ))}
@@ -160,7 +163,7 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
     );
 };
 
-const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent }) => {
+const PartComponent = ({ isTwoColumnSetup, title, num, reference, contentComponent }) => {
     return (
         <div ref={reference} className={styles.part_container}>
             {!isTwoColumnSetup && (
@@ -172,6 +175,7 @@ const PartComponent = ({ isTwoColumnSetup, title, reference, contentComponent })
                     viewport={{ once: true, margin: "-80px" }}
                 >
                     {title}
+                    {num && <MonoLabel num={num} className={styles.part_title_index} />}
                 </motion.h2>
             )}
             <div className={styles.part_content}>{contentComponent}</div>
@@ -187,6 +191,7 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, translation }) => {
         <PartComponent
             isTwoColumnSetup={isTwoColumnSetup}
             title={translation("menu.about")}
+            num="01"
             reference={aboutRef}
             contentComponent={
                 <motion.div
@@ -233,16 +238,17 @@ const TimeLineComponent = ({
                     onRight ? styles.timeline_item_dot_decoration_right : styles.timeline_item_dot_decoration_left
                 }`}
             />
-            <div
+            <Surface
+                variant="glow"
                 className={
                     onRight
                         ? `${styles.timeline_item_data_container} ${styles.timeline_item_data_container_right}`
                         : styles.timeline_item_data_container
                 }
             >
-                <div className={styles.timeline_item_dates_container}>
-                    {dateFrom} - {dateTo}
-                </div>
+                <MonoLabel>
+                    {dateFrom} — {dateTo}
+                </MonoLabel>
                 <div
                     className={
                         onRight
@@ -253,26 +259,31 @@ const TimeLineComponent = ({
                     <h3 className={styles.timeline_item_title}>{title}</h3>
                     <p className={styles.timeline_item_entity}>{entity}</p>
                 </div>
-                <div className={styles.timeline_item_location}>{location}</div>
-                <div className={styles.timeline_item_description}>{DescriptionComponent}</div>
-                {techStack.length > 0 && (
+                {location && (
                     <div
-                        className={styles.timeline_item_tech_stack}
+                        className={styles.timeline_item_location}
                         style={onRight ? { justifyContent: "flex-end" } : {}}
                     >
-                        {techStack.map((item, index) => (
-                            <div key={index} className={styles.timeline_item_tech_stack_item_container}>
-                                {item &&
-                                    item.length > 0 &&
-                                    item.map((tech, techIndex) => (
-                                        <Tag key={techIndex}>{tech}</Tag>
-                                    ))}
-                                {index < techStack.length - 1 && " // "}
-                            </div>
-                        ))}
+                        <Locationicon size={14} color="var(--color-text-muted)" />
+                        <MonoLabel>{location}</MonoLabel>
                     </div>
                 )}
-            </div>
+                <div className={styles.timeline_item_description}>{DescriptionComponent}</div>
+                {techStack.length > 0 && (
+                    <div className={styles.timeline_item_tech_stack}>
+                        {techStack
+                            .filter((item) => item && item.length > 0)
+                            .map((item, i, arr) => (
+                                <span key={i}>
+                                    {item.join(", ")}
+                                    {i < arr.length - 1 && (
+                                        <span className={styles.timeline_item_tech_sep}> · </span>
+                                    )}
+                                </span>
+                            ))}
+                    </div>
+                )}
+            </Surface>
         </motion.div>
     );
 };
@@ -283,6 +294,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) 
             isTwoColumnSetup={isTwoColumnSetup}
             reference={experienceRef}
             title={translation("menu.experience")}
+            num="02"
             contentComponent={
                 <motion.div
                     className={styles.timeline_items_container}
@@ -322,6 +334,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => 
             isTwoColumnSetup={isTwoColumnSetup}
             reference={educationRef}
             title={translation("menu.education")}
+            num="03"
             contentComponent={
                 <motion.div
                     className={styles.timeline_items_container}
@@ -358,30 +371,24 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => 
 
 const HobbyComponent = ({ logo, title, DescriptionComponent, onRight = false, ...props }) => {
     return (
-        <motion.div className={styles.hobby_container} {...props}>
-            {/* Decorations */}
-            <div className={styles.hobby_decoration_top_right} />
-            <div className={styles.hobby_decoration_top_right_1} />
-            <div className={styles.hobby_decoration_top_right_2} />
-            <div className={styles.hobby_decoration_bottom_left} />
-            <div className={styles.hobby_decoration_bottom_left_1} />
-            <div className={styles.hobby_decoration_bottom_left_2} />
-            {/* Title */}
-            <div className={styles.hobby_title_container}>
-                {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
-                <h3 className={styles.hobby_title} style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}>
-                    {title}
-                </h3>
-                {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
-            </div>
-            <div
-                className={styles.hobby_title_separator_container}
-                style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}
-            >
-                <div className={styles.hobby_title_separator} style={onRight ? { rotate: "180deg" } : {}} />
-            </div>
-            {/* Description */}
-            <div className={styles.hobby_description}>{DescriptionComponent}</div>
+        <motion.div {...props}>
+            <Surface variant="plain" className={styles.hobby_container}>
+                {/* Title */}
+                <div className={styles.hobby_title_container}>
+                    {!onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
+                    <Heading
+                        as="h3"
+                        className={styles.hobby_title}
+                        style={{ justifyContent: onRight ? "flex-end" : "flex-start" }}
+                    >
+                        <Heading.Accent>{title}</Heading.Accent>
+                    </Heading>
+                    {onRight && <div className={styles.hobby_logo_container}>{logo}</div>}
+                </div>
+                <Divider className={styles.hobby_divider} />
+                {/* Description */}
+                <div className={styles.hobby_description}>{DescriptionComponent}</div>
+            </Surface>
         </motion.div>
     );
 };
@@ -402,6 +409,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
             isTwoColumnSetup={isTwoColumnSetup}
             reference={hobbiesRef}
             title={translation("menu.hobbies")}
+            num="04"
             contentComponent={
                 <motion.div
                     className={styles.hobbies_container}
@@ -423,26 +431,20 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
                                         <React.Fragment key={`${hobbyIndex}-hob-${descIndex}`}>
                                             {renderDescriptionBlock(desc, `${hobbyIndex}-hob-${descIndex}`)}
                                             {hobbyIndex === 0 && descIndex === 0 && (
-                                                <div
-                                                    style={{
-                                                        display: "flex",
-                                                        alignItems: "center",
-                                                        textAlign: "center",
-                                                        gap: 10,
-                                                        marginBottom: 10,
-                                                        marginTop: 10,
-                                                    }}
-                                                    className={styles.strava_profile_container}
-                                                >
-                                                    <a
-                                                        className={styles.strava_profile_link}
+                                                <div className={styles.strava_profile_container}>
+                                                    <Button
+                                                        variant="solid"
+                                                        size="sm"
                                                         href={STRAVA_PROFILE}
-                                                        target="_blank"
-                                                        rel="noopener noreferrer"
+                                                        external
                                                     >
-                                                        <div className={styles.strava_profile_text}>Strava</div>
-                                                        <StravaIcon size={27} />
-                                                    </a>
+                                                        Strava
+                                                        <StravaIcon
+                                                            size={20}
+                                                            strokeColorTop="currentColor"
+                                                            strokeColorBottom="currentColor"
+                                                        />
+                                                    </Button>
                                                 </div>
                                             )}
                                         </React.Fragment>
@@ -522,7 +524,7 @@ export default function Resume() {
     }, []);
 
     return (
-        <div className={styles.resume_container}>
+        <PageBackground className={styles.resume_container}>
             <div className={styles.content_container}>
                 <div style={{ width: isTwoColumnSetup ? TWO_COLUMNS_PRESENTATION_WIDTH : "100%" }}>
                     <PresentationComponent
@@ -563,6 +565,6 @@ export default function Resume() {
                     />
                 </div>
             </div>
-        </div>
+        </PageBackground>
     );
 }
