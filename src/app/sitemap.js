@@ -1,3 +1,5 @@
+import { getAllPosts } from "@/utils/blogUtils";
+
 export default async function sitemap() {
     const baseUrl = "https://www.dubillaudb.fr";
 
@@ -9,8 +11,14 @@ export default async function sitemap() {
         priority: route === "/" ? 1.0 : 0.8,
     }));
 
-    // If you later add dynamic params, push them here.
-    // Example: blog posts and portfolio projects from `public/`.
+    // Blog posts — dates are language-invariant (shared metadata), so the default
+    // locale is enough to enumerate URLs and their last-modified date.
+    const posts = getAllPosts().map((post) => ({
+        url: `${baseUrl}/blog/${post.slug}`,
+        lastModified: post.data.updated || post.data.created,
+        changeFrequency: "monthly",
+        priority: 0.6,
+    }));
 
-    return routes;
+    return [...routes, ...posts];
 }

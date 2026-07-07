@@ -13,11 +13,13 @@ import { motion } from "framer-motion";
 
 import HomeIcon from "@/components/common/icons/misc/HomeIcon";
 import ResumeIcon from "@/components/common/icons/misc/ResumeIcon";
+import BlogIcon from "@/components/common/icons/misc/BlogIcon";
 import EmailIcon from "@/components/common/icons/misc/EmailIcon";
 
 const links = [
     { nameKey: "home", path: "/", icon: HomeIcon },
     { nameKey: "resume", path: "/resume", icon: ResumeIcon },
+    { nameKey: "blog", path: "/blog", icon: BlogIcon },
     { nameKey: "contact", path: "/contact", icon: EmailIcon },
 ];
 

@@ -1,67 +1,103 @@
-'use server'
-
 import styles from "@/app/blog/page.module.css";
 
 import Image from "next/image";
 
-import fs from "fs";
+import { getLocale, getTranslations } from "next-intl/server";
 
-import matter from "gray-matter";
-
-import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
+import { getAllPosts, formatPostDate } from "@/utils/blogUtils";
+import PageBackground from "@/components/common/ui/PageBackground/PageBackground";
+import Heading from "@/components/common/ui/Heading/Heading";
+import Divider from "@/components/common/ui/Divider/Divider";
 import Surface from "@/components/common/ui/Surface/Surface";
-import PageHeader from "@/components/common/ui/PageHeader/PageHeader";
+import Tag from "@/components/common/ui/Tag/Tag";
 
-const BlogArticleContainer = ({ title, date, image, link }) => {
+export async function generateMetadata() {
+    const t = await getTranslations("pages.blog");
+    return {
+        title: t("title"),
+        description: t("subtitle"),
+        alternates: { canonical: "/blog" },
+        openGraph: {
+            title: t("title"),
+            description: t("subtitle"),
+            url: "/blog",
+            type: "website",
+        },
+    };
+}
+
+const ArticleCard = ({ index, title, date, image, link, tags = [] }) => {
     return (
-        <Surface internal href={link} interactive className={styles.article_container}>
+        <Surface
+            internal
+            href={link}
+            interactive
+            corners
+            className={styles.article_card}
+            style={{ animationDelay: `${index * 0.07}s` }}
+        >
             <div className={styles.article_image_container}>
-                <Image src={image} alt={"Main image of article " + title} fill={true} objectFit="cover" />
+                <Image
+                    src={image}
+                    alt={"Main image of article " + title}
+                    fill={true}
+                    style={{ objectFit: "cover" }}
+                />
             </div>
-            <div className={styles.article_text_container}>
-                <span className={styles.article_text_title}>{title}</span>
-                <span className={styles.article_text_date}>{date}</span>
+            <div className={styles.article_body}>
+                <span className={styles.article_title}>{title}</span>
+                <div className={styles.article_meta}>
+                    <span className={styles.article_date}>{date}</span>
+                    <span className={styles.article_arrow}>→</span>
+                </div>
+                {tags.length > 0 && (
+                    <div className={styles.article_tags}>
+                        {tags.map((tag) => (
+                            <Tag key={tag} className={styles.article_tag}>
+                                {tag}
+                            </Tag>
+                        ))}
+                    </div>
+                )}
             </div>
         </Surface>
     );
 };
 
 export default async function Blog({}) {
-    const files = fs.readdirSync(BLOG_FOLDER_PATH);
-
-    const posts = files
-        .filter((fileName) => fileName.endsWith('.md')) // Only process .md files
-        .map((fileName) => {
-            const post = fileName.replace(".md", "");
-            const readFile = fs.readFileSync(BLOG_FOLDER_PATH + fileName, "utf-8");
-
-            const { data } = matter(readFile);
-
-            return {
-                post,
-                data,
-            };
-        });
+    const locale = await getLocale();
+    const t = await getTranslations("pages.blog");
+    const posts = getAllPosts(locale);
 
     return (
-        <div className={styles.blog_container}>
-            <PageHeader
-                title="Welcome to my blog!"
-                subtitle="Sometimes I write about experiments or implementations of frameworks/libraries/langages I discovered on side projects."
-            />
+        <PageBackground as="main" className={styles.blog_container}>
+            <header className={styles.blog_header}>
+                <Heading as="h1" className={styles.blog_title}>
+                    <Heading.Accent>{t("title")}</Heading.Accent>
+                </Heading>
+                <p className={styles.blog_subtitle}>{t("subtitle")}</p>
+                <div className={styles.blog_divider}>
+                    <Divider />
+                </div>
+            </header>
+
             <div className={styles.articles_list}>
-                {posts.map((item, index) => {
-                    return (
-                        <BlogArticleContainer
+                {posts.length === 0 ? (
+                    <p className={styles.empty_state}>{t("empty")}</p>
+                ) : (
+                    posts.map((item, index) => (
+                        <ArticleCard
+                            index={index}
                             title={item.data.title}
-                            link={"/blog/" + item.post}
-                            key={index}
+                            link={"/blog/" + item.slug}
+                            key={item.slug}
                             image={item.data.image}
-                            date={item.data.created}
+                            date={formatPostDate(item.data.created, locale)}
+                            tags={item.data.tags}
                         />
-                    );
-                })}
+                    ))
+                )}
             </div>
-        </div>
+        </PageBackground>
     );
 }

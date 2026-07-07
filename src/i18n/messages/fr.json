@@ -3,6 +3,7 @@
         "name": "Bienvenue !",
         "home": "Accueil",
         "resume": "CV",
+        "blog": "Blog",
         "contact": "Contact"
     },
     "common": {
@@ -12,6 +13,15 @@
         "text": "Développé en <bold>{years}</bold>"
     },
     "pages": {
+        "blog": {
+            "title": "Blog",
+            "subtitle": "J'écris de temps en temps sur des expériences ou des implémentations de frameworks/bibliothèques/langages découverts sur des projets perso.",
+            "empty": "Pas encore d'articles — revenez bientôt !",
+            "back": "< Retour au blog",
+            "by": "Par",
+            "written_on": "Écrit le",
+            "updated_on": "Mis à jour le"
+        },
         "home": {
             "workTitle": {
                 "soft": "Tech-Lead",

@@ -21,9 +21,9 @@ Docker alternative: `docker-compose up` (mounts source with hot reload, Node 18 
 ### Routing & Rendering
 
 - Pages under `src/app/` follow App Router conventions
-- Blog and portfolio pages are **Server Components** (`'use server'`) — they read markdown files from `public/` via `fs.readFileSync`, parse YAML frontmatter with `gray-matter`, and render with `markdown-it`
+- Blog pages are **Server Components** (the App Router default — no directive; do **not** add `'use server'`, which declares Server Actions and forbids non-async exports like `export const dynamic`). They read markdown files from `public/` via `fs.readFileSync`, parse YAML frontmatter with `gray-matter`, and render with `markdown-it`
 - Interactive pages (home, resume) are **Client Components** (`'use client'`) using hooks
-- Dynamic routes: `src/app/blog/[post]/` and `src/app/portfolio/[project]/`
+- Dynamic route: `src/app/blog/[post]/`
 
 ### Internationalization
 
@@ -66,7 +66,7 @@ src/components/
 
 ### Content
 
-Blog posts and portfolio projects are markdown files in `public/blog/` and `public/portfolio/`. YAML frontmatter fields used: `title`, `image`, `created`, `updated`, `author`.
+Blog posts are markdown files in `public/blog/`, one post per **three files** (bilingual): `<slug>.md` holds language-invariant metadata (`author`, `image`, `created`, `updated`), while `<slug>.en.md` / `<slug>.fr.md` each hold the per-locale frontmatter (`title`, `description`, `tags`) plus the article body. All reads go through `src/utils/blogUtils.js` (never `fs` directly in pages) — it validates the slug against a whitelist (path-traversal safe), merges shared + locale metadata, and falls back to the other locale if one is missing. Dates are ISO (`YYYY-MM-DD`), formatted per-locale at render.
 
 ### SEO
 

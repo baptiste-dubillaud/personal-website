@@ -3,6 +3,7 @@
         "name": "Welcome!",
         "home": "Home",
         "resume": "Resume",
+        "blog": "Blog",
         "contact": "Contact"
     },
     "common": {
@@ -12,6 +13,15 @@
         "text": "Developed in <bold>{years}</bold>"
     },
     "pages": {
+        "blog": {
+            "title": "Blog",
+            "subtitle": "Sometimes I write about experiments or implementations of frameworks/libraries/languages I discovered on side projects.",
+            "empty": "No articles yet — check back soon!",
+            "back": "< Back to Blog",
+            "by": "By",
+            "written_on": "Written on",
+            "updated_on": "Updated on"
+        },
         "home": {
             "workTitle": {
                 "soft": "Tech-Lead",

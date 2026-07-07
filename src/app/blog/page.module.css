@@ -1,51 +1,200 @@
 .blog_container {
     min-height: var(--base-container-height);
+    box-sizing: border-box;
     background-color: var(--color-background);
+    padding: var(--space-xl) var(--space-md) var(--space-3xl);
     overflow-y: auto;
 }
+
+/* ── Header ──────────────────────────────────────────────────── */
+
+.blog_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+    text-align: center;
+    margin-top: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.blog_title {
+    font-size: var(--text-display);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+    margin: 0;
+}
+
+.blog_subtitle {
+    font-size: var(--text-16);
+    line-height: 1.6;
+    color: var(--color-text-warm);
+    font-style: italic;
+    max-width: 600px;
+    margin: 0;
+}
+
+.blog_divider {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* ── Article grid ────────────────────────────────────────────── */
 
 .articles_list {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
     flex-wrap: wrap;
-    margin-top: var(--space-3xl);
-    margin-bottom: var(--space-md);
-    margin-inline: var(--space-md);
-    gap: var(--space-xs);
+    margin-inline: auto;
+    max-width: 1120px;
+    gap: var(--space-md);
 }
 
-.article_container {
-    height: 250px;
+.article_card {
+    display: flex;
+    flex-direction: column;
+    height: 280px;
     width: 350px;
     overflow: hidden;
-    font-weight: 400;
+    /* CSS-only staggered reveal (server component — no framer-motion here). */
+    opacity: 0;
+    animation: article_reveal 0.5s ease-out forwards;
+}
+
+@keyframes article_reveal {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .article_card {
+        opacity: 1;
+        animation: none;
+    }
 }
 
 .article_image_container {
     width: 100%;
-    height: calc(100% - 55px);
+    flex: 1;
     position: relative;
     border-bottom: var(--border-thin) solid var(--color-orange-opacity-6);
 }
 
-.article_text_container {
-    padding: var(--space-2xs);
-    height: 44px;
+.article_body {
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+}
+
+/* Frontmatter tags — card footer, under the date. */
+.article_tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3xs);
+    margin-top: var(--space-3xs);
+    padding-top: var(--space-2xs);
+    border-top: var(--border-thin) solid var(--color-orange-opacity-1);
+}
+
+/* Slightly smaller than the default Tag so several fit on a card row. The
+   descendant selector outranks Tag's own `.tag` rule regardless of bundle order. */
+.article_tags .article_tag {
+    font-size: var(--text-12);
+    padding: 1px var(--space-2xs);
+}
+
+.article_title {
+    font-size: var(--text-16);
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--color-text);
+}
+
+.article_meta {
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: space-between;
 }
 
-.article_text_title {
-    font-size: var(--text-16);
-}
-
-.article_text_date {
-    position: absolute;
-    right: 3px;
-    bottom: 3px;
+.article_date {
+    font-family: var(--font-mono), monospace;
     font-size: var(--text-12);
-    font-weight: normal;
     color: var(--color-text-muted);
+}
+
+.article_arrow {
+    font-size: var(--text-20);
+    color: var(--color-orange-opacity-6);
+    transition: transform var(--transition-base), color var(--transition-base);
+}
+
+.article_card:hover .article_arrow {
+    transform: translateX(4px);
+    color: var(--color-orange);
+}
+
+.empty_state {
+    font-size: var(--text-16);
+    color: var(--color-text-muted);
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+/* ── Mobile (bottom nav) — horizontal list cards ─────────────────
+   A stack of full-width rows (thumbnail left, content right) reads much
+   cleaner on a phone than a column of tall image cards. */
+@media (max-width: 768px) {
+    .articles_list {
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        max-width: 560px;
+        gap: var(--space-sm);
+    }
+
+    .article_card {
+        flex-direction: row;
+        align-items: stretch;
+        width: 100%;
+        height: auto;
+        min-height: 116px;
+    }
+
+    .article_image_container {
+        flex: 0 0 132px;
+        width: 132px;
+        border-bottom: none;
+        border-right: var(--border-thin) solid var(--color-orange-opacity-6);
+    }
+
+    .article_body {
+        flex: 1;
+        min-width: 0;
+        justify-content: center;
+    }
+
+    .article_title {
+        /* Cap the title to two lines so rows stay even. */
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 400px) {
+    .article_image_container {
+        flex-basis: 104px;
+        width: 104px;
+    }
 }
