@@ -21,7 +21,7 @@ function resolveLocale(request) {
     return DEFAULT_LOCALE;
 }
 
-export default function middleware(request) {
+export default function proxy(request) {
     const locale = resolveLocale(request);
 
     // Forward the resolved locale to Server Components via a request header that

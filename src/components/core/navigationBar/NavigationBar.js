@@ -2,10 +2,11 @@
 
 import styles from "@/components/core/navigationBar/NavigationBar.module.css";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import { BLOG_ENABLED } from "@/utils/featureFlags";
 import LanguageSwitcher from "@/components/common/ui/LanguageSwitcher/LanguageSwitcher";
 import Prompt from "@/components/common/ui/Prompt/Prompt";
 
@@ -19,9 +20,9 @@ import EmailIcon from "@/components/common/icons/misc/EmailIcon";
 const links = [
     { nameKey: "home", path: "/", icon: HomeIcon },
     { nameKey: "resume", path: "/resume", icon: ResumeIcon },
-    { nameKey: "blog", path: "/blog", icon: BlogIcon },
+    { nameKey: "blog", path: "/blog", icon: BlogIcon, enabled: BLOG_ENABLED },
     { nameKey: "contact", path: "/contact", icon: EmailIcon },
-];
+].filter((link) => link.enabled !== false);
 
 function isActive(pathname, path) {
     const isHome = path == "/";
@@ -35,14 +36,16 @@ function detectMobileOS() {
     return /Android/i.test(navigator.userAgent || "") ? "android" : "ios";
 }
 
+const subscribeToNothing = () => () => {};
+const getServerMobileOS = () => "ios";
+
 export default function NavigationBarComponent({}) {
     const router = useRouter();
     const pathname = usePathname();
     const t = useTranslations("navigation");
 
-    // Default to the glass theme until the client resolves the real platform.
-    const [mobileOS, setMobileOS] = useState("ios");
-    useEffect(() => setMobileOS(detectMobileOS()), []);
+    // Defaults to the glass theme until the client resolves the real platform.
+    const mobileOS = useSyncExternalStore(subscribeToNothing, detectMobileOS, getServerMobileOS);
 
     const NavLinkComponent = ({ name, path }) => {
         const active = isActive(pathname, path);

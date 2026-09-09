@@ -1,10 +1,12 @@
+import { BLOG_ENABLED } from "@/utils/featureFlags";
 import { getAllPosts } from "@/utils/blogUtils";
 
 export default async function sitemap() {
     const baseUrl = "https://www.dubillaudb.fr";
 
     // Static pages
-    const routes = ["/", "/blog", "/resume"].map((route) => ({
+    const staticRoutes = ["/", "/resume", ...(BLOG_ENABLED ? ["/blog"] : [])];
+    const routes = staticRoutes.map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date().toISOString().split("T")[0],
         changeFrequency: "weekly",
@@ -13,12 +15,14 @@ export default async function sitemap() {
 
     // Blog posts — dates are language-invariant (shared metadata), so the default
     // locale is enough to enumerate URLs and their last-modified date.
-    const posts = getAllPosts().map((post) => ({
-        url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: post.data.updated || post.data.created,
-        changeFrequency: "monthly",
-        priority: 0.6,
-    }));
+    const posts = BLOG_ENABLED
+        ? getAllPosts().map((post) => ({
+              url: `${baseUrl}/blog/${post.slug}`,
+              lastModified: post.data.updated || post.data.created,
+              changeFrequency: "monthly",
+              priority: 0.6,
+          }))
+        : [];
 
     return [...routes, ...posts];
 }

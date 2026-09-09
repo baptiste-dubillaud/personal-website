@@ -7,6 +7,7 @@ import { getLocale, getTranslations } from "next-intl/server";
 
 import md from "markdown-it";
 
+import { BLOG_ENABLED } from "@/utils/featureFlags";
 import { getPostBySlug, formatPostDate } from "@/utils/blogUtils";
 import PageBackground from "@/components/common/ui/PageBackground/PageBackground";
 import Heading from "@/components/common/ui/Heading/Heading";
@@ -23,8 +24,11 @@ export const dynamic = "force-dynamic";
 const renderMarkdown = (content) => md({ linkify: true, typographer: true }).render(content);
 
 export async function generateMetadata({ params }) {
+    if (!BLOG_ENABLED) return {};
+
     const locale = await getLocale();
-    const post = getPostBySlug(params.post, locale);
+    const { post: slug } = await params;
+    const post = getPostBySlug(slug, locale);
     if (!post) return {};
 
     const { data } = post;
@@ -53,9 +57,15 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function Page({ params }) {
+    // Held back from the 2.1 release — see BLOG_ENABLED.
+    if (!BLOG_ENABLED) {
+        notFound();
+    }
+
     const locale = await getLocale();
     const t = await getTranslations("pages.blog");
-    const post = getPostBySlug(params.post, locale);
+    const { post: slug } = await params;
+    const post = getPostBySlug(slug, locale);
 
     if (!post) {
         notFound();

@@ -2,7 +2,7 @@
 
 import styles from "@/app/resume/page.module.css";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
 import { motion } from "framer-motion";
 
@@ -35,6 +35,17 @@ import {
 const TWO_COLUMNS_BREAKPOINT = 1200;
 const TWO_COLUMNS_PRESENTATION_WIDTH = "39%";
 const TWO_COLUMNS_CONTENT_WIDTH = "59%";
+
+const TWO_COLUMNS_QUERY = `(min-width: ${TWO_COLUMNS_BREAKPOINT + 1}px)`;
+
+function subscribeToLayout(onStoreChange) {
+    const query = window.matchMedia(TWO_COLUMNS_QUERY);
+    query.addEventListener("change", onStoreChange);
+    return () => query.removeEventListener("change", onStoreChange);
+}
+
+const getLayoutSnapshot = () => window.matchMedia(TWO_COLUMNS_QUERY).matches;
+const getLayoutServerSnapshot = () => false;
 
 // Common renderer for description objects (paragraph | list)
 function renderDescriptionBlock(desc, key) {
@@ -462,7 +473,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
 export default function Resume() {
     const t = useTranslations("pages.resume");
 
-    const [isTwoColumnSetup, setIsTwoColumnSetup] = useState(false);
+    const isTwoColumnSetup = useSyncExternalStore(subscribeToLayout, getLayoutSnapshot, getLayoutServerSnapshot);
 
     const [isInitialized, setIsInitialized] = useState(false);
 
@@ -479,18 +490,6 @@ export default function Resume() {
         { name: "Education", display: t("menu.education"), ref: educationRef },
         { name: "Hobbies", display: t("menu.hobbies"), ref: hobbiesRef },
     ];
-
-    function handleWindowSizeChange(isInit = false) {
-        if (window.innerWidth > TWO_COLUMNS_BREAKPOINT) {
-            setIsTwoColumnSetup(true);
-        } else {
-            setIsTwoColumnSetup(false);
-        }
-
-        if (typeof isInit !== "boolean" && !isInitialized) {
-            setIsInitialized(true);
-        }
-    }
 
     function onScroll() {
         const aboutHeight = aboutRef.current.getBoundingClientRect().height;
@@ -513,12 +512,14 @@ export default function Resume() {
     }
 
     useEffect(() => {
-        handleWindowSizeChange(true);
-        window.addEventListener("resize", handleWindowSizeChange);
+        const layoutQuery = window.matchMedia(TWO_COLUMNS_QUERY);
+        const onLayoutChange = () => setIsInitialized(true);
+
+        layoutQuery.addEventListener("change", onLayoutChange);
         window.addEventListener("scroll", onScroll);
 
         return () => {
-            window.removeEventListener("resize", handleWindowSizeChange);
+            layoutQuery.removeEventListener("change", onLayoutChange);
             window.removeEventListener("scroll", onScroll);
         };
     }, []);

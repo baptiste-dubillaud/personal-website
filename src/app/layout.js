@@ -11,7 +11,7 @@ const inter = Inter({ subsets: ["latin"] });
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono" });
 
 const DESCRIPTION =
-    "Baptiste Dubillaud — Software & Data Engineer based in Pau, France. Personal website, resume, and blog.";
+    "Baptiste Dubillaud — Software & Data Engineer based in Pau, France. Personal website and resume.";
 
 export const metadata = {
     metadataBase: new URL("https://www.dubillaudb.fr"),

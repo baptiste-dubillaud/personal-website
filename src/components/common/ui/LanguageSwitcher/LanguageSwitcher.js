@@ -10,15 +10,21 @@ const LOCALES = [
     { code: "en", label: "EN", ariaLabel: "Switch to English" },
 ];
 
+// Kept outside the component: writing to `document` is a side effect on a value
+// React does not own, which the compiler refuses to see inside a render scope.
+function persistLocale(locale) {
+    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; samesite=lax`;
+}
+
 export default function LanguageSwitcher() {
     const currentLocale = useLocale();
     const router = useRouter();
 
     const changeLanguage = (newLocale) => {
         if (newLocale === currentLocale) return;
-        // Persist the choice; the middleware reads this cookie to localize SSR,
+        // Persist the choice; the proxy reads this cookie to localize SSR,
         // then router.refresh() re-renders the tree in the new language.
-        document.cookie = `NEXT_LOCALE=${newLocale}; path=/; max-age=31536000; samesite=lax`;
+        persistLocale(newLocale);
         router.refresh();
     };
 
