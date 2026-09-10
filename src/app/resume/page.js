@@ -226,6 +226,56 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, translation }) => {
     );
 };
 
+// Tech stack as a single wrapping monospace line — categories separated by a
+// middle dot, technologies within a category by commas. Renders nothing when no
+// category holds anything, so callers never leave an empty line behind.
+const TechStackComponent = ({ stack = [], className }) => {
+    const categories = stack.filter((category) => category && category.length > 0);
+    if (categories.length === 0) return null;
+
+    return (
+        <div className={className}>
+            {categories.map((category, index, all) => (
+                <span key={index}>
+                    {category.join(", ")}
+                    {index < all.length - 1 && <span className={styles.timeline_item_tech_sep}> · </span>}
+                </span>
+            ))}
+        </div>
+    );
+};
+
+// One client mission inside a single experience — used by the freelance entry,
+// where the role is one continuous position but the work splits per client. The
+// orange rule on the left marks them as sub-parts rather than separate roles.
+const ClientComponent = ({ client }) => {
+    return (
+        <div className={styles.client_item}>
+            <MonoLabel>
+                {client.start_date} — {client.end_date}
+            </MonoLabel>
+            <div className={styles.client_identity}>
+                <h4 className={styles.client_name}>{client.name}</h4>
+                {client.role && <p className={styles.client_role}>{client.role}</p>}
+                {client.location && (
+                    <div className={styles.client_location}>
+                        <Locationicon size={12} color="var(--color-text-muted)" />
+                        <MonoLabel>{client.location}</MonoLabel>
+                    </div>
+                )}
+            </div>
+            {client.descriptions && (
+                <div className={styles.client_description}>
+                    {client.descriptions.map((desc, descIndex) =>
+                        renderDescriptionBlock(desc, `${client.name}-${descIndex}`),
+                    )}
+                </div>
+            )}
+            <TechStackComponent stack={client.stack} className={styles.client_tech_stack} />
+        </div>
+    );
+};
+
 const TimeLineComponent = ({
     onRight = false,
     title,
@@ -235,6 +285,7 @@ const TimeLineComponent = ({
     dateTo,
     DescriptionComponent,
     techStack = [[]],
+    clients = [],
     ...props
 }) => {
     return (
@@ -280,20 +331,14 @@ const TimeLineComponent = ({
                     </div>
                 )}
                 <div className={styles.timeline_item_description}>{DescriptionComponent}</div>
-                {techStack.length > 0 && (
-                    <div className={styles.timeline_item_tech_stack}>
-                        {techStack
-                            .filter((item) => item && item.length > 0)
-                            .map((item, i, arr) => (
-                                <span key={i}>
-                                    {item.join(", ")}
-                                    {i < arr.length - 1 && (
-                                        <span className={styles.timeline_item_tech_sep}> · </span>
-                                    )}
-                                </span>
-                            ))}
+                {clients.length > 0 && (
+                    <div className={styles.timeline_item_clients}>
+                        {clients.map((client, clientIndex) => (
+                            <ClientComponent key={clientIndex} client={client} />
+                        ))}
                     </div>
                 )}
+                <TechStackComponent stack={techStack} className={styles.timeline_item_tech_stack} />
             </Surface>
         </motion.div>
     );
@@ -331,6 +376,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) 
                                 </>
                             }
                             techStack={experience.stack || [[]]}
+                            clients={experience.clients || []}
                         />
                     ))}
                 </motion.div>

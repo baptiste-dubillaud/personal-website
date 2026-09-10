@@ -81,11 +81,36 @@
                             "content": "Je gère tous les aspects du développement logiciel, de la collecte des exigences à la livraison finale, en passant par la conception de l'architecture, le développement, les tests et le déploiement. Je collabore étroitement avec les clients pour comprendre leurs besoins et fournir des solutions adaptées à leurs objectifs commerciaux."
                         }
                     ],
-                    "stack": [
-                        ["React", "Next.js", "Vue.js"],
-                        ["Python", "FastAPI", "SQLAlchemy, Alembic"],
-                        ["PostgreSQL", "QDrant"],
-                        ["Docker", "Poetry", "uv"]
+                    "clients": [
+                        {
+                            "start_date": "AVR. 2026",
+                            "end_date": "PRÉSENT",
+                            "name": "DTNum - DGFiP",
+                            "role": "Tech Lead - Projet GenAI",
+                            "descriptions": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "<bold>Direction à la transformation numérique (DTNum)</bold> de la <bold>DGFiP</bold> - Direction Générale des Finances Publiques."
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "content": "Design et développement d'une <bold>API</bold> donnant accès aux modèles (<bold>LLM</bold>, <bold>VLM</bold>, rerank, embedding…), hébergés localement, aux différentes applications de la DGFiP :"
+                                },
+                                {
+                                    "type": "list",
+                                    "items": [
+                                        { "content": "Accès brut aux modèles." },
+                                        { "content": "Solution clé en main de <bold>Chat</bold>, de <bold>RAG</bold> et diverses applications." }
+                                    ]
+                                }
+                            ],
+                            "stack": [
+                                ["FastAPI", "OpenAI SDK", "LangChain", "LiteLLM"],
+                                ["SQLAlchemy", "Alembic"],
+                                ["PostgreSQL", "Qdrant", "Redis", "MinIO/S3"],
+                                ["Docker", "Kubernetes"]
+                            ]
+                        }
                     ]
                 },
                 {

@@ -74,18 +74,43 @@
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "I am currently working as a freelance <bold>Tech-Lead</bold> and <bold>AI Software Engineer</bold>, helping companies to build their AI-based software solutions."
+                            "content": "As a <bold>Freelance Tech-Lead & AI Software Engineer</bold>, I work with clients to design and build AI-based software solutions, with a focus on code quality, best practices and client satisfaction."
                         },
                         {
                             "type": "paragraph",
-                            "content": "I am available for new projects and collaborations. Don't hesitate to contact me! :)"
+                            "content": "I handle every aspect of software development, from gathering requirements to final delivery, by way of architecture design, development, testing and deployment. I work closely with clients to understand their needs and deliver solutions that fit their business goals."
                         }
                     ],
-                    "stack": [
-                        ["React", "Next.js", "Vue.js"],
-                        ["Python", "FastAPI", "SQLAlchemy, Alembic"],
-                        ["PostgreSQL", "QDrant"], 
-                        ["Docker", "Poetry", "uv"]
+                    "clients": [
+                        {
+                            "start_date": "APR. 2026",
+                            "end_date": "PRESENT",
+                            "name": "DTNum - DGFiP",
+                            "role": "Tech Lead - GenAI Project",
+                            "descriptions": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "<bold>Digital Transformation Directorate (DTNum)</bold> of the <bold>DGFiP</bold> - the French Public Finances Directorate General."
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "content": "Design and development of an <bold>API</bold> exposing locally-hosted models (<bold>LLM</bold>, <bold>VLM</bold>, rerank, embedding…) to the DGFiP's applications:"
+                                },
+                                {
+                                    "type": "list",
+                                    "items": [
+                                        { "content": "Raw access to the models." },
+                                        { "content": "Turnkey <bold>Chat</bold> and <bold>RAG</bold> solutions, plus various applications." }
+                                    ]
+                                }
+                            ],
+                            "stack": [
+                                ["FastAPI", "OpenAI SDK", "LangChain", "LiteLLM"],
+                                ["SQLAlchemy", "Alembic"],
+                                ["PostgreSQL", "Qdrant", "Redis", "MinIO/S3"],
+                                ["Docker", "Kubernetes"]
+                            ]
+                        }
                     ]
                 },
                 {
