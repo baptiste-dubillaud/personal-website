@@ -9,3 +9,5 @@ Dockerfile*
 docker-compose*
 .dockerignore
 README.md
+latex
+scripts

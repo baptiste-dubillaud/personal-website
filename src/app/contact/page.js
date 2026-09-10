@@ -3,7 +3,7 @@
 import styles from "@/app/contact/page.module.css";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTranslations } from "next-intl";
 
 import { staggerContainer as containerVariants, fadeInUp as itemVariants } from "@/utils/animations";

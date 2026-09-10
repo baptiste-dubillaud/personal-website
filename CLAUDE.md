@@ -92,6 +92,14 @@ src/components/
 
 Blog posts are markdown files in `public/blog/`, one post per **three files** (bilingual): `<slug>.md` holds language-invariant metadata (`author`, `image`, `created`, `updated`), while `<slug>.en.md` / `<slug>.fr.md` each hold the per-locale frontmatter (`title`, `description`, `tags`) plus the article body. All reads go through `src/utils/blogUtils.js` (never `fs` directly in pages) — it validates the slug against a whitelist (path-traversal safe), merges shared + locale metadata, and falls back to the other locale if one is missing. Dates are ISO (`YYYY-MM-DD`), formatted per-locale at render.
 
+### CV (PDF)
+
+The downloadable resume is a LaTeX document, one file per locale, and its **sources live in `latex/` — never in `public/`**. Everything under `public/` is served verbatim, so sources placed there would publish the `.tex` along with every `.aux`/`.fls`/`.fdb_latexmk` file a build leaves behind.
+
+`npm run resume` (→ `scripts/build-resume.sh`) compiles both, keeps the aux files in `latex/.build/` (gitignored, and the same folder `.vscode/settings.json` gives the LaTeX Workshop extension) and copies the results to `public/resume/resume_dubillaud_baptiste_freelance_{en,fr}.pdf`. **Those exact names are what `src/app/resume/page.js` links to** — the build writes them, so renaming one means renaming it there too. The PDFs are committed; building requires a local TeX distribution (`brew install --cask mactex-no-gui`).
+
+The two `.tex` files mirror the resume page's content: the freelance entry's client missions use a `cliententry` environment (name / role / dates, indented under the parent role), matching the `clients` array in the message files.
+
 ### SEO
 
 - Default metadata in `src/app/layout.js` — `baseMetadata` holds the locale-independent fields and `generateMetadata()` layers `og:locale` on top from the served locale (`metadata` and `generateMetadata` cannot both be exported). `SITE_URL` lives in `src/utils/linkUtils.js` and is set as `metadataBase`, so canonical/`og:url` are written as relative paths and resolved from it — do not repeat the origin

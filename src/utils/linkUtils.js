@@ -12,3 +12,9 @@ export const MEDIUM_PROFILE = "https://medium.com/@baptiste.dubillaud";
 export const STRAVA_PROFILE = "https://www.strava.com/athletes/10097604";
 
 export const BLOG_FOLDER_PATH = "public/blog/";
+
+// The PDF resume, one file per locale, in `public/resume/`. Both the resume page
+// (download link) and the sitemap (which advertises them to crawlers) resolve
+// the name through here, so a rename cannot leave one of them pointing at a 404.
+export const resumePdfFile = (locale) => `resume_dubillaud_baptiste_freelance_${locale}.pdf`;
+export const resumePdfPath = (locale) => `/resume/${resumePdfFile(locale)}`;

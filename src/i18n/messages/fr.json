@@ -1,4 +1,7 @@
 {
+    "metadata": {
+        "description": "Baptiste Dubillaud — Tech-Lead & Ingénieur Logiciel IA basé à Pau, France. Site personnel et CV."
+    },
     "navigation": {
         "name": "Bienvenue !",
         "home": "Accueil",
@@ -39,6 +42,10 @@
             "contact_button": "Me contacter"
         },
         "contact": {
+            "metadata": {
+                "title": "Contact — Baptiste Dubillaud",
+                "description": "Contactez Baptiste Dubillaud — Tech-Lead & Ingénieur Logiciel IA freelance, basé à Pau, France."
+            },
             "availability": "Disponibilité: moins de 3 mois",
             "title": "Travaillons ensemble",
             "subtitle": "Je suis disponible pour des projets freelance et collaborations. N'hésitez pas à me contacter !",
@@ -48,12 +55,16 @@
             "copied": "Copié !"
         },
         "resume": {
+            "metadata": {
+                "title": "CV — Baptiste Dubillaud",
+                "description": "CV d'ingénieur logiciel : expériences, formation et centres d'intérêt. Projets, stack technique et contacts."
+            },
             "menu": {
                 "about": "À propos",
                 "experience": "Expériences",
                 "education": "Éducation",
                 "hobbies": "Loisirs",
-                "download": "Télécharger (PDF)"
+                "view": "Voir le CV (PDF)"
             },
             "prensentation": {
                 "title": "Tech-Lead & Ingénieur Logiciel IA",
@@ -112,7 +123,7 @@
                             "stack": [
                                 ["FastAPI", "OpenAI SDK", "LangChain", "LiteLLM"],
                                 ["SQLAlchemy", "Alembic"],
-                                ["PostgreSQL", "Qdrant", "Redis", "MinIO/S3"],
+                                ["PostgreSQL", "QDrant", "Redis", "MinIO/S3"],
                                 ["Docker", "Kubernetes"]
                             ]
                         }

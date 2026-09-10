@@ -4,7 +4,7 @@ import styles from "@/app/resume/page.module.css";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { getNbYears } from "@/utils/dateUtils";
 import SportIcon from "@/components/common/icons/misc/SportIcon";
@@ -13,11 +13,17 @@ import VideoGame from "@/components/common/icons/misc/VideoGame";
 import NavigationButton from "@/components/common/ui/NavigationButton/NavigationButton";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
-import { LINKEDIN_PROFILE, GITHUB_PROFILE, STRAVA_PROFILE } from "@/utils/linkUtils";
+import {
+    LINKEDIN_PROFILE,
+    GITHUB_PROFILE,
+    STRAVA_PROFILE,
+    resumePdfPath,
+} from "@/utils/linkUtils";
 import { COLORS } from "@/utils/colorUtils";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import React from "react";
 import StravaIcon from "@/components/common/icons/apps/StravaIcon";
+import ResumeIcon from "@/components/common/icons/misc/ResumeIcon";
 import Locationicon from "@/components/common/icons/misc/LocationIcon";
 import RichText from "@/components/common/ui/RichText";
 import PageBackground from "@/components/common/ui/PageBackground/PageBackground";
@@ -60,6 +66,7 @@ function renderDescriptionBlock(desc, key) {
 
 const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, parts, translation }) => {
     const linkedInLocale = useTranslations("common")("linkedin_lang");
+    const locale = useLocale();
 
     function scrollToComponent(index, ref) {
         if (ref.current) {
@@ -115,6 +122,22 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                 </NavigationButton>
             </motion.div>
 
+            <motion.div
+                key={`download_resume_button-${isTwoColumnSetup}`}
+                className={styles.presentation_download}
+                initial={{ opacity: isInitialized ? 1 : 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+            >
+                {/* Deliberately *not* a download: `external` opens the PDF in a
+                    new tab, so a visitor reads it in place and a crawler still
+                    follows a plain href. The label says "view" to match. */}
+                <Button variant="outline" size="sm" href={resumePdfPath(locale)} external>
+                    {translation("menu.view")}
+                    <ResumeIcon size={18} color="currentColor" />
+                </Button>
+            </motion.div>
+
             {/* Menu / Showed only if enough space (isTwoColumnSetup = false) */}
             {isTwoColumnSetup && (
                 <motion.div
@@ -154,26 +177,17 @@ const PresentationComponent = ({ isTwoColumnSetup, isInitialized, currentPart, p
                     />
                 </motion.div>
             )}
-
-            {/* <motion.button
-                key={`download_resume_button-${isTwoColumnSetup}`}
-                className={styles.presentation_download_button_container}
-                onClick={() => {
-                    const link = document.createElement("a");
-                    link.href = `/resume/resume_${linkedInLocale.split("_")[0]}.pdf`;
-                    link.download = `resume_${linkedInLocale.split("_")[0]}.pdf`;
-                    link.click();
-                }}
-                initial={{ opacity: isInitialized ? 1 : 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.5 }}
-            >
-                {translation("menu.download")}
-            </motion.button> */}
         </div>
     );
 };
 
+// Every reveal on this page uses a bare `viewport={{ once: true }}`, and none of
+// them takes a negative `margin`. A negative margin shrinks the observer root on
+// *all four* sides, including the top: with `-80px` here, a `.part_title` — which
+// sticks at `top: 60px` — sat inside that dead zone whenever it stuck before
+// being observed, and `once: true` made the miss permanent. The section
+// containers had the same trap at `-60px`, which is what kept the experience and
+// education cards blank until well past the point they should have faded in.
 const PartComponent = ({ isTwoColumnSetup, title, num, reference, contentComponent }) => {
     return (
         <div ref={reference} className={styles.part_container}>
@@ -183,7 +197,7 @@ const PartComponent = ({ isTwoColumnSetup, title, num, reference, contentCompone
                     variants={itemVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-80px" }}
+                    viewport={{ once: true }}
                 >
                     {title}
                     {num && <MonoLabel num={num} className={styles.part_title_index} />}
@@ -209,7 +223,7 @@ const AboutComponent = ({ isTwoColumnSetup, aboutRef, translation }) => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
+                    viewport={{ once: true }}
                 >
                     {translation.raw("about").map((_, index) => (
                         <motion.p key={index} variants={itemVariants}>
@@ -357,7 +371,7 @@ const ExperiencesComponent = ({ isTwoColumnSetup, experienceRef, translation }) 
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
+                    viewport={{ once: true }}
                 >
                     {translation.raw("experiences").map((experience, expIndex) => (
                         <TimeLineComponent
@@ -398,7 +412,7 @@ const EducationComponent = ({ isTwoColumnSetup, educationRef, translation }) => 
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
+                    viewport={{ once: true }}
                 >
                     {translation.raw("education").map((edu, eduIndex) => (
                         <TimeLineComponent
@@ -473,7 +487,7 @@ const HobbiesComponent = ({ isTwoColumnSetup, hobbiesRef, translation }) => {
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, margin: "-60px" }}
+                    viewport={{ once: true }}
                 >
                     {translation.raw("hobbies").map((hobby, hobbyIndex) => (
                         <HobbyComponent

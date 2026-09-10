@@ -10,7 +10,7 @@ import { BLOG_ENABLED } from "@/utils/featureFlags";
 import LanguageSwitcher from "@/components/common/ui/LanguageSwitcher/LanguageSwitcher";
 import Prompt from "@/components/common/ui/Prompt/Prompt";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import HomeIcon from "@/components/common/icons/misc/HomeIcon";
 import ResumeIcon from "@/components/common/icons/misc/ResumeIcon";

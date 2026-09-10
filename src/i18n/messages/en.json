@@ -1,4 +1,7 @@
 {
+    "metadata": {
+        "description": "Baptiste Dubillaud — Tech-Lead & AI Software Engineer based in Pau, France. Personal website and resume."
+    },
     "navigation": {
         "name": "Welcome!",
         "home": "Home",
@@ -39,6 +42,10 @@
             "contact_button": "Contact me"
         }, 
         "contact": {
+            "metadata": {
+                "title": "Contact — Baptiste Dubillaud",
+                "description": "Get in touch with Baptiste Dubillaud — freelance Tech-Lead & AI Software Engineer based in Pau, France."
+            },
             "availability": "Availability: under 3 months",
             "title": "Let's work together",
             "subtitle": "I'm available for freelance projects and collaborations. Don't hesitate to reach out!",
@@ -48,12 +55,16 @@
             "copied": "Copied!"
         },
         "resume": {
+            "metadata": {
+                "title": "Resume — Baptiste Dubillaud",
+                "description": "Software Engineer resume: experience, education, and interests. Explore projects, stack, and contact links."
+            },
             "menu": {
                 "about": "About",
                 "experience": "Experiences",
                 "education": "Education",
                 "hobbies": "Hobbies",
-                "download": "Download (PDF)"
+                "view": "View CV (PDF)"
             },
             "prensentation": {
                 "title": "Tech-Lead & AI Software Engineer",
@@ -112,7 +123,7 @@
                             "stack": [
                                 ["FastAPI", "OpenAI SDK", "LangChain", "LiteLLM"],
                                 ["SQLAlchemy", "Alembic"],
-                                ["PostgreSQL", "Qdrant", "Redis", "MinIO/S3"],
+                                ["PostgreSQL", "QDrant", "Redis", "MinIO/S3"],
                                 ["Docker", "Kubernetes"]
                             ]
                         }

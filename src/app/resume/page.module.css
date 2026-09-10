@@ -51,6 +51,14 @@
     margin-top: var(--space-2xs);
 }
 
+/* Download CTA — the presentation column is a stretching flex column, so the
+   wrapper hugs its content instead of letting the button span the full width. */
+.presentation_download {
+    display: flex;
+    align-self: flex-start;
+    margin-top: var(--space-md);
+}
+
 .presentation_menu {
     position: relative;
     display: flex;
