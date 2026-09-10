@@ -12,7 +12,9 @@ npm run lint     # ESLint CLI, flat config (eslint.config.mjs)
 
 No test suite is configured.
 
-Docker alternative: `docker-compose up` (mounts source with hot reload, Node 24 Alpine).
+Docker alternative: `docker compose up --build` (mounts source with hot reload, Node 24 Alpine).
+
+**Always pass `--build`.** The dev compose file mounts `/app/node_modules` and `/app/.next` as *anonymous volumes*, which Compose reattaches to each new container, and a plain `docker compose up` never rebuilds the image. Both together will happily keep running a months-old `npm install` against current source — which is how the container once ran Next 14 against a Next 16 codebase (silently disabling `reactCompiler`, falling back to webpack, and failing in `patch-incorrect-lockfile`). After any dependency change: `docker compose down -v && docker compose up -d --build`.
 
 ## Architecture
 
@@ -29,15 +31,26 @@ Turbopack is the bundler for both `dev` and `build` (the Next.js 16 default), an
 
 ### Internationalization
 
-`next-intl` handles EN/FR. The locale is resolved once per request in `src/proxy.js` (the Next.js 16 replacement for `middleware.js` — the file, the exported function and the `skipProxyUrlNormalize`-style flags were all renamed; the `edge` runtime is not available there):
+`next-intl` handles EN/FR, with no locale prefix in the URL. `src/i18n/locales.js` is the **single source of truth**: one `LOCALES` map describes each locale completely — switcher label, `aria-label` and Open Graph `language_TERRITORY` tag — and `SUPPORTED_LOCALES` is `Object.keys(LOCALES)`. **Key order is the switcher's display order.** `request.js`, `setLocale.js`, `LanguageSwitcher.js`, `layout.js` and `blogUtils.js` all derive from it; adding a language is one entry in that map plus a messages file.
 
-- **Resolution order:** `NEXT_LOCALE` cookie → `Accept-Language` header → `"en"`.
-- The result is forwarded to Server Components as an `x-locale` request header, which `src/i18n/request.js` reads.
-- `LanguageSwitcher` writes the cookie and calls `router.refresh()` to re-render the tree in the new language.
+Because the key order is a display order and not a preference ranking, anything that needs a *fallback* ranking spells it out (see `blogUtils.getPostBySlug`: requested → `DEFAULT_LOCALE` → the rest).
 
-Because every page depends on that header, all pages render dynamically.
+Resolution order is **`NEXT_LOCALE` cookie → `Accept-Language` → `"en"`**, and it all happens in **`src/i18n/request.js`**, which reads both with `cookies()` and `headers()`. There is deliberately **no proxy/middleware layer**: `headers()` already exposes the incoming request headers, so forwarding `Accept-Language` through an `x-locale` header bought nothing and cost a proxy invocation on every request. Do not reintroduce one for this.
 
-All user-facing strings live in `src/i18n/messages/en.json` and `fr.json`. Components use `useTranslations()`. Resume content (experiences, education) is fully driven by these translation files.
+`resolveAcceptLanguage()` honours **q-values**, not list position — `de-DE,fr;q=0.9,en;q=0.8` resolves to `fr`. Region subtags are dropped (`fr-CA` → `fr`) and `q=0` entries are discarded.
+
+**Changing language goes through the `setLocale` Server Action** (`src/i18n/setLocale.js`), never `document.cookie` + `router.refresh()`. Two reasons, both load-bearing:
+
+- The cookie must be read by `cookies()` within the same request: an action writes it *after* any request-scoped header has been fixed, so resolving from a header would re-render in the *previous* language.
+- The action calls `revalidatePath("/", "layout")`: the messages live in the root layout's `NextIntlClientProvider`, so invalidating only the current page segment would leave the navigation and footer in the old language.
+
+The cookie is written `httpOnly` (nothing reads it from the browser) and `secure` in production only.
+
+Because every page reads request-time data, all pages render dynamically.
+
+All user-facing strings live in `src/i18n/messages/en.json` and `fr.json`. Components use `useTranslations()`. Word *order* that differs per language is data too, not a branch in a component — the home page's `workTitle.order` array is read with `t.raw()` and drives the render, so there is no `locale === "fr"` test in JSX. Resume content (experiences, education) is fully driven by these translation files.
+
+An experience entry may carry an optional `clients` array — sub-missions of one continuous role, used by the freelance entry. Each client takes `start_date`, `end_date`, `name`, optional `role` / `location`, its own `descriptions` (same `paragraph` / `list` blocks as the parent) and its own `stack`. When an experience has clients, put the stack on each client rather than on the experience; `TechStackComponent` renders nothing when a stack is absent or empty.
 
 ### Styling
 
@@ -64,9 +77,10 @@ All user-facing strings live in `src/i18n/messages/en.json` and `fr.json`. Compo
 ```
 src/components/
 ├── core/          # Layout: NavigationBar (with typewriter + LanguageSwitcher), Footer
-├── common/        # RichText (safe renderer for <bold> tags), NavigationButton, icons
-└── providers/     # ClientIntlProvider
+└── common/        # ui/ (design-system components + RichText, LanguageSwitcher), icons/
 ```
+
+`NextIntlClientProvider` is mounted inline in `src/app/layout.js`; there is no separate provider component.
 
 `RichText.js` is the safe way to render strings that contain `<bold>` markup — use it instead of `dangerouslySetInnerHTML` for translated content.
 
@@ -80,9 +94,11 @@ Blog posts are markdown files in `public/blog/`, one post per **three files** (b
 
 ### SEO
 
-- Default metadata in `src/app/layout.js`
+- Default metadata in `src/app/layout.js` — `baseMetadata` holds the locale-independent fields and `generateMetadata()` layers `og:locale` on top from the served locale (`metadata` and `generateMetadata` cannot both be exported). `SITE_URL` lives in `src/utils/linkUtils.js` and is set as `metadataBase`, so canonical/`og:url` are written as relative paths and resolved from it — do not repeat the origin
 - Page-specific metadata in each `page.js` via Next.js `metadata` export
 - Dynamic sitemap at `src/app/sitemap.js`
+- `src/app/opengraph-image.js` renders the social card (1200x630) through **Satori**, which is not a browser: no `mask-image`, no CSS grid, and every multi-child `div` needs an explicit `display: flex`. The site's blueprint canvas is therefore rebuilt there — the radial spotlight is inverted into a beige overlay, and the grid lines run stronger than `--blueprint-*` because a feed displays this image at roughly 500px wide, where a 5% grid disappears. The card is translucent so the grid reads through it; keep the overlay gentle or it erases the grid in the only margin still visible. Check any change by rendering `/opengraph-image` and looking at it, including downscaled
+- **No `hreflang` alternates**, on purpose: the locale lives in a cookie, not the URL, so there is no distinct address to point one at. Declaring en/fr alternates that all resolve to the same URL only asserts something untrue. Real hreflang requires moving to URL-prefixed routing.
 
 ### Deployment
 

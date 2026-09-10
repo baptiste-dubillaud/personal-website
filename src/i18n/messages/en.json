@@ -103,6 +103,10 @@
                                         { "content": "Raw access to the models." },
                                         { "content": "Turnkey <bold>Chat</bold> and <bold>RAG</bold> solutions, plus various applications." }
                                     ]
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "content": "As well as the development of the authentication, authorization, and usage management (token consumption) system."
                                 }
                             ],
                             "stack": [

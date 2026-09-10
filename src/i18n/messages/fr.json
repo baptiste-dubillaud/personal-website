@@ -95,14 +95,18 @@
                                 },
                                 {
                                     "type": "paragraph",
-                                    "content": "Design et développement d'une <bold>API</bold> donnant accès aux modèles (<bold>LLM</bold>, <bold>VLM</bold>, rerank, embedding…), hébergés localement, aux différentes applications de la DGFiP :"
+                                    "content": "Design et développement d'un ensemble d'<bold>API</bold> donnant accès aux modèles (<bold>LLM</bold>, <bold>VLM</bold>, rerank, embedding…), hébergés localement, aux différentes applications de la DGFiP via:"
                                 },
                                 {
                                     "type": "list",
                                     "items": [
-                                        { "content": "Accès brut aux modèles." },
-                                        { "content": "Solution clé en main de <bold>Chat</bold>, de <bold>RAG</bold> et diverses applications." }
+                                        { "content": "Un accès brut aux modèles." },
+                                        { "content": "Des solutions clés en main de <bold>Chat</bold>, de <bold>RAG</bold> et diverses applications." }
                                     ]
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "content": "Ainsi que le développement du système d'authentification, d'autorisation, de gestion des usages (consommation de tokens) ..."
                                 }
                             ],
                             "stack": [
