@@ -128,3 +128,12 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# LaTeX build artefacts — the CV sources live in latex/, the PDFs they produce
+# are committed under public/resume/ (see scripts/build-resume.sh)
+latex/.build/
+latex/*.aux
+latex/*.fdb_latexmk
+latex/*.fls
+latex/*.out
+latex/*.synctex.gz

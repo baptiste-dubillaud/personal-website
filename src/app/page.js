@@ -2,11 +2,12 @@
 
 import styles from "@/app/page.module.css";
 
-import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { useTranslations, useLocale } from "next-intl";
+import { Fragment, useSyncExternalStore } from "react";
 
-import { motion } from "framer-motion";
+import Image from "next/image";
+import { useTranslations } from "next-intl";
+
+import { motion } from "motion/react";
 
 import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import LinkedInIcon from "@/components/common/icons/apps/LinkedInIcon";
@@ -21,26 +22,55 @@ import Button from "@/components/common/ui/Button/Button";
 import PageBackground from "@/components/common/ui/PageBackground/PageBackground";
 import Heading from "@/components/common/ui/Heading/Heading";
 
-const MainPageButton = ({ goTo, text, type="outline" }) => {
-    const router = useRouter();
+// A real <Link>, not a button calling router.push: these two are the only paths
+// from the home page into the rest of the site, and a crawler cannot follow an
+// onClick handler.
+const MainPageButton = ({ goTo, text, type = "outline" }) => (
+    <Button variant={type} internal href={`/${goTo}`} size="md">
+        {text}
+    </Button>
+);
 
-    const handleClick = () => {
-        if (goTo) {
-            router.push(`/${goTo}`);
-        }
-    };
+const subscribeToNothing = () => () => {};
+const getIsHydrated = () => true;
+const getIsHydratedOnServer = () => false;
 
-    return (
-        <Button variant={type} onClick={handleClick} size="md">
-            {text}
-        </Button>
-    );
+/**
+ * The name reveals one character at a time, which needs one <span> per letter.
+ * That markup is fine in a browser and unreadable everywhere else: a text
+ * extractor joins the spans and reads "B a p t i s t e" — garbling the single
+ * most important string on the site for crawlers and LLM fetchers.
+ *
+ * So the server renders the name as plain text, which is what they get, and the
+ * client swaps in the animated letters once hydrated. `useSyncExternalStore` is
+ * how the rest of the codebase resolves client-only values (see NavigationBar)
+ * — an effect writing state would cost this component its auto-memoisation.
+ */
+const AnimatedName = ({ text, delay }) => {
+    const isHydrated = useSyncExternalStore(subscribeToNothing, getIsHydrated, getIsHydratedOnServer);
+
+    if (!isHydrated) return text;
+
+    return text.split("").map((char, index) => (
+        <motion.span
+            key={index}
+            animate={{ y: [10, 0], opacity: [0, 1] }}
+            transition={{ delay: delay + index * 0.075, duration: 0 }}
+        >
+            {char}
+        </motion.span>
+    ));
 };
+
+// The work title is the same three labels in both languages, but not in the same
+// order ("Freelance Tech-Lead & …" in French), so the sequence is part of the
+// translation and lives in the message files next to the labels.
+const WORK_TITLE_SEPARATOR = "&";
+const HIGHLIGHTED_WORK_TITLE_PARTS = ["soft", "data"];
 
 export default function Home() {
     const t = useTranslations("pages.home");
     const commont = useTranslations("common");
-    const currentLocale = useLocale();
 
     return (
         <main>
@@ -78,26 +108,14 @@ export default function Home() {
                             {/* First and Last names */}
                             <Heading as="h1" className={styles.presentation_data_name_container}>
                                 <Heading.Accent className={styles.presentation_data_name_text}>
-                                    {"Baptiste".split("").map((char, index) => (
-                                        <motion.span
-                                            key={index}
-                                            animate={{ y: [10, 0], opacity: [0, 1] }}
-                                            transition={{ delay: 0.6 + index * 0.075, duration: 0 }}
-                                        >
-                                            {char}
-                                        </motion.span>
-                                    ))}
+                                    <AnimatedName text="Baptiste" delay={0.6} />
                                 </Heading.Accent>
+                                {/* Whitespace-only text between flex items is not
+                                    rendered, so this costs nothing visually and
+                                    keeps "Baptiste Dubillaud" one readable string
+                                    for extractors that join adjacent nodes. */}{" "}
                                 <span className={styles.presentation_data_name_text}>
-                                    {"Dubillaud".split("").map((char, index) => (
-                                        <motion.span
-                                            key={index}
-                                            animate={{ y: [10, 0], opacity: [0, 1] }}
-                                            transition={{ delay: 1.25 + index * 0.075, duration: 0 }}
-                                        >
-                                            {char}
-                                        </motion.span>
-                                    ))}
+                                    <AnimatedName text="Dubillaud" delay={1.25} />
                                 </span>
                             </Heading>
                             {/* Position def */}
@@ -107,41 +125,34 @@ export default function Home() {
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 2, delay: 1.95 }}
                             >
-                                {currentLocale === "fr" ? (
-                                    <>
-                                        <span className={styles.presentation_data_role_text}>
-                                            {t("workTitle.engineer")}
-                                        </span>
-                                        <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                        >
-                                            {t("workTitle.soft")}
-                                        </span>
-                                        <span className={styles.presentation_data_role_text}>&</span>
-                                        <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                        >
-                                            {t("workTitle.data")}
-                                        </span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                        >
-                                            {t("workTitle.soft")}
-                                        </span>
-                                        <span className={styles.presentation_data_role_text}>&</span>
-                                        <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                        >
-                                            {t("workTitle.data")}
-                                        </span>
-                                        <span className={styles.presentation_data_role_text}>
-                                            {t("workTitle.engineer")}
-                                        </span>
-                                    </>
-                                )}
+                                {t.raw("workTitle.order").map((part, index) => (
+                                    // Same reason as the space between the two
+                                    // names above: the container is a flex row
+                                    // with a `gap`, so whitespace-only text
+                                    // nodes cost nothing visually, and without
+                                    // them an extractor joining the spans reads
+                                    // "Tech-Lead&AI Software EngineerFreelance".
+                                    <Fragment key={index}>
+                                        {index > 0 && " "}
+                                        {part === WORK_TITLE_SEPARATOR ? (
+                                            <span className={styles.presentation_data_role_text}>
+                                                {WORK_TITLE_SEPARATOR}
+                                            </span>
+                                        ) : (
+                                            <span
+                                                className={[
+                                                    styles.presentation_data_role_text,
+                                                    HIGHLIGHTED_WORK_TITLE_PARTS.includes(part) &&
+                                                        styles.presentation_data_firstname,
+                                                ]
+                                                    .filter(Boolean)
+                                                    .join(" ")}
+                                            >
+                                                {t(`workTitle.${part}`)}
+                                            </span>
+                                        )}
+                                    </Fragment>
+                                ))}
                             </motion.h2>
                         </div>
                         <div className={styles.presentation_data_group_container}>

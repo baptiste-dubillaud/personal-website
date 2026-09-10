@@ -1,4 +1,7 @@
 {
+    "metadata": {
+        "description": "Baptiste Dubillaud — Tech-Lead & AI Software Engineer based in Pau, France. Personal website and resume."
+    },
     "navigation": {
         "name": "Welcome!",
         "home": "Home",
@@ -26,7 +29,8 @@
             "workTitle": {
                 "soft": "Tech-Lead",
                 "data": "AI Software Engineer",
-                "engineer": "Freelance"
+                "engineer": "Freelance",
+                "order": ["soft", "&", "data", "engineer"]
             },
             "age": "years old",
             "nationality": "French",
@@ -38,6 +42,10 @@
             "contact_button": "Contact me"
         }, 
         "contact": {
+            "metadata": {
+                "title": "Contact — Baptiste Dubillaud",
+                "description": "Get in touch with Baptiste Dubillaud — freelance Tech-Lead & AI Software Engineer based in Pau, France."
+            },
             "availability": "Availability: under 3 months",
             "title": "Let's work together",
             "subtitle": "I'm available for freelance projects and collaborations. Don't hesitate to reach out!",
@@ -47,12 +55,16 @@
             "copied": "Copied!"
         },
         "resume": {
+            "metadata": {
+                "title": "Resume — Baptiste Dubillaud",
+                "description": "Software Engineer resume: experience, education, and interests. Explore projects, stack, and contact links."
+            },
             "menu": {
                 "about": "About",
                 "experience": "Experiences",
                 "education": "Education",
                 "hobbies": "Hobbies",
-                "download": "Download (PDF)"
+                "view": "View CV (PDF)"
             },
             "prensentation": {
                 "title": "Tech-Lead & AI Software Engineer",
@@ -74,18 +86,47 @@
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "I am currently working as a freelance <bold>Tech-Lead</bold> and <bold>AI Software Engineer</bold>, helping companies to build their AI-based software solutions."
+                            "content": "As a <bold>Freelance Tech-Lead & AI Software Engineer</bold>, I work with clients to design and build AI-based software solutions, with a focus on code quality, best practices and client satisfaction."
                         },
                         {
                             "type": "paragraph",
-                            "content": "I am available for new projects and collaborations. Don't hesitate to contact me! :)"
+                            "content": "I handle every aspect of software development, from gathering requirements to final delivery, by way of architecture design, development, testing and deployment. I work closely with clients to understand their needs and deliver solutions that fit their business goals."
                         }
                     ],
-                    "stack": [
-                        ["React", "Next.js", "Vue.js"],
-                        ["Python", "FastAPI", "SQLAlchemy, Alembic"],
-                        ["PostgreSQL", "QDrant"], 
-                        ["Docker", "Poetry", "uv"]
+                    "clients": [
+                        {
+                            "start_date": "APR. 2026",
+                            "end_date": "PRESENT",
+                            "name": "DTNum - DGFiP",
+                            "role": "Tech Lead - GenAI Project",
+                            "descriptions": [
+                                {
+                                    "type": "paragraph",
+                                    "content": "<bold>Digital Transformation Directorate (DTNum)</bold> of the <bold>DGFiP</bold> - the French Public Finances Directorate General."
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "content": "Design and development of an <bold>API</bold> exposing locally-hosted models (<bold>LLM</bold>, <bold>VLM</bold>, rerank, embedding…) to the DGFiP's applications:"
+                                },
+                                {
+                                    "type": "list",
+                                    "items": [
+                                        { "content": "Raw access to the models." },
+                                        { "content": "Turnkey <bold>Chat</bold> and <bold>RAG</bold> solutions, plus various applications." }
+                                    ]
+                                },
+                                {
+                                    "type": "paragraph",
+                                    "content": "As well as the development of the authentication, authorization, and usage management (token consumption) system."
+                                }
+                            ],
+                            "stack": [
+                                ["FastAPI", "OpenAI SDK", "LangChain", "LiteLLM"],
+                                ["SQLAlchemy", "Alembic"],
+                                ["PostgreSQL", "QDrant", "Redis", "MinIO/S3"],
+                                ["Docker", "Kubernetes"]
+                            ]
+                        }
                     ]
                 },
                 {
@@ -277,62 +318,7 @@
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "I spend a lot of time doing sports. I'm currently training for triathlon after having completed my second marathon in Biarritz in May 2025 and my first triathlon in June 2025. I also like from time to time to play padel, or hike."
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2023 - France</bold>",
-                                    "subitems": [
-                                        "Triathlon de Luchon - Short Distance",
-                                        "10 kms of Lacq"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2025 - France, Belgium</bold>",
-                                    "subitems": [
-                                        "Marathon: Biarritz - 500 mD+",
-                                        "Half-Marathon: Nay, Brussels",
-                                        "Triathlon: Pau (S)"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2024 - Denmark, France</bold>",
-                                    "subitems": [
-                                        "Trails: Fur Ultra (25 kms / 600mD+), Climb of Aubisque (18 kms / 1200mD+)",
-                                        "Marathon: Copenhaguen",
-                                        "Half-Marathon: Esbjerg, Fanø"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2023 - Denmark, France</bold>",
-                                    "subitems": [
-                                        "Trails: Climb of Aubisque (18 kms / 1200mD+)",
-                                        "Half-Marathon: Esbjerg, Odense",
-                                        "Others: West Coast Run (10 kms), Color Fun Esbjerg (5 kms)"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "paragraph",
-                            "content": "And many mores before..."
+                            "content": "I practice sports regularly, training for triathlon long distance after having completed my second marathon in Biarritz. I also enjoy playing tennis and badminton with friends."
                         }
                     ]
                 },
@@ -341,7 +327,7 @@
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "I love to read books even if I don't read as much as I would like. From '<bold>A song of ice and fire</bold>', to '<bold>The Grand Chessboard</bold>', I read fictions or articles and books on a large variety of topics."
+                            "content": "I love to read books even if I don't read as much as I would like. From '<bold>A song of ice and fire</bold>', to '<bold>Le Grand Echiquier</bold>', I read fictions or articles and books on a large variety of topics."
                         },
                         {
                             "type": "paragraph",

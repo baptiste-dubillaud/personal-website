@@ -1,6 +1,9 @@
 import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getLocale, getMessages } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
+import { toOpenGraphLocale } from "@/i18n/locales";
+import { SITE_URL } from "@/utils/linkUtils";
+import { buildPerson, buildWebSite, toJsonLd } from "@/utils/structuredData";
 import "./globals.css";
 import NavigationBarComponent from "@/components/core/navigationBar/NavigationBar";
 import FooterComponent from "@/components/core/footer/Footer";
@@ -10,61 +13,74 @@ const inter = Inter({ subsets: ["latin"] });
 // Exposed as the global --font-mono, overriding the previously-unloaded value.
 const mono = IBM_Plex_Mono({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-mono" });
 
-const DESCRIPTION =
-    "Baptiste Dubillaud — Software & Data Engineer based in Pau, France. Personal website, resume, and blog.";
+const NAME = "Baptiste Dubillaud";
 
-export const metadata = {
-    metadataBase: new URL("https://www.dubillaudb.fr"),
+const baseMetadata = {
+    // Every relative URL below (canonical, og:url, og:image) resolves against this.
+    metadataBase: new URL(SITE_URL),
     title: {
-        default: "Baptiste Dubillaud",
-        template: "%s — Baptiste Dubillaud",
+        default: NAME,
+        // Segments whose own title already ends in the name opt out with
+        // `title: { absolute }` — see the resume and contact layouts.
+        template: `%s — ${NAME}`,
     },
-    description: DESCRIPTION,
     alternates: {
-        canonical: "https://www.dubillaudb.fr",
-        languages: {
-            en: "https://www.dubillaudb.fr",
-            fr: "https://www.dubillaudb.fr",
-            "x-default": "https://www.dubillaudb.fr",
-        },
+        canonical: "/",
     },
     openGraph: {
-        title: "Baptiste Dubillaud",
-        description: DESCRIPTION,
+        title: NAME,
         url: "/",
-        siteName: "Baptiste Dubillaud",
-        locale: "en_US",
+        siteName: NAME,
         type: "website",
     },
     twitter: {
         card: "summary_large_image",
-        title: "Baptiste Dubillaud",
-        description: DESCRIPTION,
+        title: NAME,
     },
 };
 
-const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: "Baptiste Dubillaud",
-    url: "https://www.dubillaudb.fr",
-    jobTitle: "Software & Data Engineer",
-    nationality: "French",
-    sameAs: [
-        "https://www.linkedin.com/in/baptiste-dubillaud/",
-        "https://github.com/baptiste-dubillaud",
-    ],
-};
+export async function generateMetadata() {
+    // The name is the title in either language, but the description is prose and
+    // is what a search result actually shows underneath it, so it follows the
+    // served language like every other string on the site.
+    const t = await getTranslations("metadata");
+    const description = t("description");
+
+    return {
+        ...baseMetadata,
+        description,
+        openGraph: {
+            ...baseMetadata.openGraph,
+            description,
+            locale: toOpenGraphLocale(await getLocale()),
+        },
+        twitter: { ...baseMetadata.twitter, description },
+    };
+}
 
 export default async function RootLayout({ children }) {
+    // Only needed for `<html lang>`: NextIntlClientProvider resolves the locale
+    // and the messages itself when rendered from a Server Component.
     const locale = await getLocale();
-    const messages = await getMessages();
+
+    // The job title and summary are translated content, so they come from the
+    // message files rather than being repeated here. /resume layers the detailed
+    // Person (employment, education, skills) onto the same `@id`.
+    const t = await getTranslations("pages.resume");
+    const jsonLd = toJsonLd([
+        buildWebSite(locale),
+        buildPerson({
+            jobTitle: t("prensentation.title"),
+            description: t("prensentation.intro"),
+        }),
+    ]);
+
     return (
         <html lang={locale}>
             <link rel="icon" href="/icon.png" sizes="any" />
             <body className={`${inter.className} ${mono.variable}`} style={{ position: "relative" }}>
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-                <NextIntlClientProvider locale={locale} messages={messages}>
+                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />
+                <NextIntlClientProvider>
                     <NavigationBarComponent />
                     {children}
                     <FooterComponent />

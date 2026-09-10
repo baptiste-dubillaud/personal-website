@@ -2,7 +2,7 @@
 
 import styles from "@/app/design-lab/page.module.css";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { staggerContainer, fadeInUp } from "@/utils/animations";
 

@@ -1,0 +1,5 @@
+{
+    // Keep latexmk's aux files out of latex/ itself, in the same build folder
+    // scripts/build-resume.sh uses. The PDF preview reads it from there too.
+    "latex-workshop.latex.outDir": "%DIR%/.build"
+}
