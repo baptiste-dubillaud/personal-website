@@ -4,6 +4,7 @@ import path from "path";
 import matter from "gray-matter";
 
 import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES, isSupportedLocale } from "@/i18n/locales";
 
 /**
  * Single source of truth for reading blog posts from `public/blog/`.
@@ -26,11 +27,10 @@ import { BLOG_FOLDER_PATH } from "@/utils/linkUtils";
 // Only plain slugs are ever valid — no separators, no dots, no traversal.
 const SLUG_PATTERN = /^[a-z0-9-]+$/i;
 
-export const SUPPORTED_LOCALES = ["en", "fr"];
-export const DEFAULT_LOCALE = "en";
-
-// Language content files (`<slug>.en.md`) are not posts themselves.
-const LOCALE_FILE = /\.(en|fr)\.md$/;
+// Language content files (`<slug>.en.md`) are not posts themselves. Derived from
+// SUPPORTED_LOCALES so the blog follows the site's locale list instead of
+// keeping a second copy of it.
+const LOCALE_FILE = new RegExp(`\\.(${SUPPORTED_LOCALES.join("|")})\\.md$`);
 
 export function getPostSlugs() {
     return fs
@@ -53,7 +53,7 @@ function readLocaleFile(slug, locale) {
 }
 
 function normaliseLocale(locale) {
-    return SUPPORTED_LOCALES.includes(locale) ? locale : DEFAULT_LOCALE;
+    return isSupportedLocale(locale) ? locale : DEFAULT_LOCALE;
 }
 
 /**
@@ -74,8 +74,10 @@ export function getPostBySlug(slug, locale = DEFAULT_LOCALE) {
     if (!shared) return null;
 
     const requested = normaliseLocale(locale);
-    // Prefer the requested locale, then any other supported locale that exists.
-    const order = [requested, ...SUPPORTED_LOCALES.filter((l) => l !== requested)];
+    // Prefer the requested locale, then the site default, then anything else
+    // that exists. Spelled out rather than leaning on SUPPORTED_LOCALES' order,
+    // which is the language switcher's display order, not a preference ranking.
+    const order = [...new Set([requested, DEFAULT_LOCALE, ...SUPPORTED_LOCALES])];
     let localized = null;
     let resolvedLocale = requested;
     for (const candidate of order) {

@@ -1,3 +1,11 @@
+// Canonical origin of the deployed site. Metadata, the sitemap and robots.txt
+// all resolve against this rather than repeating the literal.
+export const SITE_URL = "https://www.dubillaudb.fr";
+// Bare domain, for places that display it as text rather than link to it.
+export const SITE_DOMAIN = new URL(SITE_URL).host.replace(/^www\./, "");
+
+export const CONTACT_EMAIL = "contact@dubillaudb.fr";
+
 export const LINKEDIN_PROFILE = "https://www.linkedin.com/in/baptiste-dubillaud/";
 export const GITHUB_PROFILE = "https://github.com/baptiste-dubillaud";
 export const MEDIUM_PROFILE = "https://medium.com/@baptiste.dubillaud";

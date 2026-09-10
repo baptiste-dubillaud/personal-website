@@ -1,16 +1,13 @@
 import { getRequestConfig } from "next-intl/server";
-import { headers } from "next/headers";
+import { cookies, headers } from "next/headers";
+
+import { LOCALE_COOKIE, isSupportedLocale, resolveAcceptLanguage } from "@/i18n/locales";
 
 export default getRequestConfig(async () => {
-    // Try to get locale from header set by middleware, fallback to default
-    const headersList = await headers();
-    let locale = headersList.get("x-locale") || "en";
-
-    // Validate locale
-    const supportedLocales = ["en", "fr"];
-    if (!supportedLocales.includes(locale)) {
-        locale = "en";
-    }
+    const cookieLocale = (await cookies()).get(LOCALE_COOKIE)?.value;
+    const locale = isSupportedLocale(cookieLocale)
+        ? cookieLocale
+        : resolveAcceptLanguage((await headers()).get("accept-language"));
 
     return {
         locale,

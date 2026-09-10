@@ -1,41 +1,38 @@
 "use client";
 
-import { Fragment } from "react";
+import { Fragment, useTransition } from "react";
 import styles from "./LanguageSwitcher.module.css";
 import { useLocale } from "next-intl";
-import { useRouter } from "next/navigation";
 
-const LOCALES = [
-    { code: "fr", label: "FR", ariaLabel: "Passer en français" },
-    { code: "en", label: "EN", ariaLabel: "Switch to English" },
-];
+import { LOCALES } from "@/i18n/locales";
+import { setLocale } from "@/i18n/setLocale";
 
-// Kept outside the component: writing to `document` is a side effect on a value
-// React does not own, which the compiler refuses to see inside a render scope.
-function persistLocale(locale) {
-    document.cookie = `NEXT_LOCALE=${locale}; path=/; max-age=31536000; samesite=lax`;
-}
+// Labels, aria labels and render order all come from the locale registry, so a
+// locale can never be supported but missing from the switcher (or the reverse).
+const LOCALE_ENTRIES = Object.entries(LOCALES);
 
 export default function LanguageSwitcher() {
     const currentLocale = useLocale();
-    const router = useRouter();
+    const [isPending, startTransition] = useTransition();
 
     const changeLanguage = (newLocale) => {
         if (newLocale === currentLocale) return;
-        // Persist the choice; the proxy reads this cookie to localize SSR,
-        // then router.refresh() re-renders the tree in the new language.
-        persistLocale(newLocale);
-        router.refresh();
+        // A Server Action, not `document.cookie` + `router.refresh()`: the action
+        // writes the cookie and hands back a re-rendered tree, layout included,
+        // so the provider holding the messages actually swaps language.
+        startTransition(() => setLocale(newLocale));
     };
 
     return (
-        <div className={styles.language_switcher}>
-            {LOCALES.map(({ code, label, ariaLabel }, index) => (
+        <div className={styles.language_switcher} aria-busy={isPending}>
+            {LOCALE_ENTRIES.map(([code, { label, ariaLabel }], index) => (
                 <Fragment key={code}>
                     {index > 0 && <span className={styles.separator}>|</span>}
                     <button
                         className={`${styles.language_button} ${currentLocale === code ? styles.active : ""}`}
                         onClick={() => changeLanguage(code)}
+                        // Holds off a second click while the action is in flight.
+                        disabled={isPending}
                         aria-label={ariaLabel}
                     >
                         {label}

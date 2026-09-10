@@ -1,3 +1,5 @@
+import { SITE_URL } from "@/utils/linkUtils";
+
 export default function robots() {
     return {
         rules: [
@@ -6,7 +8,7 @@ export default function robots() {
                 allow: "/",
             },
         ],
-        sitemap: "https://www.dubillaudb.fr/sitemap.xml",
-        host: "https://www.dubillaudb.fr",
+        sitemap: `${SITE_URL}/sitemap.xml`,
+        host: SITE_URL,
     };
 }

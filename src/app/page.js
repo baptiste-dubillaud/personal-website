@@ -4,7 +4,7 @@ import styles from "@/app/page.module.css";
 
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 
 import { motion } from "framer-motion";
 
@@ -37,10 +37,15 @@ const MainPageButton = ({ goTo, text, type="outline" }) => {
     );
 };
 
+// The work title is the same three labels in both languages, but not in the same
+// order ("Freelance Tech-Lead & …" in French), so the sequence is part of the
+// translation and lives in the message files next to the labels.
+const WORK_TITLE_SEPARATOR = "&";
+const HIGHLIGHTED_WORK_TITLE_PARTS = ["soft", "data"];
+
 export default function Home() {
     const t = useTranslations("pages.home");
     const commont = useTranslations("common");
-    const currentLocale = useLocale();
 
     return (
         <main>
@@ -107,40 +112,25 @@ export default function Home() {
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 2, delay: 1.95 }}
                             >
-                                {currentLocale === "fr" ? (
-                                    <>
-                                        <span className={styles.presentation_data_role_text}>
-                                            {t("workTitle.engineer")}
+                                {t.raw("workTitle.order").map((part, index) =>
+                                    part === WORK_TITLE_SEPARATOR ? (
+                                        <span key={index} className={styles.presentation_data_role_text}>
+                                            {WORK_TITLE_SEPARATOR}
                                         </span>
+                                    ) : (
                                         <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
+                                            key={index}
+                                            className={[
+                                                styles.presentation_data_role_text,
+                                                HIGHLIGHTED_WORK_TITLE_PARTS.includes(part) &&
+                                                    styles.presentation_data_firstname,
+                                            ]
+                                                .filter(Boolean)
+                                                .join(" ")}
                                         >
-                                            {t("workTitle.soft")}
+                                            {t(`workTitle.${part}`)}
                                         </span>
-                                        <span className={styles.presentation_data_role_text}>&</span>
-                                        <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                        >
-                                            {t("workTitle.data")}
-                                        </span>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                        >
-                                            {t("workTitle.soft")}
-                                        </span>
-                                        <span className={styles.presentation_data_role_text}>&</span>
-                                        <span
-                                            className={`${styles.presentation_data_role_text} ${styles.presentation_data_firstname}`}
-                                        >
-                                            {t("workTitle.data")}
-                                        </span>
-                                        <span className={styles.presentation_data_role_text}>
-                                            {t("workTitle.engineer")}
-                                        </span>
-                                    </>
+                                    )
                                 )}
                             </motion.h2>
                         </div>

@@ -26,7 +26,8 @@
             "workTitle": {
                 "soft": "Tech-Lead",
                 "data": "AI Software Engineer",
-                "engineer": "Freelance"
+                "engineer": "Freelance",
+                "order": ["soft", "&", "data", "engineer"]
             },
             "age": "years old",
             "nationality": "French",
@@ -302,62 +303,7 @@
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "I spend a lot of time doing sports. I'm currently training for triathlon after having completed my second marathon in Biarritz in May 2025 and my first triathlon in June 2025. I also like from time to time to play padel, or hike."
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2023 - France</bold>",
-                                    "subitems": [
-                                        "Triathlon de Luchon - Short Distance",
-                                        "10 kms of Lacq"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2025 - France, Belgium</bold>",
-                                    "subitems": [
-                                        "Marathon: Biarritz - 500 mD+",
-                                        "Half-Marathon: Nay, Brussels",
-                                        "Triathlon: Pau (S)"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2024 - Denmark, France</bold>",
-                                    "subitems": [
-                                        "Trails: Fur Ultra (25 kms / 600mD+), Climb of Aubisque (18 kms / 1200mD+)",
-                                        "Marathon: Copenhaguen",
-                                        "Half-Marathon: Esbjerg, Fanø"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2023 - Denmark, France</bold>",
-                                    "subitems": [
-                                        "Trails: Climb of Aubisque (18 kms / 1200mD+)",
-                                        "Half-Marathon: Esbjerg, Odense",
-                                        "Others: West Coast Run (10 kms), Color Fun Esbjerg (5 kms)"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "paragraph",
-                            "content": "And many mores before..."
+                            "content": "I practice sports regularly, training for triathlon long distance after having completed my second marathon in Biarritz. I also enjoy playing tennis and badminton with friends."
                         }
                     ]
                 },
@@ -366,7 +312,7 @@
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "I love to read books even if I don't read as much as I would like. From '<bold>A song of ice and fire</bold>', to '<bold>The Grand Chessboard</bold>', I read fictions or articles and books on a large variety of topics."
+                            "content": "I love to read books even if I don't read as much as I would like. From '<bold>A song of ice and fire</bold>', to '<bold>Le Grand Echiquier</bold>', I read fictions or articles and books on a large variety of topics."
                         },
                         {
                             "type": "paragraph",

@@ -26,7 +26,8 @@
             "workTitle": {
                 "soft": "Tech-Lead",
                 "data": "Ingénieur Logiciel IA",
-                "engineer": "Freelance"
+                "engineer": "Freelance",
+                "order": ["engineer", "soft", "&", "data"]
             },
             "age": "ans",
             "nationality": "Français",
@@ -302,62 +303,7 @@
                     "descriptions": [
                         {
                             "type": "paragraph",
-                            "content": "Je passe beaucoup de temps à faire du sport. Je m'entraîne actuellement pour le triathlon après avoir terminé mon deuxième marathon à Biarritz en mai 2025 et mon premier triathlon en juin 2025. J'aime aussi parfois jouer au padel ou faire des randonnées."
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2026 - France</bold>",
-                                    "subitems": [
-                                        "Triathlon de Luchon - Courte Distance",
-                                        "10 kms de Lacq"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2025 - France, Belgique</bold>",
-                                    "subitems": [
-                                        "Marathon : Biarritz",
-                                        "Semi-Marathon : Nay, Bruxelles",
-                                        "Triathlon : Pau (S)"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2024 - Danemark, France</bold>",
-                                    "subitems": [
-                                        "Trails : Fur Ultra (25 kms / 600mD+), Montée de l'Aubisque (18 kms / 1200mD+)",
-                                        "Marathon : Copenhague",
-                                        "Semi-Marathon : Esbjerg, Fanø"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "list",
-                            "items": [
-                                {
-                                    "content": "<bold>2023 - Danemark, France</bold>",
-                                    "subitems": [
-                                        "Trails : Montée de l'Aubisque (18 kms / 1200mD+)",
-                                        "Semi-Marathon : Esbjerg, Odense",
-                                        "Autres : West Coast Run (10 kms), Color Fun Esbjerg (5 kms)"
-                                    ]
-                                }
-                            ]
-                        },
-                        {
-                            "type": "paragraph",
-                            "content": "Et bien d'autres avant..."
+                            "content": "Je passe beaucoup de temps à faire du sport. Je m'entraîne actuellement pour du triathlon longue distance après avoir terminé mon second marathon à Biarritz. J'aime aussi parfois jouer au padel ou faire des randonnées."
                         }
                     ]
                 },

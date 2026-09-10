@@ -14,14 +14,13 @@ import GithubIcon from "@/components/common/icons/apps/GithubIcon";
 import CopyIcon from "@/components/common/icons/misc/CopyIcon";
 import CheckIcon from "@/components/common/icons/misc/CheckIcon";
 
-import { LINKEDIN_PROFILE, GITHUB_PROFILE } from "@/utils/linkUtils";
+import { LINKEDIN_PROFILE, GITHUB_PROFILE, CONTACT_EMAIL as EMAIL } from "@/utils/linkUtils";
 import { COLORS } from "@/utils/colorUtils";
 import PageBackground from "@/components/common/ui/PageBackground/PageBackground";
 import Heading from "@/components/common/ui/Heading/Heading";
 import Prompt from "@/components/common/ui/Prompt/Prompt";
 import Divider from "@/components/common/ui/Divider/Divider";
 
-const EMAIL = "contact@dubillaudb.fr";
 
 const CONTACT_LINKS = [
     {
